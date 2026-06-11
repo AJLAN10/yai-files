@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kingdom Archives — Yemen Architecture Initiative</title>
+<meta name="description" content="Historical archives of Yemen's 13 kingdoms and dynasties — from the Kingdom of Awsan (800 BCE) to the Ottoman withdrawal (1918 CE). Architectural profiles, key sites, and 3,000 years of continuous building tradition.">
+<meta name="theme-color" content="#0F172A">
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://yai.org/archives">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">
+<style>
+:root{--ink:#0F172A;--stone:#334155;--muted:#64748B;--parchment:#F8FAFC;--sand:#C4A77D;--gold:#B45309;--purple:#7C3AED;--surface:#FFFFFF;--border:#E2E8F0;--nav-h:60px;--f-display:'Cormorant Garamond',serif;--f-body:'DM Sans',system-ui,sans-serif;--f-ar:'Noto Naskh Arabic',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px}
+body{font-family:var(--f-body);background:var(--ink);color:#fff;overflow-x:hidden}
+:focus-visible{outline:3px solid #7C3AED;outline-offset:2px;border-radius:2px}
+a{color:inherit;text-decoration:none}
+button{border:none;cursor:pointer;font:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;height:var(--nav-h);background:rgba(15,23,42,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;padding:0 1.5rem;gap:1rem;z-index:100}
+.nav-back{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:rgba(255,255,255,0.4);cursor:pointer;transition:color 0.15s}
+.nav-back:hover{color:rgba(255,255,255,0.8)}
+.nav-title{font-family:var(--f-display);font-size:1.15rem;color:#fff;margin-right:auto}
+.nav-badge{font-size:0.65rem;background:rgba(124,58,237,0.2);color:#A78BFA;border:1px solid rgba(167,139,250,0.2);padding:0.25rem 0.625rem;border-radius:4px}
+.era-switch{display:flex;border:1px solid rgba(255,255,255,0.1);border-radius:6px;overflow:hidden}
+.era-btn{padding:0.375rem 0.875rem;font-size:0.72rem;color:rgba(255,255,255,0.4);transition:all 0.15s;background:none;cursor:pointer;white-space:nowrap}
+.era-btn.active,.era-btn:hover{background:rgba(255,255,255,0.08);color:#fff}
+.era-btn.active{background:rgba(124,58,237,0.2);color:#A78BFA}
+
+/* HERO */
+.hero{min-height:50vh;background:#0D0A1E;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 1.5rem 3rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(124,58,237,0.12) 0%,transparent 60%)}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 0 l28 16 0 68 -28 16 -28-16 0-68z' fill='none' stroke='%237C3AED' stroke-width='0.5' stroke-opacity='0.06'/%3E%3C/svg%3E");background-size:56px 100px;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
+.hero-eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#A78BFA;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem}
+.hero-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:#A78BFA}
+.hero-ar-bg{position:absolute;right:0;top:-1rem;font-family:var(--f-ar);font-size:clamp(4rem,12vw,10rem);font-weight:700;color:rgba(124,58,237,0.07);direction:rtl;pointer-events:none;user-select:none;line-height:1}
+.hero-title{font-family:var(--f-display);font-size:clamp(3rem,8vw,7rem);font-weight:400;color:#fff;line-height:0.9;margin-bottom:1rem;letter-spacing:-0.01em}
+.hero-title em{font-style:italic;color:var(--sand)}
+.hero-sub{font-size:0.9rem;color:rgba(255,255,255,0.4);line-height:1.7;max-width:55ch;margin-bottom:2rem}
+.hero-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.hs-item{display:flex;flex-direction:column;gap:0.2rem}
+.hs-num{font-family:var(--f-display);font-size:2rem;color:#fff;line-height:1}
+.hs-lbl{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+
+/* TIMELINE RAIL */
+.timeline-rail{background:#0D0A1E;border-top:1px solid rgba(255,255,255,0.05);overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(124,58,237,0.3) transparent}
+.timeline-inner{display:flex;align-items:stretch;min-width:max-content;padding:0 1.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+.tl-era{display:flex;align-items:center;border-right:1px solid rgba(255,255,255,0.06)}
+.tl-era:last-child{border-right:none}
+.tl-era-label{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);color:rgba(255,255,255,0.2);padding:0.75rem 0.5rem}
+.tl-kingdoms{display:flex}
+.tl-k{padding:0.75rem 1.125rem;border-right:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background 0.12s;display:flex;flex-direction:column;gap:0.2rem;min-width:130px}
+.tl-k:hover{background:rgba(255,255,255,0.04)}
+.tl-k.active{background:rgba(124,58,237,0.12);border-bottom:2px solid var(--purple)}
+.tl-k-name{font-family:var(--f-display);font-size:0.9rem;color:rgba(255,255,255,0.7)}
+.tl-k-dates{font-size:0.65rem;color:rgba(255,255,255,0.3)}
+.tl-k.pre-islamic .tl-k-name{color:rgba(196,167,125,0.8)}
+.tl-k.sheba .tl-k-name{color:#F59E0B}
+
+/* MAIN CONTENT */
+.archives-layout{max-width:1100px;margin:0 auto;padding:3rem 1.5rem;display:grid;grid-template-columns:1fr 360px;gap:2.5rem;align-items:start}
+
+/* KINGDOM CARDS GRID */
+.kingdoms-grid{display:grid;gap:1px;background:rgba(255,255,255,0.05);border-radius:12px;overflow:hidden}
+.kingdom-card{background:#0F172A;padding:1.75rem;cursor:pointer;transition:background 0.15s;position:relative;overflow:hidden}
+.kingdom-card:hover{background:#131D30}
+.kingdom-card.active{background:#12102A;border-left:3px solid var(--purple)}
+.kingdom-card.sheba-card{background:linear-gradient(135deg,#1C1207,#1A1208);border-left:3px solid #F59E0B}
+.kc-era-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:20px;margin-bottom:0.875rem}
+.kc-era-badge.pre{background:rgba(180,83,9,0.15);color:#FBBF24;border:1px solid rgba(251,191,36,0.15)}
+.kc-era-badge.islamic{background:rgba(21,128,61,0.12);color:#4ADE80;border:1px solid rgba(74,222,128,0.12)}
+.kc-era-badge.sheba-b{background:rgba(245,158,11,0.15);color:#F59E0B;border:1px solid rgba(245,158,11,0.3)}
+.kc-header{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;margin-bottom:0.625rem}
+.kc-name{font-family:var(--f-display);font-size:1.6rem;font-weight:400;line-height:1}
+.sheba-card .kc-name{color:#F59E0B}
+.kc-dates{font-family:var(--f-body);font-size:0.72rem;color:rgba(255,255,255,0.3);white-space:nowrap;padding-top:0.35rem}
+.kc-ar{font-family:var(--f-ar);font-size:1.1rem;color:rgba(255,255,255,0.2);direction:rtl;margin-bottom:0.75rem}
+.sheba-card .kc-ar{color:rgba(245,158,11,0.35)}
+.kc-capital{font-size:0.75rem;color:var(--sand);margin-bottom:0.875rem;display:flex;align-items:center;gap:0.4rem}
+.kc-capital svg{width:11px;height:11px;flex-shrink:0}
+.kc-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:1rem}
+.kc-arch-highlights{display:flex;flex-wrap:wrap;gap:0.375rem}
+.kc-arch{font-size:0.68rem;padding:0.2rem 0.6rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:4px;color:rgba(255,255,255,0.4)}
+.kc-link{display:inline-flex;align-items:center;gap:0.375rem;font-size:0.75rem;color:rgba(124,58,237,0.7);margin-top:0.875rem;transition:color 0.15s}
+.kc-link:hover{color:#A78BFA}
+.sheba-card .kc-link{color:rgba(245,158,11,0.6)}
+.sheba-card .kc-link:hover{color:#F59E0B}
+.kc-badge-row{display:flex;gap:0.375rem;flex-wrap:wrap;margin-top:0.625rem}
+.kc-badge{font-size:0.65rem;padding:0.2rem 0.6rem;border-radius:20px}
+.kb-unesco{background:rgba(3,105,161,0.15);color:#60A5FA;border:1px solid rgba(96,165,250,0.15)}
+.kb-golden{background:rgba(180,83,9,0.15);color:#FBBF24;border:1px solid rgba(251,191,36,0.15)}
+.kb-queen{background:rgba(124,58,237,0.15);color:#A78BFA;border:1px solid rgba(167,139,250,0.15)}
+
+/* SIDEBAR */
+.archives-sidebar{position:sticky;top:calc(var(--nav-h) + 1.5rem)}
+.sidebar-box{background:#0B1120;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.25rem;margin-bottom:1rem}
+.sb-title{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:0.875rem}
+.sb-row{display:flex;justify-content:space-between;font-size:0.8rem;padding:0.375rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.sb-row:last-child{border-bottom:none}
+.sb-key{color:rgba(255,255,255,0.35)}
+.sb-val{color:rgba(255,255,255,0.65);font-weight:500}
+.sb-timeline{display:flex;flex-direction:column;gap:0}
+.sb-tl-item{display:flex;gap:0.75rem;align-items:flex-start;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background 0.12s}
+.sb-tl-item:last-child{border-bottom:none}
+.sb-dot-col{display:flex;flex-direction:column;align-items:center;padding-top:4px}
+.sb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sb-connector{width:1px;flex:1;background:rgba(255,255,255,0.06);margin-top:4px;min-height:16px}
+.sb-tl-item:last-child .sb-connector{display:none}
+.sb-tl-name{font-size:0.8rem;color:rgba(255,255,255,0.55);transition:color 0.12s}
+.sb-tl-dates{font-size:0.65rem;color:rgba(255,255,255,0.25);margin-top:1px}
+.sb-tl-item:hover .sb-tl-name{color:rgba(255,255,255,0.85)}
+.sb-tl-item.pre-dot .sb-dot{background:#FBBF24}
+.sb-tl-item.islamic-dot .sb-dot{background:#4ADE80}
+.sb-tl-item.sheba-dot .sb-dot{background:#F59E0B}
+.sb-cta{display:block;background:var(--purple);color:#fff;border-radius:6px;padding:0.75rem;text-align:center;font-size:0.82rem;font-weight:500;cursor:pointer;transition:opacity 0.15s;margin-top:0.75rem}
+.sb-cta:hover{opacity:0.85}
+
+.page-footer{background:#080B14;padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.2);border-top:1px solid rgba(255,255,255,0.05)}
+.page-footer a{color:var(--sand)}
+
+@media(max-width:900px){.archives-layout{grid-template-columns:1fr}.archives-sidebar{display:none}}
+@media(max-width:600px){.hero-stats{gap:1.25rem}}
+</style>
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <a href="/" class="nav-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>YAI</a>
+  <span class="nav-title">Kingdom Archives</span>
+  <span class="nav-badge">5 sectors · Archives</span>
+  <div class="era-switch" role="group" aria-label="Filter by era">
+    <button class="era-btn active" data-era="all">All eras</button>
+    <button class="era-btn" data-era="pre">Pre-Islamic</button>
+    <button class="era-btn" data-era="islamic">Islamic</button>
+  </div>
+</nav>
+
+<section class="hero" aria-label="Kingdom Archives hero">
+  <div class="hero-inner">
+    <div class="hero-ar-bg" aria-hidden="true">ممالك اليمن</div>
+    <p class="hero-eyebrow">Historical archives — 800 BCE to 1918 CE</p>
+    <h1 class="hero-title">The <em>kingdoms</em><br>of Yemen</h1>
+    <p class="hero-sub">Thirteen kingdoms and dynasties across 2,700 years — each leaving a distinct architectural legacy that shaped the built environment we document today. From the Sabaean temples of Marib to the Rasulid mosques of Ta'izz, every governorate carries the physical memory of its rulers.</p>
+    <div class="hero-stats">
+      <div class="hs-item"><span class="hs-num">13</span><span class="hs-lbl">Kingdoms & dynasties</span></div>
+      <div class="hs-item"><span class="hs-num">2,700</span><span class="hs-lbl">Years documented</span></div>
+      <div class="hs-item"><span class="hs-num">4</span><span class="hs-lbl">UNESCO heritage zones</span></div>
+      <div class="hs-item"><span class="hs-num">7</span><span class="hs-lbl">Pre-Islamic kingdoms</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline rail -->
+<div class="timeline-rail" role="navigation" aria-label="Kingdom timeline">
+  <div class="timeline-inner">
+    <div class="tl-era">
+      <div class="tl-era-label">Pre-Islamic</div>
+      <div class="tl-kingdoms" id="tlPreIslamic"></div>
+    </div>
+    <div class="tl-era">
+      <div class="tl-era-label">Islamic</div>
+      <div class="tl-kingdoms" id="tlIslamic"></div>
+    </div>
+  </div>
+</div>
+
+<div class="archives-layout">
+  <!-- Kingdom cards -->
+  <div class="kingdoms-grid" id="kingdomsGrid" role="list" aria-label="Kingdom profiles"></div>
+
+  <!-- Sidebar -->
+  <aside class="archives-sidebar">
+    <div class="sidebar-box">
+      <div class="sb-title">Quick facts</div>
+      <div class="sb-row"><span class="sb-key">Oldest kingdom</span><span class="sb-val">Awsan c. 800 BCE</span></div>
+      <div class="sb-row"><span class="sb-key">Most documented</span><span class="sb-val">Kingdom of Saba</span></div>
+      <div class="sb-row"><span class="sb-key">Architectural peak</span><span class="sb-val">Rasulid 1229–1454</span></div>
+      <div class="sb-row"><span class="sb-key">Longest dynasty</span><span class="sb-val">Qasimi 1597–1962</span></div>
+      <div class="sb-row"><span class="sb-key">Research gap</span><span class="sb-val">Awsan · Ossan</span></div>
+    </div>
+    <div class="sidebar-box">
+      <div class="sb-title">Full timeline</div>
+      <div class="sb-timeline" id="sbTimeline"></div>
+      <a href="/archives/timeline" class="sb-cta">Interactive timeline →</a>
+    </div>
+  </aside>
+</div>
+
+<footer class="page-footer">
+  Yemen Architecture Initiative · <a href="/">YAI.org</a> · Kingdom Archives — editorial research based on 51 scholarly sources across 5 languages
+</footer>
+
+<script>
+const KINGDOMS = [
+  {id:'sheba',era:'pre',isSheba:true,name:"Kingdom of Saba (Sheba)",ar:"مملكة سبأ",dates:"c. 900 BCE – 275 CE",capital:"Marib · Sirwah",desc:"The foundational kingdom of Yemeni civilisation. The Sabaeans built the Awwam Temple (Moon Temple), the Barran Temple (Throne of Bilqis), and the Great Dam of Marib — one of antiquity's greatest engineering achievements. Their ashlar limestone masonry, Sabaean script inscriptions, and hydraulic irrigation systems influenced every subsequent building tradition across southern Arabia.",arch:['Awwam Temple','Barran Temple pylon','Great Dam sluice','Sabaean inscription wall','Hypostyle hall','Ashlar masonry'],badges:['UNESCO 2023','Italian MAIRY excavation','German DAI research','Most documented'],special:true},
+  {id:'awsan',era:'pre',name:'Kingdom of Awsan',ar:"مملكة أوسان",dates:'c. 800–500 BCE',capital:'Wadi Markha · Abyan region',desc:'The earliest South Arabian kingdom with monumental architectural remains. Awsan controlled the frankincense trade route through Wadi Markha before its defeat by Saba. Temple complexes and early ashlar stonework have been identified but remain poorly excavated. This is one of YAI\'s primary original documentation priorities — almost no scholarly monograph exists in any language.',arch:['Early temple complex','Ashlar quoins','Trade route fort','Wadi Markha site'],badges:['YAI research priority','Research gap']},
+  {id:'main',era:'pre',name:"Kingdom of Ma'in (Minaean)",ar:"المملكة المعينية",dates:'c. 400–100 BCE',capital:"Qarnaw (Al Jawf) · Yathill (Baraqish)",desc:"The Minaean kingdom controlled the northern caravan routes to the Levant, establishing trading colonies as far as Dedan in northwest Arabia and the Greek island of Delos. Their walled city of Baraqish (ancient Yathill) survives with its city wall and six towers largely intact — one of the best-preserved pre-Islamic city walls in Arabia. Italian MAIRY missions have partially excavated the site.",arch:["Baraqish city wall (intact)","Tower gate","Caravan caravanserai","Inscribed temple facade"],badges:['Baraqish walls intact','MAIRY excavated']},
+  {id:'qataban',era:'pre',name:'Kingdom of Qataban',ar:"مملكة قتبان",dates:'c. 400 BCE – 1st century CE',capital:"Timna (modern Harib)",desc:"Qataban controlled the frankincense and myrrh export routes through Wadi Beihan. The Italian-French excavations at Timna revealed the most complete urban plan of any pre-Islamic Yemeni city — palatial mudbrick residences, an ashlar-faced temple of Athtar, and a grid street system. Romolo Loreto's 2011 monograph (University of Naples) is the definitive study.",arch:['Timna urban plan','Palace of Shahr Hilal','Temple of Athtar','Street grid','Palatial mudbrick'],badges:['Italian-French excavation','Loreto 2011 monograph']},
+  {id:'hadramite',era:'pre',name:'Ancient Kingdom of Hadramaut',ar:"مملكة حضرموت",dates:'c. 400 BCE – 3rd century CE',capital:'Shabwa (ancient Shabwa)',desc:"The ancient Hadramite kingdom occupied the wadi system that bears its name, with its capital at Shabwa — the great frankincense emporium. CEFAS French excavations revealed a sophisticated palatial mudbrick architecture at Shabwa that directly prefigures the Shibam high-rise tradition 3,000 years later, demonstrating one of the most extraordinary civilisational continuities in the built world.",arch:['Shabwa palace complex','Frankincense court','Ashlar gateway','Mudbrick tower','Ancient cistern'],badges:['CEFAS French excavation','3,000-year continuity to Shibam']},
+  {id:'himyar',era:'pre',name:'Kingdom of Himyar',ar:"مملكة حمير",dates:'110 BCE – 525 CE',capital:'Zafar (Dhofar) · later Sana\'a',desc:"Himyar gradually absorbed Saba and ultimately unified southern Arabia as the dominant power before the arrival of Islam. Their capital at Zafar (near Yarim) housed the palatial complex of Raidan, and their expansion into Sana'a established the city's early highland character. The Himyarite adoption of Judaism and later Christianity is reflected in the remains of synagogues and churches alongside temples.",arch:['Raidan palace complex','Zafar highland fortress','Early Sana\'a foundations','Himyarite inscription pillars'],badges:['Successor to Saba','Pre-Islamic highland']},
+  {id:'ziyadid',era:'islamic',name:'Ziyadid Dynasty',ar:"الدولة الزيادية",dates:'819–1018 CE',capital:"Zabid (Tihama coast)",desc:"The Ziyadids founded Zabid as Yemen's first major Islamic capital in 820 CE — establishing the city that would become a centre of Islamic scholarship for 800 years and a UNESCO World Heritage site in 1993. Their mosque network, market grid, and coral stone building tradition established the Tihama architectural character that Bonnenfant documented in his landmark 2004 study.",arch:['Al-Ash\'ar mosque (Zabid)','Coral block market','Islamic school complex','City grid'],badges:['Founded Zabid','Bonnenfant 2004']},
+  {id:'sulayhi',era:'islamic',name:'Sulayhid Dynasty',ar:"الدولة الصليحية",dates:'1047–1138 CE',capital:"Jiblah · Ibb Governorate",desc:"Yemen's most celebrated dynasty is remarkable for the reign of Queen Arwa al-Sulayhi (r. 1091–1138) — one of history's greatest architectural patrons and the only woman to have her name recited in Friday prayers. Her mosque and palace complex at Jiblah, her restoration of the Sana'a Great Mosque, and her network of Ismaili learning institutions represent the high point of Sulayhid patronage.",arch:["Queen Arwa's mosque (Jiblah)","Jiblah palace remains","Ismaili da'wa architecture","Sana'a Great Mosque restoration"],badges:['Queen Arwa (legendary)','Ismaili patronage']},
+  {id:'rasulid',era:'islamic',name:'Rasulid Dynasty',ar:"الدولة الرسولية",dates:'1229–1454 CE',capital:"Ta'izz · Zabid",desc:"The Rasulids are the uncontested architectural golden age of Yemen. Their court at Ta'izz produced the finest carved stucco in the Arabian Peninsula — Al-Muzaffar and Al-Ashrafiyya mosques rival the great monuments of Mamluk Cairo. Barbara Finster's chapter in Werner Daum's Yemen (1988) remains the primary German scholarship; the Rasulids also patronised advances in astronomy, medicine, and agriculture.",arch:["Al-Muzaffar mosque (Ta'izz)","Al-Ashrafiyya mosque","Rasulid madrasa","Ablaq striped stonework","Carved stucco mihrab"],badges:['Architectural golden age','UNESCO candidate sites']},
+  {id:'tahirid',era:'islamic',name:'Tahirid Dynasty',ar:"الدولة الطاهرية",dates:'1454–1526 CE',capital:"Rada' · Ta'izz",desc:"The Tahirids succeeded the Rasulids and maintained their architectural patronage — the Great Mosque of Rada' with its extraordinary carved stucco interior is the primary Tahirid monument and one of the finest examples of medieval Yemeni religious architecture. Their reign ended with the first Ottoman conquest.",arch:["Great Mosque of Rada'","Tahirid fort architecture","Stucco interior screen"],badges:['Post-Rasulid patronage']},
+  {id:'ottoman1',era:'islamic',name:'First Ottoman Period',ar:"العهد العثماني الأول",dates:'1538–1635 CE',capital:"Sana'a",desc:"The first Ottoman presence introduced minarets with distinctive pencil profiles, glazed tile decoration, and new garrison building types. Ottoman-style minarets at several Sana'a mosques remain as the primary architectural legacy. The Yemeni resistance — led by Imam al-Qasim — ultimately expelled the Ottomans in 1635 in one of history's few successful anti-Ottoman revolts.",arch:['Ottoman minaret profiles','Garrison architecture','Hammam (bathhouse)','Covered market improvement'],badges:['Ottoman imprint on minarets']},
+  {id:'qasimi',era:'islamic',name:'Qasimi Imamate (Zaidi)',ar:"الإمامة القاسمية",dates:'1597–1962 CE',capital:"Sana'a · Sa'dah",desc:"The longest Yemeni dynasty — lasting 365 years — and the one whose architectural patronage is most directly visible in the existing built fabric of highland Yemen. The Qasimi Imams refined the tower house typology, brought the zabur rammed-earth tradition to its greatest height in Sa'dah, and maintained Sana'a's urban character. The Imamate ended with the 1962 revolution.",arch:["Tower house refinement","Zabur peak at Sa'dah","Sana'a Old City expansion","Imam's palace typology"],badges:['Longest Yemeni dynasty','Zabur tradition peak']},
+  {id:'ottoman2',era:'islamic',name:'Second Ottoman Period',ar:"العهد العثماني الثاني",dates:'1849–1918 CE',capital:"Sana'a · Ta'izz · Hodeidah",desc:"The second Ottoman period left a more substantial architectural imprint than the first — government buildings (hukumat), military garrisons, telegraph stations, covered markets (bedestan), and the distinctive Ottoman-style Yemeni post office buildings that survive in several cities. The port of Hodeidah received major Ottoman investment in its commercial and administrative infrastructure.",arch:["Hukumat (government) buildings","Ottoman barracks","Bedestan covered market","Hodeidah port buildings","Telegraph station"],badges:['Administrative architecture','Hodeidah port expansion']},
+];
+
+/* Build cards */
+const grid = document.getElementById('kingdomsGrid');
+const tlPre = document.getElementById('tlPreIslamic');
+const tlIsl = document.getElementById('tlIslamic');
+const sbTl  = document.getElementById('sbTimeline');
+
+KINGDOMS.forEach((k,i) => {
+  // Timeline rail
+  const tlEl = document.createElement('div');
+  tlEl.className = `tl-k ${k.era==='pre'?'pre-islamic':''} ${k.id==='sheba'?'sheba':''}`;
+  tlEl.dataset.id = k.id;
+  tlEl.setAttribute('tabindex','0');
+  tlEl.setAttribute('role','button');
+  tlEl.setAttribute('aria-label', k.name);
+  tlEl.innerHTML = `<div class="tl-k-name">${k.name}</div><div class="tl-k-dates">${k.dates.split(' ')[0]+' '+k.dates.split(' ')[1]}</div>`;
+  tlEl.addEventListener('click', () => { focusKingdom(k.id); tlEl.scrollIntoView({inline:'nearest',behavior:'smooth'}); });
+  (k.era==='pre' ? tlPre : tlIsl).appendChild(tlEl);
+
+  // Sidebar timeline
+  const sbItem = document.createElement('div');
+  sbItem.className = `sb-tl-item ${k.id==='sheba'?'sheba-dot':k.era==='pre'?'pre-dot':'islamic-dot'}`;
+  sbItem.setAttribute('tabindex','0');
+  sbItem.innerHTML = `<div class="sb-dot-col"><div class="sb-dot"></div><div class="sb-connector"></div></div><div><div class="sb-tl-name">${k.name}</div><div class="sb-tl-dates">${k.dates}</div></div>`;
+  sbItem.addEventListener('click', () => focusKingdom(k.id));
+  sbTl.appendChild(sbItem);
+
+  // Card
+  const card = document.createElement('div');
+  card.className = `kingdom-card${k.isSheba?' sheba-card':''}`;
+  card.dataset.id = k.id;
+  card.dataset.era = k.era;
+  card.setAttribute('role','listitem');
+  card.setAttribute('tabindex','0');
+  const eraClass = k.id==='sheba' ? 'sheba-b' : k.era==='pre' ? 'pre' : 'islamic';
+  const eraLabel = k.id==='sheba' ? '★ Kingdom of Sheba — Foundational character' : k.era==='pre' ? 'Pre-Islamic kingdom' : 'Islamic dynasty';
+  card.innerHTML = `
+    <span class="kc-era-badge ${eraClass}">${eraLabel}</span>
+    <div class="kc-header">
+      <div class="kc-name">${k.name}</div>
+      <div class="kc-dates">${k.dates}</div>
+    </div>
+    <div class="kc-ar" dir="rtl">${k.ar}</div>
+    <div class="kc-capital">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      ${k.capital}
+    </div>
+    <p class="kc-desc">${k.desc}</p>
+    <div class="kc-arch-highlights">${k.arch.map(a=>`<span class="kc-arch">${a}</span>`).join('')}</div>
+    ${k.badges ? `<div class="kc-badge-row">${k.badges.map(b=>{
+      let cls='';
+      if(b.includes('UNESCO'))cls='kb-unesco';
+      else if(b.includes('golden')||b.includes('peak')||b.includes('continuity'))cls='kb-golden';
+      else if(b.includes('Queen')||b.includes('Arwa'))cls='kb-queen';
+      return `<span class="kc-badge ${cls}">${b}</span>`;
+    }).join('')}</div>` : ''}
+    <a href="/archives/${k.id}" class="kc-link">Full archive entry →</a>
+  `;
+  card.addEventListener('click', () => focusKingdom(k.id));
+  card.addEventListener('keydown', e => { if(e.key==='Enter') focusKingdom(k.id); });
+  grid.appendChild(card);
+});
+
+function focusKingdom(id) {
+  document.querySelectorAll('.kingdom-card,.tl-k').forEach(el => el.classList.remove('active'));
+  const card = document.querySelector(`.kingdom-card[data-id="${id}"]`);
+  const tl   = document.querySelector(`.tl-k[data-id="${id}"]`);
+  if (card) { card.classList.add('active'); card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  if (tl) tl.classList.add('active');
+}
+
+/* Era filter */
+document.querySelectorAll('.era-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.era-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const era = btn.dataset.era;
+    document.querySelectorAll('.kingdom-card').forEach(c => {
+      c.style.display = era==='all' || c.dataset.era===era ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
