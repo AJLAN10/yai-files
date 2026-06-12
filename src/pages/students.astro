@@ -1,0 +1,45 @@
+---
+import HeritageLayout from '../layouts/HeritageLayout.astro';
+---
+<HeritageLayout
+  title="Students — Yemen Architecture Initiative"
+  description="The Students sector — learning hub and library for Yemen's architectural heritage. Coming soon."
+  eyebrow="Sector · Coming soon"
+  accent="#60A5FA"
+  heading="Students"
+  headingAr="الطلاب"
+>
+  <div class="soon">
+    <p class="soon-head en-only">Under construction</p>
+    <p class="soon-head ar-only ar-text">قيد الإنشاء</p>
+    <p class="soon-body en-only">
+      The Students learning hub — curriculum, library, and research resources —
+      is being prepared. In the meantime, explore the interactive map and the
+      Yemen Building Code.
+    </p>
+    <p class="soon-body ar-only ar-text">
+      يجري إعداد مركز تعلّم الطلاب — المناهج والمكتبة وموارد البحث. في هذه الأثناء،
+      استكشف الخريطة التفاعلية وكود البناء اليمني.
+    </p>
+    <div class="soon-links">
+      <a href="/map" class="soon-link"><span class="en-only">Interactive map</span><span class="ar-only ar-text">الخريطة التفاعلية</span></a>
+      <a href="/code" class="soon-link"><span class="en-only">Yemen Building Code</span><span class="ar-only ar-text">كود البناء اليمني</span></a>
+    </div>
+  </div>
+
+  <style>
+    .soon { padding: 1rem 0; }
+    .soon-head {
+      font-family: var(--f-display, 'Cormorant Garamond', serif);
+      font-size: 1.4rem; color: var(--accent); margin: 0 0 0.75rem;
+    }
+    .soon-body { font-size: 1.02rem; line-height: 1.7; color: rgba(255,255,255,0.7); max-width: 46ch; margin: 0 0 1.5rem; }
+    .soon-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .soon-link {
+      font-size: 0.85rem; padding: 0.55rem 1rem; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.85);
+    }
+    .soon-link:hover { border-color: var(--accent); color: #fff; }
+    :global(html.lang-ar) .soon-links { flex-direction: row-reverse; }
+  </style>
+</HeritageLayout>

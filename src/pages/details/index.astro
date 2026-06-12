@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import HeritageLayout from '../../layouts/HeritageLayout.astro';
+
+const order = [
+  'sheba', 'sanaa-capital', 'hadramawt', 'sadah', 'hudaydah', 'socotra',
+  'aden', 'hajjah', 'taizz', 'marib', 'ibb', 'lahij', 'shabwah',
+];
+const characters = (await getCollection('characters')).sort((a, b) => {
+  const ia = order.indexOf(a.id), ib = order.indexOf(b.id);
+  return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+});
+---
+<HeritageLayout
+  title="Details — Architectural Characters · YAI"
+  description="Character cards documenting Yemen's architectural characters — materials, eras, and the traditional / transitional / contemporary registers."
+  eyebrow="Sector · In progress"
+  accent="#FBBF24"
+  heading="Details"
+  headingAr="التفاصيل"
+  meta={[{ label: 'Character cards', value: String(characters.length) }]}
+>
+  <p class="lede en-only">
+    The full Details sector is under construction. The documented character
+    cards below are already available — each covers materials, era, defining
+    elements, and the three design registers.
+  </p>
+  <p class="lede ar-only ar-text">
+    قطاع التفاصيل قيد الإنشاء. بطاقات الطوابع الموثّقة أدناه متاحة بالفعل — تغطي كل
+    منها المواد والحقبة والعناصر المميزة والسجلات التصميمية الثلاثة.
+  </p>
+
+  <ul class="cards">
+    {characters.map((c) => (
+      <li>
+        <a href={`/details/${c.id}`} class="card">
+          <span class="card-num">{c.data.num}</span>
+          <span class="card-info">
+            <span class="card-name">{c.data.name}</span>
+            <span class="card-tag">{c.data.tag}</span>
+          </span>
+          <span class={`card-risk risk-${c.data.risk_level}`}>{c.data.risk_level}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <style>
+    .lede { font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.72); margin-bottom: 2rem; max-width: 54ch; }
+    .cards { list-style: none; display: grid; gap: 0.5rem; padding: 0; }
+    .card {
+      display: flex; align-items: center; gap: 1rem;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 0.8rem 1rem; transition: border-color 0.15s, background 0.15s;
+    }
+    .card:hover { border-color: var(--accent); background: rgba(251,191,36,0.06); }
+    .card-num {
+      font-family: var(--f-display, 'Cormorant Garamond', serif);
+      font-size: 1.3rem; color: var(--accent); min-width: 2ch; text-align: center;
+    }
+    .card-info { display: flex; flex-direction: column; gap: 0.15rem; flex: 1; }
+    .card-name { font-size: 0.98rem; color: #fff; }
+    .card-tag { font-size: 0.76rem; color: rgba(255,255,255,0.45); }
+    .card-risk {
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem; border-radius: 999px; font-weight: 600;
+    }
+    .risk-low { background: rgba(74,222,128,0.15); color: #4ADE80; }
+    .risk-moderate { background: rgba(251,191,36,0.15); color: #FBBF24; }
+    .risk-high { background: rgba(251,146,60,0.18); color: #FB923C; }
+    .risk-severe { background: rgba(248,113,113,0.18); color: #F87171; }
+    :global(html.lang-ar) .card { flex-direction: row-reverse; }
+  </style>
+</HeritageLayout>
