@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import HeritageLayout from '../../layouts/HeritageLayout.astro';
+
+const studies = (await getCollection('climateResilience')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+<HeritageLayout
+  title="Climate Resilience & Adaptive Reuse — YAI"
+  description="Case studies of Yemen's heritage architecture adapting to flood, seismic, drought, and conflict risk — cross-referenced to the Yemen Building Code and mapped for field reference."
+  eyebrow="New Sector"
+  accent="#2DD4BF"
+  heading="Climate Resilience & Adaptive Reuse"
+  headingAr="المرونة المناخية وإعادة التأهيل"
+  meta={[{ label: 'Case studies', value: String(studies.length) }]}
+>
+  <p class="lede">
+    How Yemen's built heritage absorbs climate and conflict risk — and how
+    adaptive reuse keeps these structures in service. Each case study is
+    cross-referenced to its governing Yemen Building Code chapter and carries
+    coordinates for plotting on the resilience map.
+  </p>
+
+  <ul class="studies">
+    {studies.map((s) => (
+      <li class="study">
+        <a href={`/climate/${s.id}`} class="study-link">
+          <div class="study-badges">
+            <span class={`risk risk-${s.data.risk_level}`}>{s.data.risk_level}</span>
+            <span class="risk-type">{s.data.risk_type}</span>
+          </div>
+          <h2 class="study-title">{s.data.title}</h2>
+          <p class="study-summary">{s.data.summary}</p>
+          <span class="study-gov">{s.data.governorate} · YBC {s.data.related_ybc_chapter.id.replace('ybc-', '').toUpperCase()}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <style>
+    .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); margin-bottom: 2.5rem; }
+    .studies { list-style: none; display: grid; gap: 1rem; padding: 0; }
+    .study-link {
+      display: block;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .study-link:hover { border-color: var(--accent); background: rgba(45,212,191,0.06); }
+    .study-badges { display: flex; gap: 0.5rem; margin-bottom: 0.7rem; }
+    .risk {
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.55rem; border-radius: 999px; font-weight: 600;
+    }
+    .risk-low { background: rgba(74,222,128,0.15); color: #4ADE80; }
+    .risk-moderate { background: rgba(251,191,36,0.15); color: #FBBF24; }
+    .risk-high { background: rgba(251,146,60,0.18); color: #FB923C; }
+    .risk-severe { background: rgba(248,113,113,0.18); color: #F87171; }
+    .risk-type {
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.55rem; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6);
+    }
+    .study-title {
+      font-family: var(--f-display, 'Cormorant Garamond', serif);
+      font-weight: 500; font-size: 1.4rem; color: #fff; margin: 0 0 0.4rem;
+    }
+    .study-summary { font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.6); margin: 0 0 0.7rem; }
+    .study-gov { font-size: 0.72rem; letter-spacing: 0.05em; color: var(--accent); }
+  </style>
+</HeritageLayout>

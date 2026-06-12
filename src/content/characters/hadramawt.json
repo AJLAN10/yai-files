@@ -1,0 +1,21 @@
+{
+  "num": "14",
+  "name": "Hadramawt",
+  "name_ar": "حضرموت",
+  "governorate": "Hadramawt Governorate",
+  "type": "ancient",
+  "material": "Sun-dried mudbrick (libn)",
+  "period": "Pre-Islamic to present",
+  "tag": "Mudbrick skyscrapers · Shibam · Tarim",
+  "description": "Shibam's 16th-century mudbrick high-rises reach 11 storeys — the world's oldest skyscrapers. The valley also contains Tarim's palatial mosques and Seiyun's whitewashed towers. UNESCO World Heritage 1982.",
+  "elements": [
+    "Libn tower",
+    "Tapered profile",
+    "Annual render",
+    "Wadi flood platform",
+    "Samsarah"
+  ],
+  "traditional": "Sun-dried mudbrick tower, battered (tapered) walls, flat roof with parapet, raised flood platform.",
+  "transitional": "Mudbrick form at 4–6 storeys with modern reinforcement and drainage.",
+  "contemporary": "Contemporary Hadramawt: mudbrick cladding system, vertical proportions, earth-tone palette."
+}

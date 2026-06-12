@@ -1,0 +1,221 @@
+---
+/*
+  HeritageLayout — the shared shell for every schema-driven heritage
+  page (Character Cards, YBC Chapters, Climate Resilience case studies).
+
+  Whatever sector a record belongs to, it gets the same experience:
+  the Digital Archive type scale, working EN ↔ AR + RTL toggle, and a
+  live offline indicator. Sector pages supply only their content; the
+  chrome stays identical so the platform reads as one archive.
+*/
+import BaseLayout from './BaseLayout.astro';
+import '../styles/global.css';
+
+interface MetaItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  /* Small uppercase sector label, e.g. "Architectural Character". */
+  eyebrow: string;
+  /* Hex accent for the sector (matches the home-page sector colours). */
+  accent?: string;
+  heading: string;
+  headingAr?: string;
+  /* Optional label/value chips rendered under the heading. */
+  meta?: MetaItem[];
+}
+
+const {
+  title,
+  description,
+  eyebrow,
+  accent = '#C4A77D',
+  heading,
+  headingAr,
+  meta = [],
+} = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <div class="heritage" style={`--accent:${accent}`}>
+    <nav class="h-nav" aria-label="Sector navigation">
+      <a href="/" class="h-back" aria-label="Back to home">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        YAI
+      </a>
+      <div class="h-nav-right">
+        <span class="h-offline" id="offlineDot" role="status" aria-live="polite" hidden>
+          <span class="h-offline-dot"></span>Offline
+        </span>
+        <button id="langToggle" class="h-lang" type="button" aria-label="Switch language">
+          <span class="en-only">العربية</span>
+          <span class="ar-only">English</span>
+        </button>
+      </div>
+    </nav>
+
+    <header class="h-header">
+      <p class="h-eyebrow">{eyebrow}</p>
+      <h1 class="h-heading">
+        <span class="en-only">{heading}</span>
+        {headingAr && <span class="ar-only ar-text">{headingAr}</span>}
+      </h1>
+      {meta.length > 0 && (
+        <ul class="h-meta" aria-label="Key facts">
+          {meta.map((m) => (
+            <li class="h-meta-item">
+              <span class="h-meta-label">{m.label}</span>
+              <span class="h-meta-value">{m.value}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </header>
+
+    <main id="main-content" class="h-main">
+      <slot />
+    </main>
+
+    <footer class="h-footer">
+      Yemen Architecture Initiative · <a href="/">YAI.org</a>
+    </footer>
+  </div>
+
+  <style>
+    .heritage {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+    .h-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+      position: sticky;
+      top: 0;
+      background: var(--ink, #0F172A);
+      z-index: 10;
+    }
+    .h-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .h-back:hover { color: #fff; }
+    .h-nav-right { display: flex; align-items: center; gap: 1rem; }
+    .h-lang {
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      padding: 0.4rem 0.7rem;
+      min-height: 36px;
+    }
+    .h-lang:hover { border-color: var(--accent); }
+    .h-offline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: #FBBF24;
+    }
+    .h-offline-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #FBBF24;
+    }
+    .h-header { padding: 3rem 0 2rem; }
+    .h-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .h-heading {
+      font-family: var(--f-display, 'Cormorant Garamond', Georgia, serif);
+      font-weight: 500;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      line-height: 1.02;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .ar-text { font-family: var(--f-ar, 'Noto Naskh Arabic', serif); }
+    .h-meta {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0;
+    }
+    .h-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 6px;
+      padding: 0.5rem 0.8rem;
+    }
+    .h-meta-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+    }
+    .h-meta-value { font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); }
+    .h-main { font-size: 1rem; line-height: 1.75; }
+    .h-footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+    .h-footer a { color: var(--accent); }
+
+    /* RTL: mirror the nav and right-align text when Arabic is active. */
+    :global(html.lang-ar) .heritage { direction: rtl; text-align: right; }
+    :global(html.lang-ar) .h-meta { direction: rtl; }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var html = document.documentElement;
+      var btn = document.getElementById('langToggle');
+      var saved = localStorage.getItem('yai-lang');
+      if (saved === 'ar') setLang('ar');
+
+      function setLang(lang) {
+        html.className = 'lang-' + lang;
+        html.lang = lang;
+        html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        localStorage.setItem('yai-lang', lang);
+      }
+      if (btn) {
+        btn.addEventListener('click', function () {
+          setLang(html.classList.contains('lang-ar') ? 'en' : 'ar');
+        });
+      }
+
+      var dot = document.getElementById('offlineDot');
+      function syncOnline() {
+        if (dot) dot.hidden = navigator.onLine;
+      }
+      window.addEventListener('online', syncOnline);
+      window.addEventListener('offline', syncOnline);
+      syncOnline();
+    })();
+  </script>
+</BaseLayout>

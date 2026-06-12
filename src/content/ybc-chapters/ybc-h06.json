@@ -1,0 +1,25 @@
+{
+  "code": "YBC-H06",
+  "name": "Flood Resilience",
+  "subtitle": "Wadi-adjacent and coastal heritage structures",
+  "status": "draft",
+  "governorates": [
+    "Hadramawt",
+    "Ma'rib",
+    "Al Jawf",
+    "Al Hudaydah",
+    "Aden"
+  ],
+  "description": "Flood resilience standards for Yemen's wadi-adjacent heritage cities — most critically Shibam in Wadi Hadramawt, which sits on a raised alluvial platform that has protected it for 1,600 years. Covers platform integrity, drainage maintenance, flood-door specifications, and post-flood emergency assessment protocol.",
+  "specs": [
+    ["Platform requirement", "Wadi-adjacent structures must verify platform elevation above 100-year flood level"],
+    ["Base course", "Min 600mm fired brick, stone, or coral plinth — libn not permitted below flood line"],
+    ["Drainage", "All roof water must discharge to internal cisterns (birka) or sealed drains — not wadi"],
+    ["Flood doors", "Ground floor entrances: hardwood min 50mm, sealed threshold, max 800mm above platform"],
+    ["Post-flood assessment", "72-hour assessment mandatory after any wadi flood event exceeding platform level"],
+    ["Shibam special", "Shibam platform — quarterly inspection by licensed structural engineer · YAI register"]
+  ],
+  "traditional": "Traditional flood management — raised platform, ground-floor storage only, cistern collection, sealed thresholds.",
+  "transitional": "Platform reinforcement — lime-grouted rubble masonry platform stabilisation, drainage channels.",
+  "contemporary": "New wadi-adjacent — raised platform mandatory, sealed first floor, flood-resistant libn or stabilised earth above 600mm brick base."
+}

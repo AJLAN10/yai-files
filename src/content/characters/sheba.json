@@ -1,0 +1,21 @@
+{
+  "num": "★",
+  "name": "Kingdom of Sheba",
+  "name_ar": "مملكة سبأ",
+  "governorate": "Ma'rib · Al Jawf · Shabwah",
+  "type": "ancient",
+  "material": "Ashlar limestone · alabaster",
+  "period": "c. 900 BCE – 275 CE",
+  "tag": "Monumental temples · hydraulic engineering",
+  "description": "Yemen's civilisational origin. The Sabaean kingdom at Marib produced some of the ancient world's most sophisticated monumental architecture — the Awwam Temple, Barran Temple (Throne of Bilqis), and the Great Dam of Marib, an engineering marvel of the ancient world. UNESCO World Heritage 2023.",
+  "elements": [
+    "Monumental temple",
+    "Ashlar masonry",
+    "Sabaean inscriptions",
+    "Great dam",
+    "Courtyard palatial"
+  ],
+  "traditional": "Massive limestone ashlar blocks, hypostyle halls, monumental gateway pylons.",
+  "transitional": "Sabaean formal language adapted into early Islamic courtyard plans.",
+  "contemporary": "Contemporary Ma'rib inspired by pre-Islamic geometry and proportional systems."
+}
