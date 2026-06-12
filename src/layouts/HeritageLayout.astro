@@ -85,11 +85,14 @@ const {
   </div>
 
   <style>
+    /* Heritage record pages are an intentional dark archival surface. */
+    :global(body) { background: var(--ink); color: rgba(255, 255, 255, 0.72); }
     .heritage {
       max-width: 760px;
       margin: 0 auto;
       padding: 0 1.5rem 4rem;
       color: rgba(255, 255, 255, 0.72);
+      min-height: 100dvh;
     }
     .h-nav {
       display: flex;
