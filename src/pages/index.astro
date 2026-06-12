@@ -729,7 +729,7 @@ langBtn.addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'ar' : 'en';
   html.setAttribute('lang', currentLang);
   html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-  html.className = `lang-${currentLang}`;
+  html.classList.remove('lang-en','lang-ar'); html.classList.add(`lang-${currentLang}`);
   localStorage.setItem('yai-lang', currentLang);
   if (typeof plausible !== 'undefined') plausible('Language Toggle', { props: { language: currentLang } });
 });

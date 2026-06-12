@@ -124,6 +124,13 @@ h1 { text-wrap: balance; }
 .lang-en .ar-only { display: none !important; }
 .lang-en .ar-text { display: none; }
 
+/* Dark archival theme — heritage record pages (details/climate/sectors) */
+.theme-dark body {
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.72);
+}
+.theme-dark body::after { opacity: 0.35; }
+
 /* Archival hex watermark — fixed, behind everything */
 body::after {
   content: '';

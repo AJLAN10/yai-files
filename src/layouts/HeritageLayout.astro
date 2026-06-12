@@ -39,7 +39,7 @@ const {
   meta = [],
 } = Astro.props;
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} theme="dark">
   <div class="heritage" style={`--accent:${accent}`}>
     <nav class="h-nav" aria-label="Sector navigation">
       <a href="/" class="h-back" aria-label="Back to home">
@@ -85,8 +85,6 @@ const {
   </div>
 
   <style>
-    /* Heritage record pages are an intentional dark archival surface. */
-    :global(body) { background: var(--ink); color: rgba(255, 255, 255, 0.72); }
     .heritage {
       max-width: 760px;
       margin: 0 auto;
@@ -201,7 +199,8 @@ const {
       if (saved === 'ar') setLang('ar');
 
       function setLang(lang) {
-        html.className = 'lang-' + lang;
+        html.classList.remove('lang-en', 'lang-ar');
+        html.classList.add('lang-' + lang);
         html.lang = lang;
         html.dir = lang === 'ar' ? 'rtl' : 'ltr';
         localStorage.setItem('yai-lang', lang);
