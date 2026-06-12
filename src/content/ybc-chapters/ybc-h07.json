@@ -1,0 +1,21 @@
+{
+  "code": "YBC-H07",
+  "chapter_number": 7,
+  "title": "Post-Conflict Reconstruction",
+  "subtitle": "Damage classification and authenticity standards",
+  "status": "draft",
+  "governorates": ["All 22 governorates", "Priority: Sana'a · Ta'izz · Sa'dah · Hudaydah"],
+  "related_resilience_tags": ["conflict"],
+  "content": "A Yemen-specific chapter with no direct Saudi equivalent — addressing the reconstruction of heritage structures damaged by armed conflict. Establishes a 5-grade conflict damage classification (CDC-1 to CDC-5), authenticity requirements for reconstruction, documentation standards before intervention, and the role of evidence-based design where original fabric is lost.",
+  "specs": [
+    ["CDC scale", "CDC-1: Minor · CDC-2: Moderate · CDC-3: Severe · CDC-4: Partial collapse · CDC-5: Total loss"],
+    ["Authenticity rule", "Original materials must be matched within 10% of original specification by mass"],
+    ["Documentation", "Photogrammetric survey required before any intervention on CDC-3 or above"],
+    ["Reversibility", "All interventions must be reversible — no material shall be introduced that damages original"],
+    ["Evidence design", "CDC-5 sites: reconstruction based on pre-conflict photographs, oral testimony, CEFAS records"],
+    ["ALIPH alignment", "All CDC-4 and CDC-5 reconstructions require ALIPH protocol review before commencement"]
+  ],
+  "traditional": "Traditional reconstruction — material replacement like-for-like, craftsman-led, community knowledge documented.",
+  "transitional": "Evidence-based reconstruction — combining photographic evidence, 3D scan data, and local mason knowledge.",
+  "contemporary": "Contemporary reconstruction — traditional material base with modern services infrastructure concealed within walls."
+}

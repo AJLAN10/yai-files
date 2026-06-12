@@ -1,0 +1,21 @@
+{
+  "code": "YBC-H01",
+  "chapter_number": 1,
+  "title": "Mudbrick (Libn) Construction",
+  "subtitle": "Sun-dried mudbrick — Hadramawt, Marib, Al Jawf, Shabwah",
+  "status": "draft",
+  "governorates": ["Hadramawt", "Ma'rib", "Al Jawf", "Shabwah", "Abyan"],
+  "related_resilience_tags": ["flood", "drought"],
+  "content": "Technical standards for sun-dried mudbrick (libn) construction — the primary material of Shibam, Tarim, and the Wadi Hadramawt tradition. Covers mix ratios, coursing, structural height limits, annual render protocols, and flood-base specifications for wadi-adjacent buildings.",
+  "specs": [
+    ["Mix ratio (standard)", "3 parts clay soil · 1 part sand · 0.5 parts straw binder"],
+    ["Brick dimensions", "25 × 12 × 8 cm (traditional) · or 30 × 15 × 10 cm (structural)"],
+    ["Max height (unrestored)", "8 storeys (24m) with approved structural survey — 6 without"],
+    ["Annual render", "Tayan (mud-lime plaster) applied annually Oct–Nov before rains"],
+    ["Flood base", "Min. 600mm fired brick or stone plinth at wadi-adjacent sites"],
+    ["Wall taper", "Batter ratio 1:12 — walls reduce 8cm per floor on outer face"]
+  ],
+  "traditional": "Traditional libn — unstabilised sun-dried mud, straw-reinforced, annually rendered. No cement additives.",
+  "transitional": "Stabilised libn — 5–8% cement or lime admixture permitted for structural upgrade. Must retain render.",
+  "contemporary": "Contemporary libn — precast stabilised mudbrick panels permitted; mix spec and colour must match local earth tone within ΔE < 3."
+}

@@ -1,5 +1,36 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+/* Single source of truth: the character data now lives in the
+   `characters` collection. We shape it into the flat record the
+   client script expects and inject it as JSON (the SVG marker
+   positions remain authored in the markup below). */
+const order = [
+  'sheba', 'sanaa-capital', 'hadramawt', 'sadah', 'hudaydah', 'socotra',
+  'aden', 'hajjah', 'taizz', 'marib', 'ibb', 'lahij', 'shabwah',
+];
+const characters = await getCollection('characters');
+const charData = characters
+  .map((e) => ({
+    id: e.id,
+    num: e.data.num,
+    name: e.data.name,
+    tag: e.data.tag,
+    type: e.data.type,
+    gov: e.data.governorate,
+    material: e.data.material_list.join(' · '),
+    period: e.data.era,
+    desc: e.data.description,
+    elements: e.data.elements,
+    trad: e.data.traditional,
+    trans: e.data.transitional,
+    cont: e.data.contemporary,
+  }))
+  .sort((a, b) => {
+    const ia = order.indexOf(a.id), ib = order.indexOf(b.id);
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+  });
 ---
 <BaseLayout
   title="Architectural Characters Map — Yemen Architecture Initiative"
@@ -189,25 +220,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </main>
 </div>
 
+<script id="char-data" type="application/json" is:inline set:html={JSON.stringify(charData)}></script>
 <script is:inline>
 'use strict';
 
-/* ── Character data ── */
-const CHARACTERS = [
-  {id:'sheba',num:'★',name:"Kingdom of Sheba",gov:"Ma'rib · Al Jawf · Shabwah",type:'ancient',material:'Ashlar limestone · alabaster',period:'c. 900 BCE – 275 CE',tag:'Monumental temples · hydraulic engineering',desc:"Yemen's civilisational origin. The Sabaean kingdom at Marib produced some of the ancient world's most sophisticated monumental architecture — the Awwam Temple, Barran Temple (Throne of Bilqis), and the Great Dam of Marib, an engineering marvel of the ancient world. UNESCO World Heritage 2023.",elements:['Monumental temple','Ashlar masonry','Sabaean inscriptions','Great dam','Courtyard palatial'],trad:'Massive limestone ashlar blocks, hypostyle halls, monumental gateway pylons.',trans:'Sabaean formal language adapted into early Islamic courtyard plans.',cont:'Contemporary Ma'rib inspired by pre-Islamic geometry and proportional systems.'},
-  {id:'sanaa-capital',num:'01',name:"Sana'a Capital",gov:"Amanat al-Asimah",type:'highland',material:'Fired brick · gypsum · alabaster',period:'Pre-Islamic to present',tag:'Tower house · qamaria · mafraj',desc:'The densest concentration of multi-storey tower houses on earth. Sana'a Old City (UNESCO 1986) features 6–9 storey brick towers with white gypsum banding, alabaster qamaria fanlights, and the mafraj — the ceremonial top-floor reception room.',elements:['Qamaria window','Mafraj','Diwan frieze','Gypsum render','Tower house'],trad:'6–9 storey fired brick tower, white gypsum diwan bands, stained-glass qamaria fanlights.',trans:'Traditional tower form at reduced height (3–4 storeys) with modern services.',cont:'Contemporary Sana'a character: brick cladding, qamaria motifs as screens, mafraj-inspired rooftop space.'},
-  {id:'hadramawt',num:'14',name:'Hadramawt',gov:'Hadramawt Governorate',type:'ancient',material:'Sun-dried mudbrick (libn)',period:'Pre-Islamic to present',tag:'Mudbrick skyscrapers · Shibam · Tarim',desc:"Shibam's 16th-century mudbrick high-rises reach 11 storeys — the world's oldest skyscrapers. The valley also contains Tarim's palatial mosques and Seiyun's whitewashed towers. UNESCO World Heritage 1982.",elements:['Libn tower','Tapered profile','Annual render','Wadi flood platform','Samsarah'],trad:'Sun-dried mudbrick tower, battered (tapered) walls, flat roof with parapet, raised flood platform.',trans:'Mudbrick form at 4–6 storeys with modern reinforcement and drainage.',cont:'Contemporary Hadramawt: mudbrick cladding system, vertical proportions, earth-tone palette.'},
-  {id:'sadah',num:'20',name:"Sa'dah",gov:"Sa'dah Governorate",type:'desert',material:'Rammed earth (zabur)',period:'Medieval to present',tag:'Zabur courses · northern walled city',desc:"Yemen's most intact rammed-earth walled city. The zabur tradition — coursed clay compacted between shuttered forms — creates ochre-toned walls of extraordinary thermal performance. The city's defensive ring wall and Friday mosque are the defining monuments.",elements:['Zabur course','Walled city','Earthen minaret','Tribal gate','Clay render'],trad:'Rammed-earth walls in 30cm courses, earthen minaret, flat roofs with crenelated parapets.',trans:'Stabilised rammed earth with lime admixture, traditional coursing pattern retained.',cont:'Contemporary Sa'dah: rammed-earth aesthetic with structural reinforcement, passive cooling.'},
-  {id:'hudaydah',num:'08',name:'Al Hudaydah',gov:'Al Hudaydah Governorate',type:'coastal',material:'Coral stone · timber rawshan',period:'Ottoman to 20th century',tag:'Red Sea port · rawshan screens · coral',desc:"Yemen's Red Sea coast produced a unique architecture combining coral block walls, Ottoman-influenced minarets, and elaborately carved timber rawshan (projecting window screens) that filter sea breeze and light. Zabid — UNESCO 1993 — is the jewel of this tradition.",elements:['Rawshan screen','Coral block','Ottoman minaret','Courtyard haush','Carved timber'],trad:'Coral stone walls, projecting timber rawshan screens, central courtyard, squat mosque minaret.',trans:'Coral stone with cement mortar, simplified rawshan pattern, retained courtyard plan.',cont:'Contemporary Tihama: perforated concrete screens referencing rawshan geometry, passive ventilation.'},
-  {id:'socotra',num:'12',name:'Socotra',gov:'Socotra Archipelago',type:'island',material:'Cave stone · endemic timber · thatch',period:'Pre-Islamic to present',tag:'Island vernacular · cave dwellings · dragon blood',desc:'Yemen\'s island archipelago (UNESCO 2008 for biodiversity) hosts one of the world\'s most unique vernacular traditions — cave dwellings cut into limestone cliffs, low-rise stone enclosures, and thatch-roofed huts using endemic dragon blood tree wood. No equivalent exists anywhere.',elements:['Cave dwelling','Limestone enclosure','Dragon blood timber','Thatch roof','Cliffside terrace'],trad:'Limestone cave expanded with stone walls, thatch canopy, endemic timber structure.',trans:'Stone enclosure with corrugated shelter, retaining cliffside placement.',cont:'Eco-lodge typology: cave integration, endemic materials, minimal footprint.'},
-  {id:'aden',num:'03',name:'Aden',gov:'Aden Governorate',type:'coastal',material:'Coral stone · colonial brick · concrete',period:'1839 to present',tag:'Colonial hybrid · port architecture',desc:'Aden\'s extraordinary architectural landscape combines pre-colonial coral stone buildings, British colonial administrative architecture (1839–1967), and modernist port infrastructure — all layered within a volcanic crater. Crater district and Tawahi are the primary heritage zones.',elements:['Colonial arcade','Coral stone','Volcanic basalt','Harbour warehouse','British bungalow'],trad:'Pre-colonial coral stone house with central courtyard and shaded arcade.',trans:'Colonial-era arcade typology adapted to local climate — deep shading, coral base.',cont:'Contemporary Aden: volcanic basalt cladding references geology; arcade continued as climate device.'},
-  {id:'hajjah',num:'15',name:'Hajjah',gov:'Hajjah Governorate',type:'highland',material:'Cut stone · limestone · schist',period:'Medieval to present',tag:'Cliffside · Haraz · defensive village',desc:'The mountainous Haraz region of Hajjah governorate contains Yemen\'s most dramatic defensive architecture — villages growing directly from cliff faces, with the geological rock forming the rear wall of buildings. Al-Hajjarah and Shibam Kawkaban are the defining examples.',elements:['Cliff integration','Stone coursing','Defensive gate','Rainwater cistern (birka)','Tower lookout'],trad:'Building grows from cliff face; local schist stone coursed dry; cisterns carved into bedrock.',trans:'Stone structure stepped up cliff with modern water supply; traditional massing retained.',cont:'Contemporary Haraz: stone cladding, stepped profile following topography, terrace gardens.'},
-  {id:'taizz',num:'22',name:"Ta'izz",gov:"Ta'izz Governorate",type:'highland',material:'Stone · fired brick · Ottoman tile',period:'Rasulid (1229–1454) to present',tag:'Fortress city · Rasulid golden age · Ottoman',desc:"Yemen's most layered medieval city. Ta'izz was the Rasulid dynasty's capital — Yemen's architectural golden age — and their Al-Muzaffar and Al-Ashrafiyya mosques represent the finest carved stucco in the Arabian Peninsula. Ottoman minarets and colonial-era buildings add further layers.",elements:['Rasulid mosque','Carved stucco','Ottoman minaret','City wall','Medina bazaar'],trad:'Rasulid carved stucco facade, pointed arches, ablaq stonework in alternating courses.',trans:'Rasulid proportional language in contemporary stone construction with simplified ornament.',cont:'Contemporary Ta'izz: carved stucco motifs as precast screen elements; Rasulid arch profiles.'},
-  {id:'marib',num:'18',name:"Ma'rib",gov:"Ma'rib Governorate",type:'ancient',material:'Limestone ashlar · mudbrick · earth',period:'Pre-Islamic to present',tag:'Sabaean capital · UNESCO 2023',desc:"Ma'rib is Yemen's most archaeologically significant living city — the Sabaean capital, site of the Awwam Temple (Moon Temple), Barran Temple (Throne of Bilqis), and the Great Dam rebuilt by the Sabaeans and catastrophically breached in 570 CE. The new Ma'rib city is being rebuilt respectfully around these monuments.",elements:['Awwam Temple','Barran Temple pylon','Great Dam','Sabaean inscription wall','Mudbrick palatial'],trad:'Ashlar limestone monumental construction; massive hypostyle halls; dam sluice engineering.',trans:'Ma\'rib vernacular — mudbrick with ashlar quoins, building massing echoing ancient tells.',cont:'Contemporary Ma\'rib: light ashlar cladding, Sabaean geometric proportions, monument-respecting massing.'},
-  {id:'ibb',num:'16',name:'Ibb',gov:'Ibb Governorate',type:'highland',material:'Stone · fired brick · gypsum',period:'Rasulid to present',tag:'Green highland · medieval stone townscape',desc:"Yemen's greenest governorate hosts a dense medieval stone townscape. Ibb city and its surrounding villages show the transition from Rasulid architectural patronage to Zaidi Imamate — their Friday mosques, caravanserais, and terraced domestic architecture in volcanic stone are among Yemen's least-documented.",elements:['Stone tower house','Terraced cultivation','Volcanic basalt','Caravanserai','Rasulid mosque'],trad:'Multi-storey stone house, gypsum render, small windows for heat retention in cool highland.',trans:'Stone construction with enlarged windows, retained traditional massing.',cont:'Contemporary Ibb: dark volcanic basalt cladding, green terrace integration, traditional skyline.'},
-  {id:'lahij',num:'17',name:'Lahij',gov:'Lahij Governorate',type:'coastal',material:'Coral · clay · colonial brick',period:'Abdali Sultanate to present',tag:'Sultanate · courtyard palace · colonial',desc:"Lahij was the seat of the Abdali Sultanate — independent until 1839 — and their Hisn al-Abdali palace complex combines Yemeni courtyard tradition with Ottoman and later British colonial influence. The Sultanate's architectural patronage extended across a network of mosques and market buildings in the Tihama transitional zone.",elements:['Sultanate palace','Arcaded market','Courtyard haush','Colonial bungalow','Coral block'],trad:'Courtyard palace with arcaded perimeter, coral block walls, decorated reception hall.',trans:'Courtyard plan retained; local materials combined with colonial brick detailing.',cont:'Contemporary Lahij: courtyard typology with modern services; arcade as thermal device.'},
-  {id:'shabwah',num:'21',name:'Shabwah',gov:'Shabwah Governorate',type:'ancient',material:'Mudbrick · limestone · earth',period:'Hadramite (c.400 BCE) to present',tag:'Hadramite capital · frankincense route',desc:"Shabwa was the ancient capital of the Hadramite kingdom — one of the wealthiest cities on the frankincense trade route. The archaeological site reveals a sophisticated palatial mudbrick architecture that directly prefigures the Shibam tradition 3,000 years later — demonstrating extraordinary civilisational continuity.",elements:['Palatial mudbrick','Frankincense court','Ashlar gateway','Ancient cistern','Trade caravanserai'],trad:'Mudbrick palatial construction on ashlar plinth; decorated gate towers; internal courtyard.',trans:'Earth building tradition continuing from Shabwa to Shibam across the millennia.',cont:'Contemporary Shabwah: rammed earth with ashlar base; Hadramite proportions as design language.'},
-];
+/* ── Character data (from the `characters` collection) ── */
+const CHARACTERS = JSON.parse(document.getElementById('char-data').textContent);
 
 /* ── Build sidebar ── */
 const list = document.getElementById('charsList');
@@ -280,7 +298,7 @@ function openChar(id) {
       </div>
     </div>
     <div class="dp-actions">
-      <button class="dp-btn-primary" onclick="window.location='/details/characters/${c.id}'">Full character card →</button>
+      <button class="dp-btn-primary" onclick="window.location='/details/${c.id}'">Full character card →</button>
       <button class="dp-btn-secondary" onclick="window.location='/code'">YBC</button>
     </div>
   `;

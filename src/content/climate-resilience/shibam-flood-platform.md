@@ -5,7 +5,7 @@ summary: "How the mudbrick skyline of Shibam Hadramawt has survived sixteen cent
 risk_type: flood
 risk_level: severe
 governorate: Hadramawt
-related_ybc_chapter: ybc-h06
+resilience_tags: [flood]
 related_character: hadramawt
 geo_coordinates:
   lat: 15.9270

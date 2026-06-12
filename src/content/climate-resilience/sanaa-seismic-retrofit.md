@@ -5,7 +5,7 @@ summary: "Sana'a's 6–9 storey fired-brick towers were built with timber lacing
 risk_type: seismic
 risk_level: moderate
 governorate: Amanat al-Asimah
-related_ybc_chapter: ybc-h05
+resilience_tags: [seismic]
 related_character: sanaa-capital
 geo_coordinates:
   lat: 15.3547

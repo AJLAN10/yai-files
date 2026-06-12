@@ -14,14 +14,22 @@ const { entry } = Astro.props;
 const s = entry.data;
 const { Content } = await render(entry);
 
-/* Resolve cross-references for honest deep links. */
-const chapter = await getEntry(s.related_ybc_chapter);
-const character = s.related_character ? await getEntry(s.related_character) : null;
+/* Inverted cross-link: find YBC chapters whose related_resilience_tags
+   intersect this study's resilience_tags. No hard reference — the link
+   is discovered by querying tags. */
+const chapters = await getCollection('ybcChapters');
+const relatedChapters = chapters.filter((ch) =>
+  ch.data.related_resilience_tags.some((t) => s.resilience_tags.includes(t)),
+);
+
+/* Soft character link by id. */
+const character = s.related_character
+  ? await getEntry('characters', s.related_character)
+  : null;
 
 const meta = [
   { label: 'Risk', value: `${s.risk_type} · ${s.risk_level}` },
   { label: 'Governorate', value: s.governorate },
-  { label: 'YBC chapter', value: chapter?.data.code ?? s.related_ybc_chapter.id },
 ];
 if (character) meta.push({ label: 'Character', value: character.data.name });
 ---
@@ -36,6 +44,10 @@ if (character) meta.push({ label: 'Character', value: character.data.name });
 >
   <p class="lede">{s.summary}</p>
 
+  <ul class="tags" aria-label="Resilience themes">
+    {s.resilience_tags.map((t) => <li class="tag">{t}</li>)}
+  </ul>
+
   {s.adaptive_reuse && (
     <div class="reuse">
       <span class="reuse-label">Adaptive reuse</span>
@@ -48,12 +60,12 @@ if (character) meta.push({ label: 'Character', value: character.data.name });
   </article>
 
   <div class="refs">
-    {chapter && (
-      <a class="ref-card" href={`/code/${chapter.id}`}>
-        <span class="ref-kind">Governing code</span>
-        <span class="ref-name">{chapter.data.code} · {chapter.data.name}</span>
+    {relatedChapters.map((ch) => (
+      <a class="ref-card" href={`/code/${ch.id}`}>
+        <span class="ref-kind">Governing code · shares “{ch.data.related_resilience_tags.find((t) => s.resilience_tags.includes(t))}”</span>
+        <span class="ref-name">{ch.data.code} · {ch.data.title}</span>
       </a>
-    )}
+    ))}
     {character && (
       <a class="ref-card" href={`/details/${character.id}`}>
         <span class="ref-kind">Related character</span>
@@ -69,11 +81,15 @@ if (character) meta.push({ label: 'Character', value: character.data.name });
 
   <style>
     .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); }
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 1rem 0 0; }
+    .tag {
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem; border-radius: 999px;
+      background: rgba(45,212,191,0.12); color: var(--accent);
+    }
     .reuse {
-      margin: 1.75rem 0;
-      border: 1px solid rgba(45,212,191,0.25);
-      background: rgba(45,212,191,0.06);
-      border-radius: 8px; padding: 1rem 1.2rem;
+      margin: 1.75rem 0; border: 1px solid rgba(45,212,191,0.25);
+      background: rgba(45,212,191,0.06); border-radius: 8px; padding: 1rem 1.2rem;
     }
     .reuse-label { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
     .reuse p { margin: 0.35rem 0 0; line-height: 1.6; }
@@ -99,13 +115,12 @@ if (character) meta.push({ label: 'Character', value: character.data.name });
       padding: 0.7rem 1rem; transition: border-color 0.15s;
     }
     .ref-card:hover { border-color: var(--accent); }
-    .ref-kind { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ref-kind { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
     .ref-name { font-size: 0.92rem; color: #fff; }
     .geo {
       display: inline-flex; align-items: center; gap: 0.4rem;
       margin-top: 2rem; font-size: 0.78rem;
-      font-family: var(--f-mono, 'Fira Code', monospace);
-      color: rgba(255,255,255,0.4);
+      font-family: var(--f-mono, 'Fira Code', monospace); color: rgba(255,255,255,0.4);
     }
     :global(html.lang-ar) .prose, :global(html.lang-ar) .reuse { text-align: right; }
   </style>

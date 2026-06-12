@@ -1,17 +1,12 @@
 {
   "code": "YBC-H05",
-  "name": "Seismic Standards",
+  "chapter_number": 5,
+  "title": "Seismic Standards",
   "subtitle": "Highland tower house seismic performance and retrofit",
-  "status": "review",
-  "governorates": [
-    "Sana'a Capital",
-    "Sa'dah",
-    "Hajjah",
-    "Dhamar",
-    "Ibb",
-    "Ta'izz"
-  ],
-  "description": "Seismic performance requirements for Yemen's highland heritage structures — addressing the specific vulnerability of multi-storey mudbrick and fired brick tower houses to earthquake damage. Covers in-situ assessment, graded intervention levels, reversible retrofit techniques, and post-earthquake rapid assessment protocol.",
+  "status": "peer-reviewed",
+  "governorates": ["Sana'a Capital", "Sa'dah", "Hajjah", "Dhamar", "Ibb", "Ta'izz"],
+  "related_resilience_tags": ["seismic"],
+  "content": "Seismic performance requirements for Yemen's highland heritage structures — addressing the specific vulnerability of multi-storey mudbrick and fired brick tower houses to earthquake damage. Covers in-situ assessment, graded intervention levels, reversible retrofit techniques, and post-earthquake rapid assessment protocol.",
   "specs": [
     ["Seismic zones", "Zone 1 (low): Hadramawt · Zone 2 (moderate): Sana'a · Zone 3 (high): Sa'dah, Hajjah"],
     ["Assessment trigger", "Any structure >4 storeys or Grade A/B · mandatory seismic survey before restoration"],

@@ -29,11 +29,16 @@ const registers = [
   meta={[
     { label: 'No.', value: c.num },
     { label: 'Governorate', value: c.governorate },
-    { label: 'Material', value: c.material },
-    { label: 'Period', value: c.period },
+    { label: 'Era', value: c.era },
+    { label: 'Risk level', value: c.risk_level },
   ]}
 >
   <p class="lede">{c.description}</p>
+
+  <h2 class="section-title">Materials</h2>
+  <ul class="elements">
+    {c.material_list.map((m) => <li class="element material">{m}</li>)}
+  </ul>
 
   <h2 class="section-title">Defining elements</h2>
   <ul class="elements">
@@ -71,6 +76,7 @@ const registers = [
       border-radius: 999px;
       color: rgba(255,255,255,0.78);
     }
+    .element.material { border-color: rgba(255,255,255,0.18); }
     .registers { display: grid; gap: 1rem; }
     .register {
       border-left: 2px solid var(--accent);

@@ -1,0 +1,19 @@
+{
+  "code": "YBC-H00",
+  "chapter_number": 0,
+  "title": "Overview & Legal Framework",
+  "subtitle": "Scope, definitions, classification of heritage structures",
+  "status": "peer-reviewed",
+  "governorates": ["All 22 governorates", "Socotra"],
+  "related_resilience_tags": ["governance"],
+  "content": "Establishes the legal basis, definitions, and classification system for Yemen's built heritage. Defines four heritage grades (A–D), geographic scope across all 22 governorates, relationship to existing municipal codes, and the authority of the YAI committee for variance applications.",
+  "specs": [
+    ["Heritage grades", "A: National significance · B: Regional · C: Local · D: Contributory"],
+    ["Application scope", "All structures in classified heritage zones or within 50m of Grade A/B building"],
+    ["Authority", "YAI Heritage Code Committee — technical review within 45 days"],
+    ["Relationship to SBC", "YBC-H supersedes SBC 902 for classified Yemeni heritage structures"]
+  ],
+  "traditional": "All restoration or reconstruction of Grade A and B structures must comply with YBC-H before any municipal code.",
+  "transitional": "Grade C and D structures may apply hybrid compliance — YBC-H material standards + municipal structural code.",
+  "contemporary": "New construction in heritage zones must demonstrate character compliance per YAI character card for the governorate."
+}

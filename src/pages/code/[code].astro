@@ -14,17 +14,25 @@ const { entry } = Astro.props;
 const ch = entry.data;
 ---
 <HeritageLayout
-  title={`${ch.code} ${ch.name} — Yemen Building Code · YAI`}
-  description={ch.description}
+  title={`${ch.code} ${ch.title} — Yemen Building Code · YAI`}
+  description={ch.content}
   eyebrow={`Yemen Building Code · ${ch.code}`}
   accent="#4ADE80"
-  heading={ch.name}
+  heading={ch.title}
   meta={[
     { label: 'Status', value: ch.status },
     { label: 'Applies to', value: `${ch.governorates.length} governorates` },
   ]}
 >
-  <p class="lede">{ch.description}</p>
+  <p class="lede">{ch.content}</p>
+
+  {ch.related_resilience_tags.length > 0 && (
+    <ul class="tags" aria-label="Resilience themes">
+      {ch.related_resilience_tags.map((t) => (
+        <li class="tag"><a href="/climate">{t}</a></li>
+      ))}
+    </ul>
+  )}
 
   <h2 class="section-title">Technical specifications</h2>
   <dl class="specs">
@@ -49,6 +57,12 @@ const ch = entry.data;
 
   <style>
     .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); }
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 1.25rem 0 0; }
+    .tag a {
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem; border-radius: 999px;
+      background: rgba(45,212,191,0.12); color: #2DD4BF;
+    }
     .section-title {
       font-family: var(--f-display, 'Cormorant Garamond', serif);
       font-weight: 500; font-size: 1.5rem; color: #fff; margin: 2.5rem 0 1rem;

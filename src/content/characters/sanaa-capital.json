@@ -4,17 +4,13 @@
   "name_ar": "أمانة العاصمة",
   "governorate": "Amanat al-Asimah",
   "type": "highland",
-  "material": "Fired brick · gypsum · alabaster",
-  "period": "Pre-Islamic to present",
+  "era": "Pre-Islamic to present",
+  "material_list": ["Fired brick", "gypsum", "alabaster"],
+  "risk_level": "moderate",
+  "geo_coordinates": { "lat": 15.3547, "lng": 44.2066 },
   "tag": "Tower house · qamaria · mafraj",
   "description": "The densest concentration of multi-storey tower houses on earth. Sana'a Old City (UNESCO 1986) features 6–9 storey brick towers with white gypsum banding, alabaster qamaria fanlights, and the mafraj — the ceremonial top-floor reception room.",
-  "elements": [
-    "Qamaria window",
-    "Mafraj",
-    "Diwan frieze",
-    "Gypsum render",
-    "Tower house"
-  ],
+  "elements": ["Qamaria window", "Mafraj", "Diwan frieze", "Gypsum render", "Tower house"],
   "traditional": "6–9 storey fired brick tower, white gypsum diwan bands, stained-glass qamaria fanlights.",
   "transitional": "Traditional tower form at reduced height (3–4 storeys) with modern services.",
   "contemporary": "Contemporary Sana'a character: brick cladding, qamaria motifs as screens, mafraj-inspired rooftop space."
