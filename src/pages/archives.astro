@@ -1,15 +1,181 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Kingdom Archives — Yemen Architecture Initiative</title>
-<meta name="description" content="Historical archives of Yemen's 13 kingdoms and dynasties — from the Kingdom of Awsan (800 BCE) to the Ottoman withdrawal (1918 CE). Architectural profiles, key sites, and 3,000 years of continuous building tradition.">
-<meta name="theme-color" content="#0F172A">
-<link rel="manifest" href="/manifest.json">
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Kingdom Archives — Yemen Architecture Initiative"
+  description="Historical archives of Yemen's 13 kingdoms and dynasties — from the Kingdom of Awsan (800 BCE) to the Ottoman withdrawal (1918 CE). Architectural profiles, key sites, and 3,000 years of continuous building tradition."
+>
+<Fragment slot="head">
 <link rel="canonical" href="https://yai.org/archives">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">
+</Fragment>
+
+<nav class="nav" role="navigation">
+  <a href="/" class="nav-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>YAI</a>
+  <span class="nav-title">Kingdom Archives</span>
+  <span class="nav-badge">5 sectors · Archives</span>
+  <div class="era-switch" role="group" aria-label="Filter by era">
+    <button class="era-btn active" data-era="all">All eras</button>
+    <button class="era-btn" data-era="pre">Pre-Islamic</button>
+    <button class="era-btn" data-era="islamic">Islamic</button>
+  </div>
+</nav>
+
+<section class="hero" aria-label="Kingdom Archives hero">
+  <div class="hero-inner">
+    <div class="hero-ar-bg" aria-hidden="true">ممالك اليمن</div>
+    <p class="hero-eyebrow">Historical archives — 800 BCE to 1918 CE</p>
+    <h1 class="hero-title">The <em>kingdoms</em><br>of Yemen</h1>
+    <p class="hero-sub">Thirteen kingdoms and dynasties across 2,700 years — each leaving a distinct architectural legacy that shaped the built environment we document today. From the Sabaean temples of Marib to the Rasulid mosques of Ta'izz, every governorate carries the physical memory of its rulers.</p>
+    <div class="hero-stats">
+      <div class="hs-item"><span class="hs-num">13</span><span class="hs-lbl">Kingdoms & dynasties</span></div>
+      <div class="hs-item"><span class="hs-num">2,700</span><span class="hs-lbl">Years documented</span></div>
+      <div class="hs-item"><span class="hs-num">4</span><span class="hs-lbl">UNESCO heritage zones</span></div>
+      <div class="hs-item"><span class="hs-num">7</span><span class="hs-lbl">Pre-Islamic kingdoms</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline rail -->
+<div class="timeline-rail" role="navigation" aria-label="Kingdom timeline">
+  <div class="timeline-inner">
+    <div class="tl-era">
+      <div class="tl-era-label">Pre-Islamic</div>
+      <div class="tl-kingdoms" id="tlPreIslamic"></div>
+    </div>
+    <div class="tl-era">
+      <div class="tl-era-label">Islamic</div>
+      <div class="tl-kingdoms" id="tlIslamic"></div>
+    </div>
+  </div>
+</div>
+
+<div class="archives-layout">
+  <!-- Kingdom cards -->
+  <div class="kingdoms-grid" id="kingdomsGrid" role="list" aria-label="Kingdom profiles"></div>
+
+  <!-- Sidebar -->
+  <aside class="archives-sidebar">
+    <div class="sidebar-box">
+      <div class="sb-title">Quick facts</div>
+      <div class="sb-row"><span class="sb-key">Oldest kingdom</span><span class="sb-val">Awsan c. 800 BCE</span></div>
+      <div class="sb-row"><span class="sb-key">Most documented</span><span class="sb-val">Kingdom of Saba</span></div>
+      <div class="sb-row"><span class="sb-key">Architectural peak</span><span class="sb-val">Rasulid 1229–1454</span></div>
+      <div class="sb-row"><span class="sb-key">Longest dynasty</span><span class="sb-val">Qasimi 1597–1962</span></div>
+      <div class="sb-row"><span class="sb-key">Research gap</span><span class="sb-val">Awsan · Ossan</span></div>
+    </div>
+    <div class="sidebar-box">
+      <div class="sb-title">Full timeline</div>
+      <div class="sb-timeline" id="sbTimeline"></div>
+      <a href="/archives/timeline" class="sb-cta">Interactive timeline →</a>
+    </div>
+  </aside>
+</div>
+
+<footer class="page-footer">
+  Yemen Architecture Initiative · <a href="/">YAI.org</a> · Kingdom Archives — editorial research based on 51 scholarly sources across 5 languages
+</footer>
+
+<script is:inline>
+const KINGDOMS = [
+  {id:'sheba',era:'pre',isSheba:true,name:"Kingdom of Saba (Sheba)",ar:"مملكة سبأ",dates:"c. 900 BCE – 275 CE",capital:"Marib · Sirwah",desc:"The foundational kingdom of Yemeni civilisation. The Sabaeans built the Awwam Temple (Moon Temple), the Barran Temple (Throne of Bilqis), and the Great Dam of Marib — one of antiquity's greatest engineering achievements. Their ashlar limestone masonry, Sabaean script inscriptions, and hydraulic irrigation systems influenced every subsequent building tradition across southern Arabia.",arch:['Awwam Temple','Barran Temple pylon','Great Dam sluice','Sabaean inscription wall','Hypostyle hall','Ashlar masonry'],badges:['UNESCO 2023','Italian MAIRY excavation','German DAI research','Most documented'],special:true},
+  {id:'awsan',era:'pre',name:'Kingdom of Awsan',ar:"مملكة أوسان",dates:'c. 800–500 BCE',capital:'Wadi Markha · Abyan region',desc:'The earliest South Arabian kingdom with monumental architectural remains. Awsan controlled the frankincense trade route through Wadi Markha before its defeat by Saba. Temple complexes and early ashlar stonework have been identified but remain poorly excavated. This is one of YAI\'s primary original documentation priorities — almost no scholarly monograph exists in any language.',arch:['Early temple complex','Ashlar quoins','Trade route fort','Wadi Markha site'],badges:['YAI research priority','Research gap']},
+  {id:'main',era:'pre',name:"Kingdom of Ma'in (Minaean)",ar:"المملكة المعينية",dates:'c. 400–100 BCE',capital:"Qarnaw (Al Jawf) · Yathill (Baraqish)",desc:"The Minaean kingdom controlled the northern caravan routes to the Levant, establishing trading colonies as far as Dedan in northwest Arabia and the Greek island of Delos. Their walled city of Baraqish (ancient Yathill) survives with its city wall and six towers largely intact — one of the best-preserved pre-Islamic city walls in Arabia. Italian MAIRY missions have partially excavated the site.",arch:["Baraqish city wall (intact)","Tower gate","Caravan caravanserai","Inscribed temple facade"],badges:['Baraqish walls intact','MAIRY excavated']},
+  {id:'qataban',era:'pre',name:'Kingdom of Qataban',ar:"مملكة قتبان",dates:'c. 400 BCE – 1st century CE',capital:"Timna (modern Harib)",desc:"Qataban controlled the frankincense and myrrh export routes through Wadi Beihan. The Italian-French excavations at Timna revealed the most complete urban plan of any pre-Islamic Yemeni city — palatial mudbrick residences, an ashlar-faced temple of Athtar, and a grid street system. Romolo Loreto's 2011 monograph (University of Naples) is the definitive study.",arch:['Timna urban plan','Palace of Shahr Hilal','Temple of Athtar','Street grid','Palatial mudbrick'],badges:['Italian-French excavation','Loreto 2011 monograph']},
+  {id:'hadramite',era:'pre',name:'Ancient Kingdom of Hadramaut',ar:"مملكة حضرموت",dates:'c. 400 BCE – 3rd century CE',capital:'Shabwa (ancient Shabwa)',desc:"The ancient Hadramite kingdom occupied the wadi system that bears its name, with its capital at Shabwa — the great frankincense emporium. CEFAS French excavations revealed a sophisticated palatial mudbrick architecture at Shabwa that directly prefigures the Shibam high-rise tradition 3,000 years later, demonstrating one of the most extraordinary civilisational continuities in the built world.",arch:['Shabwa palace complex','Frankincense court','Ashlar gateway','Mudbrick tower','Ancient cistern'],badges:['CEFAS French excavation','3,000-year continuity to Shibam']},
+  {id:'himyar',era:'pre',name:'Kingdom of Himyar',ar:"مملكة حمير",dates:'110 BCE – 525 CE',capital:'Zafar (Dhofar) · later Sana\'a',desc:"Himyar gradually absorbed Saba and ultimately unified southern Arabia as the dominant power before the arrival of Islam. Their capital at Zafar (near Yarim) housed the palatial complex of Raidan, and their expansion into Sana'a established the city's early highland character. The Himyarite adoption of Judaism and later Christianity is reflected in the remains of synagogues and churches alongside temples.",arch:['Raidan palace complex','Zafar highland fortress','Early Sana\'a foundations','Himyarite inscription pillars'],badges:['Successor to Saba','Pre-Islamic highland']},
+  {id:'ziyadid',era:'islamic',name:'Ziyadid Dynasty',ar:"الدولة الزيادية",dates:'819–1018 CE',capital:"Zabid (Tihama coast)",desc:"The Ziyadids founded Zabid as Yemen's first major Islamic capital in 820 CE — establishing the city that would become a centre of Islamic scholarship for 800 years and a UNESCO World Heritage site in 1993. Their mosque network, market grid, and coral stone building tradition established the Tihama architectural character that Bonnenfant documented in his landmark 2004 study.",arch:['Al-Ash\'ar mosque (Zabid)','Coral block market','Islamic school complex','City grid'],badges:['Founded Zabid','Bonnenfant 2004']},
+  {id:'sulayhi',era:'islamic',name:'Sulayhid Dynasty',ar:"الدولة الصليحية",dates:'1047–1138 CE',capital:"Jiblah · Ibb Governorate",desc:"Yemen's most celebrated dynasty is remarkable for the reign of Queen Arwa al-Sulayhi (r. 1091–1138) — one of history's greatest architectural patrons and the only woman to have her name recited in Friday prayers. Her mosque and palace complex at Jiblah, her restoration of the Sana'a Great Mosque, and her network of Ismaili learning institutions represent the high point of Sulayhid patronage.",arch:["Queen Arwa's mosque (Jiblah)","Jiblah palace remains","Ismaili da'wa architecture","Sana'a Great Mosque restoration"],badges:['Queen Arwa (legendary)','Ismaili patronage']},
+  {id:'rasulid',era:'islamic',name:'Rasulid Dynasty',ar:"الدولة الرسولية",dates:'1229–1454 CE',capital:"Ta'izz · Zabid",desc:"The Rasulids are the uncontested architectural golden age of Yemen. Their court at Ta'izz produced the finest carved stucco in the Arabian Peninsula — Al-Muzaffar and Al-Ashrafiyya mosques rival the great monuments of Mamluk Cairo. Barbara Finster's chapter in Werner Daum's Yemen (1988) remains the primary German scholarship; the Rasulids also patronised advances in astronomy, medicine, and agriculture.",arch:["Al-Muzaffar mosque (Ta'izz)","Al-Ashrafiyya mosque","Rasulid madrasa","Ablaq striped stonework","Carved stucco mihrab"],badges:['Architectural golden age','UNESCO candidate sites']},
+  {id:'tahirid',era:'islamic',name:'Tahirid Dynasty',ar:"الدولة الطاهرية",dates:'1454–1526 CE',capital:"Rada' · Ta'izz",desc:"The Tahirids succeeded the Rasulids and maintained their architectural patronage — the Great Mosque of Rada' with its extraordinary carved stucco interior is the primary Tahirid monument and one of the finest examples of medieval Yemeni religious architecture. Their reign ended with the first Ottoman conquest.",arch:["Great Mosque of Rada'","Tahirid fort architecture","Stucco interior screen"],badges:['Post-Rasulid patronage']},
+  {id:'ottoman1',era:'islamic',name:'First Ottoman Period',ar:"العهد العثماني الأول",dates:'1538–1635 CE',capital:"Sana'a",desc:"The first Ottoman presence introduced minarets with distinctive pencil profiles, glazed tile decoration, and new garrison building types. Ottoman-style minarets at several Sana'a mosques remain as the primary architectural legacy. The Yemeni resistance — led by Imam al-Qasim — ultimately expelled the Ottomans in 1635 in one of history's few successful anti-Ottoman revolts.",arch:['Ottoman minaret profiles','Garrison architecture','Hammam (bathhouse)','Covered market improvement'],badges:['Ottoman imprint on minarets']},
+  {id:'qasimi',era:'islamic',name:'Qasimi Imamate (Zaidi)',ar:"الإمامة القاسمية",dates:'1597–1962 CE',capital:"Sana'a · Sa'dah",desc:"The longest Yemeni dynasty — lasting 365 years — and the one whose architectural patronage is most directly visible in the existing built fabric of highland Yemen. The Qasimi Imams refined the tower house typology, brought the zabur rammed-earth tradition to its greatest height in Sa'dah, and maintained Sana'a's urban character. The Imamate ended with the 1962 revolution.",arch:["Tower house refinement","Zabur peak at Sa'dah","Sana'a Old City expansion","Imam's palace typology"],badges:['Longest Yemeni dynasty','Zabur tradition peak']},
+  {id:'ottoman2',era:'islamic',name:'Second Ottoman Period',ar:"العهد العثماني الثاني",dates:'1849–1918 CE',capital:"Sana'a · Ta'izz · Hodeidah",desc:"The second Ottoman period left a more substantial architectural imprint than the first — government buildings (hukumat), military garrisons, telegraph stations, covered markets (bedestan), and the distinctive Ottoman-style Yemeni post office buildings that survive in several cities. The port of Hodeidah received major Ottoman investment in its commercial and administrative infrastructure.",arch:["Hukumat (government) buildings","Ottoman barracks","Bedestan covered market","Hodeidah port buildings","Telegraph station"],badges:['Administrative architecture','Hodeidah port expansion']},
+];
+
+/* Build cards */
+const grid = document.getElementById('kingdomsGrid');
+const tlPre = document.getElementById('tlPreIslamic');
+const tlIsl = document.getElementById('tlIslamic');
+const sbTl  = document.getElementById('sbTimeline');
+
+KINGDOMS.forEach((k,i) => {
+  // Timeline rail
+  const tlEl = document.createElement('div');
+  tlEl.className = `tl-k ${k.era==='pre'?'pre-islamic':''} ${k.id==='sheba'?'sheba':''}`;
+  tlEl.dataset.id = k.id;
+  tlEl.setAttribute('tabindex','0');
+  tlEl.setAttribute('role','button');
+  tlEl.setAttribute('aria-label', k.name);
+  tlEl.innerHTML = `<div class="tl-k-name">${k.name}</div><div class="tl-k-dates">${k.dates.split(' ')[0]+' '+k.dates.split(' ')[1]}</div>`;
+  tlEl.addEventListener('click', () => { focusKingdom(k.id); tlEl.scrollIntoView({inline:'nearest',behavior:'smooth'}); });
+  (k.era==='pre' ? tlPre : tlIsl).appendChild(tlEl);
+
+  // Sidebar timeline
+  const sbItem = document.createElement('div');
+  sbItem.className = `sb-tl-item ${k.id==='sheba'?'sheba-dot':k.era==='pre'?'pre-dot':'islamic-dot'}`;
+  sbItem.setAttribute('tabindex','0');
+  sbItem.innerHTML = `<div class="sb-dot-col"><div class="sb-dot"></div><div class="sb-connector"></div></div><div><div class="sb-tl-name">${k.name}</div><div class="sb-tl-dates">${k.dates}</div></div>`;
+  sbItem.addEventListener('click', () => focusKingdom(k.id));
+  sbTl.appendChild(sbItem);
+
+  // Card
+  const card = document.createElement('div');
+  card.className = `kingdom-card${k.isSheba?' sheba-card':''}`;
+  card.dataset.id = k.id;
+  card.dataset.era = k.era;
+  card.setAttribute('role','listitem');
+  card.setAttribute('tabindex','0');
+  const eraClass = k.id==='sheba' ? 'sheba-b' : k.era==='pre' ? 'pre' : 'islamic';
+  const eraLabel = k.id==='sheba' ? '★ Kingdom of Sheba — Foundational character' : k.era==='pre' ? 'Pre-Islamic kingdom' : 'Islamic dynasty';
+  card.innerHTML = `
+    <span class="kc-era-badge ${eraClass}">${eraLabel}</span>
+    <div class="kc-header">
+      <div class="kc-name">${k.name}</div>
+      <div class="kc-dates">${k.dates}</div>
+    </div>
+    <div class="kc-ar" dir="rtl">${k.ar}</div>
+    <div class="kc-capital">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      ${k.capital}
+    </div>
+    <p class="kc-desc">${k.desc}</p>
+    <div class="kc-arch-highlights">${k.arch.map(a=>`<span class="kc-arch">${a}</span>`).join('')}</div>
+    ${k.badges ? `<div class="kc-badge-row">${k.badges.map(b=>{
+      let cls='';
+      if(b.includes('UNESCO'))cls='kb-unesco';
+      else if(b.includes('golden')||b.includes('peak')||b.includes('continuity'))cls='kb-golden';
+      else if(b.includes('Queen')||b.includes('Arwa'))cls='kb-queen';
+      return `<span class="kc-badge ${cls}">${b}</span>`;
+    }).join('')}</div>` : ''}
+    <a href="/archives/${k.id}" class="kc-link">Full archive entry →</a>
+  `;
+  card.addEventListener('click', () => focusKingdom(k.id));
+  card.addEventListener('keydown', e => { if(e.key==='Enter') focusKingdom(k.id); });
+  grid.appendChild(card);
+});
+
+function focusKingdom(id) {
+  document.querySelectorAll('.kingdom-card,.tl-k').forEach(el => el.classList.remove('active'));
+  const card = document.querySelector(`.kingdom-card[data-id="${id}"]`);
+  const tl   = document.querySelector(`.tl-k[data-id="${id}"]`);
+  if (card) { card.classList.add('active'); card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  if (tl) tl.classList.add('active');
+}
+
+/* Era filter */
+document.querySelectorAll('.era-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.era-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const era = btn.dataset.era;
+    document.querySelectorAll('.kingdom-card').forEach(c => {
+      c.style.display = era==='all' || c.dataset.era===era ? '' : 'none';
+    });
+  });
+});
+</script>
+</BaseLayout>
+
 <style>
 :root{--ink:#0F172A;--stone:#334155;--muted:#64748B;--parchment:#F8FAFC;--sand:#C4A77D;--gold:#B45309;--purple:#7C3AED;--surface:#FFFFFF;--border:#E2E8F0;--nav-h:60px;--f-display:'Cormorant Garamond',serif;--f-body:'DM Sans',system-ui,sans-serif;--f-ar:'Noto Naskh Arabic',serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -125,173 +291,3 @@ button{border:none;cursor:pointer;font:inherit}
 @media(max-width:900px){.archives-layout{grid-template-columns:1fr}.archives-sidebar{display:none}}
 @media(max-width:600px){.hero-stats{gap:1.25rem}}
 </style>
-</head>
-<body>
-
-<nav class="nav" role="navigation">
-  <a href="/" class="nav-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>YAI</a>
-  <span class="nav-title">Kingdom Archives</span>
-  <span class="nav-badge">5 sectors · Archives</span>
-  <div class="era-switch" role="group" aria-label="Filter by era">
-    <button class="era-btn active" data-era="all">All eras</button>
-    <button class="era-btn" data-era="pre">Pre-Islamic</button>
-    <button class="era-btn" data-era="islamic">Islamic</button>
-  </div>
-</nav>
-
-<section class="hero" aria-label="Kingdom Archives hero">
-  <div class="hero-inner">
-    <div class="hero-ar-bg" aria-hidden="true">ممالك اليمن</div>
-    <p class="hero-eyebrow">Historical archives — 800 BCE to 1918 CE</p>
-    <h1 class="hero-title">The <em>kingdoms</em><br>of Yemen</h1>
-    <p class="hero-sub">Thirteen kingdoms and dynasties across 2,700 years — each leaving a distinct architectural legacy that shaped the built environment we document today. From the Sabaean temples of Marib to the Rasulid mosques of Ta'izz, every governorate carries the physical memory of its rulers.</p>
-    <div class="hero-stats">
-      <div class="hs-item"><span class="hs-num">13</span><span class="hs-lbl">Kingdoms & dynasties</span></div>
-      <div class="hs-item"><span class="hs-num">2,700</span><span class="hs-lbl">Years documented</span></div>
-      <div class="hs-item"><span class="hs-num">4</span><span class="hs-lbl">UNESCO heritage zones</span></div>
-      <div class="hs-item"><span class="hs-num">7</span><span class="hs-lbl">Pre-Islamic kingdoms</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- Timeline rail -->
-<div class="timeline-rail" role="navigation" aria-label="Kingdom timeline">
-  <div class="timeline-inner">
-    <div class="tl-era">
-      <div class="tl-era-label">Pre-Islamic</div>
-      <div class="tl-kingdoms" id="tlPreIslamic"></div>
-    </div>
-    <div class="tl-era">
-      <div class="tl-era-label">Islamic</div>
-      <div class="tl-kingdoms" id="tlIslamic"></div>
-    </div>
-  </div>
-</div>
-
-<div class="archives-layout">
-  <!-- Kingdom cards -->
-  <div class="kingdoms-grid" id="kingdomsGrid" role="list" aria-label="Kingdom profiles"></div>
-
-  <!-- Sidebar -->
-  <aside class="archives-sidebar">
-    <div class="sidebar-box">
-      <div class="sb-title">Quick facts</div>
-      <div class="sb-row"><span class="sb-key">Oldest kingdom</span><span class="sb-val">Awsan c. 800 BCE</span></div>
-      <div class="sb-row"><span class="sb-key">Most documented</span><span class="sb-val">Kingdom of Saba</span></div>
-      <div class="sb-row"><span class="sb-key">Architectural peak</span><span class="sb-val">Rasulid 1229–1454</span></div>
-      <div class="sb-row"><span class="sb-key">Longest dynasty</span><span class="sb-val">Qasimi 1597–1962</span></div>
-      <div class="sb-row"><span class="sb-key">Research gap</span><span class="sb-val">Awsan · Ossan</span></div>
-    </div>
-    <div class="sidebar-box">
-      <div class="sb-title">Full timeline</div>
-      <div class="sb-timeline" id="sbTimeline"></div>
-      <a href="/archives/timeline" class="sb-cta">Interactive timeline →</a>
-    </div>
-  </aside>
-</div>
-
-<footer class="page-footer">
-  Yemen Architecture Initiative · <a href="/">YAI.org</a> · Kingdom Archives — editorial research based on 51 scholarly sources across 5 languages
-</footer>
-
-<script>
-const KINGDOMS = [
-  {id:'sheba',era:'pre',isSheba:true,name:"Kingdom of Saba (Sheba)",ar:"مملكة سبأ",dates:"c. 900 BCE – 275 CE",capital:"Marib · Sirwah",desc:"The foundational kingdom of Yemeni civilisation. The Sabaeans built the Awwam Temple (Moon Temple), the Barran Temple (Throne of Bilqis), and the Great Dam of Marib — one of antiquity's greatest engineering achievements. Their ashlar limestone masonry, Sabaean script inscriptions, and hydraulic irrigation systems influenced every subsequent building tradition across southern Arabia.",arch:['Awwam Temple','Barran Temple pylon','Great Dam sluice','Sabaean inscription wall','Hypostyle hall','Ashlar masonry'],badges:['UNESCO 2023','Italian MAIRY excavation','German DAI research','Most documented'],special:true},
-  {id:'awsan',era:'pre',name:'Kingdom of Awsan',ar:"مملكة أوسان",dates:'c. 800–500 BCE',capital:'Wadi Markha · Abyan region',desc:'The earliest South Arabian kingdom with monumental architectural remains. Awsan controlled the frankincense trade route through Wadi Markha before its defeat by Saba. Temple complexes and early ashlar stonework have been identified but remain poorly excavated. This is one of YAI\'s primary original documentation priorities — almost no scholarly monograph exists in any language.',arch:['Early temple complex','Ashlar quoins','Trade route fort','Wadi Markha site'],badges:['YAI research priority','Research gap']},
-  {id:'main',era:'pre',name:"Kingdom of Ma'in (Minaean)",ar:"المملكة المعينية",dates:'c. 400–100 BCE',capital:"Qarnaw (Al Jawf) · Yathill (Baraqish)",desc:"The Minaean kingdom controlled the northern caravan routes to the Levant, establishing trading colonies as far as Dedan in northwest Arabia and the Greek island of Delos. Their walled city of Baraqish (ancient Yathill) survives with its city wall and six towers largely intact — one of the best-preserved pre-Islamic city walls in Arabia. Italian MAIRY missions have partially excavated the site.",arch:["Baraqish city wall (intact)","Tower gate","Caravan caravanserai","Inscribed temple facade"],badges:['Baraqish walls intact','MAIRY excavated']},
-  {id:'qataban',era:'pre',name:'Kingdom of Qataban',ar:"مملكة قتبان",dates:'c. 400 BCE – 1st century CE',capital:"Timna (modern Harib)",desc:"Qataban controlled the frankincense and myrrh export routes through Wadi Beihan. The Italian-French excavations at Timna revealed the most complete urban plan of any pre-Islamic Yemeni city — palatial mudbrick residences, an ashlar-faced temple of Athtar, and a grid street system. Romolo Loreto's 2011 monograph (University of Naples) is the definitive study.",arch:['Timna urban plan','Palace of Shahr Hilal','Temple of Athtar','Street grid','Palatial mudbrick'],badges:['Italian-French excavation','Loreto 2011 monograph']},
-  {id:'hadramite',era:'pre',name:'Ancient Kingdom of Hadramaut',ar:"مملكة حضرموت",dates:'c. 400 BCE – 3rd century CE',capital:'Shabwa (ancient Shabwa)',desc:"The ancient Hadramite kingdom occupied the wadi system that bears its name, with its capital at Shabwa — the great frankincense emporium. CEFAS French excavations revealed a sophisticated palatial mudbrick architecture at Shabwa that directly prefigures the Shibam high-rise tradition 3,000 years later, demonstrating one of the most extraordinary civilisational continuities in the built world.",arch:['Shabwa palace complex','Frankincense court','Ashlar gateway','Mudbrick tower','Ancient cistern'],badges:['CEFAS French excavation','3,000-year continuity to Shibam']},
-  {id:'himyar',era:'pre',name:'Kingdom of Himyar',ar:"مملكة حمير",dates:'110 BCE – 525 CE',capital:'Zafar (Dhofar) · later Sana\'a',desc:"Himyar gradually absorbed Saba and ultimately unified southern Arabia as the dominant power before the arrival of Islam. Their capital at Zafar (near Yarim) housed the palatial complex of Raidan, and their expansion into Sana'a established the city's early highland character. The Himyarite adoption of Judaism and later Christianity is reflected in the remains of synagogues and churches alongside temples.",arch:['Raidan palace complex','Zafar highland fortress','Early Sana\'a foundations','Himyarite inscription pillars'],badges:['Successor to Saba','Pre-Islamic highland']},
-  {id:'ziyadid',era:'islamic',name:'Ziyadid Dynasty',ar:"الدولة الزيادية",dates:'819–1018 CE',capital:"Zabid (Tihama coast)",desc:"The Ziyadids founded Zabid as Yemen's first major Islamic capital in 820 CE — establishing the city that would become a centre of Islamic scholarship for 800 years and a UNESCO World Heritage site in 1993. Their mosque network, market grid, and coral stone building tradition established the Tihama architectural character that Bonnenfant documented in his landmark 2004 study.",arch:['Al-Ash\'ar mosque (Zabid)','Coral block market','Islamic school complex','City grid'],badges:['Founded Zabid','Bonnenfant 2004']},
-  {id:'sulayhi',era:'islamic',name:'Sulayhid Dynasty',ar:"الدولة الصليحية",dates:'1047–1138 CE',capital:"Jiblah · Ibb Governorate",desc:"Yemen's most celebrated dynasty is remarkable for the reign of Queen Arwa al-Sulayhi (r. 1091–1138) — one of history's greatest architectural patrons and the only woman to have her name recited in Friday prayers. Her mosque and palace complex at Jiblah, her restoration of the Sana'a Great Mosque, and her network of Ismaili learning institutions represent the high point of Sulayhid patronage.",arch:["Queen Arwa's mosque (Jiblah)","Jiblah palace remains","Ismaili da'wa architecture","Sana'a Great Mosque restoration"],badges:['Queen Arwa (legendary)','Ismaili patronage']},
-  {id:'rasulid',era:'islamic',name:'Rasulid Dynasty',ar:"الدولة الرسولية",dates:'1229–1454 CE',capital:"Ta'izz · Zabid",desc:"The Rasulids are the uncontested architectural golden age of Yemen. Their court at Ta'izz produced the finest carved stucco in the Arabian Peninsula — Al-Muzaffar and Al-Ashrafiyya mosques rival the great monuments of Mamluk Cairo. Barbara Finster's chapter in Werner Daum's Yemen (1988) remains the primary German scholarship; the Rasulids also patronised advances in astronomy, medicine, and agriculture.",arch:["Al-Muzaffar mosque (Ta'izz)","Al-Ashrafiyya mosque","Rasulid madrasa","Ablaq striped stonework","Carved stucco mihrab"],badges:['Architectural golden age','UNESCO candidate sites']},
-  {id:'tahirid',era:'islamic',name:'Tahirid Dynasty',ar:"الدولة الطاهرية",dates:'1454–1526 CE',capital:"Rada' · Ta'izz",desc:"The Tahirids succeeded the Rasulids and maintained their architectural patronage — the Great Mosque of Rada' with its extraordinary carved stucco interior is the primary Tahirid monument and one of the finest examples of medieval Yemeni religious architecture. Their reign ended with the first Ottoman conquest.",arch:["Great Mosque of Rada'","Tahirid fort architecture","Stucco interior screen"],badges:['Post-Rasulid patronage']},
-  {id:'ottoman1',era:'islamic',name:'First Ottoman Period',ar:"العهد العثماني الأول",dates:'1538–1635 CE',capital:"Sana'a",desc:"The first Ottoman presence introduced minarets with distinctive pencil profiles, glazed tile decoration, and new garrison building types. Ottoman-style minarets at several Sana'a mosques remain as the primary architectural legacy. The Yemeni resistance — led by Imam al-Qasim — ultimately expelled the Ottomans in 1635 in one of history's few successful anti-Ottoman revolts.",arch:['Ottoman minaret profiles','Garrison architecture','Hammam (bathhouse)','Covered market improvement'],badges:['Ottoman imprint on minarets']},
-  {id:'qasimi',era:'islamic',name:'Qasimi Imamate (Zaidi)',ar:"الإمامة القاسمية",dates:'1597–1962 CE',capital:"Sana'a · Sa'dah",desc:"The longest Yemeni dynasty — lasting 365 years — and the one whose architectural patronage is most directly visible in the existing built fabric of highland Yemen. The Qasimi Imams refined the tower house typology, brought the zabur rammed-earth tradition to its greatest height in Sa'dah, and maintained Sana'a's urban character. The Imamate ended with the 1962 revolution.",arch:["Tower house refinement","Zabur peak at Sa'dah","Sana'a Old City expansion","Imam's palace typology"],badges:['Longest Yemeni dynasty','Zabur tradition peak']},
-  {id:'ottoman2',era:'islamic',name:'Second Ottoman Period',ar:"العهد العثماني الثاني",dates:'1849–1918 CE',capital:"Sana'a · Ta'izz · Hodeidah",desc:"The second Ottoman period left a more substantial architectural imprint than the first — government buildings (hukumat), military garrisons, telegraph stations, covered markets (bedestan), and the distinctive Ottoman-style Yemeni post office buildings that survive in several cities. The port of Hodeidah received major Ottoman investment in its commercial and administrative infrastructure.",arch:["Hukumat (government) buildings","Ottoman barracks","Bedestan covered market","Hodeidah port buildings","Telegraph station"],badges:['Administrative architecture','Hodeidah port expansion']},
-];
-
-/* Build cards */
-const grid = document.getElementById('kingdomsGrid');
-const tlPre = document.getElementById('tlPreIslamic');
-const tlIsl = document.getElementById('tlIslamic');
-const sbTl  = document.getElementById('sbTimeline');
-
-KINGDOMS.forEach((k,i) => {
-  // Timeline rail
-  const tlEl = document.createElement('div');
-  tlEl.className = `tl-k ${k.era==='pre'?'pre-islamic':''} ${k.id==='sheba'?'sheba':''}`;
-  tlEl.dataset.id = k.id;
-  tlEl.setAttribute('tabindex','0');
-  tlEl.setAttribute('role','button');
-  tlEl.setAttribute('aria-label', k.name);
-  tlEl.innerHTML = `<div class="tl-k-name">${k.name}</div><div class="tl-k-dates">${k.dates.split(' ')[0]+' '+k.dates.split(' ')[1]}</div>`;
-  tlEl.addEventListener('click', () => { focusKingdom(k.id); tlEl.scrollIntoView({inline:'nearest',behavior:'smooth'}); });
-  (k.era==='pre' ? tlPre : tlIsl).appendChild(tlEl);
-
-  // Sidebar timeline
-  const sbItem = document.createElement('div');
-  sbItem.className = `sb-tl-item ${k.id==='sheba'?'sheba-dot':k.era==='pre'?'pre-dot':'islamic-dot'}`;
-  sbItem.setAttribute('tabindex','0');
-  sbItem.innerHTML = `<div class="sb-dot-col"><div class="sb-dot"></div><div class="sb-connector"></div></div><div><div class="sb-tl-name">${k.name}</div><div class="sb-tl-dates">${k.dates}</div></div>`;
-  sbItem.addEventListener('click', () => focusKingdom(k.id));
-  sbTl.appendChild(sbItem);
-
-  // Card
-  const card = document.createElement('div');
-  card.className = `kingdom-card${k.isSheba?' sheba-card':''}`;
-  card.dataset.id = k.id;
-  card.dataset.era = k.era;
-  card.setAttribute('role','listitem');
-  card.setAttribute('tabindex','0');
-  const eraClass = k.id==='sheba' ? 'sheba-b' : k.era==='pre' ? 'pre' : 'islamic';
-  const eraLabel = k.id==='sheba' ? '★ Kingdom of Sheba — Foundational character' : k.era==='pre' ? 'Pre-Islamic kingdom' : 'Islamic dynasty';
-  card.innerHTML = `
-    <span class="kc-era-badge ${eraClass}">${eraLabel}</span>
-    <div class="kc-header">
-      <div class="kc-name">${k.name}</div>
-      <div class="kc-dates">${k.dates}</div>
-    </div>
-    <div class="kc-ar" dir="rtl">${k.ar}</div>
-    <div class="kc-capital">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      ${k.capital}
-    </div>
-    <p class="kc-desc">${k.desc}</p>
-    <div class="kc-arch-highlights">${k.arch.map(a=>`<span class="kc-arch">${a}</span>`).join('')}</div>
-    ${k.badges ? `<div class="kc-badge-row">${k.badges.map(b=>{
-      let cls='';
-      if(b.includes('UNESCO'))cls='kb-unesco';
-      else if(b.includes('golden')||b.includes('peak')||b.includes('continuity'))cls='kb-golden';
-      else if(b.includes('Queen')||b.includes('Arwa'))cls='kb-queen';
-      return `<span class="kc-badge ${cls}">${b}</span>`;
-    }).join('')}</div>` : ''}
-    <a href="/archives/${k.id}" class="kc-link">Full archive entry →</a>
-  `;
-  card.addEventListener('click', () => focusKingdom(k.id));
-  card.addEventListener('keydown', e => { if(e.key==='Enter') focusKingdom(k.id); });
-  grid.appendChild(card);
-});
-
-function focusKingdom(id) {
-  document.querySelectorAll('.kingdom-card,.tl-k').forEach(el => el.classList.remove('active'));
-  const card = document.querySelector(`.kingdom-card[data-id="${id}"]`);
-  const tl   = document.querySelector(`.tl-k[data-id="${id}"]`);
-  if (card) { card.classList.add('active'); card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-  if (tl) tl.classList.add('active');
-}
-
-/* Era filter */
-document.querySelectorAll('.era-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.era-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const era = btn.dataset.era;
-    document.querySelectorAll('.kingdom-card').forEach(c => {
-      c.style.display = era==='all' || c.dataset.era===era ? '' : 'none';
-    });
-  });
-});
-</script>
-</body>
-</html>
