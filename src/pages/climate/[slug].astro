@@ -1,0 +1,127 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import HeritageLayout from '../../layouts/HeritageLayout.astro';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('climateResilience');
+  return studies.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const s = entry.data;
+const { Content } = await render(entry);
+
+/* Inverted cross-link: find YBC chapters whose related_resilience_tags
+   intersect this study's resilience_tags. No hard reference — the link
+   is discovered by querying tags. */
+const chapters = await getCollection('ybcChapters');
+const relatedChapters = chapters.filter((ch) =>
+  ch.data.related_resilience_tags.some((t) => s.resilience_tags.includes(t)),
+);
+
+/* Soft character link by id. */
+const character = s.related_character
+  ? await getEntry('characters', s.related_character)
+  : null;
+
+const meta = [
+  { label: 'Risk', value: `${s.risk_type} · ${s.risk_level}` },
+  { label: 'Governorate', value: s.governorate },
+];
+if (character) meta.push({ label: 'Character', value: character.data.name });
+---
+<HeritageLayout
+  title={`${s.title} — Climate Resilience · YAI`}
+  description={s.summary}
+  eyebrow="Climate Resilience & Adaptive Reuse"
+  accent="#2DD4BF"
+  heading={s.title}
+  headingAr={s.title_ar}
+  meta={meta}
+>
+  <p class="lede">{s.summary}</p>
+
+  <ul class="tags" aria-label="Resilience themes">
+    {s.resilience_tags.map((t) => <li class="tag">{t}</li>)}
+  </ul>
+
+  {s.adaptive_reuse && (
+    <div class="reuse">
+      <span class="reuse-label">Adaptive reuse</span>
+      <p>{s.adaptive_reuse}</p>
+    </div>
+  )}
+
+  <article class="prose">
+    <Content />
+  </article>
+
+  <div class="refs">
+    {relatedChapters.map((ch) => (
+      <a class="ref-card" href={`/code/${ch.id}`}>
+        <span class="ref-kind">Governing code · shares “{ch.data.related_resilience_tags.find((t) => s.resilience_tags.includes(t))}”</span>
+        <span class="ref-name">{ch.data.code} · {ch.data.title}</span>
+      </a>
+    ))}
+    {character && (
+      <a class="ref-card" href={`/details/${character.id}`}>
+        <span class="ref-kind">Related character</span>
+        <span class="ref-name">{character.data.name}</span>
+      </a>
+    )}
+  </div>
+
+  <p class="geo">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    {s.geo_coordinates.lat.toFixed(4)}, {s.geo_coordinates.lng.toFixed(4)}
+  </p>
+
+  <style>
+    .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); }
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 1rem 0 0; }
+    .tag {
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem; border-radius: 999px;
+      background: rgba(45,212,191,0.12); color: var(--accent);
+    }
+    .reuse {
+      margin: 1.75rem 0; border: 1px solid rgba(45,212,191,0.25);
+      background: rgba(45,212,191,0.06); border-radius: 8px; padding: 1rem 1.2rem;
+    }
+    .reuse-label { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .reuse p { margin: 0.35rem 0 0; line-height: 1.6; }
+    .prose { margin-top: 2rem; line-height: 1.75; }
+    .prose :global(h2) {
+      font-family: var(--f-display, 'Cormorant Garamond', serif);
+      font-weight: 500; font-size: 1.5rem; color: #fff; margin: 2rem 0 0.75rem;
+    }
+    .prose :global(p) { margin: 0 0 1rem; }
+    .prose :global(ul) { margin: 0 0 1rem 1.2rem; }
+    .prose :global(li) { margin-bottom: 0.4rem; }
+    .prose :global(a) { color: var(--accent); }
+    .prose :global(code) {
+      font-family: var(--f-mono, 'Fira Code', monospace);
+      font-size: 0.85em; background: rgba(255,255,255,0.07);
+      padding: 0.1em 0.35em; border-radius: 3px;
+    }
+    .prose :global(strong) { color: #fff; }
+    .refs { display: grid; gap: 0.6rem; margin-top: 2.5rem; }
+    .ref-card {
+      display: flex; flex-direction: column; gap: 0.2rem;
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      padding: 0.7rem 1rem; transition: border-color 0.15s;
+    }
+    .ref-card:hover { border-color: var(--accent); }
+    .ref-kind { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .ref-name { font-size: 0.92rem; color: #fff; }
+    .geo {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 2rem; font-size: 0.78rem;
+      font-family: var(--f-mono, 'Fira Code', monospace); color: rgba(255,255,255,0.4);
+    }
+    :global(html.lang-ar) .prose, :global(html.lang-ar) .reuse { text-align: right; }
+  </style>
+</HeritageLayout>

@@ -1,0 +1,21 @@
+{
+  "code": "YBC-H05",
+  "chapter_number": 5,
+  "title": "Seismic Standards",
+  "subtitle": "Highland tower house seismic performance and retrofit",
+  "status": "peer-reviewed",
+  "governorates": ["Sana'a Capital", "Sa'dah", "Hajjah", "Dhamar", "Ibb", "Ta'izz"],
+  "related_resilience_tags": ["seismic"],
+  "content": "Seismic performance requirements for Yemen's highland heritage structures — addressing the specific vulnerability of multi-storey mudbrick and fired brick tower houses to earthquake damage. Covers in-situ assessment, graded intervention levels, reversible retrofit techniques, and post-earthquake rapid assessment protocol.",
+  "specs": [
+    ["Seismic zones", "Zone 1 (low): Hadramawt · Zone 2 (moderate): Sana'a · Zone 3 (high): Sa'dah, Hajjah"],
+    ["Assessment trigger", "Any structure >4 storeys or Grade A/B · mandatory seismic survey before restoration"],
+    ["Retrofit principle", "Reversible intervention only — no injection grouting of historic fabric without approval"],
+    ["Ring beam", "Timber ring beam at eave level for unreinforced masonry >3 storeys — traditional form"],
+    ["Emergency rating", "5-level NZSEE-adapted rapid assessment for post-earthquake triage"],
+    ["No-go zone", "Portland cement injection into historic rubble masonry walls — strictly prohibited"]
+  ],
+  "traditional": "Traditional seismic mitigation — timber lacing courses in Sana'a brick walls every 3–4 courses (pre-modern aseismic system).",
+  "transitional": "Graded seismic retrofit — external tie rods, timber ring beams, reversible connections only.",
+  "contemporary": "New-build seismic — reinforced concrete frame with traditional cladding; frame must not be visible from street level."
+}

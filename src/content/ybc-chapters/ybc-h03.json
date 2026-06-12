@@ -1,0 +1,21 @@
+{
+  "code": "YBC-H03",
+  "chapter_number": 3,
+  "title": "Coral Stone & Timber",
+  "subtitle": "Tihama coastal and Red Sea port tradition",
+  "status": "draft",
+  "governorates": ["Al Hudaydah", "Aden", "Lahij", "Abyan"],
+  "related_resilience_tags": ["coastal-erosion", "thermal"],
+  "content": "Standards for coral stone (marjan) construction on the Red Sea and Gulf of Aden coasts — covering Zabid, Hudaydah port buildings, and Aden's Crater district. Includes rawshan carved timber screen specification, courtyard haush typology, and moisture management in the high-humidity coastal environment.",
+  "specs": [
+    ["Coral grade", "Only Grade 2 fossil coral (not live) — sourced from licensed suppliers only"],
+    ["Wall thickness", "Min 400mm for structural walls · 250mm for internal partitions"],
+    ["Mortar", "Lime-sand mortar (1:3) — Portland cement prohibited; causes salt crystallisation"],
+    ["Rawshan screen", "Carved timber · min teak or equivalent hardwood · max projection 600mm from facade"],
+    ["Ventilation", "Mandatory cross-ventilation through courtyard — minimum 6m² courtyard for residential"],
+    ["Damp-proof", "30mm lime render base coat at ground floor · no impermeable DPC permitted"]
+  ],
+  "traditional": "Traditional Tihama — fossil coral block, lime mortar, carved timber rawshan, open courtyard haush, no cement.",
+  "transitional": "Transitional — coral block structure with lime mortar; modern plumbing and electrical within wall chases; traditional facade.",
+  "contemporary": "Contemporary Tihama — coral stone cladding (100mm minimum) on concrete frame; rawshan motif as perforated panel; courtyard maintained."
+}

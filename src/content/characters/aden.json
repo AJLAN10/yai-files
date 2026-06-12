@@ -1,0 +1,17 @@
+{
+  "num": "03",
+  "name": "Aden",
+  "name_ar": "عدن",
+  "governorate": "Aden Governorate",
+  "type": "coastal",
+  "era": "1839 to present",
+  "material_list": ["Coral stone", "colonial brick", "concrete"],
+  "risk_level": "moderate",
+  "geo_coordinates": { "lat": 12.79, "lng": 45.02 },
+  "tag": "Colonial hybrid · port architecture",
+  "description": "Aden's extraordinary architectural landscape combines pre-colonial coral stone buildings, British colonial administrative architecture (1839–1967), and modernist port infrastructure — all layered within a volcanic crater. Crater district and Tawahi are the primary heritage zones.",
+  "elements": ["Colonial arcade", "Coral stone", "Volcanic basalt", "Harbour warehouse", "British bungalow"],
+  "traditional": "Pre-colonial coral stone house with central courtyard and shaded arcade.",
+  "transitional": "Colonial-era arcade typology adapted to local climate — deep shading, coral base.",
+  "contemporary": "Contemporary Aden: volcanic basalt cladding references geology; arcade continued as climate device."
+}

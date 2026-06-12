@@ -1,0 +1,17 @@
+{
+  "num": "20",
+  "name": "Sa'dah",
+  "name_ar": "صعدة",
+  "governorate": "Sa'dah Governorate",
+  "type": "desert",
+  "era": "Medieval to present",
+  "material_list": ["Rammed earth (zabur)"],
+  "risk_level": "high",
+  "geo_coordinates": { "lat": 16.94, "lng": 43.76 },
+  "tag": "Zabur courses · northern walled city",
+  "description": "Yemen's most intact rammed-earth walled city. The zabur tradition — coursed clay compacted between shuttered forms — creates ochre-toned walls of extraordinary thermal performance. The city's defensive ring wall and Friday mosque are the defining monuments.",
+  "elements": ["Zabur course", "Walled city", "Earthen minaret", "Tribal gate", "Clay render"],
+  "traditional": "Rammed-earth walls in 30cm courses, earthen minaret, flat roofs with crenelated parapets.",
+  "transitional": "Stabilised rammed earth with lime admixture, traditional coursing pattern retained.",
+  "contemporary": "Contemporary Sa'dah: rammed-earth aesthetic with structural reinforcement, passive cooling."
+}

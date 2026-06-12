@@ -1,0 +1,17 @@
+{
+  "num": "21",
+  "name": "Shabwah",
+  "name_ar": "شبوة",
+  "governorate": "Shabwah Governorate",
+  "type": "ancient",
+  "era": "Hadramite (c.400 BCE) to present",
+  "material_list": ["Mudbrick", "limestone", "earth"],
+  "risk_level": "moderate",
+  "geo_coordinates": { "lat": 14.53, "lng": 46.83 },
+  "tag": "Hadramite capital · frankincense route",
+  "description": "Shabwa was the ancient capital of the Hadramite kingdom — one of the wealthiest cities on the frankincense trade route. The archaeological site reveals a sophisticated palatial mudbrick architecture that directly prefigures the Shibam tradition 3,000 years later — demonstrating extraordinary civilisational continuity.",
+  "elements": ["Palatial mudbrick", "Frankincense court", "Ashlar gateway", "Ancient cistern", "Trade caravanserai"],
+  "traditional": "Mudbrick palatial construction on ashlar plinth; decorated gate towers; internal courtyard.",
+  "transitional": "Earth building tradition continuing from Shabwa to Shibam across the millennia.",
+  "contemporary": "Contemporary Shabwah: rammed earth with ashlar base; Hadramite proportions as design language."
+}

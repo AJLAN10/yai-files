@@ -1,0 +1,17 @@
+{
+  "num": "17",
+  "name": "Lahij",
+  "name_ar": "لحج",
+  "governorate": "Lahij Governorate",
+  "type": "coastal",
+  "era": "Abdali Sultanate to present",
+  "material_list": ["Coral", "clay", "colonial brick"],
+  "risk_level": "moderate",
+  "geo_coordinates": { "lat": 13.06, "lng": 44.88 },
+  "tag": "Sultanate · courtyard palace · colonial",
+  "description": "Lahij was the seat of the Abdali Sultanate — independent until 1839 — and their Hisn al-Abdali palace complex combines Yemeni courtyard tradition with Ottoman and later British colonial influence. The Sultanate's architectural patronage extended across a network of mosques and market buildings in the Tihama transitional zone.",
+  "elements": ["Sultanate palace", "Arcaded market", "Courtyard haush", "Colonial bungalow", "Coral block"],
+  "traditional": "Courtyard palace with arcaded perimeter, coral block walls, decorated reception hall.",
+  "transitional": "Courtyard plan retained; local materials combined with colonial brick detailing.",
+  "contemporary": "Contemporary Lahij: courtyard typology with modern services; arcade as thermal device."
+}

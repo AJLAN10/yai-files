@@ -1,0 +1,17 @@
+{
+  "num": "16",
+  "name": "Ibb",
+  "name_ar": "إب",
+  "governorate": "Ibb Governorate",
+  "type": "highland",
+  "era": "Rasulid to present",
+  "material_list": ["Stone", "fired brick", "gypsum"],
+  "risk_level": "low",
+  "geo_coordinates": { "lat": 13.97, "lng": 44.18 },
+  "tag": "Green highland · medieval stone townscape",
+  "description": "Yemen's greenest governorate hosts a dense medieval stone townscape. Ibb city and its surrounding villages show the transition from Rasulid architectural patronage to Zaidi Imamate — their Friday mosques, caravanserais, and terraced domestic architecture in volcanic stone are among Yemen's least-documented.",
+  "elements": ["Stone tower house", "Terraced cultivation", "Volcanic basalt", "Caravanserai", "Rasulid mosque"],
+  "traditional": "Multi-storey stone house, gypsum render, small windows for heat retention in cool highland.",
+  "transitional": "Stone construction with enlarged windows, retained traditional massing.",
+  "contemporary": "Contemporary Ibb: dark volcanic basalt cladding, green terrace integration, traditional skyline."
+}

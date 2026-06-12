@@ -1,0 +1,17 @@
+{
+  "num": "18",
+  "name": "Ma'rib",
+  "name_ar": "مأرب",
+  "governorate": "Ma'rib Governorate",
+  "type": "ancient",
+  "era": "Pre-Islamic to present",
+  "material_list": ["Limestone ashlar", "mudbrick", "earth"],
+  "risk_level": "high",
+  "geo_coordinates": { "lat": 15.46, "lng": 45.33 },
+  "tag": "Sabaean capital · UNESCO 2023",
+  "description": "Ma'rib is Yemen's most archaeologically significant living city — the Sabaean capital, site of the Awwam Temple (Moon Temple), Barran Temple (Throne of Bilqis), and the Great Dam rebuilt by the Sabaeans and catastrophically breached in 570 CE. The new Ma'rib city is being rebuilt respectfully around these monuments.",
+  "elements": ["Awwam Temple", "Barran Temple pylon", "Great Dam", "Sabaean inscription wall", "Mudbrick palatial"],
+  "traditional": "Ashlar limestone monumental construction; massive hypostyle halls; dam sluice engineering.",
+  "transitional": "Ma'rib vernacular — mudbrick with ashlar quoins, building massing echoing ancient tells.",
+  "contemporary": "Contemporary Ma'rib: light ashlar cladding, Sabaean geometric proportions, monument-respecting massing."
+}

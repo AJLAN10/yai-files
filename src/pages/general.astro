@@ -1,0 +1,45 @@
+---
+import HeritageLayout from '../layouts/HeritageLayout.astro';
+---
+<HeritageLayout
+  title="General / Diaspora — Yemen Architecture Initiative"
+  description="The General / Diaspora sector — public and diaspora gateway to Yemen's architectural heritage. Coming soon."
+  eyebrow="Sector · Coming soon"
+  accent="#FB7185"
+  heading="General / Diaspora"
+  headingAr="عام / الشتات"
+>
+  <div class="soon">
+    <p class="soon-head en-only">Under construction</p>
+    <p class="soon-head ar-only ar-text">قيد الإنشاء</p>
+    <p class="soon-body en-only">
+      The General and Diaspora gateway — stories, contributions, and ways to get
+      involved — is being prepared. In the meantime, explore the kingdom archives
+      and the interactive map.
+    </p>
+    <p class="soon-body ar-only ar-text">
+      يجري إعداد بوابة عام والشتات — القصص والمساهمات وطرق المشاركة. في هذه الأثناء،
+      استكشف أرشيف الممالك والخريطة التفاعلية.
+    </p>
+    <div class="soon-links">
+      <a href="/archives" class="soon-link"><span class="en-only">Kingdom archives</span><span class="ar-only ar-text">أرشيف الممالك</span></a>
+      <a href="/map" class="soon-link"><span class="en-only">Interactive map</span><span class="ar-only ar-text">الخريطة التفاعلية</span></a>
+    </div>
+  </div>
+
+  <style>
+    .soon { padding: 1rem 0; }
+    .soon-head {
+      font-family: var(--f-display, 'Cormorant Garamond', serif);
+      font-size: 1.4rem; color: var(--accent); margin: 0 0 0.75rem;
+    }
+    .soon-body { font-size: 1.02rem; line-height: 1.7; color: rgba(255,255,255,0.7); max-width: 46ch; margin: 0 0 1.5rem; }
+    .soon-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .soon-link {
+      font-size: 0.85rem; padding: 0.55rem 1rem; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.85);
+    }
+    .soon-link:hover { border-color: var(--accent); color: #fff; }
+    :global(html.lang-ar) .soon-links { flex-direction: row-reverse; }
+  </style>
+</HeritageLayout>

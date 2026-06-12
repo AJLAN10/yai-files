@@ -1,0 +1,21 @@
+{
+  "code": "YBC-H04",
+  "chapter_number": 4,
+  "title": "Rammed Earth (Zabur)",
+  "subtitle": "Northern highland tradition — Sa'dah and Hajjah",
+  "status": "draft",
+  "governorates": ["Sa'dah", "Hajjah", "Amran"],
+  "related_resilience_tags": ["seismic", "thermal"],
+  "content": "Technical standards for the zabur rammed-earth tradition of northern Yemen — the most endangered construction knowledge in YAI's documentation. Covers compaction standards, course heights, shuttering systems, base isolation, and the critical seismic performance requirements for the tectonically active northern highlands.",
+  "specs": [
+    ["Course height", "Traditional: 300–350mm per lift · Modern stabilised: 250mm per lift"],
+    ["Compaction", "Manual tamping: 15–20 blows per 300mm layer · Pneumatic: equivalent energy"],
+    ["Stabilisation", "Optional: 3–5% Portland cement or 8% lime · traditional zabur uses no admixture"],
+    ["Base", "Min 300mm fired brick or stone course above grade · critical for moisture"],
+    ["Wall thickness", "Min 600mm for structural walls in seismic zone · 450mm for non-structural"],
+    ["Seismic zone", "Sa'dah — Zone 3 (high) · ring beam required at eave level per YBC-H05"]
+  ],
+  "traditional": "Pure zabur — natural clay-gravel soil, no stabiliser, manual compaction, earthen render, no Portland cement.",
+  "transitional": "Stabilised zabur — lime-stabilised earth (8% lime), retained course pattern and earth colour, modern base isolation.",
+  "contemporary": "Contemporary northern — rammed earth block system (CSEB) with matching soil colour; traditional coursing pattern maintained."
+}
