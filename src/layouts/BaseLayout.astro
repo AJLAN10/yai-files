@@ -2,12 +2,14 @@
 interface Props {
   title: string;
   description: string;
+  /* 'light' = parchment lobby pages; 'dark' = archival record pages. */
+  theme?: 'light' | 'dark';
 }
 
-const { title, description } = Astro.props;
+const { title, description, theme = 'light' } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="lang-en">
+<html lang="ar" dir="rtl" class={`lang-ar theme-${theme}`}>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -39,8 +41,8 @@ const { title, description } = Astro.props;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- Fonts from design system MASTER.md -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Fira+Code:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Fira+Code:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;700&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Zain:wght@300;400;700;800&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Fira+Code:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Zain:wght@300;400;700;800&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Fira+Code:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;700&display=swap">
 
 <slot name="head" />
 </head>
@@ -48,12 +50,12 @@ const { title, description } = Astro.props;
 <slot />
 
 <script>
+/* Offline-first was dropped by project decision (2026-06). Clean up any
+   previously installed service worker + caches so stale pages stop
+   being served to returning visitors. Remove this after a few deploys. */
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
-      .then(reg => console.log('[YAI] SW registered:', reg.scope))
-      .catch(err => console.warn('[YAI] SW failed:', err));
-  });
+  navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+  if ('caches' in window) caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
 }
 </script>
 </body>

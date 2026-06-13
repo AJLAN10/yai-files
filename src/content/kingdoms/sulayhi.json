@@ -1,0 +1,11 @@
+{
+  "name": "Sulayhid Dynasty",
+  "name_ar": "الدولة الصليحية",
+  "era": "islamic",
+  "dates": "1047–1138 CE",
+  "capital": "Jiblah · Ibb Governorate",
+  "description": "Yemen's most celebrated dynasty is remarkable for the reign of Queen Arwa al-Sulayhi (r. 1091–1138) — one of history's greatest architectural patrons and the only woman to have her name recited in Friday prayers. Her mosque and palace complex at Jiblah, her restoration of the Sana'a Great Mosque, and her network of Ismaili learning institutions represent the high point of Sulayhid patronage.",
+  "architecture": ["Queen Arwa's mosque (Jiblah)", "Jiblah palace remains", "Ismaili da'wa architecture", "Sana'a Great Mosque restoration"],
+  "badges": ["Queen Arwa (legendary)", "Ismaili patronage"],
+  "order": 8
+}

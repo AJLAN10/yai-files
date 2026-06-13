@@ -1,0 +1,11 @@
+{
+  "name": "Tahirid Dynasty",
+  "name_ar": "الدولة الطاهرية",
+  "era": "islamic",
+  "dates": "1454–1526 CE",
+  "capital": "Rada' · Ta'izz",
+  "description": "The Tahirids succeeded the Rasulids and maintained their architectural patronage — the Great Mosque of Rada' with its extraordinary carved stucco interior is the primary Tahirid monument and one of the finest examples of medieval Yemeni religious architecture. Their reign ended with the first Ottoman conquest.",
+  "architecture": ["Great Mosque of Rada'", "Tahirid fort architecture", "Stucco interior screen"],
+  "badges": ["Post-Rasulid patronage"],
+  "order": 10
+}

@@ -1,0 +1,49 @@
+{
+  "num": "01",
+  "name": "Sana'a Capital",
+  "name_ar": "أمانة العاصمة",
+  "governorate": "Amanat al-Asimah",
+  "type": "highland",
+  "era": "Pre-Islamic to present",
+  "material_list": [
+    "Fired brick",
+    "gypsum",
+    "alabaster"
+  ],
+  "risk_level": "moderate",
+  "geo_coordinates": {
+    "lat": 15.3547,
+    "lng": 44.2066
+  },
+  "tag": "Tower house · qamaria · mafraj",
+  "tag_ar": "بيت برجي · قمرية · مفرج",
+  "description": "The densest concentration of multi-storey tower houses on earth. Sana'a Old City (UNESCO 1986) features 6–9 storey brick towers with white gypsum banding, alabaster qamaria fanlights, and the mafraj — the ceremonial top-floor reception room.",
+  "elements": [
+    "Qamaria window",
+    "Mafraj",
+    "Diwan frieze",
+    "Gypsum render",
+    "Tower house"
+  ],
+  "traditional": "6–9 storey fired brick tower, white gypsum diwan bands, stained-glass qamaria fanlights.",
+  "transitional": "Traditional tower form at reduced height (3–4 storeys) with modern services.",
+  "contemporary": "Contemporary Sana'a character: brick cladding, qamaria motifs as screens, mafraj-inspired rooftop space.",
+  "governorate_ar": "أمانة العاصمة",
+  "era_ar": "ما قبل الإسلام حتى الحاضر",
+  "material_list_ar": [
+    "طوب محروق",
+    "جص",
+    "مرمر"
+  ],
+  "elements_ar": [
+    "نافذة القمرية",
+    "المفرج",
+    "إفريز الديوان",
+    "لياسة جصية",
+    "بيت برجي"
+  ],
+  "description_ar": "أكثف تجمّع للبيوت البرجية متعددة الطوابق على وجه الأرض. تضم صنعاء القديمة (يونسكو 1986) أبراجاً من الطوب من 6 إلى 9 طوابق بأشرطة جصية بيضاء، وقمريات من المرمر، والمفرج — غرفة الاستقبال الاحتفالية في الطابق العلوي.",
+  "traditional_ar": "برج من الطوب المحروق من 6–9 طوابق، وأشرطة ديوان جصية بيضاء، وقمريات زجاجية ملوّنة.",
+  "transitional_ar": "شكل البرج التقليدي بارتفاع مخفّض (3–4 طوابق) مع خدمات حديثة.",
+  "contemporary_ar": "طابع صنعاني معاصر: تكسية بالطوب، وزخارف القمرية كحواجز، وفضاء سطحي مستوحى من المفرج."
+}

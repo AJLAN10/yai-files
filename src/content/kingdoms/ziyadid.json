@@ -1,0 +1,11 @@
+{
+  "name": "Ziyadid Dynasty",
+  "name_ar": "الدولة الزيادية",
+  "era": "islamic",
+  "dates": "819–1018 CE",
+  "capital": "Zabid (Tihama coast)",
+  "description": "The Ziyadids founded Zabid as Yemen's first major Islamic capital in 820 CE — establishing the city that would become a centre of Islamic scholarship for 800 years and a UNESCO World Heritage site in 1993. Their mosque network, market grid, and coral stone building tradition established the Tihama architectural character that Bonnenfant documented in his landmark 2004 study.",
+  "architecture": ["Al-Ash'ar mosque (Zabid)", "Coral block market", "Islamic school complex", "City grid"],
+  "badges": ["Founded Zabid", "Bonnenfant 2004"],
+  "order": 7
+}

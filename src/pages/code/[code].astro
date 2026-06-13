@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import HeritageLayout from '../../layouts/HeritageLayout.astro';
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('ybcChapters');
+  return chapters.map((entry) => ({
+    params: { code: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const ch = entry.data;
+---
+<HeritageLayout
+  title={`${ch.code} ${ch.title} — Yemen Building Code · YAI`}
+  description={ch.content}
+  eyebrow={`Yemen Building Code · ${ch.code}`}
+  eyebrowAr={`كود البناء اليمني · ${ch.code}`}
+  accent="#4ADE80"
+  heading={ch.title}
+  meta={[
+    { label: 'Status', label_ar: 'الحالة', value: ch.status },
+    { label: 'Applies to', label_ar: 'يُطبَّق في', value: `${ch.governorates.length} governorates` },
+  ]}
+>
+  <p class="lede">{ch.content}</p>
+
+  {ch.related_resilience_tags.length > 0 && (
+    <ul class="tags" aria-label="Resilience themes">
+      {ch.related_resilience_tags.map((t) => (
+        <li class="tag"><a href="/climate">{t}</a></li>
+      ))}
+    </ul>
+  )}
+
+  <h2 class="section-title"><span class="en-only">Technical specifications</span><span class="ar-only ar-text">المواصفات الفنية</span></h2>
+  <dl class="specs">
+    {ch.specs.map(([label, value]) => (
+      <div class="spec-row">
+        <dt class="spec-label">{label}</dt>
+        <dd class="spec-value">{value}</dd>
+      </div>
+    ))}
+  </dl>
+
+  <h2 class="section-title"><span class="en-only">Compliance pathways</span><span class="ar-only ar-text">مسارات الامتثال</span></h2>
+  <div class="registers">
+    <div class="register"><span class="register-key">Traditional</span><p>{ch.traditional}</p></div>
+    <div class="register"><span class="register-key">Transitional</span><p>{ch.transitional}</p></div>
+    <div class="register"><span class="register-key">Contemporary</span><p>{ch.contemporary}</p></div>
+  </div>
+
+  <p class="cross-ref">
+    <span class="en-only">Governorates:</span><span class="ar-only ar-text">المحافظات:</span> <span>{ch.governorates.join(' · ')}</span>
+  </p>
+
+  <style>
+    .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); }
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 1.25rem 0 0; }
+    .tag a {
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem; border-radius: 999px;
+      background: rgba(45,212,191,0.12); color: #2DD4BF;
+    }
+    .section-title {
+      font-family: var(--f-display, 'Cormorant Garamond', serif);
+      font-weight: 500; font-size: 1.5rem; color: #fff; margin: 2.5rem 0 1rem;
+    }
+    .specs { display: grid; gap: 0; border-top: 1px solid rgba(255,255,255,0.08); }
+    .spec-row {
+      display: grid; grid-template-columns: 1fr 2fr; gap: 1rem;
+      padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .spec-label { font-size: 0.78rem; letter-spacing: 0.04em; color: var(--accent); margin: 0; }
+    .spec-value { font-size: 0.9rem; line-height: 1.5; margin: 0; }
+    .registers { display: grid; gap: 1rem; }
+    .register { border-left: 2px solid var(--accent); padding: 0.25rem 0 0.25rem 1rem; }
+    .register-key { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+    .register p { margin-top: 0.35rem; line-height: 1.6; }
+    .cross-ref { margin-top: 2.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .cross-ref span { color: rgba(255,255,255,0.7); }
+    @media (max-width: 560px) { .spec-row { grid-template-columns: 1fr; gap: 0.2rem; } }
+    :global(html.lang-ar) .register { border-left: none; border-right: 2px solid var(--accent); padding: 0.25rem 1rem 0.25rem 0; }
+  </style>
+</HeritageLayout>

@@ -3,14 +3,21 @@
    ═══════════════════════════════════════════════ */
 :root {
   --ink:       #0F172A;
+  --ink-soft:  #1E293B;
   --stone:     #334155;
   --muted:     #64748B;
+  --faint:     #94A3B8;
   --sky:       #0369A1;
   --parchment: #F8FAFC;
+  --paper:     #FCFBF8;   /* warm archival paper */
   --sand:      #C4A77D;
+  --sand-soft: #E8DEC9;
   --gold:      #B45309;
+  --terra:     #D9531E;   /* burnt terracotta — primary action accent */
+  --terra-deep:#B23E12;
   --surface:   #FFFFFF;
-  --border:    #E2E8F0;
+  --border:    #E7E2D6;   /* warm hairline */
+  --border-strong: #D6CFBE;
   --error:     #9F1239;
 
   /* Sector accents */
@@ -19,26 +26,57 @@
   --c-details:  #B45309;
   --c-general:  #9F1239;
   --c-archives: #7C3AED;
+  --c-climate:  #0D9488;
   --c-sheba:    #B45309;
 
-  /* Type */
+  /* Type families */
   --f-display: 'Cormorant Garamond', Georgia, serif;
   --f-body:    'DM Sans', system-ui, sans-serif;
   --f-mono:    'Fira Code', 'Courier New', monospace;
-  --f-ar-display: 'Noto Naskh Arabic', serif;
-  --f-ar-body:    'Noto Sans Arabic', sans-serif;
+  --f-ar-display: 'Zain', 'Amiri', 'Noto Naskh Arabic', serif;
+  --f-ar-body:    'Cairo', 'Noto Sans Arabic', sans-serif;
 
-  /* Spacing */
-  --space-xs: 0.5rem;   --space-sm: 1rem;
+  /* Fluid type scale (1.20 minor-third, clamped) */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   clamp(1.075rem, 1rem + 0.4vw, 1.2rem);
+  --text-xl:   clamp(1.3rem, 1.15rem + 0.7vw, 1.55rem);
+  --text-2xl:  clamp(1.6rem, 1.35rem + 1.1vw, 2.1rem);
+  --text-3xl:  clamp(2.1rem, 1.6rem + 2vw, 3rem);
+  --text-4xl:  clamp(2.8rem, 2rem + 3.4vw, 4.4rem);
+  --text-5xl:  clamp(3.6rem, 2.4rem + 5vw, 6rem);
+  --leading-tight: 1.08;
+  --leading-snug:  1.3;
+  --leading-body:  1.7;
+  --tracking-eyebrow: 0.18em;
+
+  /* Spacing rhythm */
+  --space-2xs: 0.25rem; --space-xs: 0.5rem;   --space-sm: 1rem;
   --space-md: 1.5rem;   --space-lg: 2.5rem;
   --space-xl: 4rem;     --space-2xl: 7rem;
 
   /* Radius */
-  --r-sm: 4px;  --r-md: 8px;  --r-lg: 16px;
+  --r-sm: 4px;  --r-md: 8px;  --r-lg: 16px;  --r-xl: 24px;  --r-full: 999px;
 
-  /* Transitions */
-  --t-fast: 150ms ease-out;
-  --t-base: 250ms ease-out;
+  /* Elevation — soft, warm-tinted depth */
+  --shadow-xs: 0 1px 2px rgba(15,23,42,0.04);
+  --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+  --shadow-md: 0 4px 12px rgba(15,23,42,0.07), 0 2px 4px rgba(15,23,42,0.05);
+  --shadow-lg: 0 12px 32px rgba(15,23,42,0.10), 0 4px 8px rgba(15,23,42,0.05);
+  --shadow-xl: 0 24px 56px rgba(15,23,42,0.14), 0 8px 16px rgba(15,23,42,0.06);
+  --ring-sand: 0 0 0 1px var(--border), 0 0 0 4px rgba(196,167,125,0.12);
+
+  /* Hex motif (the archival watermark) */
+  --hex-line: rgba(196,167,125,0.16);
+  --hex-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 0 l28 16 0 68 -28 16 -28-16 0-68z' fill='none' stroke='%23C4A77D' stroke-width='0.5' stroke-opacity='0.10'/%3E%3C/svg%3E");
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 150ms var(--ease-out);
+  --t-base: 250ms var(--ease-out);
+  --t-slow: 420ms var(--ease-out);
 
   /* Nav height */
   --nav-h: 64px;
@@ -51,16 +89,25 @@
 html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--f-body);
-  background: var(--parchment);
+  background: var(--paper);
   color: var(--ink);
-  line-height: 1.6;
+  line-height: var(--leading-body);
+  letter-spacing: 0.001em;
   overflow-x: hidden;
   min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 img { display: block; max-width: 100%; height: auto; }
-a { color: inherit; text-decoration: none; }
+a { color: inherit; text-decoration: none; transition: color var(--t-fast); }
 button { border: none; background: none; cursor: pointer; font: inherit; }
 ul { list-style: none; }
+
+/* Display headings — tighter tracking, optical balance */
+h1, h2, h3 { font-family: var(--f-display); line-height: var(--leading-tight); letter-spacing: -0.012em; font-weight: 500; }
+:where(h1,h2,h3,h4,p,li) { text-wrap: pretty; }
+h1 { text-wrap: balance; }
 
 /* Focus ring — WCAG AAA */
 :focus-visible {
@@ -70,11 +117,63 @@ ul { list-style: none; }
 }
 
 /* RTL overrides — activated by lang-ar on <html> */
-.lang-ar body { font-family: var(--f-ar-body); direction: rtl; }
+.lang-ar body { font-family: var(--f-ar-body); direction: rtl; line-height: 1.95; letter-spacing: 0; }
+.lang-ar h1, .lang-ar h2, .lang-ar h3 { font-family: var(--f-ar-display); line-height: 1.5; letter-spacing: 0; }
 .lang-ar .ar-text { font-family: var(--f-ar-display); }
+/* Arabic body copy reads better slightly larger with looser leading */
+.lang-ar p, .lang-ar li, .lang-ar .ar-body { line-height: 1.9; }
 .lang-ar .en-only { display: none !important; }
 .lang-en .ar-only { display: none !important; }
 .lang-en .ar-text { display: none; }
+
+/* Kashida display style — Ewan-inspired stretched calligraphic headlines.
+   Pair with tatweel (ـ) characters in the markup for the line-stretch. */
+.ar-kashida {
+  font-family: var(--f-ar-display);
+  font-weight: 700;
+  letter-spacing: 0;
+  word-spacing: 0.08em;
+}
+
+/* Editorial line rule — thin hairline with a terracotta tick (Ewan motif) */
+.rule-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: var(--space-lg) 0;
+}
+.rule-line::before {
+  content: '';
+  width: 2.5rem; height: 2px;
+  background: var(--terra);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+.rule-line::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: var(--border);
+}
+
+/* Dark archival theme — heritage record pages (details/climate/sectors) */
+.theme-dark body {
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.72);
+}
+.theme-dark body::after { opacity: 0.35; }
+
+/* Archival hex watermark — fixed, behind everything */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: var(--hex-bg);
+  background-size: 56px 100px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+body > * { position: relative; z-index: 1; }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -266,6 +365,7 @@ ul { list-style: none; }
   color: rgba(255,255,255,0.55);
   padding: 0 0.875rem;
   height: var(--nav-h);
+  transition: color var(--t-fast);
   display: flex;
   align-items: center;
   border-bottom: 2px solid transparent;
@@ -426,19 +526,21 @@ ul { list-style: none; }
   flex-wrap: wrap;
 }
 .btn-primary {
-  background: var(--sky);
+  background: var(--terra);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--r-sm);
+  padding: 0.8rem 1.75rem;
+  border-radius: var(--r-md);
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.03em;
   min-height: 48px;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast);
   display: flex; align-items: center; gap: 0.5rem;
   transition: opacity var(--t-fast);
   cursor: pointer;
 }
-.btn-primary:hover { opacity: 0.85; }
+.btn-primary:hover { background: var(--terra-deep); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 .btn-outline {
   border: 1px solid rgba(255,255,255,0.18);
   color: rgba(255,255,255,0.7);
@@ -451,7 +553,8 @@ ul { list-style: none; }
   transition: all var(--t-fast);
   cursor: pointer;
 }
-.btn-outline:hover { border-color: rgba(255,255,255,0.4); color: var(--surface); }
+.btn-outline { transition: border-color var(--t-fast), color var(--t-fast), transform var(--t-fast); border-radius: var(--r-md); }
+.btn-outline:hover { border-color: var(--sand); color: var(--surface); transform: translateY(-2px); }
 
 /* Arabic display column */
 .hero-ar {
@@ -531,21 +634,33 @@ ul { list-style: none; }
   line-height: 1.1;
 }
 
-.sector-bands { display: flex; flex-direction: column; }
+.sector-bands { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+/* Sector ranking: General → History → Building Character → Students → Code */
+.sector-band[data-s="general"]  { order: 1; }
+.sector-band[data-s="archives"] { order: 2; }
+.sector-band[data-s="details"]  { order: 3; }
+.sector-band[data-s="students"] { order: 4; }
+.sector-band[data-s="code"]     { order: 5; }
 .sector-band {
   border-top: 1px solid var(--border);
-  padding: 1.5rem var(--space-lg);
+  padding: 1.75rem var(--space-lg);
   display: grid;
-  grid-template-columns: 4px auto 1fr auto;
+  /* accent bar is absolutely positioned — only icon/info/meta need tracks */
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1.25rem;
   cursor: pointer;
-  transition: background var(--t-fast);
+  transition: background var(--t-base), box-shadow var(--t-base), transform var(--t-base);
   position: relative;
 }
-.sector-band:last-child { border-bottom: 1px solid var(--border); }
-.sector-band:hover { background: var(--surface); }
-.sector-accent-bar { width: 4px; height: 100%; position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 2px 2px 0; transition: height var(--t-base); }
+.sector-band:hover {
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+  z-index: 2;
+  border-radius: var(--r-md);
+}
+.sector-accent-bar { width: 4px; height: 100%; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; border-start-end-radius: 2px; border-end-end-radius: 2px; transition: height var(--t-base); }
 .sector-band[data-s="students"]  .sector-accent-bar { background: var(--c-students); }
 .sector-band[data-s="code"]      .sector-accent-bar { background: var(--c-code); }
 .sector-band[data-s="details"]   .sector-accent-bar { background: var(--c-details); }
@@ -557,7 +672,10 @@ ul { list-style: none; }
   border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-base), box-shadow var(--t-base);
 }
+.sector-band:hover .sector-icon-wrap { transform: scale(1.06); box-shadow: var(--shadow-md); }
 .sector-band[data-s="students"]  .sector-icon-wrap { background: #DBEAFE; }
 .sector-band[data-s="code"]      .sector-icon-wrap { background: #DCFCE7; }
 .sector-band[data-s="details"]   .sector-icon-wrap { background: #FEF3C7; }
@@ -952,7 +1070,7 @@ ul { list-style: none; }
   :root { --space-lg: 1.25rem; --space-xl: 2.5rem; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
   .hero-stat { padding: 1.25rem var(--space-lg); }
-  .sector-band { grid-template-columns: 4px auto 1fr; }
+  .sector-band { grid-template-columns: auto 1fr; }
   .sector-count { display: none; }
   .map-legend { gap: 0.5rem; }
   .footer-inner { grid-template-columns: 1fr; }

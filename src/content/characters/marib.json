@@ -1,0 +1,49 @@
+{
+  "num": "18",
+  "name": "Ma'rib",
+  "name_ar": "مأرب",
+  "governorate": "Ma'rib Governorate",
+  "type": "ancient",
+  "era": "Pre-Islamic to present",
+  "material_list": [
+    "Limestone ashlar",
+    "mudbrick",
+    "earth"
+  ],
+  "risk_level": "high",
+  "geo_coordinates": {
+    "lat": 15.46,
+    "lng": 45.33
+  },
+  "tag": "Sabaean capital · UNESCO 2023",
+  "tag_ar": "عاصمة سبئية · يونسكو 2023",
+  "description": "Ma'rib is Yemen's most archaeologically significant living city — the Sabaean capital, site of the Awwam Temple (Moon Temple), Barran Temple (Throne of Bilqis), and the Great Dam rebuilt by the Sabaeans and catastrophically breached in 570 CE. The new Ma'rib city is being rebuilt respectfully around these monuments.",
+  "elements": [
+    "Awwam Temple",
+    "Barran Temple pylon",
+    "Great Dam",
+    "Sabaean inscription wall",
+    "Mudbrick palatial"
+  ],
+  "traditional": "Ashlar limestone monumental construction; massive hypostyle halls; dam sluice engineering.",
+  "transitional": "Ma'rib vernacular — mudbrick with ashlar quoins, building massing echoing ancient tells.",
+  "contemporary": "Contemporary Ma'rib: light ashlar cladding, Sabaean geometric proportions, monument-respecting massing.",
+  "governorate_ar": "محافظة مأرب",
+  "era_ar": "ما قبل الإسلام حتى الحاضر",
+  "material_list_ar": [
+    "حجر جيري منحوت",
+    "طوب طيني",
+    "تراب"
+  ],
+  "elements_ar": [
+    "معبد أوام",
+    "صرح معبد بران",
+    "السد العظيم",
+    "جدار النقوش السبئية",
+    "قصور طينية"
+  ],
+  "description_ar": "مأرب هي أكثر مدن اليمن أهميةً أثريةً وأكثرها حياةً — عاصمة سبأ، وموقع معبد أوام (معبد القمر)، ومعبد بران (عرش بلقيس)، والسد العظيم الذي أعاد السبئيون بناءه وانهار كارثياً عام 570م. تُعاد مدينة مأرب الجديدة بناؤها باحترام حول هذه المعالم.",
+  "traditional_ar": "بناء صرحي من الحجر الجيري المنحوت؛ وقاعات ضخمة ذات أعمدة؛ وهندسة بوابات السد.",
+  "transitional_ar": "عمارة مأرب المحلية — طوب طيني بزوايا حجرية منحوتة، وكتل تحاكي التلال الأثرية.",
+  "contemporary_ar": "مأرب المعاصرة: تكسية حجرية خفيفة، ونسب سبئية هندسية، وكتل تحترم المعالم."
+}

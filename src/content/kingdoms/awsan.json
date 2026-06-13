@@ -1,0 +1,11 @@
+{
+  "name": "Kingdom of Awsan",
+  "name_ar": "مملكة أوسان",
+  "era": "pre",
+  "dates": "c. 800–500 BCE",
+  "capital": "Wadi Markha · Abyan region",
+  "description": "The earliest South Arabian kingdom with monumental architectural remains. Awsan controlled the frankincense trade route through Wadi Markha before its defeat by Saba. Temple complexes and early ashlar stonework have been identified but remain poorly excavated. This is one of YAI's primary original documentation priorities — almost no scholarly monograph exists in any language.",
+  "architecture": ["Early temple complex", "Ashlar quoins", "Trade route fort", "Wadi Markha site"],
+  "badges": ["YAI research priority", "Research gap"],
+  "order": 2
+}

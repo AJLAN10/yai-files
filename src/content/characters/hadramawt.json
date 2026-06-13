@@ -1,0 +1,45 @@
+{
+  "num": "14",
+  "name": "Hadramawt",
+  "name_ar": "حضرموت",
+  "governorate": "Hadramawt Governorate",
+  "type": "ancient",
+  "era": "Pre-Islamic to present",
+  "material_list": [
+    "Sun-dried mudbrick (libn)"
+  ],
+  "risk_level": "severe",
+  "geo_coordinates": {
+    "lat": 15.927,
+    "lng": 48.627
+  },
+  "tag": "Mudbrick skyscrapers · Shibam · Tarim",
+  "tag_ar": "ناطحات طينية · شبام · تريم",
+  "description": "Shibam's 16th-century mudbrick high-rises reach 11 storeys — the world's oldest skyscrapers. The valley also contains Tarim's palatial mosques and Seiyun's whitewashed towers. UNESCO World Heritage 1982.",
+  "elements": [
+    "Libn tower",
+    "Tapered profile",
+    "Annual render",
+    "Wadi flood platform",
+    "Samsarah"
+  ],
+  "traditional": "Sun-dried mudbrick tower, battered (tapered) walls, flat roof with parapet, raised flood platform.",
+  "transitional": "Mudbrick form at 4–6 storeys with modern reinforcement and drainage.",
+  "contemporary": "Contemporary Hadramawt: mudbrick cladding system, vertical proportions, earth-tone palette.",
+  "governorate_ar": "محافظة حضرموت",
+  "era_ar": "ما قبل الإسلام حتى الحاضر",
+  "material_list_ar": [
+    "طوب طيني مجفّف شمساً (لبن)"
+  ],
+  "elements_ar": [
+    "برج طيني (لبن)",
+    "هيئة مدبّبة",
+    "لياسة سنوية",
+    "منصة فيضان الوادي",
+    "سمسرة"
+  ],
+  "description_ar": "ترتفع ناطحات سحاب شبام الطينية من القرن السادس عشر إلى 11 طابقاً — أقدم ناطحات سحاب في العالم. ويضم الوادي أيضاً جوامع تريم القصورية وأبراج سيئون المبيّضة. تراث عالمي لليونسكو 1982.",
+  "traditional_ar": "برج من الطوب الطيني المجفف شمساً، بجدران مائلة، وسطح مستوٍ بحاجز، ومنصة مرتفعة للحماية من الفيضانات.",
+  "transitional_ar": "شكل طيني بارتفاع 4–6 طوابق مع تدعيم وصرف حديثين.",
+  "contemporary_ar": "حضرموت المعاصرة: نظام تكسية طيني، ونسب رأسية، ولوحة ألوان ترابية."
+}

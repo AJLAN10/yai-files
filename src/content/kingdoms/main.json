@@ -1,0 +1,11 @@
+{
+  "name": "Kingdom of Ma'in (Minaean)",
+  "name_ar": "المملكة المعينية",
+  "era": "pre",
+  "dates": "c. 400–100 BCE",
+  "capital": "Qarnaw (Al Jawf) · Yathill (Baraqish)",
+  "description": "The Minaean kingdom controlled the northern caravan routes to the Levant, establishing trading colonies as far as Dedan in northwest Arabia and the Greek island of Delos. Their walled city of Baraqish (ancient Yathill) survives with its city wall and six towers largely intact — one of the best-preserved pre-Islamic city walls in Arabia. Italian MAIRY missions have partially excavated the site.",
+  "architecture": ["Baraqish city wall (intact)", "Tower gate", "Caravan caravanserai", "Inscribed temple facade"],
+  "badges": ["Baraqish walls intact", "MAIRY excavated"],
+  "order": 3
+}
