@@ -5,12 +5,26 @@
   "governorate": "Socotra Archipelago",
   "type": "island",
   "era": "Pre-Islamic to present",
-  "material_list": ["Cave stone", "endemic timber", "thatch"],
+  "material_list": [
+    "Cave stone",
+    "endemic timber",
+    "thatch"
+  ],
   "risk_level": "severe",
-  "geo_coordinates": { "lat": 12.46, "lng": 53.82 },
+  "geo_coordinates": {
+    "lat": 12.46,
+    "lng": 53.82
+  },
   "tag": "Island vernacular · cave dwellings · dragon blood",
+  "tag_ar": "عمارة الجزيرة · مساكن الكهوف · دم الأخوين",
   "description": "Yemen's island archipelago (UNESCO 2008 for biodiversity) hosts one of the world's most unique vernacular traditions — cave dwellings cut into limestone cliffs, low-rise stone enclosures, and thatch-roofed huts using endemic dragon blood tree wood. No equivalent exists anywhere.",
-  "elements": ["Cave dwelling", "Limestone enclosure", "Dragon blood timber", "Thatch roof", "Cliffside terrace"],
+  "elements": [
+    "Cave dwelling",
+    "Limestone enclosure",
+    "Dragon blood timber",
+    "Thatch roof",
+    "Cliffside terrace"
+  ],
   "traditional": "Limestone cave expanded with stone walls, thatch canopy, endemic timber structure.",
   "transitional": "Stone enclosure with corrugated shelter, retaining cliffside placement.",
   "contemporary": "Eco-lodge typology: cave integration, endemic materials, minimal footprint."

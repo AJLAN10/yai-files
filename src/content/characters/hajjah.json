@@ -5,12 +5,26 @@
   "governorate": "Hajjah Governorate",
   "type": "highland",
   "era": "Medieval to present",
-  "material_list": ["Cut stone", "limestone", "schist"],
+  "material_list": [
+    "Cut stone",
+    "limestone",
+    "schist"
+  ],
   "risk_level": "high",
-  "geo_coordinates": { "lat": 15.69, "lng": 43.60 },
+  "geo_coordinates": {
+    "lat": 15.69,
+    "lng": 43.6
+  },
   "tag": "Cliffside · Haraz · defensive village",
+  "tag_ar": "حافة الجبل · حراز · قرية دفاعية",
   "description": "The mountainous Haraz region of Hajjah governorate contains Yemen's most dramatic defensive architecture — villages growing directly from cliff faces, with the geological rock forming the rear wall of buildings. Al-Hajjarah and Shibam Kawkaban are the defining examples.",
-  "elements": ["Cliff integration", "Stone coursing", "Defensive gate", "Rainwater cistern (birka)", "Tower lookout"],
+  "elements": [
+    "Cliff integration",
+    "Stone coursing",
+    "Defensive gate",
+    "Rainwater cistern (birka)",
+    "Tower lookout"
+  ],
   "traditional": "Building grows from cliff face; local schist stone coursed dry; cisterns carved into bedrock.",
   "transitional": "Stone structure stepped up cliff with modern water supply; traditional massing retained.",
   "contemporary": "Contemporary Haraz: stone cladding, stepped profile following topography, terrace gardens."

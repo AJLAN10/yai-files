@@ -48,7 +48,9 @@ const characters = defineCollection({
     geo_coordinates: geoPoint,
     /* One-line tagline for the map pin tooltip. */
     tag: z.string(),
+    tag_ar: z.string().optional(),
     description: z.string(),
+    description_ar: z.string().optional(),
     elements: z.array(z.string()).min(1),
     /* The three-register narrative every character shares. */
     traditional: z.string(),

@@ -2,14 +2,17 @@
 import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
 
-const order = [
-  'sheba', 'sanaa-capital', 'hadramawt', 'sadah', 'hudaydah', 'socotra',
-  'aden', 'hajjah', 'taizz', 'marib', 'ibb', 'lahij', 'shabwah',
-];
-const characters = (await getCollection('characters')).sort((a, b) => {
-  const ia = order.indexOf(a.id), ib = order.indexOf(b.id);
-  return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
-});
+/* Order by governorate catalogue number; Sheba (★) leads as the
+   foundational character. */
+const numOf = (c: { data: { num: string } }) =>
+  c.data.num === '★' ? -1 : parseInt(c.data.num, 10);
+const characters = (await getCollection('characters')).sort(
+  (a, b) => numOf(a) - numOf(b),
+);
+
+const riskAr: Record<string, string> = {
+  low: 'منخفض', moderate: 'متوسط', high: 'عالٍ', severe: 'شديد',
+};
 ---
 <HeritageLayout
   title="Building Character — Architectural Characters · YAI"
@@ -37,10 +40,19 @@ const characters = (await getCollection('characters')).sort((a, b) => {
         <a href={`/details/${c.id}`} class="card">
           <span class="card-num">{c.data.num}</span>
           <span class="card-info">
-            <span class="card-name">{c.data.name}</span>
-            <span class="card-tag">{c.data.tag}</span>
+            <span class="card-name">
+              <span class="en-only">{c.data.name}</span>
+              <span class="ar-only ar-text">{c.data.name_ar ?? c.data.name}</span>
+            </span>
+            <span class="card-tag">
+              <span class="en-only">{c.data.tag}</span>
+              <span class="ar-only ar-text">{c.data.tag_ar ?? c.data.tag}</span>
+            </span>
           </span>
-          <span class={`card-risk risk-${c.data.risk_level}`}>{c.data.risk_level}</span>
+          <span class={`card-risk risk-${c.data.risk_level}`}>
+            <span class="en-only">{c.data.risk_level}</span>
+            <span class="ar-only ar-text">{riskAr[c.data.risk_level]}</span>
+          </span>
         </a>
       </li>
     ))}

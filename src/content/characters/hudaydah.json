@@ -5,12 +5,25 @@
   "governorate": "Al Hudaydah Governorate",
   "type": "coastal",
   "era": "Ottoman to 20th century",
-  "material_list": ["Coral stone", "timber rawshan"],
+  "material_list": [
+    "Coral stone",
+    "timber rawshan"
+  ],
   "risk_level": "high",
-  "geo_coordinates": { "lat": 14.80, "lng": 42.95 },
+  "geo_coordinates": {
+    "lat": 14.8,
+    "lng": 42.95
+  },
   "tag": "Red Sea port · rawshan screens · coral",
+  "tag_ar": "ميناء البحر الأحمر · مشربيات (روشن) · مرجان",
   "description": "Yemen's Red Sea coast produced a unique architecture combining coral block walls, Ottoman-influenced minarets, and elaborately carved timber rawshan (projecting window screens) that filter sea breeze and light. Zabid — UNESCO 1993 — is the jewel of this tradition.",
-  "elements": ["Rawshan screen", "Coral block", "Ottoman minaret", "Courtyard haush", "Carved timber"],
+  "elements": [
+    "Rawshan screen",
+    "Coral block",
+    "Ottoman minaret",
+    "Courtyard haush",
+    "Carved timber"
+  ],
   "traditional": "Coral stone walls, projecting timber rawshan screens, central courtyard, squat mosque minaret.",
   "transitional": "Coral stone with cement mortar, simplified rawshan pattern, retained courtyard plan.",
   "contemporary": "Contemporary Tihama: perforated concrete screens referencing rawshan geometry, passive ventilation."

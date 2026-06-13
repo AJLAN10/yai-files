@@ -50,9 +50,6 @@ const {
         YAI
       </a>
       <div class="h-nav-right">
-        <span class="h-offline" id="offlineDot" role="status" aria-live="polite" hidden>
-          <span class="h-offline-dot"></span>Offline
-        </span>
         <button id="langToggle" class="h-lang" type="button" aria-label="Switch language">
           <span class="en-only">العربية</span>
           <span class="ar-only">English</span>
@@ -228,14 +225,6 @@ const {
           setLang(html.classList.contains('lang-ar') ? 'en' : 'ar');
         });
       }
-
-      var dot = document.getElementById('offlineDot');
-      function syncOnline() {
-        if (dot) dot.hidden = navigator.onLine;
-      }
-      window.addEventListener('online', syncOnline);
-      window.addEventListener('offline', syncOnline);
-      syncOnline();
     })();
   </script>
 </BaseLayout>

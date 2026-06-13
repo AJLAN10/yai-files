@@ -634,7 +634,13 @@ body > * { position: relative; z-index: 1; }
   line-height: 1.1;
 }
 
-.sector-bands { display: flex; flex-direction: column; }
+.sector-bands { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+/* Sector ranking: General → History → Building Character → Students → Code */
+.sector-band[data-s="general"]  { order: 1; }
+.sector-band[data-s="archives"] { order: 2; }
+.sector-band[data-s="details"]  { order: 3; }
+.sector-band[data-s="students"] { order: 4; }
+.sector-band[data-s="code"]     { order: 5; }
 .sector-band {
   border-top: 1px solid var(--border);
   padding: 1.75rem var(--space-lg);
@@ -647,7 +653,6 @@ body > * { position: relative; z-index: 1; }
   transition: background var(--t-base), box-shadow var(--t-base), transform var(--t-base);
   position: relative;
 }
-.sector-band:last-child { border-bottom: 1px solid var(--border); }
 .sector-band:hover {
   background: var(--surface);
   box-shadow: var(--shadow-lg);

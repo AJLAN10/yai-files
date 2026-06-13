@@ -5,12 +5,26 @@
   "governorate": "Ta'izz Governorate",
   "type": "highland",
   "era": "Rasulid (1229–1454) to present",
-  "material_list": ["Stone", "fired brick", "Ottoman tile"],
+  "material_list": [
+    "Stone",
+    "fired brick",
+    "Ottoman tile"
+  ],
   "risk_level": "moderate",
-  "geo_coordinates": { "lat": 13.58, "lng": 44.02 },
+  "geo_coordinates": {
+    "lat": 13.58,
+    "lng": 44.02
+  },
   "tag": "Fortress city · Rasulid golden age · Ottoman",
+  "tag_ar": "مدينة حصينة · العصر الرسولي الذهبي · العثماني",
   "description": "Yemen's most layered medieval city. Ta'izz was the Rasulid dynasty's capital — Yemen's architectural golden age — and their Al-Muzaffar and Al-Ashrafiyya mosques represent the finest carved stucco in the Arabian Peninsula. Ottoman minarets and colonial-era buildings add further layers.",
-  "elements": ["Rasulid mosque", "Carved stucco", "Ottoman minaret", "City wall", "Medina bazaar"],
+  "elements": [
+    "Rasulid mosque",
+    "Carved stucco",
+    "Ottoman minaret",
+    "City wall",
+    "Medina bazaar"
+  ],
   "traditional": "Rasulid carved stucco facade, pointed arches, ablaq stonework in alternating courses.",
   "transitional": "Rasulid proportional language in contemporary stone construction with simplified ornament.",
   "contemporary": "Contemporary Ta'izz: carved stucco motifs as precast screen elements; Rasulid arch profiles."
