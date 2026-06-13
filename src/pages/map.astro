@@ -341,6 +341,10 @@ const AXES = {
 };
 const ALL_LBL = AR ? 'الكل' : 'All';
 const hexA = (hex, a) => { const n=parseInt(hex.slice(1),16); return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`; };
+/* Native View Transitions for a smooth crossfade on filter/axis change
+   (pure browser API — graceful fallback when unsupported). */
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const withVT = (fn) => (document.startViewTransition && !reduce) ? document.startViewTransition(fn) : fn();
 let activeAxis = 'type';
 let activeFilter = 'all';
 const filterBar = document.getElementById('filterBar');
@@ -370,7 +374,7 @@ function buildFilters() {
       activeFilter = val;
       filterBar.querySelectorAll('.filter-btn').forEach(x => { x.classList.remove('active'); x.setAttribute('aria-pressed','false'); });
       b.classList.add('active'); b.setAttribute('aria-pressed','true');
-      applyFilter();
+      withVT(applyFilter);
     });
     filterBar.appendChild(b);
   };
@@ -396,7 +400,7 @@ function setAxis(axis) {
     const on = b.dataset.axis === axis;
     b.classList.toggle('active', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
-  buildFilters(); buildLegend(); recolor(); applyFilter();
+  withVT(() => { buildFilters(); buildLegend(); recolor(); applyFilter(); });
 }
 document.querySelectorAll('.axis-btn').forEach(b => b.addEventListener('click', () => setAxis(b.dataset.axis)));
 setAxis('type');
@@ -593,4 +597,7 @@ button{border:none;cursor:pointer;font:inherit}
 <style is:global>
 html.lang-ar .en-only { display: none !important; }
 html.lang-en .ar-only { display: none !important; }
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.35s; }
+}
 </style>

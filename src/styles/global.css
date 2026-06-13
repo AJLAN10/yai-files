@@ -126,6 +126,17 @@ h1 { text-wrap: balance; }
 .lang-en .ar-only { display: none !important; }
 .lang-en .ar-text { display: none; }
 
+/* Card entrance — fade + rise, used by grids (View-Transition friendly) */
+@keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.grid-in > * { animation: cardIn 0.45s var(--ease-out) both; }
+.grid-in > *:nth-child(2) { animation-delay: 0.04s; }
+.grid-in > *:nth-child(3) { animation-delay: 0.08s; }
+.grid-in > *:nth-child(4) { animation-delay: 0.12s; }
+.grid-in > *:nth-child(5) { animation-delay: 0.16s; }
+.grid-in > *:nth-child(6) { animation-delay: 0.20s; }
+.grid-in > *:nth-child(n+7) { animation-delay: 0.24s; }
+@media (prefers-reduced-motion: reduce) { .grid-in > * { animation: none; } }
+
 /* Kashida display style — Ewan-inspired stretched calligraphic headlines.
    Pair with tatweel (ـ) characters in the markup for the line-stretch. */
 .ar-kashida {
