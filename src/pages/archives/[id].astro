@@ -20,24 +20,25 @@ const eraLabel = k.special
   title={`${k.name} — Kingdom Archives · YAI`}
   description={k.description}
   eyebrow={`Kingdom Archives · ${eraLabel}`}
+  eyebrowAr={`أرشيف الممالك · ${k.special ? '★ المملكة المؤسِّسة' : k.era === 'pre' ? 'مملكة ما قبل الإسلام' : 'دولة إسلامية'}`}
   accent="#A78BFA"
   heading={k.name}
   headingAr={k.name_ar}
   meta={[
-    { label: 'Period', value: k.dates },
-    { label: 'Capital', value: k.capital },
+    { label: 'Period', label_ar: 'الفترة', value: k.dates },
+    { label: 'Capital', label_ar: 'العاصمة', value: k.capital },
   ]}
 >
   <p class="lede">{k.description}</p>
 
-  <h2 class="section-title">Architectural legacy</h2>
+  <h2 class="section-title"><span class="en-only">Architectural legacy</span><span class="ar-only ar-text">الإرث المعماري</span></h2>
   <ul class="elements">
     {k.architecture.map((a) => <li class="element">{a}</li>)}
   </ul>
 
   {k.badges.length > 0 && (
     <>
-      <h2 class="section-title">Research status</h2>
+      <h2 class="section-title"><span class="en-only">Research status</span><span class="ar-only ar-text">حالة البحث</span></h2>
       <ul class="badges">
         {k.badges.map((b) => <li class="badge">{b}</li>)}
       </ul>
@@ -45,7 +46,7 @@ const eraLabel = k.special
   )}
 
   <p class="cross-ref">
-    <a href="/archives">← All 13 kingdoms</a> · <a href="/map">View on map</a>
+    <a href="/archives"><span class="en-only">← All 13 kingdoms</span><span class="ar-only ar-text">جميع الممالك الـ13 ←</span></a> · <a href="/map"><span class="en-only">View on map</span><span class="ar-only ar-text">عرض على الخريطة</span></a>
   </p>
 
   <style>

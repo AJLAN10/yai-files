@@ -22,30 +22,31 @@ const registers = [
 <HeritageLayout
   title={`${c.name} — Architectural Character · YAI`}
   description={c.description}
-  eyebrow="Architectural Character"
+  eyebrow="Building Character"
+  eyebrowAr="الطابع المعماري"
   accent="#FBBF24"
   heading={c.name}
   headingAr={c.name_ar}
   meta={[
-    { label: 'No.', value: c.num },
-    { label: 'Governorate', value: c.governorate },
-    { label: 'Era', value: c.era },
-    { label: 'Risk level', value: c.risk_level },
+    { label: 'No.', label_ar: 'رقم', value: c.num },
+    { label: 'Governorate', label_ar: 'المحافظة', value: c.governorate },
+    { label: 'Era', label_ar: 'الحقبة', value: c.era },
+    { label: 'Risk level', label_ar: 'مستوى الخطر', value: c.risk_level },
   ]}
 >
   <p class="lede">{c.description}</p>
 
-  <h2 class="section-title">Materials</h2>
+  <h2 class="section-title"><span class="en-only">Materials</span><span class="ar-only ar-text">المواد</span></h2>
   <ul class="elements">
     {c.material_list.map((m) => <li class="element material">{m}</li>)}
   </ul>
 
-  <h2 class="section-title">Defining elements</h2>
+  <h2 class="section-title"><span class="en-only">Defining elements</span><span class="ar-only ar-text">العناصر المميزة</span></h2>
   <ul class="elements">
     {c.elements.map((el) => <li class="element">{el}</li>)}
   </ul>
 
-  <h2 class="section-title">Three registers</h2>
+  <h2 class="section-title"><span class="en-only">Three registers</span><span class="ar-only ar-text">السجلات الثلاثة</span></h2>
   <div class="registers">
     {registers.map((r) => (
       <div class="register">

@@ -13,6 +13,7 @@ import '../styles/global.css';
 
 interface MetaItem {
   label: string;
+  label_ar?: string;
   value: string;
 }
 
@@ -21,6 +22,7 @@ interface Props {
   description: string;
   /* Small uppercase sector label, e.g. "Architectural Character". */
   eyebrow: string;
+  eyebrowAr?: string;
   /* Hex accent for the sector (matches the home-page sector colours). */
   accent?: string;
   heading: string;
@@ -33,6 +35,7 @@ const {
   title,
   description,
   eyebrow,
+  eyebrowAr,
   accent = '#C4A77D',
   heading,
   headingAr,
@@ -58,7 +61,14 @@ const {
     </nav>
 
     <header class="h-header">
-      <p class="h-eyebrow">{eyebrow}</p>
+      <p class="h-eyebrow">
+        {eyebrowAr ? (
+          <>
+            <span class="en-only">{eyebrow}</span>
+            <span class="ar-only">{eyebrowAr}</span>
+          </>
+        ) : eyebrow}
+      </p>
       <h1 class="h-heading">
         <span class="en-only">{heading}</span>
         {headingAr && <span class="ar-only ar-text">{headingAr}</span>}
@@ -67,7 +77,14 @@ const {
         <ul class="h-meta" aria-label="Key facts">
           {meta.map((m) => (
             <li class="h-meta-item">
-              <span class="h-meta-label">{m.label}</span>
+              <span class="h-meta-label">
+                {m.label_ar ? (
+                  <>
+                    <span class="en-only">{m.label}</span>
+                    <span class="ar-only">{m.label_ar}</span>
+                  </>
+                ) : m.label}
+              </span>
               <span class="h-meta-value">{m.value}</span>
             </li>
           ))}

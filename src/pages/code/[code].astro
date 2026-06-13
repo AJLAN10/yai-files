@@ -17,11 +17,12 @@ const ch = entry.data;
   title={`${ch.code} ${ch.title} — Yemen Building Code · YAI`}
   description={ch.content}
   eyebrow={`Yemen Building Code · ${ch.code}`}
+  eyebrowAr={`كود البناء اليمني · ${ch.code}`}
   accent="#4ADE80"
   heading={ch.title}
   meta={[
-    { label: 'Status', value: ch.status },
-    { label: 'Applies to', value: `${ch.governorates.length} governorates` },
+    { label: 'Status', label_ar: 'الحالة', value: ch.status },
+    { label: 'Applies to', label_ar: 'يُطبَّق في', value: `${ch.governorates.length} governorates` },
   ]}
 >
   <p class="lede">{ch.content}</p>
@@ -34,7 +35,7 @@ const ch = entry.data;
     </ul>
   )}
 
-  <h2 class="section-title">Technical specifications</h2>
+  <h2 class="section-title"><span class="en-only">Technical specifications</span><span class="ar-only ar-text">المواصفات الفنية</span></h2>
   <dl class="specs">
     {ch.specs.map(([label, value]) => (
       <div class="spec-row">
@@ -44,7 +45,7 @@ const ch = entry.data;
     ))}
   </dl>
 
-  <h2 class="section-title">Compliance pathways</h2>
+  <h2 class="section-title"><span class="en-only">Compliance pathways</span><span class="ar-only ar-text">مسارات الامتثال</span></h2>
   <div class="registers">
     <div class="register"><span class="register-key">Traditional</span><p>{ch.traditional}</p></div>
     <div class="register"><span class="register-key">Transitional</span><p>{ch.transitional}</p></div>
@@ -52,7 +53,7 @@ const ch = entry.data;
   </div>
 
   <p class="cross-ref">
-    Governorates: <span>{ch.governorates.join(' · ')}</span>
+    <span class="en-only">Governorates:</span><span class="ar-only ar-text">المحافظات:</span> <span>{ch.governorates.join(' · ')}</span>
   </p>
 
   <style>

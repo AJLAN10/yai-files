@@ -12,16 +12,17 @@ const characters = (await getCollection('characters')).sort((a, b) => {
 });
 ---
 <HeritageLayout
-  title="Details — Architectural Characters · YAI"
+  title="Building Character — Architectural Characters · YAI"
   description="Character cards documenting Yemen's architectural characters — materials, eras, and the traditional / transitional / contemporary registers."
   eyebrow="Sector · In progress"
+  eyebrowAr="قطاع · قيد الإنجاز"
   accent="#FBBF24"
-  heading="Details"
-  headingAr="التفاصيل"
-  meta={[{ label: 'Character cards', value: String(characters.length) }]}
+  heading="Building Character"
+  headingAr="الطابع المعماري"
+  meta={[{ label: 'Character cards', label_ar: 'بطاقات الطوابع', value: String(characters.length) }]}
 >
   <p class="lede en-only">
-    The full Details sector is under construction. The documented character
+    The full Building Character sector is under construction. The documented character
     cards below are already available — each covers materials, era, defining
     elements, and the three design registers.
   </p>

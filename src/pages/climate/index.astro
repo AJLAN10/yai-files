@@ -25,12 +25,13 @@ const tagRows = [...tagIndex.entries()]
   title="Climate Resilience & Adaptive Reuse — YAI"
   description="Case studies of Yemen's heritage architecture adapting to flood, seismic, drought, and conflict risk — cross-referenced to the Yemen Building Code via resilience tags and mapped for field reference."
   eyebrow="New Sector"
+  eyebrowAr="قطاع جديد"
   accent="#2DD4BF"
   heading="Climate Resilience & Adaptive Reuse"
   headingAr="المرونة المناخية وإعادة التأهيل"
   meta={[
-    { label: 'Case studies', value: String(studies.length) },
-    { label: 'Resilience themes', value: String(tagRows.length) },
+    { label: 'Case studies', label_ar: 'دراسات الحالة', value: String(studies.length) },
+    { label: 'Resilience themes', label_ar: 'محاور المرونة', value: String(tagRows.length) },
   ]}
 >
   <p class="lede">
@@ -40,7 +41,7 @@ const tagRows = [...tagIndex.entries()]
     and carries coordinates for plotting on the resilience map.
   </p>
 
-  <h2 class="section-title">Case studies</h2>
+  <h2 class="section-title"><span class="en-only">Case studies</span><span class="ar-only ar-text">دراسات الحالة</span></h2>
   <ul class="studies">
     {studies.map((s) => (
       <li class="study">
@@ -57,7 +58,7 @@ const tagRows = [...tagIndex.entries()]
     ))}
   </ul>
 
-  <h2 class="section-title">Resilience themes → YBC chapters</h2>
+  <h2 class="section-title"><span class="en-only">Resilience themes → YBC chapters</span><span class="ar-only ar-text">محاور المرونة ← فصول الكود</span></h2>
   <p class="hint">
     Built by querying each chapter's <code>related_resilience_tags</code> —
     the Climate sector reads the tags; chapters stay decoupled.

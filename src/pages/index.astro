@@ -100,14 +100,14 @@ import '../styles/global.css';
     <div class="intro-en">Yemen Architecture Initiative</div>
     <div class="intro-line"></div>
     <div class="intro-ar">مبادرة العمارة اليمنية</div>
-    <div class="intro-sub">Heritage · Code · Education · Archives</div>
+    <div class="intro-sub">تراث · كود · تعليم · أرشيف</div>
   </div>
 </div>
 
 <!-- ═══════════════════════ OFFLINE BAR ═══════════════════════ -->
 <div class="offline-bar" id="offlineBar" role="alert" aria-live="polite">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:6px"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
-  You are offline — content cached for offline use · أنت غير متصل بالإنترنت
+  <span class="ar-only ar-text">أنت غير متصل بالإنترنت</span><span class="en-only">You are offline</span>
 </div>
 
 <!-- ═══════════════════════ INSTALL BANNER ═══════════════════════ -->
@@ -141,7 +141,7 @@ import '../styles/global.css';
     <a href="/map"      class="nav-link" role="menuitem" data-sector="map" aria-label="Interactive map"><span class="en-only">Map</span><span class="ar-only ar-text">الخريطة</span></a>
     <a href="/students" class="nav-link" role="menuitem" data-sector="students"><span class="en-only">Students</span><span class="ar-only ar-text">الطلاب</span></a>
     <a href="/code"     class="nav-link" role="menuitem" data-sector="code"><span class="en-only">Code</span><span class="ar-only ar-text">الكود</span></a>
-    <a href="/details"  class="nav-link" role="menuitem" data-sector="details"><span class="en-only">Details</span><span class="ar-only ar-text">التفاصيل</span></a>
+    <a href="/details"  class="nav-link" role="menuitem" data-sector="details"><span class="en-only">Building Character</span><span class="ar-only ar-text">الطابع المعماري</span></a>
     <a href="/general"  class="nav-link" role="menuitem" data-sector="general"><span class="en-only">General</span><span class="ar-only ar-text">عام</span></a>
     <a href="/archives" class="nav-link" role="menuitem" data-sector="archives"><span class="en-only">Archives</span><span class="ar-only ar-text">الأرشيف</span></a>
     <a href="/climate"  class="nav-link" role="menuitem" data-sector="climate"><span class="en-only">Climate</span><span class="ar-only ar-text">المناخ</span></a>
@@ -168,7 +168,7 @@ import '../styles/global.css';
   <a href="/map" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:#C4A77D"></span><span class="en-only">Interactive Map</span><span class="ar-only ar-text">الخريطة التفاعلية</span></a>
   <a href="/students" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-students)"></span><span class="en-only">Students</span><span class="ar-only ar-text">الطلاب</span></a>
   <a href="/code" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-code)"></span><span class="en-only">Code (YBC)</span><span class="ar-only ar-text">الكود (YBC)</span></a>
-  <a href="/details" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-details)"></span><span class="en-only">Details</span><span class="ar-only ar-text">التفاصيل</span></a>
+  <a href="/details" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-details)"></span><span class="en-only">Building Character</span><span class="ar-only ar-text">الطابع المعماري</span></a>
   <a href="/general" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-general)"></span><span class="en-only">General</span><span class="ar-only ar-text">عام</span></a>
   <a href="/archives" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-archives)"></span><span class="en-only">Archives</span><span class="ar-only ar-text">الأرشيف</span></a>
   <a href="/climate" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:#2DD4BF"></span><span class="en-only">Climate Resilience</span><span class="ar-only ar-text">المرونة المناخية</span></a>
@@ -295,14 +295,14 @@ import '../styles/global.css';
       </div>
     </div>
 
-    <div class="sector-band" data-s="details" role="listitem" tabindex="0" aria-expanded="false" aria-label="Details sector">
+    <div class="sector-band" data-s="details" role="listitem" tabindex="0" aria-expanded="false" aria-label="Building Character sector">
       <div class="sector-accent-bar" aria-hidden="true"></div>
       <div class="sector-icon-wrap" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       </div>
       <div class="sector-info">
-        <span class="sector-name en-only">Details</span>
-        <span class="sector-name ar-only ar-text">التفاصيل</span>
+        <span class="sector-name en-only">Building Character</span>
+        <span class="sector-name ar-only ar-text">الطابع المعماري</span>
         <span class="sector-desc en-only">23 character cards, material library, element catalogue, 3D documentation</span>
         <span class="sector-desc ar-only ar-text">23 بطاقة طابع، مكتبة مواد، فهرس عناصر، توثيق ثلاثي الأبعاد</span>
       </div>
@@ -654,8 +654,8 @@ import '../styles/global.css';
       <a href="/students" class="footer-link ar-only ar-text">الطلاب</a>
       <a href="/code" class="footer-link en-only">Yemen Building Code</a>
       <a href="/code" class="footer-link ar-only ar-text">كود البناء اليمني</a>
-      <a href="/details" class="footer-link en-only">Details & Documentation</a>
-      <a href="/details" class="footer-link ar-only ar-text">التفاصيل والتوثيق</a>
+      <a href="/details" class="footer-link en-only">Building Character & Documentation</a>
+      <a href="/details" class="footer-link ar-only ar-text">الطابع المعماري والتوثيق</a>
       <a href="/general" class="footer-link en-only">General / Diaspora</a>
       <a href="/general" class="footer-link ar-only ar-text">عام / الشتات</a>
       <a href="/archives" class="footer-link en-only">Kingdom Archives</a>
