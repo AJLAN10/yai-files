@@ -10,16 +10,26 @@ const chapters = await getCollection('ybcChapters');
 /* Inverted cross-link: build the resilience-tag → YBC-chapters index
    by querying each chapter's related_resilience_tags. The Climate
    sector consumes the tags; the chapters never point back here. */
-const tagIndex = new Map<string, { code: string; title: string; id: string }[]>();
+const tagIndex = new Map<string, { code: string; title: string; title_ar: string; id: string }[]>();
 for (const ch of chapters) {
   for (const tag of ch.data.related_resilience_tags) {
     if (!tagIndex.has(tag)) tagIndex.set(tag, []);
-    tagIndex.get(tag)!.push({ code: ch.data.code, title: ch.data.title, id: ch.id });
+    tagIndex.get(tag)!.push({ code: ch.data.code, title: ch.data.title, title_ar: ch.data.title_ar ?? ch.data.title, id: ch.id });
   }
 }
 const tagRows = [...tagIndex.entries()]
   .filter(([tag]) => tag !== 'governance')
   .sort((a, b) => a[0].localeCompare(b[0]));
+
+const riskLevelAr: Record<string, string> = { low: 'منخفض', moderate: 'متوسط', high: 'عالٍ', severe: 'شديد' };
+const riskTypeAr: Record<string, string> = {
+  flood: 'فيضان', seismic: 'زلازل', drought: 'جفاف', thermal: 'حراري',
+  conflict: 'نزاع', 'coastal-erosion': 'تآكل ساحلي',
+};
+const tagAr: Record<string, string> = { ...riskTypeAr, governance: 'حوكمة' };
+const govAr: Record<string, string> = {
+  Hadramawt: 'حضرموت', 'Amanat al-Asimah': 'أمانة العاصمة',
+};
 ---
 <HeritageLayout
   title="Climate Resilience & Adaptive Reuse — YAI"
@@ -35,10 +45,13 @@ const tagRows = [...tagIndex.entries()]
   ]}
 >
   <p class="lede">
-    How Yemen's built heritage absorbs climate and conflict risk — and how
+    <span class="en-only">How Yemen's built heritage absorbs climate and conflict risk — and how
     adaptive reuse keeps these structures in service. Each case study is
     matched to the Yemen Building Code chapters that govern its risk theme,
-    and carries coordinates for plotting on the resilience map.
+    and carries coordinates for plotting on the resilience map.</span>
+    <span class="ar-only ar-text">كيف يمتصّ التراث المبني في اليمن مخاطر المناخ والنزاع — وكيف تُبقي إعادة
+    التأهيل هذه المنشآت في الخدمة. تُطابَق كل دراسة حالة بفصول كود البناء اليمني
+    التي تحكم محور خطرها، وتحمل إحداثيات لرسمها على خريطة المرونة.</span>
   </p>
 
   <h2 class="section-title"><span class="en-only">Case studies</span><span class="ar-only ar-text">دراسات الحالة</span></h2>
@@ -47,12 +60,12 @@ const tagRows = [...tagIndex.entries()]
       <li class="study">
         <a href={`/climate/${s.id}`} class="study-link">
           <div class="study-badges">
-            <span class={`risk risk-${s.data.risk_level}`}>{s.data.risk_level}</span>
-            <span class="risk-type">{s.data.risk_type}</span>
+            <span class={`risk risk-${s.data.risk_level}`}><span class="en-only">{s.data.risk_level}</span><span class="ar-only ar-text">{riskLevelAr[s.data.risk_level]}</span></span>
+            <span class="risk-type"><span class="en-only">{s.data.risk_type}</span><span class="ar-only ar-text">{riskTypeAr[s.data.risk_type] ?? s.data.risk_type}</span></span>
           </div>
-          <h3 class="study-title">{s.data.title}</h3>
-          <p class="study-summary">{s.data.summary}</p>
-          <span class="study-gov">{s.data.governorate}</span>
+          <h3 class="study-title"><span class="en-only">{s.data.title}</span><span class="ar-only ar-text">{s.data.title_ar ?? s.data.title}</span></h3>
+          <p class="study-summary"><span class="en-only">{s.data.summary}</span><span class="ar-only ar-text">{s.data.summary_ar ?? s.data.summary}</span></p>
+          <span class="study-gov">{govAr[s.data.governorate] ?? s.data.governorate}</span>
         </a>
       </li>
     ))}
@@ -60,16 +73,18 @@ const tagRows = [...tagIndex.entries()]
 
   <h2 class="section-title"><span class="en-only">Resilience themes → YBC chapters</span><span class="ar-only ar-text">محاور المرونة ← فصول الكود</span></h2>
   <p class="hint">
-    Built by querying each chapter's <code>related_resilience_tags</code> —
-    the Climate sector reads the tags; chapters stay decoupled.
+    <span class="en-only">Built by querying each chapter's <code>related_resilience_tags</code> —
+    the Climate sector reads the tags; chapters stay decoupled.</span>
+    <span class="ar-only ar-text">مبنيّ بالاستعلام عن وسوم <code>related_resilience_tags</code> لكل فصل —
+    يقرأ قطاع المناخ الوسوم، وتبقى الفصول مفصولة.</span>
   </p>
   <ul class="tag-rows">
     {tagRows.map(([tag, chs]) => (
       <li class="tag-row">
-        <span class="tag-name">{tag}</span>
+        <span class="tag-name"><span class="en-only">{tag}</span><span class="ar-only ar-text">{tagAr[tag] ?? tag}</span></span>
         <span class="tag-chapters">
           {chs.map((ch) => (
-            <a class="chip" href={`/code/${ch.id}`}>{ch.code} · {ch.title}</a>
+            <a class="chip" href={`/code/${ch.id}`}>{ch.code} · <span class="en-only">{ch.title}</span><span class="ar-only ar-text">{ch.title_ar}</span></a>
           ))}
         </span>
       </li>

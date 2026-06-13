@@ -76,18 +76,26 @@ const ybcChapters = defineCollection({
     code: z.string().regex(/^YBC-H\d{2}$/, 'Code must look like YBC-H05'),
     chapter_number: z.number().int().min(0),
     title: z.string(),
+    title_ar: z.string().optional(),
     subtitle: z.string(),
+    subtitle_ar: z.string().optional(),
     status: z.enum(['draft', 'peer-reviewed']),
     governorates: z.array(z.string()).min(1),
+    governorates_ar: z.array(z.string()).optional(),
     /* Free-form resilience tags — additive and searchable as the
        platform grows (flood, seismic, drought, thermal, conflict,
        coastal-erosion, governance, …). */
     related_resilience_tags: z.array(z.string()),
     content: z.string(),
+    content_ar: z.string().optional(),
     specs: z.array(z.tuple([z.string(), z.string()])).min(1),
+    specs_ar: z.array(z.tuple([z.string(), z.string()])).optional(),
     traditional: z.string(),
+    traditional_ar: z.string().optional(),
     transitional: z.string(),
+    transitional_ar: z.string().optional(),
     contemporary: z.string(),
+    contemporary_ar: z.string().optional(),
   }),
 });
 
@@ -102,6 +110,10 @@ const climateResilience = defineCollection({
     title: z.string(),
     title_ar: z.string().optional(),
     summary: z.string(),
+    summary_ar: z.string().optional(),
+    /* Arabic narrative body as HTML (the Markdown body stays English;
+       this renders in AR mode). */
+    body_ar: z.string().optional(),
     risk_type: z.enum(['flood', 'seismic', 'drought', 'thermal', 'conflict', 'coastal-erosion']),
     risk_level: riskLevel,
     governorate: z.string(),
@@ -113,6 +125,7 @@ const climateResilience = defineCollection({
     related_character: z.string().optional(),
     geo_coordinates: geoPoint,
     adaptive_reuse: z.string().optional(),
+    adaptive_reuse_ar: z.string().optional(),
     order: z.number().default(99),
   }),
 });
@@ -128,12 +141,17 @@ const kingdoms = defineCollection({
     name_ar: z.string(),
     era: z.enum(['pre', 'islamic']),
     dates: z.string(),
+    dates_ar: z.string().optional(),
     capital: z.string(),
+    capital_ar: z.string().optional(),
     description: z.string(),
+    description_ar: z.string().optional(),
     /* Signature architectural works/elements. */
     architecture: z.array(z.string()).min(1),
+    architecture_ar: z.array(z.string()).optional(),
     /* Research/status badges (UNESCO, excavations, gaps…). */
     badges: z.array(z.string()),
+    badges_ar: z.array(z.string()).optional(),
     /* Sheba gets special foundational-character treatment. */
     special: z.boolean().default(false),
     /* Chronological position for ordering. */

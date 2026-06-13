@@ -5,7 +5,28 @@
   "dates": "819–1018 CE",
   "capital": "Zabid (Tihama coast)",
   "description": "The Ziyadids founded Zabid as Yemen's first major Islamic capital in 820 CE — establishing the city that would become a centre of Islamic scholarship for 800 years and a UNESCO World Heritage site in 1993. Their mosque network, market grid, and coral stone building tradition established the Tihama architectural character that Bonnenfant documented in his landmark 2004 study.",
-  "architecture": ["Al-Ash'ar mosque (Zabid)", "Coral block market", "Islamic school complex", "City grid"],
-  "badges": ["Founded Zabid", "Bonnenfant 2004"],
-  "order": 7
+  "architecture": [
+    "Al-Ash'ar mosque (Zabid)",
+    "Coral block market",
+    "Islamic school complex",
+    "City grid"
+  ],
+  "badges": [
+    "Founded Zabid",
+    "Bonnenfant 2004"
+  ],
+  "order": 7,
+  "dates_ar": "819–1018 م",
+  "capital_ar": "زبيد (ساحل تهامة)",
+  "description_ar": "أسّس الزياديون زبيد أول عاصمة إسلامية كبرى في اليمن عام 820م — مؤسّسين المدينة التي ستغدو مركزاً للعلوم الإسلامية 800 عام وموقعاً للتراث العالمي لليونسكو عام 1993. أرست شبكة جوامعهم، وشبكة أسواقهم، وتقليد البناء بالحجر المرجاني الطابع المعماري التهامي الذي وثّقه بونّنفان في دراسته البارزة عام 2004.",
+  "architecture_ar": [
+    "جامع الأشاعر (زبيد)",
+    "سوق بكتل مرجانية",
+    "مجمّع مدرسة إسلامية",
+    "شبكة المدينة"
+  ],
+  "badges_ar": [
+    "أسّست زبيد",
+    "بونّنفان 2004"
+  ]
 }

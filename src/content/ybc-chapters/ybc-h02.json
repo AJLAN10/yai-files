@@ -4,18 +4,83 @@
   "title": "Fired Brick & Gypsum",
   "subtitle": "Sana'a highland tower house tradition",
   "status": "draft",
-  "governorates": ["Sana'a Capital", "Sana'a Governorate", "Amran", "Dhamar", "Al Mahwit"],
-  "related_resilience_tags": ["seismic"],
+  "governorates": [
+    "Sana'a Capital",
+    "Sana'a Governorate",
+    "Amran",
+    "Dhamar",
+    "Al Mahwit"
+  ],
+  "related_resilience_tags": [
+    "seismic"
+  ],
   "content": "Standards for fired brick construction with gypsum render — the defining material system of Sana'a Old City and the highland tower house tradition. Covers brick specification, gypsum banding (diwan friezes), qamaria window fabrication, and minaret construction following Marchand's documentation.",
   "specs": [
-    ["Brick standard", "Local fired clay · 22 × 10 × 6 cm · min 15 N/mm² compressive strength"],
-    ["Gypsum render", "Diwan frieze bands at every floor level · min 150mm height · white gypsum only"],
-    ["Qamaria spec", "Alabaster or coloured glass · geometric or floral pattern · YAI catalogue Appendix Q"],
-    ["Mortar", "Gypsum-lime mortar (1:1) for heritage · Portland cement strictly prohibited on exterior"],
-    ["Window ratio", "30–40% of facade area maximum · small openings north face · qamaria south/east"],
-    ["Minaret coursing", "Per Marchand (2001) — gypsum-bonded brick courses 55–65mm · tapered 1:20"]
+    [
+      "Brick standard",
+      "Local fired clay · 22 × 10 × 6 cm · min 15 N/mm² compressive strength"
+    ],
+    [
+      "Gypsum render",
+      "Diwan frieze bands at every floor level · min 150mm height · white gypsum only"
+    ],
+    [
+      "Qamaria spec",
+      "Alabaster or coloured glass · geometric or floral pattern · YAI catalogue Appendix Q"
+    ],
+    [
+      "Mortar",
+      "Gypsum-lime mortar (1:1) for heritage · Portland cement strictly prohibited on exterior"
+    ],
+    [
+      "Window ratio",
+      "30–40% of facade area maximum · small openings north face · qamaria south/east"
+    ],
+    [
+      "Minaret coursing",
+      "Per Marchand (2001) — gypsum-bonded brick courses 55–65mm · tapered 1:20"
+    ]
   ],
   "traditional": "Traditional Sana'a — local fired brick, white gypsum diwan bands, stained-glass qamaria fanlights, no modern finishes.",
   "transitional": "Transitional — fired brick structure with cement core permitted if exterior face is traditional brick and gypsum render.",
-  "contemporary": "Contemporary highland — brick or concrete structure with fired brick cladding minimum 90mm + gypsum render on all street-facing facades."
+  "contemporary": "Contemporary highland — brick or concrete structure with fired brick cladding minimum 90mm + gypsum render on all street-facing facades.",
+  "title_ar": "الطوب المحروق والجص",
+  "subtitle_ar": "تقليد البيت البرجي المرتفعي بصنعاء",
+  "governorates_ar": [
+    "أمانة العاصمة",
+    "محافظة صنعاء",
+    "عمران",
+    "ذمار",
+    "المحويت"
+  ],
+  "content_ar": "معايير بناء الطوب المحروق مع لياسة الجص — نظام المواد المميِّز لصنعاء القديمة وتقليد البيت البرجي المرتفعي. يغطي مواصفة الطوب، وأشرطة الجص (أفاريز الديوان)، وصناعة نوافذ القمرية، وبناء المآذن وفق توثيق مارشان.",
+  "specs_ar": [
+    [
+      "مواصفة الطوب",
+      "طين محروق محلي · 22 × 10 × 6 سم · مقاومة ضغط لا تقل عن 15 ن/مم²"
+    ],
+    [
+      "لياسة الجص",
+      "أشرطة إفريز ديوان في كل طابق · ارتفاع لا يقل عن 150مم · جص أبيض فقط"
+    ],
+    [
+      "مواصفة القمرية",
+      "مرمر أو زجاج ملوّن · نقش هندسي أو نباتي · ملحق القمرية في فهرس المبادرة"
+    ],
+    [
+      "الملاط",
+      "ملاط جص-جير (1:1) للتراث · يُمنع الإسمنت البورتلاندي منعاً باتاً على الخارج"
+    ],
+    [
+      "نسبة النوافذ",
+      "30–40% من مساحة الواجهة كحد أقصى · فتحات صغيرة للوجه الشمالي · القمرية جنوباً/شرقاً"
+    ],
+    [
+      "مداميك المئذنة",
+      "وفق مارشان (2001) — مداميك طوب مربوطة بالجص 55–65مم · ميل 1:20"
+    ]
+  ],
+  "traditional_ar": "صنعاء التقليدية — طوب محروق محلي، أشرطة ديوان جصية بيضاء، قمريات زجاجية ملوّنة، بلا تشطيبات حديثة.",
+  "transitional_ar": "انتقالي — يُسمح بهيكل من الطوب المحروق بنواة إسمنتية إذا كان الوجه الخارجي طوباً تقليدياً ولياسة جص.",
+  "contemporary_ar": "مرتفعي معاصر — هيكل من الطوب أو الخرسانة بتكسية طوب محروق لا تقل عن 90مم + لياسة جص على كل الواجهات المطلّة على الشارع."
 }
