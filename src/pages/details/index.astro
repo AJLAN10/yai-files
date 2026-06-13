@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
+import SlidePanel from '../../components/SlidePanel.astro';
+import { relatedYbc } from '../../lib/related';
 
 /* Order by governorate catalogue number; Sheba (★) leads as the
    foundational character. */
@@ -13,6 +15,30 @@ const characters = (await getCollection('characters')).sort(
 const riskAr: Record<string, string> = {
   low: 'منخفض', moderate: 'متوسط', high: 'عالٍ', severe: 'شديد',
 };
+
+/* Slide-in panel records (same workspace pattern as the map). */
+const ybcChapters = await getCollection('ybcChapters');
+const panelRecords = characters.map((entry) => {
+  const c = entry.data;
+  return {
+    id: entry.id,
+    href: `/details/${entry.id}`,
+    eyebrow: 'Architectural Character', eyebrow_ar: 'الطابع المعماري',
+    title: c.name, title_ar: c.name_ar ?? c.name,
+    sub: `${c.num} · ${c.governorate}`, sub_ar: `${c.num} · ${c.governorate}`,
+    meta: [
+      { k: 'Era', k_ar: 'الحقبة', v: c.era, v_ar: c.era_ar ?? c.era },
+      { k: 'Risk', k_ar: 'الخطر', v: c.risk_level, v_ar: riskAr[c.risk_level] },
+    ],
+    sections: [
+      { title: 'Materials', title_ar: 'المواد', type: 'tags', items: c.material_list.map((m, i) => ({ en: m, ar: c.material_list_ar?.[i] ?? m })) },
+      { title: 'Defining elements', title_ar: 'العناصر المميزة', type: 'tags', items: c.elements.map((m, i) => ({ en: m, ar: c.elements_ar?.[i] ?? m })) },
+      { title: 'Architectural character', title_ar: 'الطابع المعماري', type: 'text', text: c.description, text_ar: c.description_ar },
+      { title: 'Governing building code', title_ar: 'كود البناء الحاكم', type: 'ybc', items: relatedYbc(c, ybcChapters).map((ch) => ({ code: ch.data.code, id: ch.id, title: ch.data.title, title_ar: ch.data.title_ar ?? ch.data.title })) },
+    ],
+    cta: 'Full character card →', cta_ar: 'بطاقة الطابع كاملة ←',
+  };
+});
 ---
 <HeritageLayout
   title="Building Character — Architectural Characters · YAI"
@@ -37,7 +63,7 @@ const riskAr: Record<string, string> = {
   <ul class="cards grid-in">
     {characters.map((c) => (
       <li>
-        <a href={`/details/${c.id}`} class="card">
+        <a href={`/details/${c.id}`} class="card" data-open-panel={c.id}>
           <span class="card-num">{c.data.num}</span>
           <span class="card-info">
             <span class="card-name">
@@ -84,4 +110,6 @@ const riskAr: Record<string, string> = {
     .risk-severe { background: rgba(248,113,113,0.18); color: #F87171; }
     :global(html.lang-ar) .card { flex-direction: row-reverse; }
   </style>
+
+  <SlidePanel records={panelRecords} accent="#FBBF24" id="charPanel" />
 </HeritageLayout>

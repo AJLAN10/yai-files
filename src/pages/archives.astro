@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SlidePanel from '../components/SlidePanel.astro';
 
 /* Single source of truth: kingdoms live in the `kingdoms` collection.
    Shaped into the flat record the client script expects. */
@@ -25,6 +26,32 @@ const kingdomData = kingdoms
     badges_ar: e.data.badges_ar ?? e.data.badges,
     special: e.data.special || undefined,
   }));
+
+/* Slide-in panel records — same workspace pattern as the map + details. */
+const kingdomPanel = kingdoms
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((e) => {
+    const k = e.data;
+    const era_en = k.special ? 'Foundational kingdom' : k.era === 'pre' ? 'Pre-Islamic kingdom' : 'Islamic dynasty';
+    const era_ar = k.special ? 'المملكة المؤسِّسة' : k.era === 'pre' ? 'مملكة ما قبل الإسلام' : 'دولة إسلامية';
+    return {
+      id: e.id,
+      href: `/archives/${e.id}`,
+      eyebrow: `Kingdom Archives · ${era_en}`, eyebrow_ar: `أرشيف الممالك · ${era_ar}`,
+      title: k.name, title_ar: k.name_ar,
+      sub: `${k.dates} · ${k.capital}`, sub_ar: `${k.dates_ar ?? k.dates} · ${k.capital_ar ?? k.capital}`,
+      meta: [
+        { k: 'Period', k_ar: 'الفترة', v: k.dates, v_ar: k.dates_ar ?? k.dates },
+        { k: 'Capital', k_ar: 'العاصمة', v: k.capital, v_ar: k.capital_ar ?? k.capital },
+      ],
+      sections: [
+        { title: 'Architectural legacy', title_ar: 'الإرث المعماري', type: 'tags', items: k.architecture.map((a, i) => ({ en: a, ar: k.architecture_ar?.[i] ?? a })) },
+        { title: 'Description', title_ar: 'الوصف', type: 'text', text: k.description, text_ar: k.description_ar ?? k.description },
+        { title: 'Research status', title_ar: 'حالة البحث', type: 'tags', items: k.badges.map((b, i) => ({ en: b, ar: k.badges_ar?.[i] ?? b })) },
+      ],
+      cta: 'Full archive entry →', cta_ar: 'دخول الأرشيف الكامل ←',
+    };
+  });
 ---
 <BaseLayout
   title="Kingdom Archives — Yemen Architecture Initiative"
@@ -96,6 +123,8 @@ const kingdomData = kingdoms
   </aside>
 </div>
 
+<SlidePanel records={kingdomPanel} accent="#A78BFA" id="kingdomPanel" />
+
 <footer class="page-footer">
 مبادرة العمارة اليمنية · <a href="/">YAI.org</a> · أرشيف الممالك — بحث تحريري مستند إلى 51 مصدراً علمياً عبر 5 لغات
 </footer>
@@ -153,6 +182,7 @@ KINGDOMS.forEach((k,i) => {
   card.className = `kingdom-card${k.isSheba?' sheba-card':''}`;
   card.dataset.id = k.id;
   card.dataset.era = k.era;
+  card.setAttribute('data-open-panel', k.id);
   card.setAttribute('role','listitem');
   card.setAttribute('tabindex','0');
   const eraClass = k.id==='sheba' ? 'sheba-b' : k.era==='pre' ? 'pre' : 'islamic';

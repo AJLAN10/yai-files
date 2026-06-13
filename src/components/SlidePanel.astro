@@ -1,0 +1,127 @@
+---
+/*
+  Reusable slide-in "workspace" panel (the map's interaction model,
+  generalised). A page passes an array of records keyed by id; any
+  element with [data-open-panel="<id>"] opens the panel populated from
+  that record. Pure vanilla + CSS — no dependencies. Bilingual.
+
+  Record shape:
+  {
+    id, href, eyebrow, eyebrow_ar, title, title_ar, sub, sub_ar,
+    accent?,                                  // per-record accent override
+    meta: [{ k, k_ar, v, v_ar }],
+    sections: [
+      { title, title_ar, type: 'text', text, text_ar } |
+      { title, title_ar, type: 'tags', items: [{ en, ar }] } |
+      { title, title_ar, type: 'ybc',  items: [{ code, id, title, title_ar }] }
+    ],
+    cta, cta_ar
+  }
+*/
+interface Props {
+  records: unknown[];
+  accent?: string;
+  id?: string;
+}
+const { records, accent = '#C4A77D', id = 'slidePanel' } = Astro.props;
+---
+<div class="sp-backdrop" id={`${id}-backdrop`} aria-hidden="true"></div>
+<aside class="slide-panel" id={id} style={`--sp-accent:${accent}`} role="dialog" aria-modal="false" aria-label="Detail panel" hidden>
+  <div class="sp-head">
+    <span class="sp-eyebrow" id={`${id}-eyebrow`}></span>
+    <button class="sp-close" id={`${id}-close`} aria-label="Close panel" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="sp-body" id={`${id}-body`}></div>
+</aside>
+
+<script type="application/json" id={`${id}-data`} is:inline set:html={JSON.stringify(records)}></script>
+
+<script is:inline define:vars={{ id }}>
+(function () {
+  const AR = document.documentElement.classList.contains('lang-ar');
+  const data = JSON.parse(document.getElementById(id + '-data').textContent);
+  const byId = Object.fromEntries(data.map((r) => [r.id, r]));
+  const panel = document.getElementById(id);
+  const backdrop = document.getElementById(id + '-backdrop');
+  const body = document.getElementById(id + '-body');
+  const eyebrow = document.getElementById(id + '-eyebrow');
+  const t = (en, ar) => (AR ? (ar ?? en) : en);
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  function sectionHTML(s) {
+    const title = `<div class="sp-section-title">${esc(t(s.title, s.title_ar))}</div>`;
+    if (s.type === 'text') return title + `<p class="sp-text">${esc(t(s.text, s.text_ar))}</p>`;
+    if (s.type === 'tags') return title + `<div class="sp-tags">${(s.items || []).map((i) => `<span class="sp-tag">${esc(AR ? (i.ar ?? i.en) : i.en)}</span>`).join('')}</div>`;
+    if (s.type === 'ybc') return (s.items && s.items.length) ? title + `<div class="sp-ybc">${s.items.map((i) => `<a href="/code/${i.id}"><span class="sp-ybc-code">${esc(i.code)}</span><span>${esc(AR ? i.title_ar : i.title)}</span></a>`).join('')}</div>` : '';
+    return '';
+  }
+
+  function open(rid) {
+    const r = byId[rid];
+    if (!r) return;
+    if (r.accent) panel.style.setProperty('--sp-accent', r.accent);
+    eyebrow.textContent = t(r.eyebrow, r.eyebrow_ar);
+    const meta = (r.meta || []).map((m) => `<span class="sp-chip"><b>${esc(t(m.k, m.k_ar))}:</b> ${esc(t(m.v, m.v_ar))}</span>`).join('');
+    body.innerHTML =
+      `<h2 class="sp-title">${esc(t(r.title, r.title_ar))}</h2>` +
+      (r.sub ? `<p class="sp-sub">${esc(t(r.sub, r.sub_ar))}</p>` : '') +
+      (meta ? `<div class="sp-meta">${meta}</div>` : '') +
+      (r.sections || []).map(sectionHTML).join('') +
+      (r.href ? `<a class="sp-cta" href="${r.href}">${esc(t(r.cta, r.cta_ar))}</a>` : '');
+    panel.hidden = false;
+    requestAnimationFrame(() => { panel.classList.add('open'); backdrop.classList.add('open'); });
+    panel.setAttribute('aria-modal', 'true');
+    body.scrollTop = 0;
+    document.getElementById(id + '-close').focus();
+  }
+  function close() {
+    panel.classList.remove('open'); backdrop.classList.remove('open');
+    panel.setAttribute('aria-modal', 'false');
+    setTimeout(() => { panel.hidden = true; }, 320);
+  }
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-open-panel]');
+    if (trigger) { e.preventDefault(); open(trigger.getAttribute('data-open-panel')); }
+  });
+  document.getElementById(id + '-close').addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) close(); });
+
+  /* Deep-link: #panel=<id> opens that record (shareable workspace link). */
+  const h = location.hash.match(/^#panel=(.+)$/);
+  if (h && byId[decodeURIComponent(h[1])]) open(decodeURIComponent(h[1]));
+})();
+</script>
+
+<style is:global>
+.sp-backdrop { position: fixed; inset: 0; background: rgba(2,6,18,0.55); backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 80; }
+.sp-backdrop.open { opacity: 1; pointer-events: auto; }
+.slide-panel { position: fixed; top: 0; bottom: 0; inset-inline-end: 0; width: min(440px, 92vw); background: #0B1120; border-inline-start: 1px solid rgba(255,255,255,0.08); box-shadow: var(--shadow-xl, 0 24px 56px rgba(0,0,0,0.5)); z-index: 90; transform: translateX(100%); transition: transform 0.32s cubic-bezier(0.22,1,0.36,1); overflow-y: auto; overscroll-behavior: contain; }
+:where(html.lang-ar) .slide-panel { transform: translateX(-100%); }
+.slide-panel.open { transform: none !important; }
+.sp-head { position: sticky; top: 0; background: #0B1120; display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.07); z-index: 1; }
+.sp-eyebrow { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sp-accent); }
+.sp-close { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: rgba(255,255,255,0.5); background: none; border: none; cursor: pointer; transition: 0.15s; }
+.sp-close:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.sp-body { padding: 1.1rem 1.3rem 2.5rem; color: rgba(255,255,255,0.7); }
+.sp-title { font-family: var(--f-display, serif); font-weight: 500; font-size: 1.9rem; color: #fff; line-height: 1.05; margin: 0 0 0.3rem; }
+.lang-ar .sp-title { font-family: var(--f-ar-display, serif); }
+.sp-sub { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin: 0 0 1rem; }
+.sp-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.sp-chip { font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.65); }
+.sp-chip b { color: rgba(255,255,255,0.4); font-weight: 500; }
+.sp-section-title { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin: 1.25rem 0 0.5rem; }
+.sp-text { font-size: 0.9rem; line-height: 1.75; color: rgba(255,255,255,0.7); margin: 0; }
+.sp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.sp-tag { font-size: 0.7rem; padding: 0.2rem 0.55rem; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+.sp-ybc { display: flex; flex-direction: column; gap: 0.35rem; }
+.sp-ybc a { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.75); background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.18); border-radius: 6px; padding: 0.45rem 0.65rem; transition: 0.15s; }
+.sp-ybc a:hover { border-color: rgba(74,222,128,0.5); color: #fff; }
+.sp-ybc-code { font-family: var(--f-mono, monospace); font-size: 0.66rem; color: #4ADE80; background: rgba(74,222,128,0.12); padding: 0.15rem 0.4rem; border-radius: 4px; white-space: nowrap; }
+.sp-cta { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.6rem; background: var(--sp-accent); color: #0F172A; font-weight: 600; font-size: 0.85rem; padding: 0.6rem 1.15rem; border-radius: 7px; }
+.sp-cta:hover { filter: brightness(1.08); }
+@media (prefers-reduced-motion: reduce) { .slide-panel, .sp-backdrop { transition: none; } }
+</style>
