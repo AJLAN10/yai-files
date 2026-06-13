@@ -27,5 +27,23 @@
   ],
   "traditional": "6–9 storey fired brick tower, white gypsum diwan bands, stained-glass qamaria fanlights.",
   "transitional": "Traditional tower form at reduced height (3–4 storeys) with modern services.",
-  "contemporary": "Contemporary Sana'a character: brick cladding, qamaria motifs as screens, mafraj-inspired rooftop space."
+  "contemporary": "Contemporary Sana'a character: brick cladding, qamaria motifs as screens, mafraj-inspired rooftop space.",
+  "governorate_ar": "أمانة العاصمة",
+  "era_ar": "ما قبل الإسلام حتى الحاضر",
+  "material_list_ar": [
+    "طوب محروق",
+    "جص",
+    "مرمر"
+  ],
+  "elements_ar": [
+    "نافذة القمرية",
+    "المفرج",
+    "إفريز الديوان",
+    "لياسة جصية",
+    "بيت برجي"
+  ],
+  "description_ar": "أكثف تجمّع للبيوت البرجية متعددة الطوابق على وجه الأرض. تضم صنعاء القديمة (يونسكو 1986) أبراجاً من الطوب من 6 إلى 9 طوابق بأشرطة جصية بيضاء، وقمريات من المرمر، والمفرج — غرفة الاستقبال الاحتفالية في الطابق العلوي.",
+  "traditional_ar": "برج من الطوب المحروق من 6–9 طوابق، وأشرطة ديوان جصية بيضاء، وقمريات زجاجية ملوّنة.",
+  "transitional_ar": "شكل البرج التقليدي بارتفاع مخفّض (3–4 طوابق) مع خدمات حديثة.",
+  "contemporary_ar": "طابع صنعاني معاصر: تكسية بالطوب، وزخارف القمرية كحواجز، وفضاء سطحي مستوحى من المفرج."
 }

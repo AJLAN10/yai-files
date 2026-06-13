@@ -27,5 +27,23 @@
   ],
   "traditional": "Courtyard palace with arcaded perimeter, coral block walls, decorated reception hall.",
   "transitional": "Courtyard plan retained; local materials combined with colonial brick detailing.",
-  "contemporary": "Contemporary Lahij: courtyard typology with modern services; arcade as thermal device."
+  "contemporary": "Contemporary Lahij: courtyard typology with modern services; arcade as thermal device.",
+  "governorate_ar": "محافظة لحج",
+  "era_ar": "من السلطنة العبدلية حتى الحاضر",
+  "material_list_ar": [
+    "مرجان",
+    "طين",
+    "طوب كولونيالي"
+  ],
+  "elements_ar": [
+    "قصر سلطاني",
+    "سوق مقنطر",
+    "فناء (حوش)",
+    "بنغل كولونيالي",
+    "كتلة مرجانية"
+  ],
+  "description_ar": "كانت لحج مقرّ السلطنة العبدلية — المستقلة حتى 1839 — ويجمع مجمّع قصر حصن العبدلي بين تقليد الفناء اليمني والتأثير العثماني ثم البريطاني الكولونيالي. امتدّت رعاية السلطنة المعمارية عبر شبكة من الجوامع ومباني الأسواق في منطقة تهامة الانتقالية.",
+  "traditional_ar": "قصر بفناء بمحيط مقنطر، وجدران من كتل مرجانية، وقاعة استقبال مزخرفة.",
+  "transitional_ar": "مخطط الفناء محفوظ؛ مواد محلية ممزوجة بتفاصيل الطوب الكولونيالي.",
+  "contemporary_ar": "لحج المعاصرة: نمط الفناء مع خدمات حديثة؛ والرواق كأداة حرارية."
 }

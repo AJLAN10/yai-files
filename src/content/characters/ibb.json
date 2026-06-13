@@ -27,5 +27,23 @@
   ],
   "traditional": "Multi-storey stone house, gypsum render, small windows for heat retention in cool highland.",
   "transitional": "Stone construction with enlarged windows, retained traditional massing.",
-  "contemporary": "Contemporary Ibb: dark volcanic basalt cladding, green terrace integration, traditional skyline."
+  "contemporary": "Contemporary Ibb: dark volcanic basalt cladding, green terrace integration, traditional skyline.",
+  "governorate_ar": "محافظة إب",
+  "era_ar": "رسولي حتى الحاضر",
+  "material_list_ar": [
+    "حجر",
+    "طوب محروق",
+    "جص"
+  ],
+  "elements_ar": [
+    "بيت برجي حجري",
+    "زراعة مدرّجة",
+    "بازلت بركاني",
+    "خان (كارفانسراي)",
+    "جامع رسولي"
+  ],
+  "description_ar": "تضم أكثر محافظات اليمن خضرةً نسيجاً حجرياً وسيطاً كثيفاً. تُظهر مدينة إب وقراها المحيطة الانتقال من رعاية العمارة الرسولية إلى الإمامة الزيدية — وجوامعها وخاناتها وعمارتها السكنية المدرّجة في الحجر البركاني من بين الأقل توثيقاً في اليمن.",
+  "traditional_ar": "بيت حجري متعدد الطوابق، ولياسة جصية، ونوافذ صغيرة لحفظ الحرارة في المرتفعات الباردة.",
+  "transitional_ar": "بناء حجري بنوافذ موسّعة، مع الحفاظ على الكتلة التقليدية.",
+  "contemporary_ar": "إب المعاصرة: تكسية بالبازلت البركاني الداكن، ودمج المدرجات الخضراء، وأفق تقليدي."
 }

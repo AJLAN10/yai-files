@@ -27,5 +27,23 @@
   ],
   "traditional": "Building grows from cliff face; local schist stone coursed dry; cisterns carved into bedrock.",
   "transitional": "Stone structure stepped up cliff with modern water supply; traditional massing retained.",
-  "contemporary": "Contemporary Haraz: stone cladding, stepped profile following topography, terrace gardens."
+  "contemporary": "Contemporary Haraz: stone cladding, stepped profile following topography, terrace gardens.",
+  "governorate_ar": "محافظة حجة",
+  "era_ar": "من العصور الوسطى حتى الحاضر",
+  "material_list_ar": [
+    "حجر مقطوع",
+    "حجر جيري",
+    "شيست"
+  ],
+  "elements_ar": [
+    "اندماج مع المنحدر",
+    "رصف حجري",
+    "بوابة دفاعية",
+    "صهريج مطري (بِركة)",
+    "برج مراقبة"
+  ],
+  "description_ar": "تضم منطقة حراز الجبلية في محافظة حجة أكثر عمارة اليمن الدفاعية إثارةً — قرى تنمو مباشرةً من وجوه المنحدرات، حيث تشكّل الصخرة الجيولوجية الجدار الخلفي للمباني. الحجّرة وشبام كوكبان هما المثالان البارزان.",
+  "traditional_ar": "يَنمو المبنى من وجه المنحدر؛ حجر الشيست المحلي مرصوف جافاً؛ وصهاريج محفورة في الصخر.",
+  "transitional_ar": "هيكل حجري متدرّج على المنحدر مع إمداد مائي حديث؛ مع الحفاظ على الكتلة التقليدية.",
+  "contemporary_ar": "حراز المعاصرة: تكسية حجرية، وهيئة متدرّجة تتبع التضاريس، وحدائق مدرّجة."
 }

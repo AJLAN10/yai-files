@@ -27,5 +27,23 @@
   ],
   "traditional": "Ashlar limestone monumental construction; massive hypostyle halls; dam sluice engineering.",
   "transitional": "Ma'rib vernacular — mudbrick with ashlar quoins, building massing echoing ancient tells.",
-  "contemporary": "Contemporary Ma'rib: light ashlar cladding, Sabaean geometric proportions, monument-respecting massing."
+  "contemporary": "Contemporary Ma'rib: light ashlar cladding, Sabaean geometric proportions, monument-respecting massing.",
+  "governorate_ar": "محافظة مأرب",
+  "era_ar": "ما قبل الإسلام حتى الحاضر",
+  "material_list_ar": [
+    "حجر جيري منحوت",
+    "طوب طيني",
+    "تراب"
+  ],
+  "elements_ar": [
+    "معبد أوام",
+    "صرح معبد بران",
+    "السد العظيم",
+    "جدار النقوش السبئية",
+    "قصور طينية"
+  ],
+  "description_ar": "مأرب هي أكثر مدن اليمن أهميةً أثريةً وأكثرها حياةً — عاصمة سبأ، وموقع معبد أوام (معبد القمر)، ومعبد بران (عرش بلقيس)، والسد العظيم الذي أعاد السبئيون بناءه وانهار كارثياً عام 570م. تُعاد مدينة مأرب الجديدة بناؤها باحترام حول هذه المعالم.",
+  "traditional_ar": "بناء صرحي من الحجر الجيري المنحوت؛ وقاعات ضخمة ذات أعمدة؛ وهندسة بوابات السد.",
+  "transitional_ar": "عمارة مأرب المحلية — طوب طيني بزوايا حجرية منحوتة، وكتل تحاكي التلال الأثرية.",
+  "contemporary_ar": "مأرب المعاصرة: تكسية حجرية خفيفة، ونسب سبئية هندسية، وكتل تحترم المعالم."
 }

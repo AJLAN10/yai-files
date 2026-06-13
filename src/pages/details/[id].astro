@@ -13,11 +13,13 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const c = entry.data;
 
+const PENDING = '(الترجمة العربية قيد الإعداد)';
 const registers = [
-  { key: 'Traditional', body: c.traditional },
-  { key: 'Transitional', body: c.transitional },
-  { key: 'Contemporary', body: c.contemporary },
+  { key: 'Traditional', key_ar: 'تقليدي', body: c.traditional, body_ar: c.traditional_ar },
+  { key: 'Transitional', key_ar: 'انتقالي', body: c.transitional, body_ar: c.transitional_ar },
+  { key: 'Contemporary', key_ar: 'معاصر', body: c.contemporary, body_ar: c.contemporary_ar },
 ];
+const riskAr: Record<string, string> = { low: 'منخفض', moderate: 'متوسط', high: 'عالٍ', severe: 'شديد' };
 ---
 <HeritageLayout
   title={`${c.name} — Architectural Character · YAI`}
@@ -29,35 +31,48 @@ const registers = [
   headingAr={c.name_ar}
   meta={[
     { label: 'No.', label_ar: 'رقم', value: c.num },
-    { label: 'Governorate', label_ar: 'المحافظة', value: c.governorate },
-    { label: 'Era', label_ar: 'الحقبة', value: c.era },
-    { label: 'Risk level', label_ar: 'مستوى الخطر', value: c.risk_level },
+    { label: 'Governorate', label_ar: 'المحافظة', value: c.governorate_ar ?? c.governorate },
+    { label: 'Era', label_ar: 'الحقبة', value: c.era_ar ?? c.era },
+    { label: 'Risk level', label_ar: 'مستوى الخطر', value: riskAr[c.risk_level] ?? c.risk_level },
   ]}
 >
-  <p class="lede">{c.description}</p>
+  <p class="lede">
+    <span class="en-only">{c.description}</span>
+    <span class="ar-only ar-text">{c.description_ar ?? PENDING}</span>
+  </p>
 
   <h2 class="section-title"><span class="en-only">Materials</span><span class="ar-only ar-text">المواد</span></h2>
-  <ul class="elements">
+  <ul class="elements en-only">
     {c.material_list.map((m) => <li class="element material">{m}</li>)}
+  </ul>
+  <ul class="elements ar-only">
+    {(c.material_list_ar ?? c.material_list).map((m) => <li class="element material ar-text">{m}</li>)}
   </ul>
 
   <h2 class="section-title"><span class="en-only">Defining elements</span><span class="ar-only ar-text">العناصر المميزة</span></h2>
-  <ul class="elements">
+  <ul class="elements en-only">
     {c.elements.map((el) => <li class="element">{el}</li>)}
+  </ul>
+  <ul class="elements ar-only">
+    {(c.elements_ar ?? c.elements).map((el) => <li class="element ar-text">{el}</li>)}
   </ul>
 
   <h2 class="section-title"><span class="en-only">Three registers</span><span class="ar-only ar-text">السجلات الثلاثة</span></h2>
   <div class="registers">
     {registers.map((r) => (
       <div class="register">
-        <span class="register-key">{r.key}</span>
-        <p class="register-body">{r.body}</p>
+        <span class="register-key"><span class="en-only">{r.key}</span><span class="ar-only ar-text">{r.key_ar}</span></span>
+        <p class="register-body">
+          <span class="en-only">{r.body}</span>
+          <span class="ar-only ar-text">{r.body_ar ?? PENDING}</span>
+        </p>
       </div>
     ))}
   </div>
 
   <p class="cross-ref">
-    Tagged: <span>{c.tag}</span> · <a href="/map">View on map</a>
+    <span class="en-only">Tagged: <span class="cr-em">{c.tag}</span> · <a href="/map">View on map</a></span>
+    <span class="ar-only ar-text">الوسم: <span class="cr-em">{c.tag_ar ?? c.tag}</span> · <a href="/map">عرض على الخريطة</a></span>
   </p>
 
   <style>
@@ -91,7 +106,7 @@ const registers = [
     }
     .register-body { margin-top: 0.35rem; line-height: 1.6; }
     .cross-ref { margin-top: 2.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
-    .cross-ref span { color: rgba(255,255,255,0.7); }
+    .cross-ref .cr-em { color: rgba(255,255,255,0.7); }
     .cross-ref a { color: var(--accent); }
     :global(html.lang-ar) .register { border-left: none; border-right: 2px solid var(--accent); padding: 0.25rem 1rem 0.25rem 0; }
   </style>

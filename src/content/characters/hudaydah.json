@@ -26,5 +26,22 @@
   ],
   "traditional": "Coral stone walls, projecting timber rawshan screens, central courtyard, squat mosque minaret.",
   "transitional": "Coral stone with cement mortar, simplified rawshan pattern, retained courtyard plan.",
-  "contemporary": "Contemporary Tihama: perforated concrete screens referencing rawshan geometry, passive ventilation."
+  "contemporary": "Contemporary Tihama: perforated concrete screens referencing rawshan geometry, passive ventilation.",
+  "governorate_ar": "محافظة الحديدة",
+  "era_ar": "من العثمانيين حتى القرن العشرين",
+  "material_list_ar": [
+    "حجر مرجاني",
+    "مشربية خشبية"
+  ],
+  "elements_ar": [
+    "مشربية (روشن)",
+    "كتلة مرجانية",
+    "مئذنة عثمانية",
+    "فناء (حوش)",
+    "خشب منحوت"
+  ],
+  "description_ar": "أنتج ساحل اليمن على البحر الأحمر عمارة فريدة تجمع بين جدران الكتل المرجانية، والمآذن المتأثرة بالعثمانيين، والمشربيات الخشبية المنحوتة بدقة (الروشن) التي ترشّح نسيم البحر والضوء. زبيد — يونسكو 1993 — جوهرة هذا التقليد.",
+  "traditional_ar": "جدران من الحجر المرجاني، ومشربيات خشبية بارزة، وفناء مركزي، ومئذنة جامع قصيرة.",
+  "transitional_ar": "حجر مرجاني بملاط إسمنتي، ونمط مشربية مبسّط، مع الحفاظ على مخطط الفناء.",
+  "contemporary_ar": "تهامة المعاصرة: حواجز خرسانية مفرّغة تستلهم هندسة الروشن، وتهوية سلبية."
 }

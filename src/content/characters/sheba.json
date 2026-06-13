@@ -26,5 +26,22 @@
   ],
   "traditional": "Massive limestone ashlar blocks, hypostyle halls, monumental gateway pylons.",
   "transitional": "Sabaean formal language adapted into early Islamic courtyard plans.",
-  "contemporary": "Contemporary Ma'rib inspired by pre-Islamic geometry and proportional systems."
+  "contemporary": "Contemporary Ma'rib inspired by pre-Islamic geometry and proportional systems.",
+  "governorate_ar": "مأرب · الجوف · شبوة",
+  "era_ar": "نحو 900 ق.م – 275 م",
+  "material_list_ar": [
+    "حجر جيري منحوت",
+    "مرمر"
+  ],
+  "elements_ar": [
+    "معبد صرحي",
+    "بناء حجري منحوت",
+    "نقوش سبئية",
+    "سد عظيم",
+    "قصور بأفنية"
+  ],
+  "description_ar": "أصل الحضارة اليمنية. أنتجت مملكة سبأ في مأرب بعضاً من أرقى العمارة الصرحية في العالم القديم — معبد أوام، ومعبد بران (عرش بلقيس)، وسد مأرب العظيم، أحد أعظم منجزات الهندسة في العالم القديم. أثّرت كتلها الحجرية المنحوتة، ونقوشها السبئية، وأنظمة الري المائية في كل تقليد بنائي لاحق في جنوب الجزيرة العربية. تراث عالمي لليونسكو 2023.",
+  "traditional_ar": "كتل حجرية جيرية ضخمة منحوتة، وقاعات ذات أعمدة، وبوابات صرحية ضخمة.",
+  "transitional_ar": "لغة سبئية رسمية كُيّفت في مخططات الأفنية الإسلامية المبكرة.",
+  "contemporary_ar": "مأرب المعاصرة مستلهَمة من الهندسة والنسب ما قبل الإسلامية."
 }

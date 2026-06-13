@@ -41,9 +41,12 @@ const characters = defineCollection({
     name: z.string(),
     name_ar: z.string().optional(),
     governorate: z.string(),
+    governorate_ar: z.string().optional(),
     type: characterType,
     era: z.string(),
+    era_ar: z.string().optional(),
     material_list: z.array(z.string()).min(1),
+    material_list_ar: z.array(z.string()).optional(),
     risk_level: riskLevel,
     geo_coordinates: geoPoint,
     /* One-line tagline for the map pin tooltip. */
@@ -52,10 +55,14 @@ const characters = defineCollection({
     description: z.string(),
     description_ar: z.string().optional(),
     elements: z.array(z.string()).min(1),
+    elements_ar: z.array(z.string()).optional(),
     /* The three-register narrative every character shares. */
     traditional: z.string(),
+    traditional_ar: z.string().optional(),
     transitional: z.string(),
+    transitional_ar: z.string().optional(),
     contemporary: z.string(),
+    contemporary_ar: z.string().optional(),
   }),
 });
 

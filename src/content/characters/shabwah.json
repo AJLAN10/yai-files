@@ -27,5 +27,23 @@
   ],
   "traditional": "Mudbrick palatial construction on ashlar plinth; decorated gate towers; internal courtyard.",
   "transitional": "Earth building tradition continuing from Shabwa to Shibam across the millennia.",
-  "contemporary": "Contemporary Shabwah: rammed earth with ashlar base; Hadramite proportions as design language."
+  "contemporary": "Contemporary Shabwah: rammed earth with ashlar base; Hadramite proportions as design language.",
+  "governorate_ar": "محافظة شبوة",
+  "era_ar": "حضرمي (نحو 400 ق.م) حتى الحاضر",
+  "material_list_ar": [
+    "طوب طيني",
+    "حجر جيري",
+    "تراب"
+  ],
+  "elements_ar": [
+    "قصور طينية",
+    "ساحة اللبان",
+    "بوابة حجرية منحوتة",
+    "صهريج قديم",
+    "خان تجاري"
+  ],
+  "description_ar": "كانت شبوة العاصمة القديمة لمملكة حضرموت — إحدى أغنى مدن طريق تجارة اللبان. يكشف الموقع الأثري عن عمارة قصورية طينية متطورة تمهّد مباشرةً لتقليد شبام بعد 3000 عام — مظهرةً استمراريةً حضاريةً استثنائية.",
+  "traditional_ar": "بناء قصوري طيني على قاعدة حجرية منحوتة؛ وأبراج بوابات مزخرفة؛ وفناء داخلي.",
+  "transitional_ar": "تقليد البناء الطيني مستمر من شبوة إلى شبام عبر الألفيات.",
+  "contemporary_ar": "شبوة المعاصرة: طين مدكوك بقاعدة حجرية؛ ونسب حضرمية كلغة تصميم."
 }

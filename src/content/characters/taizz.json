@@ -27,5 +27,23 @@
   ],
   "traditional": "Rasulid carved stucco facade, pointed arches, ablaq stonework in alternating courses.",
   "transitional": "Rasulid proportional language in contemporary stone construction with simplified ornament.",
-  "contemporary": "Contemporary Ta'izz: carved stucco motifs as precast screen elements; Rasulid arch profiles."
+  "contemporary": "Contemporary Ta'izz: carved stucco motifs as precast screen elements; Rasulid arch profiles.",
+  "governorate_ar": "محافظة تعز",
+  "era_ar": "رسولي (1229–1454) حتى الحاضر",
+  "material_list_ar": [
+    "حجر",
+    "طوب محروق",
+    "قاشاني عثماني"
+  ],
+  "elements_ar": [
+    "جامع رسولي",
+    "جص منحوت",
+    "مئذنة عثمانية",
+    "سور المدينة",
+    "سوق المدينة"
+  ],
+  "description_ar": "أكثر مدن اليمن الوسيطة تطبّقاً. كانت تعز عاصمة الدولة الرسولية — العصر الذهبي لعمارة اليمن — وتمثّل جوامعها المظفّر والأشرفية أرقى الجص المنحوت في شبه الجزيرة العربية. وتضيف المآذن العثمانية ومباني الحقبة الكولونيالية طبقات أخرى.",
+  "traditional_ar": "واجهة من الجص الرسولي المنحوت، وعقود مدبّبة، وحجارة أبلق بمداميك متناوبة.",
+  "transitional_ar": "لغة النسب الرسولية في بناء حجري معاصر بزخرفة مبسّطة.",
+  "contemporary_ar": "تعز المعاصرة: زخارف الجص المنحوت كعناصر حواجز مسبقة الصب؛ وملامح العقود الرسولية."
 }

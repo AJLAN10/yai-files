@@ -25,5 +25,21 @@
   ],
   "traditional": "Rammed-earth walls in 30cm courses, earthen minaret, flat roofs with crenelated parapets.",
   "transitional": "Stabilised rammed earth with lime admixture, traditional coursing pattern retained.",
-  "contemporary": "Contemporary Sa'dah: rammed-earth aesthetic with structural reinforcement, passive cooling."
+  "contemporary": "Contemporary Sa'dah: rammed-earth aesthetic with structural reinforcement, passive cooling.",
+  "governorate_ar": "محافظة صعدة",
+  "era_ar": "من العصور الوسطى حتى الحاضر",
+  "material_list_ar": [
+    "طين مدكوك (زبور)"
+  ],
+  "elements_ar": [
+    "مدماك الزبور",
+    "مدينة مسوّرة",
+    "مئذنة طينية",
+    "بوابة قبلية",
+    "لياسة طينية"
+  ],
+  "description_ar": "أكثر مدن اليمن المسوّرة المبنية بالطين المدكوك سلامةً. يصنع تقليد الزبور — الطين المدكوك بين قوالب — جدراناً بلون مغرة ذات أداء حراري استثنائي. السور الدفاعي الدائري والجامع الكبير هما المَعلمان البارزان.",
+  "traditional_ar": "جدران من الطين المدكوك بمداميك 30 سم، ومئذنة طينية، وأسطح مستوية بحواجز مسنّنة.",
+  "transitional_ar": "طين مدكوك مثبّت بإضافة الجير، مع الحفاظ على نمط المداميك ولون التربة.",
+  "contemporary_ar": "صعدة المعاصرة: جمالية الطين المدكوك مع تدعيم إنشائي وتبريد سلبي."
 }
