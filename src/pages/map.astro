@@ -33,16 +33,26 @@ const charData = characters
     id: e.id,
     num: e.data.num,
     name: e.data.name,
+    name_ar: e.data.name_ar ?? e.data.name,
     tag: e.data.tag,
+    tag_ar: e.data.tag_ar ?? e.data.tag,
     type: e.data.type,
     gov: e.data.governorate,
+    gov_ar: e.data.governorate_ar ?? e.data.governorate,
     material: e.data.material_list.join(' · '),
+    material_ar: (e.data.material_list_ar ?? e.data.material_list).join(' · '),
     period: e.data.era,
+    period_ar: e.data.era_ar ?? e.data.era,
     desc: e.data.description,
+    desc_ar: e.data.description_ar ?? e.data.description,
     elements: e.data.elements,
+    elements_ar: e.data.elements_ar ?? e.data.elements,
     trad: e.data.traditional,
+    trad_ar: e.data.traditional_ar ?? e.data.traditional,
     trans: e.data.transitional,
+    trans_ar: e.data.transitional_ar ?? e.data.transitional,
     cont: e.data.contemporary,
+    cont_ar: e.data.contemporary_ar ?? e.data.contemporary,
   }))
   .sort((a, b) => {
     const ia = order.indexOf(a.id), ib = order.indexOf(b.id);
@@ -63,14 +73,14 @@ const charData = characters
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     YAI
   </a>
-  <span class="nav-title">Architecture <span>Map</span></span>
+  <span class="nav-title">خريطة <span>العمارة</span></span>
   <div class="search-wrap">
     <span class="search-icon" aria-hidden="true">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     </span>
-    <input class="search-input" id="searchInput" type="search" placeholder="Search characters…" aria-label="Search architectural characters" autocomplete="off">
+    <input class="search-input" id="searchInput" type="search" placeholder="ابحث في الطوابع…" aria-label="ابحث في الطوابع المعمارية" autocomplete="off">
   </div>
-  <span class="nav-count" id="countLabel">23 characters</span>
+  <span class="nav-count" id="countLabel">13 طابعاً</span>
 </nav>
 
 <!-- LAYOUT -->
@@ -79,12 +89,12 @@ const charData = characters
   <!-- SIDEBAR -->
   <aside class="sidebar" role="complementary" aria-label="Character list">
     <div class="filter-bar" role="group" aria-label="Filter by type">
-      <button class="filter-btn active" data-f="all" aria-pressed="true">All</button>
-      <button class="filter-btn" data-f="highland" aria-pressed="false">Highland</button>
-      <button class="filter-btn" data-f="desert" aria-pressed="false">Desert</button>
-      <button class="filter-btn" data-f="coastal" aria-pressed="false">Coastal</button>
-      <button class="filter-btn" data-f="ancient" aria-pressed="false">Ancient</button>
-      <button class="filter-btn" data-f="island" aria-pressed="false">Island</button>
+      <button class="filter-btn active" data-f="all" aria-pressed="true">الكل</button>
+      <button class="filter-btn" data-f="highland" aria-pressed="false">مرتفعات</button>
+      <button class="filter-btn" data-f="desert" aria-pressed="false">صحراء</button>
+      <button class="filter-btn" data-f="coastal" aria-pressed="false">ساحل</button>
+      <button class="filter-btn" data-f="ancient" aria-pressed="false">قديم</button>
+      <button class="filter-btn" data-f="island" aria-pressed="false">جزيرة</button>
     </div>
     <div class="chars-list" id="charsList" role="list" aria-label="Architectural characters">
       <!-- Populated by JS -->
@@ -118,12 +128,11 @@ const charData = characters
 
     <!-- Map legend -->
     <div class="map-legend" aria-label="Map legend" role="list">
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#4ADE80"></div>Highland</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#FBBF24"></div>Desert</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#60A5FA"></div>Coastal</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#F59E0B"></div>Ancient</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#A78BFA"></div>Island</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#F59E0B;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)"></div>Sheba Kingdom</div>
+      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#4ADE80"></div>مرتفعات</div>
+      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#FBBF24"></div>صحراء</div>
+      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#60A5FA"></div>ساحل</div>
+      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#F59E0B"></div>قديم</div>
+      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#A78BFA"></div>جزيرة</div>
     </div>
 
     <!-- Boundary data attribution (ODbL — required) -->
@@ -154,23 +163,40 @@ const charData = characters
 
 /* ── Character data (from the `characters` collection) ── */
 const CHARACTERS = JSON.parse(document.getElementById('char-data').textContent);
+const AR = document.documentElement.classList.contains('lang-ar');
+const TYPE_AR = { highland:'مرتفعات', desert:'صحراء', coastal:'ساحل', ancient:'قديم', island:'جزيرة' };
+const LBL = {
+  primaryMaterial: AR?'المادة الأساسية':'Primary material',
+  period: AR?'الحقبة':'Period',
+  archChar: AR?'الطابع المعماري':'Architectural character',
+  elements: AR?'العناصر المميزة':'Signature elements',
+  typologies: AR?'النمطيات التصميمية':'Design typologies',
+  traditional: AR?'تقليدي':'Traditional', transitional: AR?'انتقالي':'Transitional', contemporary: AR?'معاصر':'Contemporary',
+  fullCard: AR?'بطاقة الطابع كاملة ←':'Full character card →',
+  character: AR?'طابع':'Character',
+};
+const pickC = (c) => AR ? {
+  name:c.name_ar, tag:c.tag_ar, gov:c.gov_ar, material:c.material_ar, period:c.period_ar,
+  desc:c.desc_ar, elements:c.elements_ar, trad:c.trad_ar, trans:c.trans_ar, cont:c.cont_ar,
+} : c;
 
 /* ── Build sidebar ── */
 const list = document.getElementById('charsList');
 CHARACTERS.forEach(c => {
+  const d = pickC(c);
   const item = document.createElement('div');
   item.className = `char-item${c.id==='sheba'?' sheba-item':''}`;
   item.dataset.id = c.id;
   item.dataset.type = c.type;
   item.setAttribute('role','listitem');
   item.setAttribute('tabindex','0');
-  item.setAttribute('aria-label', c.name);
+  item.setAttribute('aria-label', d.name);
   item.innerHTML = `
     <span class="char-type-dot"></span>
     <div class="char-info">
       <div class="char-num">${c.num}</div>
-      <div class="char-name">${c.name}</div>
-      <div class="char-tag">${c.tag}</div>
+      <div class="char-name">${d.name}</div>
+      <div class="char-tag">${d.tag}</div>
     </div>
     <svg class="char-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
   `;
@@ -200,33 +226,34 @@ function openChar(id) {
   const mm = document.querySelector(`.gov-region[data-char="${id}"]`);
   if (mm) mm.classList.add('active');
 
-  dpNum.textContent = `Character ${c.num}`;
+  const d = pickC(c);
+  dpNum.textContent = `${LBL.character} ${c.num}`;
   dpBody.innerHTML = `
-    <div class="dp-type-badge" data-t="${c.type}"><span>${c.type.charAt(0).toUpperCase()+c.type.slice(1)}</span></div>
-    <div class="dp-name">${c.name}</div>
-    <div class="dp-gov">${c.gov}</div>
+    <div class="dp-type-badge" data-t="${c.type}"><span>${AR ? TYPE_AR[c.type] : c.type.charAt(0).toUpperCase()+c.type.slice(1)}</span></div>
+    <div class="dp-name">${d.name}</div>
+    <div class="dp-gov">${d.gov}</div>
     <div class="dp-stats">
-      <div class="dp-stat"><span class="dp-stat-val">${c.material.split('·')[0].trim()}</span><span class="dp-stat-lbl">Primary material</span></div>
-      <div class="dp-stat"><span class="dp-stat-val">${c.period}</span><span class="dp-stat-lbl">Period</span></div>
+      <div class="dp-stat"><span class="dp-stat-val">${d.material.split('·')[0].trim()}</span><span class="dp-stat-lbl">${LBL.primaryMaterial}</span></div>
+      <div class="dp-stat"><span class="dp-stat-val">${d.period}</span><span class="dp-stat-lbl">${LBL.period}</span></div>
     </div>
     <div class="dp-section">
-      <div class="dp-section-title">Architectural character</div>
-      <p class="dp-text">${c.desc}</p>
+      <div class="dp-section-title">${LBL.archChar}</div>
+      <p class="dp-text">${d.desc}</p>
     </div>
     <div class="dp-section">
-      <div class="dp-section-title">Signature elements</div>
-      <div class="dp-elements">${c.elements.map(e=>`<span class="dp-el">${e}</span>`).join('')}</div>
+      <div class="dp-section-title">${LBL.elements}</div>
+      <div class="dp-elements">${d.elements.map(e=>`<span class="dp-el">${e}</span>`).join('')}</div>
     </div>
     <div class="dp-section">
-      <div class="dp-section-title">Design typologies</div>
+      <div class="dp-section-title">${LBL.typologies}</div>
       <div class="dp-typologies">
-        <div class="dp-typo trad"><div class="dp-typo-label">Traditional</div><div class="dp-typo-desc">${c.trad}</div></div>
-        <div class="dp-typo trans"><div class="dp-typo-label">Transitional</div><div class="dp-typo-desc">${c.trans}</div></div>
-        <div class="dp-typo cont"><div class="dp-typo-label">Contemporary</div><div class="dp-typo-desc">${c.cont}</div></div>
+        <div class="dp-typo trad"><div class="dp-typo-label">${LBL.traditional}</div><div class="dp-typo-desc">${d.trad}</div></div>
+        <div class="dp-typo trans"><div class="dp-typo-label">${LBL.transitional}</div><div class="dp-typo-desc">${d.trans}</div></div>
+        <div class="dp-typo cont"><div class="dp-typo-label">${LBL.contemporary}</div><div class="dp-typo-desc">${d.cont}</div></div>
       </div>
     </div>
     <div class="dp-actions">
-      <button class="dp-btn-primary" onclick="window.location='/details/${c.id}'">Full character card →</button>
+      <button class="dp-btn-primary" onclick="window.location='/details/${c.id}'">${LBL.fullCard}</button>
       <button class="dp-btn-secondary" onclick="window.location='/code'">YBC</button>
     </div>
   `;
@@ -252,7 +279,8 @@ const tooltip = document.getElementById('mapTooltip');
 document.querySelectorAll('.gov-region').forEach(m => {
   m.addEventListener('mouseenter', () => {
     const c = CHARACTERS.find(x=>x.id===m.dataset.char);
-    tooltip.textContent = c ? `${c.name} — ${c.tag}` : (m.getAttribute('aria-label') || '');
+    const d = c ? pickC(c) : null;
+    tooltip.textContent = d ? `${d.name} — ${d.tag}` : (m.getAttribute('aria-label') || '');
     tooltip.classList.add('visible');
   });
   m.addEventListener('mousemove', e => {
@@ -295,7 +323,8 @@ document.getElementById('searchInput').addEventListener('input', function() {
   document.querySelectorAll('.char-item').forEach(item => {
     const c = CHARACTERS.find(x => x.id===item.dataset.id);
     if (!c) return;
-    const match = !q || c.name.toLowerCase().includes(q) || c.tag.toLowerCase().includes(q) || c.gov.toLowerCase().includes(q);
+    const hay = [c.name,c.tag,c.gov,c.name_ar,c.tag_ar,c.gov_ar].join(' ').toLowerCase();
+    const match = !q || hay.includes(q);
     item.classList.toggle('hidden', !match);
     if (match) visible++;
   });
@@ -472,4 +501,11 @@ button{border:none;cursor:pointer;font:inherit}
   .detail-panel.open{right:0}
   .map-legend{bottom:1rem;left:1rem}
 }
+</style>
+
+<!-- map.astro doesn't import global.css; declare the EN/AR toggle globally
+     so the SVG labels + credit hide correctly (not scope-rewritten). -->
+<style is:global>
+html.lang-ar .en-only { display: none !important; }
+html.lang-en .ar-only { display: none !important; }
 </style>
