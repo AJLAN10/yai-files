@@ -10,7 +10,24 @@ const order = [
   'sheba', 'sanaa-capital', 'hadramawt', 'sadah', 'hudaydah', 'socotra',
   'aden', 'hajjah', 'taizz', 'marib', 'ibb', 'lahij', 'shabwah',
 ];
+import govMap from '../data/yemen-governorates.json';
+
 const characters = await getCollection('characters');
+/* Governorate regions joined with their character (type colours the
+   region; char drives the click target). */
+const charByGov = new Map(characters.map((c) => [c.id, c.data]));
+/* Rough label anchor = average of the path's points. */
+const centroid = (d: string) => {
+  const nums = d.match(/-?\d+(?:\.\d+)?/g)?.map(Number) ?? [];
+  let sx = 0, sy = 0, n = 0;
+  for (let i = 0; i + 1 < nums.length; i += 2) { sx += nums[i]; sy += nums[i + 1]; n++; }
+  return n ? { cx: Math.round(sx / n), cy: Math.round(sy / n) } : { cx: 0, cy: 0 };
+};
+const regions = govMap.regions.map((r) => ({
+  ...r,
+  type: r.char ? charByGov.get(r.char)?.type ?? null : null,
+  ...centroid(r.d),
+}));
 const charData = characters
   .map((e) => ({
     id: e.id,
@@ -76,122 +93,27 @@ const charData = characters
 
   <!-- MAP AREA -->
   <main class="map-area" role="main" aria-label="Interactive Yemen map">
-    <svg class="yemen-svg" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg"
-         role="img" aria-label="Yemen architectural characters map — click a city to view its character">
-      <title>Yemen Architecture Initiative — 23 Architectural Characters Map</title>
-      <defs>
-        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#C4A77D" stop-opacity="0.15"/>
-          <stop offset="100%" stop-color="#C4A77D" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-
-      <!-- Background glow -->
-      <ellipse cx="350" cy="200" rx="320" ry="170" fill="url(#glow)"/>
-
-      <!-- Yemen mainland outline -->
-      <path class="map-country" d="
-        M 55 170 L 68 145 L 85 125 L 108 108 L 138 96 L 172 87
-        L 210 81 L 252 76 L 295 73 L 338 71 L 378 70 L 415 72
-        L 448 78 L 475 88 L 496 100 L 510 118 L 516 140 L 512 164
-        L 500 182 L 480 196 L 455 208 L 422 218 L 385 226 L 342 231
-        L 294 235 L 245 237 L 196 235 L 152 229 L 115 219 L 84 205
-        L 62 190 Z
-      "/>
-
-      <!-- Internal governorate boundary hints -->
-      <path class="map-border-inner" d="
-        M 200 87 L 190 160 M 295 73 L 290 170 M 415 72 L 405 180
-        M 150 96 L 152 229 M 250 76 L 245 237 M 380 70 L 385 226
-        M 108 108 L 115 219 M 475 88 L 455 208
-      "/>
-
-      <!-- Socotra island -->
-      <ellipse class="map-socotra" cx="610" cy="330" rx="50" ry="22"/>
-
-      <!-- ── CITY MARKERS ── -->
-      <!-- HIGHLAND -->
-      <g class="city-marker" data-id="sanaa-capital" data-type="highland" tabindex="0" role="button" aria-label="Sana'a Capital">
-        <circle cx="210" cy="150" r="5"/><text x="220" y="150">Sana'a Capital</text>
-      </g>
-      <g class="city-marker" data-id="sanaa-gov" data-type="highland" tabindex="0" role="button" aria-label="Sana'a Governorate">
-        <circle cx="235" cy="165" r="4"/><text x="245" y="165">Sana'a Gov.</text>
-      </g>
-      <g class="city-marker" data-id="hajjah" data-type="highland" tabindex="0" role="button" aria-label="Hajjah">
-        <circle cx="148" cy="148" r="4"/><text x="117" y="148">Hajjah</text>
-      </g>
-      <g class="city-marker" data-id="amran" data-type="highland" tabindex="0" role="button" aria-label="Amran">
-        <circle cx="195" cy="133" r="4"/><text x="175" y="127">Amran</text>
-      </g>
-      <g class="city-marker" data-id="mahwit" data-type="highland" tabindex="0" role="button" aria-label="Al Mahwit">
-        <circle cx="170" cy="125" r="4"/><text x="140" y="118">Al Mahwit</text>
-      </g>
-      <g class="city-marker" data-id="ibb" data-type="highland" tabindex="0" role="button" aria-label="Ibb">
-        <circle cx="255" cy="193" r="4"/><text x="265" y="193">Ibb</text>
-      </g>
-      <g class="city-marker" data-id="taizz" data-type="highland" tabindex="0" role="button" aria-label="Ta'izz">
-        <circle cx="250" cy="215" r="4"/><text x="260" y="215">Ta'izz</text>
-      </g>
-      <g class="city-marker" data-id="dhamar" data-type="highland" tabindex="0" role="button" aria-label="Dhamar">
-        <circle cx="228" cy="180" r="4"/><text x="238" y="180">Dhamar</text>
-      </g>
-      <g class="city-marker" data-id="raymah" data-type="highland" tabindex="0" role="button" aria-label="Raymah">
-        <circle cx="165" cy="172" r="4"/><text x="135" y="172">Raymah</text>
-      </g>
-      <g class="city-marker" data-id="albayda" data-type="highland" tabindex="0" role="button" aria-label="Al Bayda">
-        <circle cx="290" cy="188" r="4"/><text x="298" y="183">Al Bayda</text>
-      </g>
-      <g class="city-marker" data-id="addali" data-type="highland" tabindex="0" role="button" aria-label="Ad Dali'">
-        <circle cx="270" cy="210" r="4"/><text x="278" y="210">Ad Dali'</text>
-      </g>
-
-      <!-- DESERT -->
-      <g class="city-marker" data-id="sadah" data-type="desert" tabindex="0" role="button" aria-label="Sa'dah">
-        <circle cx="118" cy="110" r="4"/><text x="90" y="105">Sa'dah</text>
-      </g>
-      <g class="city-marker" data-id="aljawf" data-type="desert" tabindex="0" role="button" aria-label="Al Jawf">
-        <circle cx="308" cy="100" r="4"/><text x="316" y="96">Al Jawf</text>
-      </g>
-      <g class="city-marker" data-id="marib" data-type="ancient" tabindex="0" role="button" aria-label="Ma'rib">
-        <circle cx="362" cy="122" r="4"/><text x="370" y="118">Ma'rib</text>
-      </g>
-
-      <!-- COASTAL -->
-      <g class="city-marker" data-id="hudaydah" data-type="coastal" tabindex="0" role="button" aria-label="Al Hudaydah">
-        <circle cx="122" cy="193" r="4"/><text x="88" y="199">Hudaydah</text>
-      </g>
-      <g class="city-marker" data-id="aden" data-type="coastal" tabindex="0" role="button" aria-label="Aden">
-        <circle cx="270" cy="235" r="5"/><text x="280" y="235">Aden</text>
-      </g>
-      <g class="city-marker" data-id="lahij" data-type="coastal" tabindex="0" role="button" aria-label="Lahij">
-        <circle cx="235" cy="228" r="4"/><text x="215" y="242">Lahij</text>
-      </g>
-      <g class="city-marker" data-id="abyan" data-type="coastal" tabindex="0" role="button" aria-label="Abyan">
-        <circle cx="318" cy="228" r="4"/><text x="326" y="228">Abyan</text>
-      </g>
-      <g class="city-marker" data-id="shabwah" data-type="ancient" tabindex="0" role="button" aria-label="Shabwah">
-        <circle cx="390" cy="188" r="4"/><text x="398" y="184">Shabwah</text>
-      </g>
-      <g class="city-marker" data-id="hadramawt" data-type="ancient" tabindex="0" role="button" aria-label="Hadramawt">
-        <circle cx="448" cy="162" r="4"/><text x="456" y="158">Hadramawt</text>
-      </g>
-      <g class="city-marker" data-id="almahrah" data-type="coastal" tabindex="0" role="button" aria-label="Al Mahrah">
-        <circle cx="498" cy="182" r="4"/><text x="472" y="196">Al Mahrah</text>
-      </g>
-
-      <!-- ISLAND -->
-      <g class="city-marker" data-id="socotra" data-type="island" tabindex="0" role="button" aria-label="Socotra">
-        <circle cx="610" cy="330" r="5"/><text x="620" y="330">Socotra</text>
-      </g>
-
-      <!-- SHEBA KINGDOM star marker -->
-      <polygon class="sheba-star" data-id="sheba"
-        points="362,100 366,114 380,114 369,123 373,137 362,128 351,137 355,123 344,114 358,114"
-        tabindex="0" role="button" aria-label="Kingdom of Sheba — Ma'rib UNESCO 2023"/>
-      <text x="372" y="102" style="font-family:'DM Sans',system-ui;font-size:8px;fill:rgba(245,158,11,0.7);pointer-events:none">Sheba ★</text>
-
-      <!-- Socotra connector line -->
-      <line x1="500" y1="208" x2="580" y2="315" stroke="rgba(167,139,250,0.15)" stroke-width="1" stroke-dasharray="4,6"/>
+    <svg class="yemen-svg" viewBox={`0 0 ${govMap.width} ${govMap.height}`} xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="Interactive map of Yemen's 22 governorates — select a governorate to view its architectural character">
+      <title>Yemen Architecture Initiative — governorate map</title>
+      {regions.map((r) => (
+        <path
+          class={`gov-region${r.char ? ' has-char' : ''}`}
+          d={r.d}
+          data-gov={r.slug}
+          data-char={r.char ?? ''}
+          data-type={r.type ?? 'none'}
+          tabindex={r.char ? '0' : '-1'}
+          role={r.char ? 'button' : 'presentation'}
+          aria-label={r.en}
+        ><title>{r.en}</title></path>
+      ))}
+      {regions.filter((r) => r.char).map((r) => (
+        <>
+          <text class="gov-label en-only" x={r.cx} y={r.cy} data-char={r.char}>{r.en}</text>
+          <text class="gov-label ar-only ar-text" x={r.cx} y={r.cy} data-char={r.char}>{r.ar}</text>
+        </>
+      ))}
     </svg>
 
     <!-- Map legend -->
@@ -202,6 +124,12 @@ const charData = characters
       <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#F59E0B"></div>Ancient</div>
       <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#A78BFA"></div>Island</div>
       <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#F59E0B;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)"></div>Sheba Kingdom</div>
+    </div>
+
+    <!-- Boundary data attribution (ODbL — required) -->
+    <div class="map-credit">
+      <span class="en-only">Governorate boundaries: © OpenStreetMap contributors (ODbL), via geoBoundaries</span>
+      <span class="ar-only ar-text">حدود المحافظات: © مساهمو OpenStreetMap (ODbL)، عبر geoBoundaries</span>
     </div>
 
     <!-- Tooltip -->
@@ -267,9 +195,9 @@ function openChar(id) {
   const si = document.querySelector(`.char-item[data-id="${id}"]`);
   if (si) { si.classList.add('active'); si.scrollIntoView({block:'nearest',behavior:'smooth'}); }
 
-  // Map marker highlight
-  document.querySelectorAll('.city-marker').forEach(m => m.classList.remove('active'));
-  const mm = document.querySelector(`.city-marker[data-id="${id}"]`);
+  // Map region highlight
+  document.querySelectorAll('.gov-region').forEach(m => m.classList.remove('active'));
+  const mm = document.querySelector(`.gov-region[data-char="${id}"]`);
   if (mm) mm.classList.add('active');
 
   dpNum.textContent = `Character ${c.num}`;
@@ -309,23 +237,22 @@ function openChar(id) {
 document.getElementById('closePanelBtn').addEventListener('click', () => {
   detailPanel.classList.remove('open');
   detailPanel.removeAttribute('aria-modal');
-  document.querySelectorAll('.char-item,.city-marker').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.char-item,.gov-region').forEach(e => e.classList.remove('active'));
   activeId = null;
 });
 
-/* ── Map markers ── */
-document.querySelectorAll('.city-marker,.sheba-star').forEach(m => {
-  m.addEventListener('click', () => openChar(m.dataset.id));
-  m.addEventListener('keydown', e => { if(e.key==='Enter') openChar(m.dataset.id); });
+/* ── Governorate regions (only those with a character card) ── */
+document.querySelectorAll('.gov-region.has-char').forEach(m => {
+  m.addEventListener('click', () => openChar(m.dataset.char));
+  m.addEventListener('keydown', e => { if(e.key==='Enter') openChar(m.dataset.char); });
 });
 
 /* ── Tooltip ── */
 const tooltip = document.getElementById('mapTooltip');
-document.querySelectorAll('.city-marker').forEach(m => {
-  m.addEventListener('mouseenter', e => {
-    const c = CHARACTERS.find(x=>x.id===m.dataset.id);
-    if (!c) return;
-    tooltip.textContent = `${c.name} — ${c.tag}`;
+document.querySelectorAll('.gov-region').forEach(m => {
+  m.addEventListener('mouseenter', () => {
+    const c = CHARACTERS.find(x=>x.id===m.dataset.char);
+    tooltip.textContent = c ? `${c.name} — ${c.tag}` : (m.getAttribute('aria-label') || '');
     tooltip.classList.add('visible');
   });
   m.addEventListener('mousemove', e => {
@@ -354,13 +281,10 @@ function filterChars() {
     item.classList.toggle('hidden', !show);
     if (show) visible++;
   });
-  document.querySelectorAll('.city-marker').forEach(m => {
-    const show = activeFilter==='all' || m.dataset.type===activeFilter;
-    m.style.opacity = show ? '1' : '0.15';
-    m.style.pointerEvents = show ? '' : 'none';
+  document.querySelectorAll('.gov-region.has-char').forEach(m => {
+    const dim = activeFilter!=='all' && m.dataset.type!==activeFilter;
+    m.classList.toggle('dim', dim);
   });
-  const sheba = document.querySelector('.sheba-star');
-  if (sheba) { const show = activeFilter==='all'||activeFilter==='ancient'; sheba.style.opacity=show?'1':'0.15'; }
   document.getElementById('countLabel').textContent = `${visible} character${visible!==1?'s':''}`;
 }
 
@@ -458,33 +382,30 @@ button{border:none;cursor:pointer;font:inherit}
 .map-area::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 0 l28 16 0 68 -28 16 -28-16 0-68z' fill='none' stroke='%23C4A77D' stroke-width='0.5' stroke-opacity='0.04'/%3E%3C/svg%3E");background-size:56px 100px;pointer-events:none}
 .map-area::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to top,rgba(15,23,42,0.6),transparent);pointer-events:none;z-index:1}
 
-.yemen-svg{width:90%;max-width:900px;height:auto;position:relative;z-index:2;filter:drop-shadow(0 8px 40px rgba(0,0,0,0.4))}
+.yemen-svg{width:96%;max-width:1000px;height:auto;position:relative;z-index:2;filter:drop-shadow(0 8px 40px rgba(0,0,0,0.4))}
 
-/* SVG element styles */
-.map-country{fill:rgba(196,167,125,0.06);stroke:rgba(196,167,125,0.2);stroke-width:1.5;transition:fill 0.2s}
-.map-socotra{fill:rgba(196,167,125,0.06);stroke:rgba(196,167,125,0.2);stroke-width:1.5}
-.map-border-inner{fill:none;stroke:rgba(255,255,255,0.04);stroke-width:0.8;stroke-dasharray:3,4}
+/* ── Governorate regions ── */
+.gov-region{fill:rgba(196,167,125,0.05);stroke:rgba(15,23,42,0.9);stroke-width:1;stroke-linejoin:round;transition:fill 0.18s,opacity 0.18s;vector-effect:non-scaling-stroke}
+.gov-region.has-char{cursor:pointer}
+.gov-region.has-char:hover,.gov-region.has-char:focus-visible{outline:none}
+.gov-region.dim{opacity:0.2}
+/* type fills (only governorates that own a character card) */
+.gov-region[data-type="highland"]{fill:rgba(74,222,128,0.30)}
+.gov-region[data-type="desert"]{fill:rgba(251,191,36,0.30)}
+.gov-region[data-type="coastal"]{fill:rgba(96,165,250,0.30)}
+.gov-region[data-type="ancient"]{fill:rgba(245,158,11,0.32)}
+.gov-region[data-type="island"]{fill:rgba(167,139,250,0.32)}
+.gov-region[data-type="highland"]:hover,.gov-region[data-type="highland"].active{fill:rgba(74,222,128,0.6)}
+.gov-region[data-type="desert"]:hover,.gov-region[data-type="desert"].active{fill:rgba(251,191,36,0.6)}
+.gov-region[data-type="coastal"]:hover,.gov-region[data-type="coastal"].active{fill:rgba(96,165,250,0.6)}
+.gov-region[data-type="ancient"]:hover,.gov-region[data-type="ancient"].active{fill:rgba(245,158,11,0.65)}
+.gov-region[data-type="island"]:hover,.gov-region[data-type="island"].active{fill:rgba(167,139,250,0.65)}
+.gov-region.active{stroke:#fff;stroke-width:1.5}
 
-.city-marker{cursor:pointer;transition:all 0.2s}
-.city-marker circle{fill:rgba(255,255,255,0.08);stroke-width:1.2;transition:all 0.2s}
-.city-marker text{font-family:'DM Sans',system-ui,sans-serif;font-size:9px;fill:rgba(255,255,255,0.4);pointer-events:none;transition:fill 0.2s;dominant-baseline:central}
-.city-marker:hover circle,.city-marker.active circle{r:7;fill:currentColor;stroke:currentColor}
-.city-marker:hover text,.city-marker.active text{fill:rgba(255,255,255,0.9)}
-
-.city-marker[data-type="highland"] circle{stroke:#4ADE80}
-.city-marker[data-type="highland"]{color:#4ADE80}
-.city-marker[data-type="desert"]   circle{stroke:#FBBF24}
-.city-marker[data-type="desert"]{color:#FBBF24}
-.city-marker[data-type="coastal"]  circle{stroke:#60A5FA}
-.city-marker[data-type="coastal"]{color:#60A5FA}
-.city-marker[data-type="ancient"]  circle{stroke:#F59E0B}
-.city-marker[data-type="ancient"]{color:#F59E0B}
-.city-marker[data-type="island"]   circle{stroke:#A78BFA}
-.city-marker[data-type="island"]{color:#A78BFA}
-
-/* Sheba star */
-.sheba-star{fill:rgba(180,83,9,0.6);stroke:#F59E0B;stroke-width:0.8;cursor:pointer;transition:all 0.2s;filter:drop-shadow(0 0 6px rgba(245,158,11,0.4))}
-.sheba-star:hover{fill:rgba(180,83,9,0.9);filter:drop-shadow(0 0 12px rgba(245,158,11,0.7))}
+.gov-label{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;fill:rgba(255,255,255,0.92);text-anchor:middle;dominant-baseline:central;pointer-events:none;paint-order:stroke;stroke:rgba(15,23,42,0.8);stroke-width:3px;font-weight:600}
+.gov-label.ar-text{font-family:var(--f-ar-display,'Amiri',serif)}
+.map-credit{position:absolute;bottom:8px;right:12px;z-index:3;font-size:0.62rem;color:rgba(255,255,255,0.3);max-width:60%;text-align:right}
+:where(html.lang-ar) .map-credit{right:auto;left:12px;text-align:left}
 
 /* ── DETAIL PANEL (slides in from right) ── */
 .detail-panel{position:absolute;top:0;right:-440px;bottom:0;width:420px;background:#0B1120;border-left:1px solid rgba(255,255,255,0.08);z-index:50;overflow-y:auto;transition:right 0.3s cubic-bezier(0.4,0,0.2,1);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent}
