@@ -128,12 +128,17 @@ const kingdoms = defineCollection({
     name_ar: z.string(),
     era: z.enum(['pre', 'islamic']),
     dates: z.string(),
+    dates_ar: z.string().optional(),
     capital: z.string(),
+    capital_ar: z.string().optional(),
     description: z.string(),
+    description_ar: z.string().optional(),
     /* Signature architectural works/elements. */
     architecture: z.array(z.string()).min(1),
+    architecture_ar: z.array(z.string()).optional(),
     /* Research/status badges (UNESCO, excavations, gaps…). */
     badges: z.array(z.string()),
+    badges_ar: z.array(z.string()).optional(),
     /* Sheba gets special foundational-character treatment. */
     special: z.boolean().default(false),
     /* Chronological position for ordering. */

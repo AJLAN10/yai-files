@@ -5,7 +5,28 @@
   "dates": "1047–1138 CE",
   "capital": "Jiblah · Ibb Governorate",
   "description": "Yemen's most celebrated dynasty is remarkable for the reign of Queen Arwa al-Sulayhi (r. 1091–1138) — one of history's greatest architectural patrons and the only woman to have her name recited in Friday prayers. Her mosque and palace complex at Jiblah, her restoration of the Sana'a Great Mosque, and her network of Ismaili learning institutions represent the high point of Sulayhid patronage.",
-  "architecture": ["Queen Arwa's mosque (Jiblah)", "Jiblah palace remains", "Ismaili da'wa architecture", "Sana'a Great Mosque restoration"],
-  "badges": ["Queen Arwa (legendary)", "Ismaili patronage"],
-  "order": 8
+  "architecture": [
+    "Queen Arwa's mosque (Jiblah)",
+    "Jiblah palace remains",
+    "Ismaili da'wa architecture",
+    "Sana'a Great Mosque restoration"
+  ],
+  "badges": [
+    "Queen Arwa (legendary)",
+    "Ismaili patronage"
+  ],
+  "order": 8,
+  "dates_ar": "1047–1138 م",
+  "capital_ar": "جِبلة · محافظة إب",
+  "description_ar": "أبرز سلالات اليمن، تتميّز بعهد الملكة أروى الصليحية (حكمت 1091–1138) — إحدى أعظم رعاة العمارة في التاريخ والمرأة الوحيدة التي ذُكر اسمها في خطبة الجمعة. يمثّل جامعها وقصرها في جِبلة، وترميمها للجامع الكبير بصنعاء، وشبكتها من مؤسسات التعليم الإسماعيلي ذروة الرعاية الصليحية.",
+  "architecture_ar": [
+    "جامع الملكة أروى (جِبلة)",
+    "بقايا قصر جِبلة",
+    "عمارة الدعوة الإسماعيلية",
+    "ترميم الجامع الكبير بصنعاء"
+  ],
+  "badges_ar": [
+    "الملكة أروى (أسطورية)",
+    "رعاية إسماعيلية"
+  ]
 }

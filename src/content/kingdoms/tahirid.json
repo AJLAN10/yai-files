@@ -5,7 +5,24 @@
   "dates": "1454–1526 CE",
   "capital": "Rada' · Ta'izz",
   "description": "The Tahirids succeeded the Rasulids and maintained their architectural patronage — the Great Mosque of Rada' with its extraordinary carved stucco interior is the primary Tahirid monument and one of the finest examples of medieval Yemeni religious architecture. Their reign ended with the first Ottoman conquest.",
-  "architecture": ["Great Mosque of Rada'", "Tahirid fort architecture", "Stucco interior screen"],
-  "badges": ["Post-Rasulid patronage"],
-  "order": 10
+  "architecture": [
+    "Great Mosque of Rada'",
+    "Tahirid fort architecture",
+    "Stucco interior screen"
+  ],
+  "badges": [
+    "Post-Rasulid patronage"
+  ],
+  "order": 10,
+  "dates_ar": "1454–1526 م",
+  "capital_ar": "رداع · تعز",
+  "description_ar": "خَلَف الطاهريون الرسوليين وحافظوا على رعايتهم المعمارية — الجامع العامري برداع بداخله الجصّي المنحوت الاستثنائي هو المَعلم الطاهري الأبرز وأحد أرقى أمثلة العمارة الدينية اليمنية في العصور الوسطى. انتهى حكمهم بالفتح العثماني الأول.",
+  "architecture_ar": [
+    "الجامع العامري (رداع)",
+    "عمارة الحصون الطاهرية",
+    "حاجز داخلي من الجص"
+  ],
+  "badges_ar": [
+    "رعاية ما بعد الرسوليين"
+  ]
 }

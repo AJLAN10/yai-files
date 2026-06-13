@@ -14,10 +14,15 @@ const kingdomData = kingdoms
     name: e.data.name,
     ar: e.data.name_ar,
     dates: e.data.dates,
+    dates_ar: e.data.dates_ar ?? e.data.dates,
     capital: e.data.capital,
+    capital_ar: e.data.capital_ar ?? e.data.capital,
     desc: e.data.description,
+    desc_ar: e.data.description_ar ?? e.data.description,
     arch: e.data.architecture,
+    arch_ar: e.data.architecture_ar ?? e.data.architecture,
     badges: e.data.badges,
+    badges_ar: e.data.badges_ar ?? e.data.badges,
     special: e.data.special || undefined,
   }));
 ---
@@ -31,26 +36,26 @@ const kingdomData = kingdoms
 
 <nav class="nav" role="navigation">
   <a href="/" class="nav-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>YAI</a>
-  <span class="nav-title">Kingdom Archives</span>
-  <span class="nav-badge">5 sectors · Archives</span>
-  <div class="era-switch" role="group" aria-label="Filter by era">
-    <button class="era-btn active" data-era="all">All eras</button>
-    <button class="era-btn" data-era="pre">Pre-Islamic</button>
-    <button class="era-btn" data-era="islamic">Islamic</button>
+  <span class="nav-title">التاريخ</span>
+  <span class="nav-badge">قطاع · التاريخ</span>
+  <div class="era-switch" role="group" aria-label="التصفية حسب الحقبة">
+    <button class="era-btn active" data-era="all">كل الحقب</button>
+    <button class="era-btn" data-era="pre">ما قبل الإسلام</button>
+    <button class="era-btn" data-era="islamic">إسلامية</button>
   </div>
 </nav>
 
-<section class="hero" aria-label="Kingdom Archives hero">
+<section class="hero" aria-label="مقدمة أرشيف الممالك">
   <div class="hero-inner">
     <div class="hero-ar-bg" aria-hidden="true">ممالك اليمن</div>
-    <p class="hero-eyebrow">Historical archives — 800 BCE to 1918 CE</p>
-    <h1 class="hero-title">The <em>kingdoms</em><br>of Yemen</h1>
-    <p class="hero-sub">Thirteen kingdoms and dynasties across 2,700 years — each leaving a distinct architectural legacy that shaped the built environment we document today. From the Sabaean temples of Marib to the Rasulid mosques of Ta'izz, every governorate carries the physical memory of its rulers.</p>
+    <p class="hero-eyebrow">أرشيف تاريخي — 800 ق.م حتى 1918 م</p>
+    <h1 class="hero-title ar-kashida">ممـــالك<br><em>اليمـــن</em></h1>
+    <p class="hero-sub">ثلاث عشرة مملكة وسلالة عبر 2700 عام — تركت كلٌّ منها إرثاً معمارياً متميّزاً شكّل البيئة المبنية التي نوثّقها اليوم. من معابد سبأ في مأرب إلى جوامع الرسوليين في تعز، تحمل كل محافظة الذاكرة المادية لحكّامها.</p>
     <div class="hero-stats">
-      <div class="hs-item"><span class="hs-num">13</span><span class="hs-lbl">Kingdoms & dynasties</span></div>
-      <div class="hs-item"><span class="hs-num">2,700</span><span class="hs-lbl">Years documented</span></div>
-      <div class="hs-item"><span class="hs-num">4</span><span class="hs-lbl">UNESCO heritage zones</span></div>
-      <div class="hs-item"><span class="hs-num">7</span><span class="hs-lbl">Pre-Islamic kingdoms</span></div>
+      <div class="hs-item"><span class="hs-num">13</span><span class="hs-lbl">مملكة وسلالة</span></div>
+      <div class="hs-item"><span class="hs-num">2,700</span><span class="hs-lbl">عام موثّق</span></div>
+      <div class="hs-item"><span class="hs-num">4</span><span class="hs-lbl">مناطق تراث عالمي</span></div>
+      <div class="hs-item"><span class="hs-num">7</span><span class="hs-lbl">ممالك ما قبل الإسلام</span></div>
     </div>
   </div>
 </section>
@@ -59,11 +64,11 @@ const kingdomData = kingdoms
 <div class="timeline-rail" id="timeline" role="navigation" aria-label="Kingdom timeline">
   <div class="timeline-inner">
     <div class="tl-era">
-      <div class="tl-era-label">Pre-Islamic</div>
+      <div class="tl-era-label">ما قبل الإسلام</div>
       <div class="tl-kingdoms" id="tlPreIslamic"></div>
     </div>
     <div class="tl-era">
-      <div class="tl-era-label">Islamic</div>
+      <div class="tl-era-label">إسلامية</div>
       <div class="tl-kingdoms" id="tlIslamic"></div>
     </div>
   </div>
@@ -76,23 +81,23 @@ const kingdomData = kingdoms
   <!-- Sidebar -->
   <aside class="archives-sidebar">
     <div class="sidebar-box">
-      <div class="sb-title">Quick facts</div>
-      <div class="sb-row"><span class="sb-key">Oldest kingdom</span><span class="sb-val">Awsan c. 800 BCE</span></div>
-      <div class="sb-row"><span class="sb-key">Most documented</span><span class="sb-val">Kingdom of Saba</span></div>
-      <div class="sb-row"><span class="sb-key">Architectural peak</span><span class="sb-val">Rasulid 1229–1454</span></div>
-      <div class="sb-row"><span class="sb-key">Longest dynasty</span><span class="sb-val">Qasimi 1597–1962</span></div>
-      <div class="sb-row"><span class="sb-key">Research gap</span><span class="sb-val">Awsan · Ossan</span></div>
+      <div class="sb-title">حقائق سريعة</div>
+      <div class="sb-row"><span class="sb-key">أقدم مملكة</span><span class="sb-val">أوسان نحو 800 ق.م</span></div>
+      <div class="sb-row"><span class="sb-key">الأكثر توثيقاً</span><span class="sb-val">مملكة سبأ</span></div>
+      <div class="sb-row"><span class="sb-key">الذروة المعمارية</span><span class="sb-val">الرسوليون 1229–1454</span></div>
+      <div class="sb-row"><span class="sb-key">أطول سلالة</span><span class="sb-val">القاسميون 1597–1962</span></div>
+      <div class="sb-row"><span class="sb-key">فجوة بحثية</span><span class="sb-val">أوسان</span></div>
     </div>
     <div class="sidebar-box">
-      <div class="sb-title">Full timeline</div>
+      <div class="sb-title">الخط الزمني الكامل</div>
       <div class="sb-timeline" id="sbTimeline"></div>
-      <a href="#timeline" class="sb-cta">Interactive timeline →</a>
+      <a href="#timeline" class="sb-cta">الخط الزمني التفاعلي ←</a>
     </div>
   </aside>
 </div>
 
 <footer class="page-footer">
-  Yemen Architecture Initiative · <a href="/">YAI.org</a> · Kingdom Archives — editorial research based on 51 scholarly sources across 5 languages
+مبادرة العمارة اليمنية · <a href="/">YAI.org</a> · أرشيف الممالك — بحث تحريري مستند إلى 51 مصدراً علمياً عبر 5 لغات
 </footer>
 
 <script id="kingdom-data" type="application/json" is:inline set:html={JSON.stringify(kingdomData)}></script>
@@ -105,15 +110,33 @@ const tlPre = document.getElementById('tlPreIslamic');
 const tlIsl = document.getElementById('tlIslamic');
 const sbTl  = document.getElementById('sbTimeline');
 
+/* The page defaults to Arabic; render the Arabic data when active. */
+const AR = document.documentElement.classList.contains('lang-ar');
+const pick = (k) => ({
+  name: AR ? k.ar : k.name,
+  dates: AR ? k.dates_ar : k.dates,
+  capital: AR ? k.capital_ar : k.capital,
+  desc: AR ? k.desc_ar : k.desc,
+  arch: AR ? k.arch_ar : k.arch,
+  badges: AR ? k.badges_ar : k.badges,
+});
+const eraLabelOf = (k) => k.id==='sheba'
+  ? (AR ? '★ مملكة سبأ — المملكة المؤسِّسة' : '★ Kingdom of Sheba — Foundational character')
+  : k.era==='pre'
+    ? (AR ? 'مملكة ما قبل الإسلام' : 'Pre-Islamic kingdom')
+    : (AR ? 'دولة إسلامية' : 'Islamic dynasty');
+const fullEntryLabel = AR ? 'دخول الأرشيف الكامل ←' : 'Full archive entry →';
+
 KINGDOMS.forEach((k,i) => {
+  const v = pick(k);
   // Timeline rail
   const tlEl = document.createElement('div');
   tlEl.className = `tl-k ${k.era==='pre'?'pre-islamic':''} ${k.id==='sheba'?'sheba':''}`;
   tlEl.dataset.id = k.id;
   tlEl.setAttribute('tabindex','0');
   tlEl.setAttribute('role','button');
-  tlEl.setAttribute('aria-label', k.name);
-  tlEl.innerHTML = `<div class="tl-k-name">${k.name}</div><div class="tl-k-dates">${k.dates.split(' ')[0]+' '+k.dates.split(' ')[1]}</div>`;
+  tlEl.setAttribute('aria-label', v.name);
+  tlEl.innerHTML = `<div class="tl-k-name">${v.name}</div><div class="tl-k-dates">${v.dates.split(' ').slice(0,2).join(' ')}</div>`;
   tlEl.addEventListener('click', () => { focusKingdom(k.id); tlEl.scrollIntoView({inline:'nearest',behavior:'smooth'}); });
   (k.era==='pre' ? tlPre : tlIsl).appendChild(tlEl);
 
@@ -121,7 +144,7 @@ KINGDOMS.forEach((k,i) => {
   const sbItem = document.createElement('div');
   sbItem.className = `sb-tl-item ${k.id==='sheba'?'sheba-dot':k.era==='pre'?'pre-dot':'islamic-dot'}`;
   sbItem.setAttribute('tabindex','0');
-  sbItem.innerHTML = `<div class="sb-dot-col"><div class="sb-dot"></div><div class="sb-connector"></div></div><div><div class="sb-tl-name">${k.name}</div><div class="sb-tl-dates">${k.dates}</div></div>`;
+  sbItem.innerHTML = `<div class="sb-dot-col"><div class="sb-dot"></div><div class="sb-connector"></div></div><div><div class="sb-tl-name">${v.name}</div><div class="sb-tl-dates">${v.dates}</div></div>`;
   sbItem.addEventListener('click', () => focusKingdom(k.id));
   sbTl.appendChild(sbItem);
 
@@ -133,28 +156,28 @@ KINGDOMS.forEach((k,i) => {
   card.setAttribute('role','listitem');
   card.setAttribute('tabindex','0');
   const eraClass = k.id==='sheba' ? 'sheba-b' : k.era==='pre' ? 'pre' : 'islamic';
-  const eraLabel = k.id==='sheba' ? '★ Kingdom of Sheba — Foundational character' : k.era==='pre' ? 'Pre-Islamic kingdom' : 'Islamic dynasty';
   card.innerHTML = `
-    <span class="kc-era-badge ${eraClass}">${eraLabel}</span>
+    <span class="kc-era-badge ${eraClass}">${eraLabelOf(k)}</span>
     <div class="kc-header">
-      <div class="kc-name">${k.name}</div>
-      <div class="kc-dates">${k.dates}</div>
+      <div class="kc-name">${v.name}</div>
+      <div class="kc-dates">${v.dates}</div>
     </div>
-    <div class="kc-ar" dir="rtl">${k.ar}</div>
+    ${AR ? '' : `<div class="kc-ar" dir="rtl">${k.ar}</div>`}
     <div class="kc-capital">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      ${k.capital}
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      ${v.capital}
     </div>
-    <p class="kc-desc">${k.desc}</p>
-    <div class="kc-arch-highlights">${k.arch.map(a=>`<span class="kc-arch">${a}</span>`).join('')}</div>
-    ${k.badges ? `<div class="kc-badge-row">${k.badges.map(b=>{
+    <p class="kc-desc">${v.desc}</p>
+    <div class="kc-arch-highlights">${v.arch.map(a=>`<span class="kc-arch">${a}</span>`).join('')}</div>
+    ${v.badges ? `<div class="kc-badge-row">${v.badges.map((b,bi)=>{
       let cls='';
-      if(b.includes('UNESCO'))cls='kb-unesco';
-      else if(b.includes('golden')||b.includes('peak')||b.includes('continuity'))cls='kb-golden';
-      else if(b.includes('Queen')||b.includes('Arwa'))cls='kb-queen';
+      const en = k.badges[bi] || '';
+      if(en.includes('UNESCO'))cls='kb-unesco';
+      else if(en.includes('golden')||en.includes('peak')||en.includes('continuity'))cls='kb-golden';
+      else if(en.includes('Queen')||en.includes('Arwa'))cls='kb-queen';
       return `<span class="kc-badge ${cls}">${b}</span>`;
     }).join('')}</div>` : ''}
-    <a href="/archives/${k.id}" class="kc-link">Full archive entry →</a>
+    <a href="/archives/${k.id}" class="kc-link">${fullEntryLabel}</a>
   `;
   card.addEventListener('click', () => focusKingdom(k.id));
   card.addEventListener('keydown', e => { if(e.key==='Enter') focusKingdom(k.id); });
@@ -291,10 +314,62 @@ button{border:none;cursor:pointer;font:inherit}
 .sb-tl-item.sheba-dot .sb-dot{background:#F59E0B}
 .sb-cta{display:block;background:var(--purple);color:#fff;border-radius:6px;padding:0.75rem;text-align:center;font-size:0.82rem;font-weight:500;cursor:pointer;transition:opacity 0.15s;margin-top:0.75rem}
 .sb-cta:hover{opacity:0.85}
-
 .page-footer{background:#080B14;padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.2);border-top:1px solid rgba(255,255,255,0.05)}
 .page-footer a{color:var(--sand)}
-
 @media(max-width:900px){.archives-layout{grid-template-columns:1fr}.archives-sidebar{display:none}}
 @media(max-width:600px){.hero-stats{gap:1.25rem}}
+</style>
+
+<!-- Cards, timeline items and sidebar timeline are built in client JS,
+     so their styles must be global (Astro's scoped styles never reach
+     dynamically-injected elements). -->
+<style is:global>
+.tl-k{padding:0.75rem 1.125rem;border-right:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background 0.12s;display:flex;flex-direction:column;gap:0.2rem;min-width:130px}
+.tl-k:hover{background:rgba(255,255,255,0.04)}
+.tl-k.active{background:rgba(124,58,237,0.12);border-bottom:2px solid var(--purple)}
+.tl-k-name{font-family:var(--f-display);font-size:0.9rem;color:rgba(255,255,255,0.7)}
+.tl-k-dates{font-size:0.65rem;color:rgba(255,255,255,0.3)}
+.tl-k.pre-islamic .tl-k-name{color:rgba(196,167,125,0.8)}
+.tl-k.sheba .tl-k-name{color:#F59E0B}
+.kingdom-card{background:#0F172A;padding:1.75rem;cursor:pointer;transition:background 0.15s;position:relative;overflow:hidden}
+.kingdom-card:hover{background:#131D30}
+.kingdom-card.active{background:#12102A;border-left:3px solid var(--purple)}
+.kingdom-card.sheba-card{background:linear-gradient(135deg,#1C1207,#1A1208);border-left:3px solid #F59E0B}
+.kc-era-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:20px;margin-bottom:0.875rem}
+.kc-era-badge.pre{background:rgba(180,83,9,0.15);color:#FBBF24;border:1px solid rgba(251,191,36,0.15)}
+.kc-era-badge.islamic{background:rgba(21,128,61,0.12);color:#4ADE80;border:1px solid rgba(74,222,128,0.12)}
+.kc-era-badge.sheba-b{background:rgba(245,158,11,0.15);color:#F59E0B;border:1px solid rgba(245,158,11,0.3)}
+.kc-header{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;margin-bottom:0.625rem}
+.kc-name{font-family:var(--f-display);font-size:1.6rem;font-weight:400;line-height:1.1}
+.sheba-card .kc-name{color:#F59E0B}
+.kc-dates{font-family:var(--f-body);font-size:0.72rem;color:rgba(255,255,255,0.3);white-space:nowrap;padding-top:0.35rem}
+.kc-ar{font-family:var(--f-ar-display);font-size:1.1rem;color:rgba(255,255,255,0.2);direction:rtl;margin-bottom:0.75rem}
+.sheba-card .kc-ar{color:rgba(245,158,11,0.35)}
+.kc-capital{font-size:0.75rem;color:var(--sand);margin-bottom:0.875rem;display:flex;align-items:center;gap:0.4rem}
+.kc-capital svg{width:11px;height:11px;flex-shrink:0}
+.kc-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:1rem}
+.kc-arch-highlights{display:flex;flex-wrap:wrap;gap:0.375rem}
+.kc-arch{font-size:0.68rem;padding:0.2rem 0.6rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:4px;color:rgba(255,255,255,0.55)}
+.kc-link{display:inline-flex;align-items:center;gap:0.375rem;font-size:0.75rem;color:rgba(167,139,250,0.85);margin-top:0.875rem;transition:color 0.15s}
+.kc-link:hover{color:#A78BFA}
+.sheba-card .kc-link{color:rgba(245,158,11,0.7)}
+.sheba-card .kc-link:hover{color:#F59E0B}
+.kc-badge-row{display:flex;gap:0.375rem;flex-wrap:wrap;margin-top:0.625rem}
+.kc-badge{font-size:0.65rem;padding:0.2rem 0.6rem;border-radius:20px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.5)}
+.kb-unesco{background:rgba(3,105,161,0.15);color:#60A5FA;border:1px solid rgba(96,165,250,0.15)}
+.kb-golden{background:rgba(180,83,9,0.15);color:#FBBF24;border:1px solid rgba(251,191,36,0.15)}
+.kb-queen{background:rgba(124,58,237,0.15);color:#A78BFA;border:1px solid rgba(167,139,250,0.15)}
+.sb-tl-item{display:flex;gap:0.75rem;align-items:flex-start;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background 0.12s}
+.sb-tl-item:last-child{border-bottom:none}
+.sb-dot-col{display:flex;flex-direction:column;align-items:center;padding-top:4px}
+.sb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:rgba(255,255,255,0.3)}
+.sb-connector{width:1px;flex:1;background:rgba(255,255,255,0.06);margin-top:4px;min-height:16px}
+.sb-tl-item:last-child .sb-connector{display:none}
+.sb-tl-name{font-size:0.8rem;color:rgba(255,255,255,0.55);transition:color 0.12s}
+.sb-tl-dates{font-size:0.65rem;color:rgba(255,255,255,0.25);margin-top:1px}
+.sb-tl-item:hover .sb-tl-name{color:rgba(255,255,255,0.85)}
+.sb-tl-item.pre-dot .sb-dot{background:#FBBF24}
+.sb-tl-item.islamic-dot .sb-dot{background:#4ADE80}
+.sb-tl-item.sheba-dot .sb-dot{background:#F59E0B}
+:where(html.lang-ar) .kc-name,:where(html.lang-ar) .kc-desc,:where(html.lang-ar) .kc-arch,:where(html.lang-ar) .tl-k-name{font-family:var(--f-ar-display)}
 </style>

@@ -5,7 +5,28 @@
   "dates": "110 BCE – 525 CE",
   "capital": "Zafar (Dhofar) · later Sana'a",
   "description": "Himyar gradually absorbed Saba and ultimately unified southern Arabia as the dominant power before the arrival of Islam. Their capital at Zafar (near Yarim) housed the palatial complex of Raidan, and their expansion into Sana'a established the city's early highland character. The Himyarite adoption of Judaism and later Christianity is reflected in the remains of synagogues and churches alongside temples.",
-  "architecture": ["Raidan palace complex", "Zafar highland fortress", "Early Sana'a foundations", "Himyarite inscription pillars"],
-  "badges": ["Successor to Saba", "Pre-Islamic highland"],
-  "order": 6
+  "architecture": [
+    "Raidan palace complex",
+    "Zafar highland fortress",
+    "Early Sana'a foundations",
+    "Himyarite inscription pillars"
+  ],
+  "badges": [
+    "Successor to Saba",
+    "Pre-Islamic highland"
+  ],
+  "order": 6,
+  "dates_ar": "110 ق.م – 525 م",
+  "capital_ar": "ظفار · ثم صنعاء",
+  "description_ar": "ضمّت حِمْيَر سبأ تدريجياً ووحّدت جنوب الجزيرة العربية بوصفها القوة المهيمنة قبل مجيء الإسلام. ضمّت عاصمتها ظفار (قرب يريم) مجمّع ريدان القصوري، ووسّعت في صنعاء فأرست طابعها المرتفعي المبكر. ينعكس اعتناق الحِمْيَريين اليهودية ثم المسيحية في بقايا معابد وكنائس إلى جانب المعابد.",
+  "architecture_ar": [
+    "مجمّع قصر ريدان",
+    "حصن ظفار المرتفعي",
+    "أسس صنعاء المبكرة",
+    "أعمدة النقوش الحِمْيَرية"
+  ],
+  "badges_ar": [
+    "خَلَف سبأ",
+    "مرتفعات ما قبل الإسلام"
+  ]
 }

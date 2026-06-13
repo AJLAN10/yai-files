@@ -25,22 +25,31 @@ const eraLabel = k.special
   heading={k.name}
   headingAr={k.name_ar}
   meta={[
-    { label: 'Period', label_ar: 'الفترة', value: k.dates },
-    { label: 'Capital', label_ar: 'العاصمة', value: k.capital },
+    { label: 'Period', label_ar: 'الفترة', value: k.dates_ar ?? k.dates },
+    { label: 'Capital', label_ar: 'العاصمة', value: k.capital_ar ?? k.capital },
   ]}
 >
-  <p class="lede">{k.description}</p>
+  <p class="lede">
+    <span class="en-only">{k.description}</span>
+    <span class="ar-only ar-text">{k.description_ar ?? '(الترجمة العربية قيد الإعداد)'}</span>
+  </p>
 
   <h2 class="section-title"><span class="en-only">Architectural legacy</span><span class="ar-only ar-text">الإرث المعماري</span></h2>
-  <ul class="elements">
+  <ul class="elements en-only">
     {k.architecture.map((a) => <li class="element">{a}</li>)}
+  </ul>
+  <ul class="elements ar-only">
+    {(k.architecture_ar ?? k.architecture).map((a) => <li class="element ar-text">{a}</li>)}
   </ul>
 
   {k.badges.length > 0 && (
     <>
       <h2 class="section-title"><span class="en-only">Research status</span><span class="ar-only ar-text">حالة البحث</span></h2>
-      <ul class="badges">
+      <ul class="badges en-only">
         {k.badges.map((b) => <li class="badge">{b}</li>)}
+      </ul>
+      <ul class="badges ar-only">
+        {(k.badges_ar ?? k.badges).map((b) => <li class="badge ar-text">{b}</li>)}
       </ul>
     </>
   )}

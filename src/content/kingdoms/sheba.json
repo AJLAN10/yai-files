@@ -5,8 +5,37 @@
   "dates": "c. 900 BCE – 275 CE",
   "capital": "Marib · Sirwah",
   "description": "The foundational kingdom of Yemeni civilisation. The Sabaeans built the Awwam Temple (Moon Temple), the Barran Temple (Throne of Bilqis), and the Great Dam of Marib — one of antiquity's greatest engineering achievements. Their ashlar limestone masonry, Sabaean script inscriptions, and hydraulic irrigation systems influenced every subsequent building tradition across southern Arabia.",
-  "architecture": ["Awwam Temple", "Barran Temple pylon", "Great Dam sluice", "Sabaean inscription wall", "Hypostyle hall", "Ashlar masonry"],
-  "badges": ["UNESCO 2023", "Italian MAIRY excavation", "German DAI research", "Most documented"],
+  "architecture": [
+    "Awwam Temple",
+    "Barran Temple pylon",
+    "Great Dam sluice",
+    "Sabaean inscription wall",
+    "Hypostyle hall",
+    "Ashlar masonry"
+  ],
+  "badges": [
+    "UNESCO 2023",
+    "Italian MAIRY excavation",
+    "German DAI research",
+    "Most documented"
+  ],
   "special": true,
-  "order": 1
+  "order": 1,
+  "dates_ar": "نحو 900 ق.م – 275 م",
+  "capital_ar": "مأرب · صرواح",
+  "description_ar": "المملكة المؤسِّسة للحضارة اليمنية. بنى السبئيون معبد أوام (معبد القمر)، ومعبد بران (عرش بلقيس)، وسد مأرب العظيم — أحد أعظم منجزات الهندسة في العصور القديمة. أثّرت كتلهم الحجرية الجيرية المنحوتة، ونقوشهم بالخط السبئي، وأنظمة الري المائية في كل تقليد بنائي لاحق في جنوب الجزيرة العربية.",
+  "architecture_ar": [
+    "معبد أوام",
+    "صرح معبد بران",
+    "بوابة السد العظيم",
+    "جدار النقوش السبئية",
+    "قاعة ذات أعمدة",
+    "بناء حجري منحوت"
+  ],
+  "badges_ar": [
+    "يونسكو 2023",
+    "بعثة MAIRY الإيطالية",
+    "أبحاث DAI الألمانية",
+    "الأكثر توثيقاً"
+  ]
 }
