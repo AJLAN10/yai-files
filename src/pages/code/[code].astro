@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
+import YbcIcon from '../../components/YbcIcon.astro';
 
 export async function getStaticPaths() {
   const chapters = await getCollection('ybcChapters');
@@ -12,30 +13,54 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const ch = entry.data;
+
+const PENDING = '(الترجمة العربية قيد الإعداد)';
+const statusAr: Record<string, string> = { draft: 'مسودة', 'peer-reviewed': 'مُراجَع' };
+const tagAr: Record<string, string> = {
+  flood: 'فيضان', drought: 'جفاف', seismic: 'زلازل', thermal: 'حراري',
+  'coastal-erosion': 'تآكل ساحلي', conflict: 'نزاع', governance: 'حوكمة',
+};
+const specsAr = ch.specs_ar ?? ch.specs;
+const govAr = ch.governorates_ar ?? ch.governorates;
+const registers = [
+  { key: 'Traditional', key_ar: 'تقليدي', body: ch.traditional, body_ar: ch.traditional_ar },
+  { key: 'Transitional', key_ar: 'انتقالي', body: ch.transitional, body_ar: ch.transitional_ar },
+  { key: 'Contemporary', key_ar: 'معاصر', body: ch.contemporary, body_ar: ch.contemporary_ar },
+];
 ---
 <HeritageLayout
   title={`${ch.code} ${ch.title} — Yemen Building Code · YAI`}
   description={ch.content}
   eyebrow={`Yemen Building Code · ${ch.code}`}
+  eyebrowAr={`كود البناء اليمني · ${ch.code}`}
   accent="#4ADE80"
   heading={ch.title}
+  headingAr={ch.title_ar}
   meta={[
-    { label: 'Status', value: ch.status },
-    { label: 'Applies to', value: `${ch.governorates.length} governorates` },
+    { label: 'Status', label_ar: 'الحالة', value: statusAr[ch.status] ?? ch.status },
+    { label: 'Applies to', label_ar: 'يُطبَّق في', value: `${ch.governorates.length} governorates` },
   ]}
 >
-  <p class="lede">{ch.content}</p>
+  <div class="ch-glyph"><YbcIcon code={ch.code} size={44} /></div>
+  <p class="h-subtitle">
+    <span class="en-only">{ch.subtitle}</span>
+    <span class="ar-only ar-text">{ch.subtitle_ar ?? ch.subtitle}</span>
+  </p>
+  <p class="lede">
+    <span class="en-only">{ch.content}</span>
+    <span class="ar-only ar-text">{ch.content_ar ?? PENDING}</span>
+  </p>
 
   {ch.related_resilience_tags.length > 0 && (
     <ul class="tags" aria-label="Resilience themes">
       {ch.related_resilience_tags.map((t) => (
-        <li class="tag"><a href="/climate">{t}</a></li>
+        <li class="tag"><a href="/climate"><span class="en-only">{t}</span><span class="ar-only ar-text">{tagAr[t] ?? t}</span></a></li>
       ))}
     </ul>
   )}
 
-  <h2 class="section-title">Technical specifications</h2>
-  <dl class="specs">
+  <h2 class="section-title"><span class="en-only">Technical specifications</span><span class="ar-only ar-text">المواصفات الفنية</span></h2>
+  <dl class="specs en-only">
     {ch.specs.map(([label, value]) => (
       <div class="spec-row">
         <dt class="spec-label">{label}</dt>
@@ -43,19 +68,33 @@ const ch = entry.data;
       </div>
     ))}
   </dl>
+  <dl class="specs ar-only ar-text">
+    {specsAr.map(([label, value]) => (
+      <div class="spec-row">
+        <dt class="spec-label">{label}</dt>
+        <dd class="spec-value">{value}</dd>
+      </div>
+    ))}
+  </dl>
 
-  <h2 class="section-title">Compliance pathways</h2>
+  <h2 class="section-title"><span class="en-only">Compliance pathways</span><span class="ar-only ar-text">مسارات الامتثال</span></h2>
   <div class="registers">
-    <div class="register"><span class="register-key">Traditional</span><p>{ch.traditional}</p></div>
-    <div class="register"><span class="register-key">Transitional</span><p>{ch.transitional}</p></div>
-    <div class="register"><span class="register-key">Contemporary</span><p>{ch.contemporary}</p></div>
+    {registers.map((r) => (
+      <div class="register">
+        <span class="register-key"><span class="en-only">{r.key}</span><span class="ar-only ar-text">{r.key_ar}</span></span>
+        <p><span class="en-only">{r.body}</span><span class="ar-only ar-text">{r.body_ar ?? PENDING}</span></p>
+      </div>
+    ))}
   </div>
 
   <p class="cross-ref">
-    Governorates: <span>{ch.governorates.join(' · ')}</span>
+    <span class="en-only">Governorates: <span>{ch.governorates.join(' · ')}</span></span>
+    <span class="ar-only ar-text">المحافظات: <span>{govAr.join(' · ')}</span></span>
   </p>
 
   <style>
+    .ch-glyph { display: inline-flex; padding: 0.6rem; border-radius: 10px; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25); color: #4ADE80; margin-bottom: 0.9rem; }
+    .h-subtitle { font-size: 0.95rem; color: var(--accent); margin: 0 0 1rem; letter-spacing: 0.02em; }
     .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); }
     .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 1.25rem 0 0; }
     .tag a {

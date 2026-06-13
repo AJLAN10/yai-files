@@ -100,14 +100,14 @@ import '../styles/global.css';
     <div class="intro-en">Yemen Architecture Initiative</div>
     <div class="intro-line"></div>
     <div class="intro-ar">مبادرة العمارة اليمنية</div>
-    <div class="intro-sub">Heritage · Code · Education · Archives</div>
+    <div class="intro-sub">تراث · كود · تعليم · أرشيف</div>
   </div>
 </div>
 
 <!-- ═══════════════════════ OFFLINE BAR ═══════════════════════ -->
 <div class="offline-bar" id="offlineBar" role="alert" aria-live="polite">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:6px"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
-  You are offline — content cached for offline use · أنت غير متصل بالإنترنت
+  <span class="ar-only ar-text">أنت غير متصل بالإنترنت</span><span class="en-only">You are offline</span>
 </div>
 
 <!-- ═══════════════════════ INSTALL BANNER ═══════════════════════ -->
@@ -139,11 +139,11 @@ import '../styles/global.css';
 
   <div class="nav-links" role="menubar">
     <a href="/map"      class="nav-link" role="menuitem" data-sector="map" aria-label="Interactive map"><span class="en-only">Map</span><span class="ar-only ar-text">الخريطة</span></a>
-    <a href="/students" class="nav-link" role="menuitem" data-sector="students"><span class="en-only">Students</span><span class="ar-only ar-text">الطلاب</span></a>
+    <a href="/students" class="nav-link" role="menuitem" data-sector="students"><span class="en-only">For Students</span><span class="ar-only ar-text">للطلاب</span></a>
     <a href="/code"     class="nav-link" role="menuitem" data-sector="code"><span class="en-only">Code</span><span class="ar-only ar-text">الكود</span></a>
-    <a href="/details"  class="nav-link" role="menuitem" data-sector="details"><span class="en-only">Details</span><span class="ar-only ar-text">التفاصيل</span></a>
+    <a href="/details"  class="nav-link" role="menuitem" data-sector="details"><span class="en-only">Building Character</span><span class="ar-only ar-text">الطابع المعماري</span></a>
     <a href="/general"  class="nav-link" role="menuitem" data-sector="general"><span class="en-only">General</span><span class="ar-only ar-text">عام</span></a>
-    <a href="/archives" class="nav-link" role="menuitem" data-sector="archives"><span class="en-only">Archives</span><span class="ar-only ar-text">الأرشيف</span></a>
+    <a href="/archives" class="nav-link" role="menuitem" data-sector="archives"><span class="en-only">Kingdoms</span><span class="ar-only ar-text">الممالك</span></a>
     <a href="/climate"  class="nav-link" role="menuitem" data-sector="climate"><span class="en-only">Climate</span><span class="ar-only ar-text">المناخ</span></a>
   </div>
 
@@ -166,11 +166,11 @@ import '../styles/global.css';
 <!-- Mobile nav drawer -->
 <div class="nav-drawer" id="navDrawer" role="menu" aria-label="Mobile navigation">
   <a href="/map" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:#C4A77D"></span><span class="en-only">Interactive Map</span><span class="ar-only ar-text">الخريطة التفاعلية</span></a>
-  <a href="/students" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-students)"></span><span class="en-only">Students</span><span class="ar-only ar-text">الطلاب</span></a>
+  <a href="/students" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-students)"></span><span class="en-only">For Students</span><span class="ar-only ar-text">للطلاب</span></a>
   <a href="/code" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-code)"></span><span class="en-only">Code (YBC)</span><span class="ar-only ar-text">الكود (YBC)</span></a>
-  <a href="/details" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-details)"></span><span class="en-only">Details</span><span class="ar-only ar-text">التفاصيل</span></a>
+  <a href="/details" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-details)"></span><span class="en-only">Building Character</span><span class="ar-only ar-text">الطابع المعماري</span></a>
   <a href="/general" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-general)"></span><span class="en-only">General</span><span class="ar-only ar-text">عام</span></a>
-  <a href="/archives" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-archives)"></span><span class="en-only">Archives</span><span class="ar-only ar-text">الأرشيف</span></a>
+  <a href="/archives" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:var(--c-archives)"></span><span class="en-only">Kingdoms</span><span class="ar-only ar-text">الممالك</span></a>
   <a href="/climate" class="nav-drawer-link" role="menuitem"><span class="nav-drawer-dot" style="background:#2DD4BF"></span><span class="en-only">Climate Resilience</span><span class="ar-only ar-text">المرونة المناخية</span></a>
 </div>
 
@@ -178,6 +178,11 @@ import '../styles/global.css';
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero" aria-label="Yemen Architecture Initiative — Hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="/photos/hadramawt.jpg" alt="" fetchpriority="high" />
+    <div class="hero-bg-veil"></div>
+    <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Shibam%20Hadramaut.jpg" target="_blank" rel="noopener"><span class="en-only">Shibam, Hadramawt · Ala Askool · CC BY-SA 4.0</span><span class="ar-only ar-text">شبام، حضرموت · علاء عسكول · CC BY-SA 4.0</span></a>
+  </div>
   <div class="hero-main">
     <div class="hero-en">
       <p class="hero-eyebrow en-only">Global Heritage Platform — Est. 2026</p>
@@ -186,7 +191,7 @@ import '../styles/global.css';
         <span class="w1 en-only">Yemen</span>
         <span class="w2 en-only">Architecture</span>
         <span class="w3 en-only">Initiative</span>
-        <span class="ar-only ar-text">مبادرة العمارة اليمنية</span>
+        <span class="ar-only ar-text ar-kashida">مبـــادرة العمـــارة اليمنيـــة</span>
       </h1>
       <p class="hero-tagline en-only">
         A global platform for Yemen's built heritage — 23 architectural characters, the Yemen Building Code, 13 kingdom archives, and educational resources in Arabic and English.
@@ -208,7 +213,7 @@ import '../styles/global.css';
       </div>
     </div>
     <div class="hero-ar" aria-hidden="true">
-      <div class="hero-ar-text">مبادرة<br>العمارة<br>اليمنية</div>
+      <div class="hero-ar-text ar-kashida">مبـــادرة<br>العمـــارة<br>اليمنيـــة</div>
     </div>
   </div>
 
@@ -255,8 +260,8 @@ import '../styles/global.css';
         <svg viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
       </div>
       <div class="sector-info">
-        <span class="sector-name en-only">Students</span>
-        <span class="sector-name ar-only ar-text">الطلاب</span>
+        <span class="sector-name en-only">For Students</span>
+        <span class="sector-name ar-only ar-text">للطلاب</span>
         <span class="sector-desc en-only">Learning hub, research library, classroom toolkits, annual competition</span>
         <span class="sector-desc ar-only ar-text">مركز تعليمي، مكتبة بحثية، أدوات صفية، مسابقة سنوية</span>
       </div>
@@ -295,14 +300,14 @@ import '../styles/global.css';
       </div>
     </div>
 
-    <div class="sector-band" data-s="details" role="listitem" tabindex="0" aria-expanded="false" aria-label="Details sector">
+    <div class="sector-band" data-s="details" role="listitem" tabindex="0" aria-expanded="false" aria-label="Building Character sector">
       <div class="sector-accent-bar" aria-hidden="true"></div>
       <div class="sector-icon-wrap" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       </div>
       <div class="sector-info">
-        <span class="sector-name en-only">Details</span>
-        <span class="sector-name ar-only ar-text">التفاصيل</span>
+        <span class="sector-name en-only">Building Character for All Governorates</span>
+        <span class="sector-name ar-only ar-text">الطابع المعماري لكل المحافظات</span>
         <span class="sector-desc en-only">23 character cards, material library, element catalogue, 3D documentation</span>
         <span class="sector-desc ar-only ar-text">23 بطاقة طابع، مكتبة مواد، فهرس عناصر، توثيق ثلاثي الأبعاد</span>
       </div>
@@ -347,8 +352,8 @@ import '../styles/global.css';
         <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
       </div>
       <div class="sector-info">
-        <span class="sector-name en-only">Archives</span>
-        <span class="sector-name ar-only ar-text">الأرشيف</span>
+        <span class="sector-name en-only">Kingdoms: Character &amp; History</span>
+        <span class="sector-name ar-only ar-text">الممالك: الطابع والتاريخ</span>
         <span class="sector-desc en-only">13 kingdoms spanning 3,000 years — from Awsan to the Ottoman withdrawal</span>
         <span class="sector-desc ar-only ar-text">13 مملكة عبر 3000 عام — من أوسان إلى الانسحاب العثماني</span>
       </div>
@@ -654,38 +659,38 @@ import '../styles/global.css';
       <a href="/students" class="footer-link ar-only ar-text">الطلاب</a>
       <a href="/code" class="footer-link en-only">Yemen Building Code</a>
       <a href="/code" class="footer-link ar-only ar-text">كود البناء اليمني</a>
-      <a href="/details" class="footer-link en-only">Details & Documentation</a>
-      <a href="/details" class="footer-link ar-only ar-text">التفاصيل والتوثيق</a>
+      <a href="/details" class="footer-link en-only">Building Character for All Governorates</a>
+      <a href="/details" class="footer-link ar-only ar-text">الطابع المعماري لكل المحافظات</a>
       <a href="/general" class="footer-link en-only">General / Diaspora</a>
       <a href="/general" class="footer-link ar-only ar-text">عام / الشتات</a>
-      <a href="/archives" class="footer-link en-only">Kingdom Archives</a>
-      <a href="/archives" class="footer-link ar-only ar-text">أرشيف الممالك</a>
+      <a href="/archives" class="footer-link en-only">Kingdoms: Character &amp; History</a>
+      <a href="/archives" class="footer-link ar-only ar-text">الممالك: الطابع والتاريخ</a>
       <a href="/climate" class="footer-link en-only">Climate Resilience</a>
       <a href="/climate" class="footer-link ar-only ar-text">المرونة المناخية</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title en-only">Characters</div>
       <div class="footer-col-title ar-only ar-text">الطوابع</div>
-      <a href="/characters/sanaa" class="footer-link en-only">Sana'a Capital</a>
-      <a href="/characters/sanaa" class="footer-link ar-only ar-text">صنعاء العاصمة</a>
-      <a href="/characters/hadramawt" class="footer-link en-only">Hadramawt</a>
-      <a href="/characters/hadramawt" class="footer-link ar-only ar-text">حضرموت</a>
-      <a href="/characters/tihama" class="footer-link en-only">Al Hudaydah</a>
-      <a href="/characters/tihama" class="footer-link ar-only ar-text">الحديدة</a>
-      <a href="/characters/socotra" class="footer-link en-only">Socotra</a>
-      <a href="/characters/socotra" class="footer-link ar-only ar-text">سقطرى</a>
+      <a href="/details/sanaa-capital" class="footer-link en-only">Sana'a Capital</a>
+      <a href="/details/sanaa-capital" class="footer-link ar-only ar-text">صنعاء العاصمة</a>
+      <a href="/details/hadramawt" class="footer-link en-only">Hadramawt</a>
+      <a href="/details/hadramawt" class="footer-link ar-only ar-text">حضرموت</a>
+      <a href="/details/hudaydah" class="footer-link en-only">Al Hudaydah</a>
+      <a href="/details/hudaydah" class="footer-link ar-only ar-text">الحديدة</a>
+      <a href="/details/socotra" class="footer-link en-only">Socotra</a>
+      <a href="/details/socotra" class="footer-link ar-only ar-text">سقطرى</a>
       <a href="/map" class="footer-link en-only">View all 23 →</a>
       <a href="/map" class="footer-link ar-only ar-text">عرض الكل (23) ←</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title en-only">Resources</div>
       <div class="footer-col-title ar-only ar-text">الموارد</div>
-      <a href="/code/ybc" class="footer-link en-only">Download YBC</a>
-      <a href="/code/ybc" class="footer-link ar-only ar-text">تنزيل كود البناء</a>
-      <a href="/students/library" class="footer-link en-only">Research Library</a>
-      <a href="/students/library" class="footer-link ar-only ar-text">المكتبة البحثية</a>
-      <a href="/general/diaspora" class="footer-link en-only">Diaspora Portal</a>
-      <a href="/general/diaspora" class="footer-link ar-only ar-text">بوابة الشتات</a>
+      <a href="/code" class="footer-link en-only">Download YBC</a>
+      <a href="/code" class="footer-link ar-only ar-text">تنزيل كود البناء</a>
+      <a href="/students" class="footer-link en-only">Research Library</a>
+      <a href="/students" class="footer-link ar-only ar-text">المكتبة البحثية</a>
+      <a href="/general" class="footer-link en-only">Diaspora Portal</a>
+      <a href="/general" class="footer-link ar-only ar-text">بوابة الشتات</a>
       <a href="/archives/sheba" class="footer-link en-only">Sheba Kingdom</a>
       <a href="/archives/sheba" class="footer-link ar-only ar-text">مملكة سبأ</a>
     </div>
@@ -710,8 +715,8 @@ import '../styles/global.css';
       <a href="/privacy" class="footer-bottom-link ar-only ar-text">الخصوصية</a>
       <a href="/accessibility" class="footer-bottom-link en-only">Accessibility</a>
       <a href="/accessibility" class="footer-bottom-link ar-only ar-text">إمكانية الوصول</a>
-      <a href="/sitemap.xml" class="footer-bottom-link en-only">Sitemap</a>
-      <a href="/sitemap.xml" class="footer-bottom-link ar-only ar-text">خريطة الموقع</a>
+      <a href="/sitemap-index.xml" class="footer-bottom-link en-only">Sitemap</a>
+      <a href="/sitemap-index.xml" class="footer-bottom-link ar-only ar-text">خريطة الموقع</a>
     </div>
   </div>
 </footer>
@@ -723,20 +728,25 @@ import '../styles/global.css';
 /* ─── Language toggle (EN ↔ AR) ────────────────────────────── */
 const html = document.documentElement;
 const langBtn = document.getElementById('langToggle');
-let currentLang = 'en';
+/* Arabic is the primary language; English is the secondary toggle. */
+let currentLang = 'ar';
+
+function applyLang(lang) {
+  currentLang = lang;
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  html.classList.remove('lang-en','lang-ar'); html.classList.add(`lang-${lang}`);
+  localStorage.setItem('yai-lang', lang);
+}
 
 langBtn.addEventListener('click', () => {
-  currentLang = currentLang === 'en' ? 'ar' : 'en';
-  html.setAttribute('lang', currentLang);
-  html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-  html.className = `lang-${currentLang}`;
-  localStorage.setItem('yai-lang', currentLang);
+  applyLang(currentLang === 'ar' ? 'en' : 'ar');
   if (typeof plausible !== 'undefined') plausible('Language Toggle', { props: { language: currentLang } });
 });
 
-/* Restore language preference */
+/* Restore preference — default stays Arabic */
 const savedLang = localStorage.getItem('yai-lang');
-if (savedLang && savedLang !== 'en') langBtn.click();
+if (savedLang === 'en') applyLang('en');
 
 /* ─── Mobile nav ───────────────────────────────────────────── */
 const menuBtn = document.getElementById('menuBtn');

@@ -1,0 +1,34 @@
+{
+  "name": "Kingdom of Qataban",
+  "name_ar": "مملكة قتبان",
+  "era": "pre",
+  "dates": "c. 400 BCE – 1st century CE",
+  "capital": "Timna (modern Harib)",
+  "description": "Qataban controlled the frankincense and myrrh export routes through Wadi Beihan. The Italian-French excavations at Timna revealed the most complete urban plan of any pre-Islamic Yemeni city — palatial mudbrick residences, an ashlar-faced temple of Athtar, and a grid street system. Romolo Loreto's 2011 monograph (University of Naples) is the definitive study.",
+  "architecture": [
+    "Timna urban plan",
+    "Palace of Shahr Hilal",
+    "Temple of Athtar",
+    "Street grid",
+    "Palatial mudbrick"
+  ],
+  "badges": [
+    "Italian-French excavation",
+    "Loreto 2011 monograph"
+  ],
+  "order": 4,
+  "dates_ar": "نحو 400 ق.م – القرن الأول م",
+  "capital_ar": "تمنع (حريب الحالية)",
+  "description_ar": "سيطرت قتبان على طرق تصدير اللبان والمُرّ عبر وادي بيحان. كشفت التنقيبات الإيطالية-الفرنسية في تمنع عن أكمل مخطط حضري لأي مدينة يمنية ما قبل إسلامية — مساكن قصورية طينية، ومعبد عثتر بواجهة حجرية، ونظام شوارع شبكي. تبقى دراسة روملو لوريتو 2011 (جامعة نابولي) الدراسة المرجعية.",
+  "architecture_ar": [
+    "مخطط تمنع الحضري",
+    "قصر شهر هلال",
+    "معبد عثتر",
+    "شبكة شوارع",
+    "قصور طينية"
+  ],
+  "badges_ar": [
+    "تنقيب إيطالي-فرنسي",
+    "دراسة لوريتو 2011"
+  ]
+}

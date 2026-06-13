@@ -5,13 +5,45 @@
   "governorate": "Socotra Archipelago",
   "type": "island",
   "era": "Pre-Islamic to present",
-  "material_list": ["Cave stone", "endemic timber", "thatch"],
+  "material_list": [
+    "Cave stone",
+    "endemic timber",
+    "thatch"
+  ],
   "risk_level": "severe",
-  "geo_coordinates": { "lat": 12.46, "lng": 53.82 },
+  "geo_coordinates": {
+    "lat": 12.46,
+    "lng": 53.82
+  },
   "tag": "Island vernacular · cave dwellings · dragon blood",
+  "tag_ar": "عمارة الجزيرة · مساكن الكهوف · دم الأخوين",
   "description": "Yemen's island archipelago (UNESCO 2008 for biodiversity) hosts one of the world's most unique vernacular traditions — cave dwellings cut into limestone cliffs, low-rise stone enclosures, and thatch-roofed huts using endemic dragon blood tree wood. No equivalent exists anywhere.",
-  "elements": ["Cave dwelling", "Limestone enclosure", "Dragon blood timber", "Thatch roof", "Cliffside terrace"],
+  "elements": [
+    "Cave dwelling",
+    "Limestone enclosure",
+    "Dragon blood timber",
+    "Thatch roof",
+    "Cliffside terrace"
+  ],
   "traditional": "Limestone cave expanded with stone walls, thatch canopy, endemic timber structure.",
   "transitional": "Stone enclosure with corrugated shelter, retaining cliffside placement.",
-  "contemporary": "Eco-lodge typology: cave integration, endemic materials, minimal footprint."
+  "contemporary": "Eco-lodge typology: cave integration, endemic materials, minimal footprint.",
+  "governorate_ar": "أرخبيل سقطرى",
+  "era_ar": "ما قبل الإسلام حتى الحاضر",
+  "material_list_ar": [
+    "حجر الكهوف",
+    "خشب متوطّن",
+    "قش"
+  ],
+  "elements_ar": [
+    "مسكن كهفي",
+    "سور جيري",
+    "خشب دم الأخوين",
+    "سقف من القش",
+    "مدرّج على المنحدر"
+  ],
+  "description_ar": "يضم أرخبيل اليمن (يونسكو 2008 للتنوع الحيوي) أحد أكثر التقاليد المحلية تفرّداً في العالم — مساكن في كهوف منحوتة في منحدرات الحجر الجيري، وأسوار حجرية منخفضة، وأكواخ مسقوفة بالقش من خشب شجرة دم الأخوين المتوطّنة. لا نظير له في أي مكان.",
+  "traditional_ar": "كهف جيري موسّع بجدران حجرية، ومظلة من القش، وهيكل من الخشب المتوطّن.",
+  "transitional_ar": "سور حجري بمأوى مموّج، مع الحفاظ على الموقع على حافة المنحدر.",
+  "contemporary_ar": "نمط النُّزل البيئي: دمج الكهوف، ومواد متوطّنة، وأثر بيئي ضئيل."
 }

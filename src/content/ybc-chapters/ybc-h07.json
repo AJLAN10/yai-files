@@ -4,18 +4,81 @@
   "title": "Post-Conflict Reconstruction",
   "subtitle": "Damage classification and authenticity standards",
   "status": "draft",
-  "governorates": ["All 22 governorates", "Priority: Sana'a · Ta'izz · Sa'dah · Hudaydah"],
-  "related_resilience_tags": ["conflict"],
+  "governorates": [
+    "All 22 governorates",
+    "Priority: Sana'a · Ta'izz · Sa'dah · Hudaydah"
+  ],
+  "related_resilience_tags": [
+    "conflict"
+  ],
   "content": "A Yemen-specific chapter with no direct Saudi equivalent — addressing the reconstruction of heritage structures damaged by armed conflict. Establishes a 5-grade conflict damage classification (CDC-1 to CDC-5), authenticity requirements for reconstruction, documentation standards before intervention, and the role of evidence-based design where original fabric is lost.",
   "specs": [
-    ["CDC scale", "CDC-1: Minor · CDC-2: Moderate · CDC-3: Severe · CDC-4: Partial collapse · CDC-5: Total loss"],
-    ["Authenticity rule", "Original materials must be matched within 10% of original specification by mass"],
-    ["Documentation", "Photogrammetric survey required before any intervention on CDC-3 or above"],
-    ["Reversibility", "All interventions must be reversible — no material shall be introduced that damages original"],
-    ["Evidence design", "CDC-5 sites: reconstruction based on pre-conflict photographs, oral testimony, CEFAS records"],
-    ["ALIPH alignment", "All CDC-4 and CDC-5 reconstructions require ALIPH protocol review before commencement"]
+    [
+      "CDC scale",
+      "CDC-1: Minor · CDC-2: Moderate · CDC-3: Severe · CDC-4: Partial collapse · CDC-5: Total loss"
+    ],
+    [
+      "Authenticity rule",
+      "Original materials must be matched within 10% of original specification by mass"
+    ],
+    [
+      "Documentation",
+      "Photogrammetric survey required before any intervention on CDC-3 or above"
+    ],
+    [
+      "Reversibility",
+      "All interventions must be reversible — no material shall be introduced that damages original"
+    ],
+    [
+      "Evidence design",
+      "CDC-5 sites: reconstruction based on pre-conflict photographs, oral testimony, CEFAS records"
+    ],
+    [
+      "ALIPH alignment",
+      "All CDC-4 and CDC-5 reconstructions require ALIPH protocol review before commencement"
+    ]
   ],
   "traditional": "Traditional reconstruction — material replacement like-for-like, craftsman-led, community knowledge documented.",
   "transitional": "Evidence-based reconstruction — combining photographic evidence, 3D scan data, and local mason knowledge.",
-  "contemporary": "Contemporary reconstruction — traditional material base with modern services infrastructure concealed within walls."
+  "contemporary": "Contemporary reconstruction — traditional material base with modern services infrastructure concealed within walls.",
+  "title_ar": "إعادة الإعمار بعد النزاع",
+  "subtitle_ar": "تصنيف الأضرار ومعايير الأصالة",
+  "governorates_ar": [
+    "جميع المحافظات الـ22",
+    "أولوية: صنعاء · تعز · صعدة · الحديدة"
+  ],
+  "content_ar": "فصل خاص باليمن لا يقابله مكافئ سعودي مباشر — يعالج إعادة بناء المنشآت التراثية المتضررة من النزاع المسلّح. يؤسّس تصنيفاً للأضرار من 5 درجات (CDC-1 إلى CDC-5)، ومتطلبات الأصالة لإعادة البناء، ومعايير التوثيق قبل التدخّل، ودور التصميم المستند إلى الأدلة حين يُفقد النسيج الأصلي.",
+  "specs_ar": [
+    [
+      "مقياس CDC",
+      "CDC-1: طفيف · CDC-2: متوسط · CDC-3: شديد · CDC-4: انهيار جزئي · CDC-5: فقدان كامل"
+    ],
+    [
+      "قاعدة الأصالة",
+      "يجب مطابقة المواد الأصلية ضمن 10% من المواصفة الأصلية بالكتلة"
+    ],
+    [
+      "التوثيق",
+      "مسح فوتوغرامتري مطلوب قبل أي تدخّل على CDC-3 فأعلى"
+    ],
+    [
+      "قابلية العكس",
+      "يجب أن تكون كل التدخّلات قابلة للعكس — لا تُدخَل أي مادة تضرّ بالأصل"
+    ],
+    [
+      "التصميم بالأدلة",
+      "مواقع CDC-5: إعادة بناء مستندة إلى صور ما قبل النزاع، والشهادات الشفوية، وسجلات CEFAS"
+    ],
+    [
+      "مواءمة ALIPH",
+      "كل عمليات CDC-4 وCDC-5 تتطلب مراجعة بروتوكول ALIPH قبل البدء"
+    ]
+  ],
+  "traditional_ar": "إعادة بناء تقليدية — استبدال المواد بالمثل، بقيادة الحرفيين، وتوثيق معارف المجتمع.",
+  "transitional_ar": "إعادة بناء مستندة إلى الأدلة — تجمع بين الأدلة الفوتوغرافية، وبيانات المسح ثلاثي الأبعاد، ومعرفة البنّاء المحلي.",
+  "contemporary_ar": "إعادة بناء معاصرة — أساس من المواد التقليدية مع إخفاء بنية الخدمات الحديثة ضمن الجدران.",
+  "governs": [
+    "severe",
+    "high"
+  ]
 }

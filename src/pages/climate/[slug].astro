@@ -27,49 +27,67 @@ const character = s.related_character
   ? await getEntry('characters', s.related_character)
   : null;
 
+const riskLevelAr: Record<string, string> = { low: 'منخفض', moderate: 'متوسط', high: 'عالٍ', severe: 'شديد' };
+const riskTypeAr: Record<string, string> = {
+  flood: 'فيضان', seismic: 'زلازل', drought: 'جفاف', thermal: 'حراري',
+  conflict: 'نزاع', 'coastal-erosion': 'تآكل ساحلي',
+};
+const govAr: Record<string, string> = { Hadramawt: 'حضرموت', 'Amanat al-Asimah': 'أمانة العاصمة' };
+
 const meta = [
-  { label: 'Risk', value: `${s.risk_type} · ${s.risk_level}` },
-  { label: 'Governorate', value: s.governorate },
+  {
+    label: 'Risk', label_ar: 'الخطر',
+    value: `${riskTypeAr[s.risk_type] ?? s.risk_type} · ${riskLevelAr[s.risk_level] ?? s.risk_level}`,
+  },
+  { label: 'Governorate', label_ar: 'المحافظة', value: govAr[s.governorate] ?? s.governorate },
 ];
-if (character) meta.push({ label: 'Character', value: character.data.name });
+if (character) meta.push({ label: 'Character', label_ar: 'الطابع', value: character.data.name_ar ?? character.data.name });
 ---
 <HeritageLayout
   title={`${s.title} — Climate Resilience · YAI`}
   description={s.summary}
   eyebrow="Climate Resilience & Adaptive Reuse"
+  eyebrowAr="المرونة المناخية وإعادة التأهيل"
   accent="#2DD4BF"
   heading={s.title}
   headingAr={s.title_ar}
   meta={meta}
 >
-  <p class="lede">{s.summary}</p>
+  <p class="lede">
+    <span class="en-only">{s.summary}</span>
+    <span class="ar-only ar-text">{s.summary_ar ?? s.summary}</span>
+  </p>
 
   <ul class="tags" aria-label="Resilience themes">
-    {s.resilience_tags.map((t) => <li class="tag">{t}</li>)}
+    {s.resilience_tags.map((t) => <li class="tag"><span class="en-only">{t}</span><span class="ar-only ar-text">{riskTypeAr[t] ?? t}</span></li>)}
   </ul>
 
   {s.adaptive_reuse && (
     <div class="reuse">
-      <span class="reuse-label">Adaptive reuse</span>
-      <p>{s.adaptive_reuse}</p>
+      <span class="reuse-label"><span class="en-only">Adaptive reuse</span><span class="ar-only ar-text">إعادة التأهيل</span></span>
+      <p><span class="en-only">{s.adaptive_reuse}</span><span class="ar-only ar-text">{s.adaptive_reuse_ar ?? s.adaptive_reuse}</span></p>
     </div>
   )}
 
-  <article class="prose">
+  <article class="prose en-only">
     <Content />
   </article>
+  {s.body_ar && <article class="prose ar-only ar-text" set:html={s.body_ar}></article>}
 
   <div class="refs">
     {relatedChapters.map((ch) => (
       <a class="ref-card" href={`/code/${ch.id}`}>
-        <span class="ref-kind">Governing code · shares “{ch.data.related_resilience_tags.find((t) => s.resilience_tags.includes(t))}”</span>
-        <span class="ref-name">{ch.data.code} · {ch.data.title}</span>
+        <span class="ref-kind">
+          <span class="en-only">Governing code · shares “{ch.data.related_resilience_tags.find((t) => s.resilience_tags.includes(t))}”</span>
+          <span class="ar-only ar-text">الكود الحاكم · يشترك في «{riskTypeAr[ch.data.related_resilience_tags.find((t) => s.resilience_tags.includes(t)) ?? ''] ?? ''}»</span>
+        </span>
+        <span class="ref-name">{ch.data.code} · <span class="en-only">{ch.data.title}</span><span class="ar-only ar-text">{ch.data.title_ar ?? ch.data.title}</span></span>
       </a>
     ))}
     {character && (
       <a class="ref-card" href={`/details/${character.id}`}>
-        <span class="ref-kind">Related character</span>
-        <span class="ref-name">{character.data.name}</span>
+        <span class="ref-kind"><span class="en-only">Related character</span><span class="ar-only ar-text">الطابع المرتبط</span></span>
+        <span class="ref-name"><span class="en-only">{character.data.name}</span><span class="ar-only ar-text">{character.data.name_ar ?? character.data.name}</span></span>
       </a>
     )}
   </div>

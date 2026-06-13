@@ -1,0 +1,32 @@
+{
+  "name": "Qasimi Imamate (Zaidi)",
+  "name_ar": "الإمامة القاسمية",
+  "era": "islamic",
+  "dates": "1597–1962 CE",
+  "capital": "Sana'a · Sa'dah",
+  "description": "The longest Yemeni dynasty — lasting 365 years — and the one whose architectural patronage is most directly visible in the existing built fabric of highland Yemen. The Qasimi Imams refined the tower house typology, brought the zabur rammed-earth tradition to its greatest height in Sa'dah, and maintained Sana'a's urban character. The Imamate ended with the 1962 revolution.",
+  "architecture": [
+    "Tower house refinement",
+    "Zabur peak at Sa'dah",
+    "Sana'a Old City expansion",
+    "Imam's palace typology"
+  ],
+  "badges": [
+    "Longest Yemeni dynasty",
+    "Zabur tradition peak"
+  ],
+  "order": 12,
+  "dates_ar": "1597–1962 م",
+  "capital_ar": "صنعاء · صعدة",
+  "description_ar": "أطول سلالات اليمن — دامت 365 عاماً — وأكثرها حضوراً مباشراً في النسيج المبني القائم في المرتفعات. صقل الأئمة القاسميون نمط البيت البرجي، وبلغوا بتقليد الطين المدكوك (الزبور) في صعدة ذروته، وحافظوا على طابع صنعاء العمراني. انتهت الإمامة بثورة 1962.",
+  "architecture_ar": [
+    "صقل البيت البرجي",
+    "ذروة الزبور في صعدة",
+    "توسّع صنعاء القديمة",
+    "نمط قصر الإمام"
+  ],
+  "badges_ar": [
+    "أطول سلالة يمنية",
+    "ذروة تقليد الزبور"
+  ]
+}

@@ -4,18 +4,88 @@
   "title": "Mudbrick (Libn) Construction",
   "subtitle": "Sun-dried mudbrick — Hadramawt, Marib, Al Jawf, Shabwah",
   "status": "draft",
-  "governorates": ["Hadramawt", "Ma'rib", "Al Jawf", "Shabwah", "Abyan"],
-  "related_resilience_tags": ["flood", "drought"],
+  "governorates": [
+    "Hadramawt",
+    "Ma'rib",
+    "Al Jawf",
+    "Shabwah",
+    "Abyan"
+  ],
+  "related_resilience_tags": [
+    "flood",
+    "drought"
+  ],
   "content": "Technical standards for sun-dried mudbrick (libn) construction — the primary material of Shibam, Tarim, and the Wadi Hadramawt tradition. Covers mix ratios, coursing, structural height limits, annual render protocols, and flood-base specifications for wadi-adjacent buildings.",
   "specs": [
-    ["Mix ratio (standard)", "3 parts clay soil · 1 part sand · 0.5 parts straw binder"],
-    ["Brick dimensions", "25 × 12 × 8 cm (traditional) · or 30 × 15 × 10 cm (structural)"],
-    ["Max height (unrestored)", "8 storeys (24m) with approved structural survey — 6 without"],
-    ["Annual render", "Tayan (mud-lime plaster) applied annually Oct–Nov before rains"],
-    ["Flood base", "Min. 600mm fired brick or stone plinth at wadi-adjacent sites"],
-    ["Wall taper", "Batter ratio 1:12 — walls reduce 8cm per floor on outer face"]
+    [
+      "Mix ratio (standard)",
+      "3 parts clay soil · 1 part sand · 0.5 parts straw binder"
+    ],
+    [
+      "Brick dimensions",
+      "25 × 12 × 8 cm (traditional) · or 30 × 15 × 10 cm (structural)"
+    ],
+    [
+      "Max height (unrestored)",
+      "8 storeys (24m) with approved structural survey — 6 without"
+    ],
+    [
+      "Annual render",
+      "Tayan (mud-lime plaster) applied annually Oct–Nov before rains"
+    ],
+    [
+      "Flood base",
+      "Min. 600mm fired brick or stone plinth at wadi-adjacent sites"
+    ],
+    [
+      "Wall taper",
+      "Batter ratio 1:12 — walls reduce 8cm per floor on outer face"
+    ]
   ],
   "traditional": "Traditional libn — unstabilised sun-dried mud, straw-reinforced, annually rendered. No cement additives.",
   "transitional": "Stabilised libn — 5–8% cement or lime admixture permitted for structural upgrade. Must retain render.",
-  "contemporary": "Contemporary libn — precast stabilised mudbrick panels permitted; mix spec and colour must match local earth tone within ΔE < 3."
+  "contemporary": "Contemporary libn — precast stabilised mudbrick panels permitted; mix spec and colour must match local earth tone within ΔE < 3.",
+  "title_ar": "البناء بالطوب الطيني (اللبن)",
+  "subtitle_ar": "الطوب الطيني المجفف شمساً — حضرموت، مأرب، الجوف، شبوة",
+  "governorates_ar": [
+    "حضرموت",
+    "مأرب",
+    "الجوف",
+    "شبوة",
+    "أبين"
+  ],
+  "content_ar": "معايير فنية لبناء الطوب الطيني المجفف شمساً (اللبن) — المادة الأساسية لشبام وتريم وتقليد وادي حضرموت. يغطي نسب الخلط، والمداميك، وحدود الارتفاع الإنشائية، وبروتوكولات اللياسة السنوية، ومواصفات قاعدة الفيضان للمباني المتاخمة للوديان.",
+  "specs_ar": [
+    [
+      "نسبة الخلط (قياسية)",
+      "3 أجزاء تربة طينية · جزء رمل · 0.5 جزء رابط من التبن"
+    ],
+    [
+      "أبعاد الطوبة",
+      "25 × 12 × 8 سم (تقليدي) · أو 30 × 15 × 10 سم (إنشائي)"
+    ],
+    [
+      "أقصى ارتفاع (غير مرمّم)",
+      "8 طوابق (24م) بمسح إنشائي معتمد — 6 بدونه"
+    ],
+    [
+      "اللياسة السنوية",
+      "طيان (جص طيني-جيري) يُطبّق سنوياً أكتوبر–نوفمبر قبل الأمطار"
+    ],
+    [
+      "قاعدة الفيضان",
+      "حد أدنى 600مم من الطوب المحروق أو الحجر في المواقع المتاخمة للوديان"
+    ],
+    [
+      "ميل الجدار",
+      "نسبة ميل 1:12 — تنقص الجدران 8سم لكل طابق على الوجه الخارجي"
+    ]
+  ],
+  "traditional_ar": "اللبن التقليدي — طين مجفف شمساً غير مثبّت، مقوّى بالتبن، ملوّس سنوياً. بلا إضافات إسمنتية.",
+  "transitional_ar": "اللبن المثبّت — يُسمح بإضافة 5–8% إسمنت أو جير للترقية الإنشائية. يجب الإبقاء على اللياسة.",
+  "contemporary_ar": "اللبن المعاصر — يُسمح بألواح طوب طيني مثبّتة مسبقة الصب؛ ويجب أن تطابق مواصفة الخلط واللون لون التربة المحلية ضمن ΔE < 3.",
+  "governs": [
+    "mudbrick",
+    "libn"
+  ]
 }

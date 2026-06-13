@@ -1,0 +1,20 @@
+---
+import HeritageLayout from '../layouts/HeritageLayout.astro';
+---
+<HeritageLayout
+  title="Accessibility — Yemen Architecture Initiative"
+  description="Accessibility commitment of the Yemen Architecture Initiative."
+  eyebrow="Accessibility"
+  eyebrowAr="إمكانية الوصول"
+  accent="#0369A1"
+  heading="Accessibility"
+  headingAr="إمكانية الوصول"
+>
+  <p class="lede en-only">YAI targets WCAG AA+ accessibility: full keyboard navigation, high-contrast text, reduced-motion support, and a fully bilingual Arabic/English RTL interface. Report any barrier via the contact page.</p>
+  <p class="lede ar-only ar-text">تستهدف المبادرة معايير إمكانية الوصول WCAG AA+: تنقّل كامل بلوحة المفاتيح، ونصوص عالية التباين، ودعم تقليل الحركة، وواجهة ثنائية اللغة عربية/إنجليزية بدعم كامل للكتابة من اليمين. أبلِغ عن أي عائق عبر صفحة التواصل.</p>
+  <p class="cross-ref"><a href="/"><span class="en-only">Back to home →</span><span class="ar-only ar-text">العودة للرئيسية ←</span></a></p>
+  <style>
+    .lede { font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.75); max-width: 56ch; }
+    .cross-ref { margin-top: 2rem; } .cross-ref a { color: var(--accent); }
+  </style>
+</HeritageLayout>

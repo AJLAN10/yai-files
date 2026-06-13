@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ybcIconInner } from '../lib/ybc-icons';
 
 /* Single source of truth: chapters now live in the `ybcChapters`
    collection. Shape into the flat record the client script expects,
@@ -11,15 +12,24 @@ const chapterData = chapters
   .map((e) => ({
     id: e.id,
     code: e.data.code,
+    icon: ybcIconInner(e.data.code),
     name: e.data.title,
+    name_ar: e.data.title_ar ?? e.data.title,
     subtitle: e.data.subtitle,
+    subtitle_ar: e.data.subtitle_ar ?? e.data.subtitle,
     status: e.data.status,
     govs: e.data.governorates,
+    govs_ar: e.data.governorates_ar ?? e.data.governorates,
     desc: e.data.content,
+    desc_ar: e.data.content_ar ?? e.data.content,
     specs: e.data.specs,
+    specs_ar: e.data.specs_ar ?? e.data.specs,
     trad: e.data.traditional,
+    trad_ar: e.data.traditional_ar ?? e.data.traditional,
     trans: e.data.transitional,
+    trans_ar: e.data.transitional_ar ?? e.data.transitional,
     cont: e.data.contemporary,
+    cont_ar: e.data.contemporary_ar ?? e.data.contemporary,
   }));
 ---
 <BaseLayout
@@ -32,39 +42,39 @@ const chapterData = chapters
 
 <nav class="nav" role="navigation">
   <a href="/" class="nav-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>YAI</a>
-  <span class="nav-title">Yemen Building Code</span>
-  <span class="nav-badge">YBC · Heritage Module</span>
-  <button class="nav-dl-btn" aria-label="Download full Yemen Building Code PDF">
+  <span class="nav-title">كود البناء اليمني</span>
+  <span class="nav-badge">الكود · وحدة التراث</span>
+  <button class="nav-dl-btn" aria-label="تنزيل كود البناء اليمني الكامل PDF">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Download YBC (PDF)
+    تنزيل الكود (PDF)
   </button>
 </nav>
 
-<section class="hero" aria-label="YBC Overview">
+<section class="hero" aria-label="نظرة عامة على كود البناء">
   <div class="hero-inner">
     <div>
       <div class="hero-badge">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-        Heritage Building Code · Draft 2026
+        كود بناء التراث · مسودة 2026
       </div>
-      <h1 class="hero-title">Yemen<br>Building <span>Code</span></h1>
-      <p class="hero-desc">The YBC Heritage Module sets technical standards for construction, restoration, and reconstruction across Yemen's four primary material traditions — mudbrick, fired brick, coral stone, and rammed earth — plus seismic, flood, and post-conflict protocols. Modelled on Saudi SBC 902, adapted to Yemen's specific geology and conflict context.</p>
+      <h1 class="hero-title ar-kashida">كود البنـــاء<br><span>اليمنـــي</span></h1>
+      <p class="hero-desc">تضع وحدة التراث في كود البناء اليمني معايير فنية للبناء والترميم وإعادة الإعمار عبر تقاليد المواد الأربعة الأساسية في اليمن — اللبن، والطوب المحروق، والحجر المرجاني، والطين المدكوك — إضافةً إلى بروتوكولات الزلازل والفيضانات وما بعد النزاع. مصمَّمة على غرار الكود السعودي SBC 902 ومكيّفة مع جيولوجيا اليمن وسياق النزاع الخاص به.</p>
       <div class="hero-meta">
-        <div class="meta-item"><span class="meta-val">8</span><span class="meta-lbl">Code chapters</span></div>
-        <div class="meta-item"><span class="meta-val">4</span><span class="meta-lbl">Material traditions</span></div>
-        <div class="meta-item"><span class="meta-val">22</span><span class="meta-lbl">Governorates covered</span></div>
-        <div class="meta-item"><span class="meta-val">ALIPH</span><span class="meta-lbl">Protocol aligned</span></div>
+        <div class="meta-item"><span class="meta-val">8</span><span class="meta-lbl">فصول الكود</span></div>
+        <div class="meta-item"><span class="meta-val">4</span><span class="meta-lbl">تقاليد مواد</span></div>
+        <div class="meta-item"><span class="meta-val">22</span><span class="meta-lbl">محافظة مشمولة</span></div>
+        <div class="meta-item"><span class="meta-val">ALIPH</span><span class="meta-lbl">متوافق مع البروتوكول</span></div>
       </div>
     </div>
     <div class="hero-saudi">
-      <div class="saudi-label">Benchmark — Saudi SBC 902</div>
+      <div class="saudi-label">المرجع — الكود السعودي SBC 902</div>
       <div class="saudi-compare">
-        <div class="sc-title">YBC vs SBC 902</div>
-        <div class="sc-row"><span>Primary driver</span><span>Post-conflict rescue</span></div>
-        <div class="sc-row"><span>Materials</span><span>Libn · coral · zabur</span></div>
-        <div class="sc-row"><span>Urgency</span><span>Emergency + preventive</span></div>
-        <div class="sc-row"><span>Special chapter</span><span>Conflict damage</span></div>
-        <div class="sc-row"><span>Partners</span><span>UNESCO · ALIPH</span></div>
+        <div class="sc-title">الكود اليمني مقابل SBC 902</div>
+        <div class="sc-row"><span>المحرّك الأساسي</span><span>إنقاذ ما بعد النزاع</span></div>
+        <div class="sc-row"><span>المواد</span><span>لبن · مرجان · زبور</span></div>
+        <div class="sc-row"><span>الإلحاح</span><span>طارئ + وقائي</span></div>
+        <div class="sc-row"><span>فصل خاص</span><span>أضرار النزاع</span></div>
+        <div class="sc-row"><span>الشركاء</span><span>اليونسكو · ALIPH</span></div>
       </div>
     </div>
   </div>
@@ -72,27 +82,27 @@ const chapterData = chapters
 
 <div class="scope-bar">
   <div class="scope-inner">
-    <span class="scope-label">Scope</span>
-    <span class="scope-tag">New construction in heritage zones</span>
-    <span class="scope-tag">Heritage restoration</span>
-    <span class="scope-tag">Conflict damage reconstruction</span>
-    <span class="scope-tag">Material standards</span>
-    <span class="scope-tag">Structural performance</span>
-    <span class="scope-tag">Fire protection</span>
-    <span class="scope-tag">Flood resilience</span>
-    <span class="scope-tag">Seismic codes</span>
+    <span class="scope-label">النطاق</span>
+    <span class="scope-tag">البناء الجديد في مناطق التراث</span>
+    <span class="scope-tag">ترميم التراث</span>
+    <span class="scope-tag">إعادة إعمار أضرار النزاع</span>
+    <span class="scope-tag">معايير المواد</span>
+    <span class="scope-tag">الأداء الإنشائي</span>
+    <span class="scope-tag">الحماية من الحريق</span>
+    <span class="scope-tag">المرونة أمام الفيضانات</span>
+    <span class="scope-tag">الأكواد الزلزالية</span>
   </div>
 </div>
 
 <div class="main-layout">
   <!-- TOC -->
   <nav class="toc" role="navigation" aria-label="Code chapters navigation">
-    <div class="toc-title">Chapters</div>
+    <div class="toc-title">الفصول</div>
     <div class="toc-items" id="tocItems"></div>
     <div class="toc-divider"></div>
     <button class="toc-dl-btn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Full YBC PDF
+      الكود الكامل PDF
     </button>
   </nav>
 
@@ -101,30 +111,50 @@ const chapterData = chapters
 </div>
 
 <footer class="page-footer">
-  Yemen Architecture Initiative · <a href="/">YAI.org</a> · YBC Heritage Module Draft 2026 · Aligned with ALIPH, UNESCO, and Saudi SBC 902
+مبادرة العمارة اليمنية · <a href="/">YAI.org</a> · وحدة التراث في كود البناء اليمني — مسودة 2026 · متوافقة مع ALIPH واليونسكو والكود السعودي SBC 902
 </footer>
 
 <script id="chapter-data" type="application/json" is:inline set:html={JSON.stringify(chapterData)}></script>
 <script is:inline>
 const CHAPTERS = JSON.parse(document.getElementById('chapter-data').textContent);
 
+/* Page defaults to Arabic; render Arabic data + labels when active. */
+const AR = document.documentElement.classList.contains('lang-ar');
+const L = {
+  purpose: AR ? 'الغرض والنطاق' : 'Purpose & scope',
+  specs: AR ? 'المواصفات الرئيسية' : 'Key specifications',
+  guidance: AR ? 'إرشادات النمطية التصميمية' : 'Design typology guidance',
+  traditional: AR ? 'تقليدي' : 'Traditional',
+  transitional: AR ? 'انتقالي' : 'Transitional',
+  contemporary: AR ? 'معاصر' : 'Contemporary',
+  download: AR ? 'تنزيل' : 'Download',
+  readFull: AR ? 'قراءة الفصل كاملاً ←' : 'Read full chapter →',
+};
+const v = (ch) => AR ? {
+  name: ch.name_ar, subtitle: ch.subtitle_ar, govs: ch.govs_ar,
+  desc: ch.desc_ar, specs: ch.specs_ar, trad: ch.trad_ar, trans: ch.trans_ar, cont: ch.cont_ar,
+} : ch;
+
 /* Build TOC */
 const tocEl = document.getElementById('tocItems');
 const chaptersEl = document.getElementById('chaptersEl');
 
 CHAPTERS.forEach((ch,i) => {
+  const d = v(ch);
   // TOC item
   const ti = document.createElement('button');
   ti.className = 'toc-item';
   ti.dataset.i = i;
-  ti.setAttribute('aria-label', ch.name);
-  ti.innerHTML = `<span class="toc-code">${ch.code}</span><span>${ch.name}</span>`;
+  ti.setAttribute('aria-label', d.name);
+  ti.innerHTML = `<span class="toc-code">${ch.code}</span><span>${d.name}</span>`;
   ti.addEventListener('click', () => { expandChapter(i); ti.scrollIntoView({block:'nearest'}); });
   tocEl.appendChild(ti);
 
   // Chapter accordion
   const statusClass = {draft:'st-draft','peer-reviewed':'st-review',review:'st-review',active:'st-active'}[ch.status]||'st-draft';
-  const statusLabel = {draft:'Draft','peer-reviewed':'Peer-reviewed',review:'Under review',active:'Active'}[ch.status]||'Draft';
+  const statusLabel = AR
+    ? ({draft:'مسودة','peer-reviewed':'مُراجَع'}[ch.status]||'مسودة')
+    : ({draft:'Draft','peer-reviewed':'Peer-reviewed',review:'Under review',active:'Active'}[ch.status]||'Draft');
 
   const chEl = document.createElement('div');
   chEl.className = 'chapter';
@@ -132,38 +162,39 @@ CHAPTERS.forEach((ch,i) => {
   chEl.setAttribute('role','listitem');
   chEl.innerHTML = `
     <div class="chapter-header" tabindex="0" role="button" aria-expanded="false" aria-controls="ch-body-${i}">
+      <span class="ch-glyph" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ch.icon}</svg></span>
       <span class="ch-code">${ch.code}</span>
       <div class="ch-info">
-        <span class="ch-name">${ch.name}</span>
-        <span class="ch-subtitle">${ch.subtitle}</span>
+        <span class="ch-name">${d.name}</span>
+        <span class="ch-subtitle">${d.subtitle}</span>
       </div>
       <span class="ch-status ${statusClass}">${statusLabel}</span>
       <svg class="ch-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="chapter-body" id="ch-body-${i}" aria-hidden="true">
-      <div class="cb-govs">${ch.govs.map(g=>`<span class="gov-tag">${g}</span>`).join('')}</div>
+      <div class="cb-govs">${d.govs.map(g=>`<span class="gov-tag">${g}</span>`).join('')}</div>
       <div class="cb-grid">
         <div>
-          <div class="cb-col-title">Purpose & scope</div>
-          <p class="cb-desc">${ch.desc}</p>
+          <div class="cb-col-title">${L.purpose}</div>
+          <p class="cb-desc">${d.desc}</p>
         </div>
         <div>
-          <div class="cb-col-title">Key specifications</div>
+          <div class="cb-col-title">${L.specs}</div>
           <div class="cb-spec">
-            ${ch.specs.map(([k,v])=>`<div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`).join('')}
+            ${d.specs.map(([k,val])=>`<div class="spec-row"><span class="spec-key">${k}</span><span class="spec-val">${val}</span></div>`).join('')}
           </div>
         </div>
       </div>
-      <div class="cb-col-title">Design typology guidance</div>
+      <div class="cb-col-title">${L.guidance}</div>
       <div class="cb-grid" style="margin-top:0.625rem">
-        <div><div class="cb-col-title" style="color:#92400E;border-color:rgba(146,64,14,0.15)">Traditional</div><p class="cb-desc">${ch.trad}</p></div>
-        <div><div class="cb-col-title" style="color:#1E40AF;border-color:rgba(30,64,175,0.15)">Transitional</div><p class="cb-desc">${ch.trans}</p></div>
+        <div><div class="cb-col-title" style="color:#92400E;border-color:rgba(146,64,14,0.15)">${L.traditional}</div><p class="cb-desc">${d.trad}</p></div>
+        <div><div class="cb-col-title" style="color:#1E40AF;border-color:rgba(30,64,175,0.15)">${L.transitional}</div><p class="cb-desc">${d.trans}</p></div>
       </div>
-      <div class="cb-col-title" style="margin-bottom:0.5rem">Contemporary</div>
-      <p class="cb-desc" style="margin-bottom:1rem">${ch.cont}</p>
+      <div class="cb-col-title" style="margin-bottom:0.5rem">${L.contemporary}</div>
+      <p class="cb-desc" style="margin-bottom:1rem">${d.cont}</p>
       <div class="cb-actions">
-        <button class="cb-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download ${ch.code} (PDF)</button>
-        <button class="cb-read" onclick="window.location='/code/${ch.id}'">Read full chapter →</button>
+        <button class="cb-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>${L.download} ${ch.code} (PDF)</button>
+        <button class="cb-read" onclick="window.location='/code/${ch.id}'">${L.readFull}</button>
       </div>
     </div>
   `;
@@ -264,7 +295,10 @@ button{border:none;cursor:pointer;font:inherit}
 /* CHAPTERS */
 .chapters{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .chapter{background:var(--surface)}
-.chapter-header{padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:1rem;cursor:pointer;transition:background 0.12s}
+.chapter-header{padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto auto 1fr auto auto;align-items:center;gap:1rem;cursor:pointer;transition:background 0.12s}
+.ch-glyph{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;background:rgba(21,128,61,0.08);border:1px solid rgba(21,128,61,0.18);color:var(--green);flex-shrink:0}
+.chapter.expanded .ch-glyph{background:rgba(21,128,61,0.14)}
+@media(max-width:560px){.chapter-header{grid-template-columns:auto auto 1fr}.ch-glyph{display:none}}
 .chapter-header:hover{background:#F8FAFC}
 .chapter.expanded .chapter-header{background:#F8FAFC;border-bottom:1px solid var(--border)}
 .ch-code{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);background:var(--parchment);padding:0.25rem 0.625rem;border-radius:4px;white-space:nowrap}
@@ -302,4 +336,50 @@ button{border:none;cursor:pointer;font:inherit}
 .page-footer a{color:var(--sand);cursor:pointer}
 
 @media(max-width:900px){.main-layout{grid-template-columns:1fr}.toc{display:none}.hero-inner{grid-template-columns:1fr}.hero-saudi{display:none}.cb-grid{grid-template-columns:1fr}}
+</style>
+
+<!-- TOC items and chapter accordions are built in client JS, so their
+     styles must be global (scoped styles never reach injected nodes). -->
+<style is:global>
+.toc-item{display:flex;align-items:center;gap:0.625rem;font-size:0.8rem;color:var(--muted);padding:0.4rem 0.5rem;border-radius:4px;cursor:pointer;transition:all 0.15s;border:none;background:none;text-align:start;width:100%}
+.toc-item:hover{background:rgba(0,0,0,0.04);color:var(--stone)}
+.toc-item.active{background:rgba(21,128,61,0.08);color:var(--green);font-weight:500}
+.toc-code{font-family:var(--f-mono);font-size:0.65rem;color:var(--muted)}
+.toc-item.active .toc-code{color:rgba(21,128,61,0.6)}
+.chapter{background:var(--surface)}
+.chapter-header{padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto auto 1fr auto auto;align-items:center;gap:1rem;cursor:pointer;transition:background 0.12s}
+.ch-glyph{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;background:rgba(21,128,61,0.08);border:1px solid rgba(21,128,61,0.18);color:var(--green);flex-shrink:0}
+.chapter.expanded .ch-glyph{background:rgba(21,128,61,0.14)}
+@media(max-width:560px){.chapter-header{grid-template-columns:auto auto 1fr}.ch-glyph{display:none}}
+.chapter-header:hover{background:#F8FAFC}
+.chapter.expanded .chapter-header{background:#F8FAFC;border-bottom:1px solid var(--border)}
+.ch-code{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);background:var(--parchment);padding:0.25rem 0.625rem;border-radius:4px;white-space:nowrap}
+.chapter.expanded .ch-code{background:rgba(21,128,61,0.08);color:var(--green)}
+.ch-info{display:flex;flex-direction:column;gap:0.2rem;min-width:0}
+.ch-name{font-family:var(--f-display);font-size:1.2rem;font-weight:500;color:var(--ink)}
+.ch-subtitle{font-size:0.78rem;color:var(--muted)}
+.ch-status{font-size:0.65rem;font-weight:500;padding:0.2rem 0.6rem;border-radius:20px;white-space:nowrap}
+.st-draft{background:#FEF3C7;color:#92400E}
+.st-review{background:#DBEAFE;color:#1E40AF}
+.st-active{background:#DCFCE7;color:#14532D}
+.ch-arrow{color:var(--muted);transition:transform 0.2s;flex-shrink:0}
+.chapter.expanded .ch-arrow{transform:rotate(90deg)}
+.chapter-body{display:none;padding:1.5rem;border-top:1px solid var(--border)}
+.chapter.expanded .chapter-body{display:block}
+.cb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.cb-col-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.625rem;padding-bottom:0.375rem;border-bottom:1px solid var(--border)}
+.cb-desc{font-size:0.85rem;color:var(--stone);line-height:1.7;margin-bottom:1rem}
+.cb-spec{display:flex;flex-direction:column;gap:0.375rem}
+.cb-spec .spec-row{display:flex;align-items:baseline;gap:0.75rem;font-size:0.8rem;padding:0.375rem 0;border-bottom:1px solid var(--parchment)}
+.cb-spec .spec-key{color:var(--muted);min-width:140px;flex-shrink:0;font-size:0.75rem}
+.cb-spec .spec-val{font-family:var(--f-mono);color:var(--stone);font-size:0.78rem}
+.cb-govs{display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1.25rem}
+.gov-tag{font-size:0.72rem;padding:0.2rem 0.6rem;background:rgba(21,128,61,0.06);border:1px solid rgba(21,128,61,0.15);border-radius:20px;color:var(--green)}
+.cb-actions{display:flex;gap:0.625rem;padding-top:1rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.cb-dl{background:var(--green);color:#fff;padding:0.5rem 1.125rem;border-radius:4px;font-size:0.78rem;font-weight:500;min-height:40px;display:flex;align-items:center;gap:0.375rem;cursor:pointer;transition:opacity 0.15s;border:none}
+.cb-dl:hover{opacity:0.85}
+.cb-read{border:1px solid var(--border);color:var(--stone);padding:0.5rem 1.125rem;border-radius:4px;font-size:0.78rem;min-height:40px;display:flex;align-items:center;cursor:pointer;transition:all 0.15s;background:none}
+.cb-read:hover{border-color:var(--stone);color:var(--ink)}
+:where(html.lang-ar) .ch-name,:where(html.lang-ar) .cb-desc{font-family:var(--f-ar-display)}
+:where(html.lang-ar) .cb-spec .spec-val{font-family:var(--f-ar-body)}
 </style>

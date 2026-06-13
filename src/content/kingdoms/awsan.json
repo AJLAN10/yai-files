@@ -1,0 +1,32 @@
+{
+  "name": "Kingdom of Awsan",
+  "name_ar": "مملكة أوسان",
+  "era": "pre",
+  "dates": "c. 800–500 BCE",
+  "capital": "Wadi Markha · Abyan region",
+  "description": "The earliest South Arabian kingdom with monumental architectural remains. Awsan controlled the frankincense trade route through Wadi Markha before its defeat by Saba. Temple complexes and early ashlar stonework have been identified but remain poorly excavated. This is one of YAI's primary original documentation priorities — almost no scholarly monograph exists in any language.",
+  "architecture": [
+    "Early temple complex",
+    "Ashlar quoins",
+    "Trade route fort",
+    "Wadi Markha site"
+  ],
+  "badges": [
+    "YAI research priority",
+    "Research gap"
+  ],
+  "order": 2,
+  "dates_ar": "نحو 800–500 ق.م",
+  "capital_ar": "وادي مرخة · إقليم أبين",
+  "description_ar": "أقدم ممالك جنوب الجزيرة العربية ذات بقايا معمارية صرحية. سيطرت أوسان على طريق تجارة اللبان عبر وادي مرخة قبل هزيمتها على يد سبأ. حُدِّدت مجمّعات معابد وأعمال حجرية مبكرة لكنها ما تزال ضعيفة التنقيب. هذه إحدى أولويات التوثيق الأصلية لدى المبادرة — إذ لا تكاد توجد دراسة علمية في أي لغة.",
+  "architecture_ar": [
+    "مجمّع معبد مبكر",
+    "زوايا حجرية منحوتة",
+    "حصن على طريق التجارة",
+    "موقع وادي مرخة"
+  ],
+  "badges_ar": [
+    "أولوية بحثية للمبادرة",
+    "فجوة بحثية"
+  ]
+}

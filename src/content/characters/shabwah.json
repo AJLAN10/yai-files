@@ -5,13 +5,45 @@
   "governorate": "Shabwah Governorate",
   "type": "ancient",
   "era": "Hadramite (c.400 BCE) to present",
-  "material_list": ["Mudbrick", "limestone", "earth"],
+  "material_list": [
+    "Mudbrick",
+    "limestone",
+    "earth"
+  ],
   "risk_level": "moderate",
-  "geo_coordinates": { "lat": 14.53, "lng": 46.83 },
+  "geo_coordinates": {
+    "lat": 14.53,
+    "lng": 46.83
+  },
   "tag": "Hadramite capital · frankincense route",
+  "tag_ar": "عاصمة حضرمية · طريق اللبان",
   "description": "Shabwa was the ancient capital of the Hadramite kingdom — one of the wealthiest cities on the frankincense trade route. The archaeological site reveals a sophisticated palatial mudbrick architecture that directly prefigures the Shibam tradition 3,000 years later — demonstrating extraordinary civilisational continuity.",
-  "elements": ["Palatial mudbrick", "Frankincense court", "Ashlar gateway", "Ancient cistern", "Trade caravanserai"],
+  "elements": [
+    "Palatial mudbrick",
+    "Frankincense court",
+    "Ashlar gateway",
+    "Ancient cistern",
+    "Trade caravanserai"
+  ],
   "traditional": "Mudbrick palatial construction on ashlar plinth; decorated gate towers; internal courtyard.",
   "transitional": "Earth building tradition continuing from Shabwa to Shibam across the millennia.",
-  "contemporary": "Contemporary Shabwah: rammed earth with ashlar base; Hadramite proportions as design language."
+  "contemporary": "Contemporary Shabwah: rammed earth with ashlar base; Hadramite proportions as design language.",
+  "governorate_ar": "محافظة شبوة",
+  "era_ar": "حضرمي (نحو 400 ق.م) حتى الحاضر",
+  "material_list_ar": [
+    "طوب طيني",
+    "حجر جيري",
+    "تراب"
+  ],
+  "elements_ar": [
+    "قصور طينية",
+    "ساحة اللبان",
+    "بوابة حجرية منحوتة",
+    "صهريج قديم",
+    "خان تجاري"
+  ],
+  "description_ar": "كانت شبوة العاصمة القديمة لمملكة حضرموت — إحدى أغنى مدن طريق تجارة اللبان. يكشف الموقع الأثري عن عمارة قصورية طينية متطورة تمهّد مباشرةً لتقليد شبام بعد 3000 عام — مظهرةً استمراريةً حضاريةً استثنائية.",
+  "traditional_ar": "بناء قصوري طيني على قاعدة حجرية منحوتة؛ وأبراج بوابات مزخرفة؛ وفناء داخلي.",
+  "transitional_ar": "تقليد البناء الطيني مستمر من شبوة إلى شبام عبر الألفيات.",
+  "contemporary_ar": "شبوة المعاصرة: طين مدكوك بقاعدة حجرية؛ ونسب حضرمية كلغة تصميم."
 }

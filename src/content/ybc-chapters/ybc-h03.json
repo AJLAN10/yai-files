@@ -4,18 +4,87 @@
   "title": "Coral Stone & Timber",
   "subtitle": "Tihama coastal and Red Sea port tradition",
   "status": "draft",
-  "governorates": ["Al Hudaydah", "Aden", "Lahij", "Abyan"],
-  "related_resilience_tags": ["coastal-erosion", "thermal"],
+  "governorates": [
+    "Al Hudaydah",
+    "Aden",
+    "Lahij",
+    "Abyan"
+  ],
+  "related_resilience_tags": [
+    "coastal-erosion",
+    "thermal"
+  ],
   "content": "Standards for coral stone (marjan) construction on the Red Sea and Gulf of Aden coasts — covering Zabid, Hudaydah port buildings, and Aden's Crater district. Includes rawshan carved timber screen specification, courtyard haush typology, and moisture management in the high-humidity coastal environment.",
   "specs": [
-    ["Coral grade", "Only Grade 2 fossil coral (not live) — sourced from licensed suppliers only"],
-    ["Wall thickness", "Min 400mm for structural walls · 250mm for internal partitions"],
-    ["Mortar", "Lime-sand mortar (1:3) — Portland cement prohibited; causes salt crystallisation"],
-    ["Rawshan screen", "Carved timber · min teak or equivalent hardwood · max projection 600mm from facade"],
-    ["Ventilation", "Mandatory cross-ventilation through courtyard — minimum 6m² courtyard for residential"],
-    ["Damp-proof", "30mm lime render base coat at ground floor · no impermeable DPC permitted"]
+    [
+      "Coral grade",
+      "Only Grade 2 fossil coral (not live) — sourced from licensed suppliers only"
+    ],
+    [
+      "Wall thickness",
+      "Min 400mm for structural walls · 250mm for internal partitions"
+    ],
+    [
+      "Mortar",
+      "Lime-sand mortar (1:3) — Portland cement prohibited; causes salt crystallisation"
+    ],
+    [
+      "Rawshan screen",
+      "Carved timber · min teak or equivalent hardwood · max projection 600mm from facade"
+    ],
+    [
+      "Ventilation",
+      "Mandatory cross-ventilation through courtyard — minimum 6m² courtyard for residential"
+    ],
+    [
+      "Damp-proof",
+      "30mm lime render base coat at ground floor · no impermeable DPC permitted"
+    ]
   ],
   "traditional": "Traditional Tihama — fossil coral block, lime mortar, carved timber rawshan, open courtyard haush, no cement.",
   "transitional": "Transitional — coral block structure with lime mortar; modern plumbing and electrical within wall chases; traditional facade.",
-  "contemporary": "Contemporary Tihama — coral stone cladding (100mm minimum) on concrete frame; rawshan motif as perforated panel; courtyard maintained."
+  "contemporary": "Contemporary Tihama — coral stone cladding (100mm minimum) on concrete frame; rawshan motif as perforated panel; courtyard maintained.",
+  "title_ar": "الحجر المرجاني والخشب",
+  "subtitle_ar": "تقليد ساحل تهامة وموانئ البحر الأحمر",
+  "governorates_ar": [
+    "الحديدة",
+    "عدن",
+    "لحج",
+    "أبين"
+  ],
+  "content_ar": "معايير بناء الحجر المرجاني (المرجان) على ساحلي البحر الأحمر وخليج عدن — تغطي زبيد، ومباني ميناء الحديدة، وحي كريتر بعدن. تشمل مواصفة المشربية الخشبية المنحوتة (الروشن)، ونمط فناء الحوش، وإدارة الرطوبة في البيئة الساحلية عالية الرطوبة.",
+  "specs_ar": [
+    [
+      "درجة المرجان",
+      "فقط مرجان أحفوري درجة 2 (غير حي) — من موردين مرخّصين فقط"
+    ],
+    [
+      "سُمك الجدار",
+      "لا يقل عن 400مم للجدران الإنشائية · 250مم للقواطع الداخلية"
+    ],
+    [
+      "الملاط",
+      "ملاط جير-رمل (1:3) — يُمنع الإسمنت البورتلاندي؛ يسبّب تبلور الأملاح"
+    ],
+    [
+      "مشربية الروشن",
+      "خشب منحوت · ساج أو ما يعادله من الأخشاب الصلبة · أقصى بروز 600مم عن الواجهة"
+    ],
+    [
+      "التهوية",
+      "تهوية متقاطعة إلزامية عبر الفناء — فناء لا يقل عن 6م² للسكني"
+    ],
+    [
+      "العزل المائي",
+      "طبقة أساس لياسة جير 30مم في الطابق الأرضي · يُمنع العزل المائي الكتيم"
+    ]
+  ],
+  "traditional_ar": "تهامة التقليدية — كتل مرجان أحفوري، ملاط جير، مشربية خشبية منحوتة، فناء حوش مفتوح، بلا إسمنت.",
+  "transitional_ar": "انتقالي — هيكل من كتل المرجان بملاط الجير؛ سباكة وكهرباء حديثة ضمن مجاري الجدار؛ واجهة تقليدية.",
+  "contemporary_ar": "تهامة المعاصرة — تكسية بالحجر المرجاني (100مم كحد أدنى) على هيكل خرساني؛ زخرفة الروشن كلوح مفرّغ؛ مع الإبقاء على الفناء.",
+  "governs": [
+    "coral",
+    "timber",
+    "rawshan"
+  ]
 }

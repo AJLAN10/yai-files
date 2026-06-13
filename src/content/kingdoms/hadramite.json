@@ -1,0 +1,34 @@
+{
+  "name": "Ancient Kingdom of Hadramaut",
+  "name_ar": "مملكة حضرموت",
+  "era": "pre",
+  "dates": "c. 400 BCE – 3rd century CE",
+  "capital": "Shabwa (ancient Shabwa)",
+  "description": "The ancient Hadramite kingdom occupied the wadi system that bears its name, with its capital at Shabwa — the great frankincense emporium. CEFAS French excavations revealed a sophisticated palatial mudbrick architecture at Shabwa that directly prefigures the Shibam high-rise tradition 3,000 years later, demonstrating one of the most extraordinary civilisational continuities in the built world.",
+  "architecture": [
+    "Shabwa palace complex",
+    "Frankincense court",
+    "Ashlar gateway",
+    "Mudbrick tower",
+    "Ancient cistern"
+  ],
+  "badges": [
+    "CEFAS French excavation",
+    "3,000-year continuity to Shibam"
+  ],
+  "order": 5,
+  "dates_ar": "نحو 400 ق.م – القرن الثالث م",
+  "capital_ar": "شبوة (شبوة القديمة)",
+  "description_ar": "شغلت مملكة حضرموت القديمة نظام الوديان الذي يحمل اسمها، وعاصمتها شبوة — سوق اللبان الكبير. كشفت تنقيبات CEFAS الفرنسية عن عمارة قصورية طينية متطورة في شبوة تمهّد مباشرةً لتقليد ناطحات شبام بعد 3000 عام، مظهرةً إحدى أبرز الاستمراريات الحضارية في عالم البناء.",
+  "architecture_ar": [
+    "مجمّع قصر شبوة",
+    "ساحة اللبان",
+    "بوابة حجرية منحوتة",
+    "برج طيني",
+    "صهريج قديم"
+  ],
+  "badges_ar": [
+    "تنقيب CEFAS الفرنسي",
+    "استمرارية 3000 عام حتى شبام"
+  ]
+}

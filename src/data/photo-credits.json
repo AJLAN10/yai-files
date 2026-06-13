@@ -1,0 +1,50 @@
+{
+  "hadramawt": {
+    "src": "/photos/hadramawt.jpg",
+    "credit": "Ala Askool",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Shibam%20Hadramaut.jpg"
+  },
+  "sanaa-capital": {
+    "src": "/photos/sanaa-capital.jpg",
+    "credit": "Dan (Brussels)",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tower%20House%20in%20the%20Old%20City%20of%20Sana'a%20(2286819294).jpg"
+  },
+  "socotra": {
+    "src": "/photos/socotra.jpg",
+    "credit": "Boris Khvostichenko",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Socotra%20dragon%20tree.JPG"
+  },
+  "aden": {
+    "src": "/photos/aden.jpg",
+    "credit": "Jialiang Gao",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old%20Town%20Aden%20Yemen.jpg"
+  },
+  "taizz": {
+    "src": "/photos/taizz.jpg",
+    "credit": "Ljuba brank",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:27%20Taizz%20(8)%20Al-Ashrafiya.jpg"
+  },
+  "sadah": {
+    "src": "/photos/sadah.jpg",
+    "credit": "Raf24",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sa'ada.jpg"
+  },
+  "marib": {
+    "src": "/photos/marib.jpg",
+    "credit": "Ljuba brank",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:08%20Marib%20(1)%20Tempelj%20sonca.jpg"
+  },
+  "sheba": {
+    "src": "/photos/sheba.jpg",
+    "credit": "Bernard Gagnon",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bar'an%20temple%201986-1.jpg"
+  }
+}

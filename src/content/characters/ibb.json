@@ -5,13 +5,45 @@
   "governorate": "Ibb Governorate",
   "type": "highland",
   "era": "Rasulid to present",
-  "material_list": ["Stone", "fired brick", "gypsum"],
+  "material_list": [
+    "Stone",
+    "fired brick",
+    "gypsum"
+  ],
   "risk_level": "low",
-  "geo_coordinates": { "lat": 13.97, "lng": 44.18 },
+  "geo_coordinates": {
+    "lat": 13.97,
+    "lng": 44.18
+  },
   "tag": "Green highland · medieval stone townscape",
+  "tag_ar": "مرتفعات خضراء · نسيج حجري من العصور الوسطى",
   "description": "Yemen's greenest governorate hosts a dense medieval stone townscape. Ibb city and its surrounding villages show the transition from Rasulid architectural patronage to Zaidi Imamate — their Friday mosques, caravanserais, and terraced domestic architecture in volcanic stone are among Yemen's least-documented.",
-  "elements": ["Stone tower house", "Terraced cultivation", "Volcanic basalt", "Caravanserai", "Rasulid mosque"],
+  "elements": [
+    "Stone tower house",
+    "Terraced cultivation",
+    "Volcanic basalt",
+    "Caravanserai",
+    "Rasulid mosque"
+  ],
   "traditional": "Multi-storey stone house, gypsum render, small windows for heat retention in cool highland.",
   "transitional": "Stone construction with enlarged windows, retained traditional massing.",
-  "contemporary": "Contemporary Ibb: dark volcanic basalt cladding, green terrace integration, traditional skyline."
+  "contemporary": "Contemporary Ibb: dark volcanic basalt cladding, green terrace integration, traditional skyline.",
+  "governorate_ar": "محافظة إب",
+  "era_ar": "رسولي حتى الحاضر",
+  "material_list_ar": [
+    "حجر",
+    "طوب محروق",
+    "جص"
+  ],
+  "elements_ar": [
+    "بيت برجي حجري",
+    "زراعة مدرّجة",
+    "بازلت بركاني",
+    "خان (كارفانسراي)",
+    "جامع رسولي"
+  ],
+  "description_ar": "تضم أكثر محافظات اليمن خضرةً نسيجاً حجرياً وسيطاً كثيفاً. تُظهر مدينة إب وقراها المحيطة الانتقال من رعاية العمارة الرسولية إلى الإمامة الزيدية — وجوامعها وخاناتها وعمارتها السكنية المدرّجة في الحجر البركاني من بين الأقل توثيقاً في اليمن.",
+  "traditional_ar": "بيت حجري متعدد الطوابق، ولياسة جصية، ونوافذ صغيرة لحفظ الحرارة في المرتفعات الباردة.",
+  "transitional_ar": "بناء حجري بنوافذ موسّعة، مع الحفاظ على الكتلة التقليدية.",
+  "contemporary_ar": "إب المعاصرة: تكسية بالبازلت البركاني الداكن، ودمج المدرجات الخضراء، وأفق تقليدي."
 }

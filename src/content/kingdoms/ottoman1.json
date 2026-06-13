@@ -1,0 +1,30 @@
+{
+  "name": "First Ottoman Period",
+  "name_ar": "العهد العثماني الأول",
+  "era": "islamic",
+  "dates": "1538–1635 CE",
+  "capital": "Sana'a",
+  "description": "The first Ottoman presence introduced minarets with distinctive pencil profiles, glazed tile decoration, and new garrison building types. Ottoman-style minarets at several Sana'a mosques remain as the primary architectural legacy. The Yemeni resistance — led by Imam al-Qasim — ultimately expelled the Ottomans in 1635 in one of history's few successful anti-Ottoman revolts.",
+  "architecture": [
+    "Ottoman minaret profiles",
+    "Garrison architecture",
+    "Hammam (bathhouse)",
+    "Covered market improvement"
+  ],
+  "badges": [
+    "Ottoman imprint on minarets"
+  ],
+  "order": 11,
+  "dates_ar": "1538–1635 م",
+  "capital_ar": "صنعاء",
+  "description_ar": "أدخل الوجود العثماني الأول مآذن بطُرز قلمية مميّزة، وزخارف بالقاشاني المزجّج، وأنماط مبانٍ عسكرية جديدة. تبقى المآذن العثمانية الطراز في عدة جوامع بصنعاء الإرث المعماري الأبرز. أخرجت المقاومة اليمنية — بقيادة الإمام القاسم — العثمانيين عام 1635 في إحدى الثورات النادرة الناجحة ضد العثمانيين.",
+  "architecture_ar": [
+    "طُرز المآذن العثمانية",
+    "عمارة الحاميات",
+    "حمّام",
+    "تحسين الأسواق المغطّاة"
+  ],
+  "badges_ar": [
+    "بصمة عثمانية على المآذن"
+  ]
+}

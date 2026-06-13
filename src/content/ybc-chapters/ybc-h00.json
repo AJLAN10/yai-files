@@ -4,16 +4,62 @@
   "title": "Overview & Legal Framework",
   "subtitle": "Scope, definitions, classification of heritage structures",
   "status": "peer-reviewed",
-  "governorates": ["All 22 governorates", "Socotra"],
-  "related_resilience_tags": ["governance"],
+  "governorates": [
+    "All 22 governorates",
+    "Socotra"
+  ],
+  "related_resilience_tags": [
+    "governance"
+  ],
   "content": "Establishes the legal basis, definitions, and classification system for Yemen's built heritage. Defines four heritage grades (A–D), geographic scope across all 22 governorates, relationship to existing municipal codes, and the authority of the YAI committee for variance applications.",
   "specs": [
-    ["Heritage grades", "A: National significance · B: Regional · C: Local · D: Contributory"],
-    ["Application scope", "All structures in classified heritage zones or within 50m of Grade A/B building"],
-    ["Authority", "YAI Heritage Code Committee — technical review within 45 days"],
-    ["Relationship to SBC", "YBC-H supersedes SBC 902 for classified Yemeni heritage structures"]
+    [
+      "Heritage grades",
+      "A: National significance · B: Regional · C: Local · D: Contributory"
+    ],
+    [
+      "Application scope",
+      "All structures in classified heritage zones or within 50m of Grade A/B building"
+    ],
+    [
+      "Authority",
+      "YAI Heritage Code Committee — technical review within 45 days"
+    ],
+    [
+      "Relationship to SBC",
+      "YBC-H supersedes SBC 902 for classified Yemeni heritage structures"
+    ]
   ],
   "traditional": "All restoration or reconstruction of Grade A and B structures must comply with YBC-H before any municipal code.",
   "transitional": "Grade C and D structures may apply hybrid compliance — YBC-H material standards + municipal structural code.",
-  "contemporary": "New construction in heritage zones must demonstrate character compliance per YAI character card for the governorate."
+  "contemporary": "New construction in heritage zones must demonstrate character compliance per YAI character card for the governorate.",
+  "title_ar": "نظرة عامة والإطار القانوني",
+  "subtitle_ar": "النطاق والتعريفات وتصنيف المنشآت التراثية",
+  "governorates_ar": [
+    "جميع المحافظات الـ22",
+    "سقطرى"
+  ],
+  "content_ar": "يؤسّس الأساس القانوني والتعريفات ونظام التصنيف للتراث المبني في اليمن. يحدّد أربع درجات تراثية (أ–د)، والنطاق الجغرافي عبر المحافظات الـ22 جميعها، والعلاقة بالأكواد البلدية القائمة، وصلاحية لجنة المبادرة في طلبات الاستثناء.",
+  "specs_ar": [
+    [
+      "الدرجات التراثية",
+      "أ: أهمية وطنية · ب: إقليمية · ج: محلية · د: مساهِمة"
+    ],
+    [
+      "نطاق التطبيق",
+      "جميع المنشآت في مناطق التراث المصنّفة أو ضمن 50م من مبنى درجة أ/ب"
+    ],
+    [
+      "الجهة المختصة",
+      "لجنة كود التراث بالمبادرة — مراجعة فنية خلال 45 يوماً"
+    ],
+    [
+      "العلاقة بـ SBC",
+      "يَجُبّ كود التراث اليمني الكود السعودي SBC 902 للمنشآت التراثية اليمنية المصنّفة"
+    ]
+  ],
+  "traditional_ar": "يجب أن يمتثل كل ترميم أو إعادة بناء لمنشآت الدرجة أ وب لكود التراث اليمني قبل أي كود بلدي.",
+  "transitional_ar": "يجوز لمنشآت الدرجة ج ود تطبيق امتثال هجين — معايير مواد كود التراث + الكود الإنشائي البلدي.",
+  "contemporary_ar": "يجب أن يُظهر البناء الجديد في مناطق التراث امتثالاً للطابع وفق بطاقة طابع المبادرة للمحافظة.",
+  "governs": []
 }

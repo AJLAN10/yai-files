@@ -1,0 +1,34 @@
+{
+  "name": "Second Ottoman Period",
+  "name_ar": "العهد العثماني الثاني",
+  "era": "islamic",
+  "dates": "1849–1918 CE",
+  "capital": "Sana'a · Ta'izz · Hodeidah",
+  "description": "The second Ottoman period left a more substantial architectural imprint than the first — government buildings (hukumat), military garrisons, telegraph stations, covered markets (bedestan), and the distinctive Ottoman-style Yemeni post office buildings that survive in several cities. The port of Hodeidah received major Ottoman investment in its commercial and administrative infrastructure.",
+  "architecture": [
+    "Hukumat (government) buildings",
+    "Ottoman barracks",
+    "Bedestan covered market",
+    "Hodeidah port buildings",
+    "Telegraph station"
+  ],
+  "badges": [
+    "Administrative architecture",
+    "Hodeidah port expansion"
+  ],
+  "order": 13,
+  "dates_ar": "1849–1918 م",
+  "capital_ar": "صنعاء · تعز · الحديدة",
+  "description_ar": "ترك الوجود العثماني الثاني بصمةً معماريةً أكبر من الأول — مبانٍ حكومية (حكومات)، وحاميات عسكرية، ومحطات تلغراف، وأسواق مغطّاة (بدستان)، ومبانٍ بريد يمنية بالطراز العثماني تبقى في عدة مدن. حظي ميناء الحديدة باستثمار عثماني كبير في بنيته التجارية والإدارية.",
+  "architecture_ar": [
+    "مبانٍ حكومية (حكومات)",
+    "ثكنات عثمانية",
+    "سوق بدستان مغطّى",
+    "مباني ميناء الحديدة",
+    "محطة تلغراف"
+  ],
+  "badges_ar": [
+    "عمارة إدارية",
+    "توسّع ميناء الحديدة"
+  ]
+}
