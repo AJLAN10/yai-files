@@ -110,6 +110,10 @@ const climateResilience = defineCollection({
     title: z.string(),
     title_ar: z.string().optional(),
     summary: z.string(),
+    summary_ar: z.string().optional(),
+    /* Arabic narrative body as HTML (the Markdown body stays English;
+       this renders in AR mode). */
+    body_ar: z.string().optional(),
     risk_type: z.enum(['flood', 'seismic', 'drought', 'thermal', 'conflict', 'coastal-erosion']),
     risk_level: riskLevel,
     governorate: z.string(),
@@ -121,6 +125,7 @@ const climateResilience = defineCollection({
     related_character: z.string().optional(),
     geo_coordinates: geoPoint,
     adaptive_reuse: z.string().optional(),
+    adaptive_reuse_ar: z.string().optional(),
     order: z.number().default(99),
   }),
 });
