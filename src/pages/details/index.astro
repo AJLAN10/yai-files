@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
 import SlidePanel from '../../components/SlidePanel.astro';
 import { relatedYbc } from '../../lib/related';
+import photoCredits from '../../data/photo-credits.json';
+const sectorPhoto = (photoCredits as Record<string, any>)['sanaa-capital'];
 
 /* Order by governorate catalogue number; Sheba (★) leads as the
    foundational character. */
@@ -48,6 +50,10 @@ const panelRecords = characters.map((entry) => {
   accent="#FBBF24"
   heading="Building Character for All Governorates"
   headingAr="الطابع المعماري لكل المحافظات"
+  image={sectorPhoto?.src}
+  imageCredit={sectorPhoto?.credit}
+  imageLicense={sectorPhoto?.license}
+  imageSource={sectorPhoto?.source}
   meta={[{ label: 'Character cards', label_ar: 'بطاقات الطوابع', value: String(characters.length) }]}
 >
   <p class="lede en-only">
