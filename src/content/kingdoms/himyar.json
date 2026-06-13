@@ -1,0 +1,11 @@
+{
+  "name": "Kingdom of Himyar",
+  "name_ar": "مملكة حمير",
+  "era": "pre",
+  "dates": "110 BCE – 525 CE",
+  "capital": "Zafar (Dhofar) · later Sana'a",
+  "description": "Himyar gradually absorbed Saba and ultimately unified southern Arabia as the dominant power before the arrival of Islam. Their capital at Zafar (near Yarim) housed the palatial complex of Raidan, and their expansion into Sana'a established the city's early highland character. The Himyarite adoption of Judaism and later Christianity is reflected in the remains of synagogues and churches alongside temples.",
+  "architecture": ["Raidan palace complex", "Zafar highland fortress", "Early Sana'a foundations", "Himyarite inscription pillars"],
+  "badges": ["Successor to Saba", "Pre-Islamic highland"],
+  "order": 6
+}

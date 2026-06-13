@@ -1,5 +1,25 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+/* Single source of truth: kingdoms live in the `kingdoms` collection.
+   Shaped into the flat record the client script expects. */
+const kingdoms = await getCollection('kingdoms');
+const kingdomData = kingdoms
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((e) => ({
+    id: e.id,
+    era: e.data.era,
+    isSheba: e.data.special || undefined,
+    name: e.data.name,
+    ar: e.data.name_ar,
+    dates: e.data.dates,
+    capital: e.data.capital,
+    desc: e.data.description,
+    arch: e.data.architecture,
+    badges: e.data.badges,
+    special: e.data.special || undefined,
+  }));
 ---
 <BaseLayout
   title="Kingdom Archives — Yemen Architecture Initiative"
@@ -36,7 +56,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </section>
 
 <!-- Timeline rail -->
-<div class="timeline-rail" role="navigation" aria-label="Kingdom timeline">
+<div class="timeline-rail" id="timeline" role="navigation" aria-label="Kingdom timeline">
   <div class="timeline-inner">
     <div class="tl-era">
       <div class="tl-era-label">Pre-Islamic</div>
@@ -66,7 +86,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="sidebar-box">
       <div class="sb-title">Full timeline</div>
       <div class="sb-timeline" id="sbTimeline"></div>
-      <a href="/archives/timeline" class="sb-cta">Interactive timeline →</a>
+      <a href="#timeline" class="sb-cta">Interactive timeline →</a>
     </div>
   </aside>
 </div>
@@ -75,22 +95,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   Yemen Architecture Initiative · <a href="/">YAI.org</a> · Kingdom Archives — editorial research based on 51 scholarly sources across 5 languages
 </footer>
 
+<script id="kingdom-data" type="application/json" is:inline set:html={JSON.stringify(kingdomData)}></script>
 <script is:inline>
-const KINGDOMS = [
-  {id:'sheba',era:'pre',isSheba:true,name:"Kingdom of Saba (Sheba)",ar:"مملكة سبأ",dates:"c. 900 BCE – 275 CE",capital:"Marib · Sirwah",desc:"The foundational kingdom of Yemeni civilisation. The Sabaeans built the Awwam Temple (Moon Temple), the Barran Temple (Throne of Bilqis), and the Great Dam of Marib — one of antiquity's greatest engineering achievements. Their ashlar limestone masonry, Sabaean script inscriptions, and hydraulic irrigation systems influenced every subsequent building tradition across southern Arabia.",arch:['Awwam Temple','Barran Temple pylon','Great Dam sluice','Sabaean inscription wall','Hypostyle hall','Ashlar masonry'],badges:['UNESCO 2023','Italian MAIRY excavation','German DAI research','Most documented'],special:true},
-  {id:'awsan',era:'pre',name:'Kingdom of Awsan',ar:"مملكة أوسان",dates:'c. 800–500 BCE',capital:'Wadi Markha · Abyan region',desc:'The earliest South Arabian kingdom with monumental architectural remains. Awsan controlled the frankincense trade route through Wadi Markha before its defeat by Saba. Temple complexes and early ashlar stonework have been identified but remain poorly excavated. This is one of YAI\'s primary original documentation priorities — almost no scholarly monograph exists in any language.',arch:['Early temple complex','Ashlar quoins','Trade route fort','Wadi Markha site'],badges:['YAI research priority','Research gap']},
-  {id:'main',era:'pre',name:"Kingdom of Ma'in (Minaean)",ar:"المملكة المعينية",dates:'c. 400–100 BCE',capital:"Qarnaw (Al Jawf) · Yathill (Baraqish)",desc:"The Minaean kingdom controlled the northern caravan routes to the Levant, establishing trading colonies as far as Dedan in northwest Arabia and the Greek island of Delos. Their walled city of Baraqish (ancient Yathill) survives with its city wall and six towers largely intact — one of the best-preserved pre-Islamic city walls in Arabia. Italian MAIRY missions have partially excavated the site.",arch:["Baraqish city wall (intact)","Tower gate","Caravan caravanserai","Inscribed temple facade"],badges:['Baraqish walls intact','MAIRY excavated']},
-  {id:'qataban',era:'pre',name:'Kingdom of Qataban',ar:"مملكة قتبان",dates:'c. 400 BCE – 1st century CE',capital:"Timna (modern Harib)",desc:"Qataban controlled the frankincense and myrrh export routes through Wadi Beihan. The Italian-French excavations at Timna revealed the most complete urban plan of any pre-Islamic Yemeni city — palatial mudbrick residences, an ashlar-faced temple of Athtar, and a grid street system. Romolo Loreto's 2011 monograph (University of Naples) is the definitive study.",arch:['Timna urban plan','Palace of Shahr Hilal','Temple of Athtar','Street grid','Palatial mudbrick'],badges:['Italian-French excavation','Loreto 2011 monograph']},
-  {id:'hadramite',era:'pre',name:'Ancient Kingdom of Hadramaut',ar:"مملكة حضرموت",dates:'c. 400 BCE – 3rd century CE',capital:'Shabwa (ancient Shabwa)',desc:"The ancient Hadramite kingdom occupied the wadi system that bears its name, with its capital at Shabwa — the great frankincense emporium. CEFAS French excavations revealed a sophisticated palatial mudbrick architecture at Shabwa that directly prefigures the Shibam high-rise tradition 3,000 years later, demonstrating one of the most extraordinary civilisational continuities in the built world.",arch:['Shabwa palace complex','Frankincense court','Ashlar gateway','Mudbrick tower','Ancient cistern'],badges:['CEFAS French excavation','3,000-year continuity to Shibam']},
-  {id:'himyar',era:'pre',name:'Kingdom of Himyar',ar:"مملكة حمير",dates:'110 BCE – 525 CE',capital:'Zafar (Dhofar) · later Sana\'a',desc:"Himyar gradually absorbed Saba and ultimately unified southern Arabia as the dominant power before the arrival of Islam. Their capital at Zafar (near Yarim) housed the palatial complex of Raidan, and their expansion into Sana'a established the city's early highland character. The Himyarite adoption of Judaism and later Christianity is reflected in the remains of synagogues and churches alongside temples.",arch:['Raidan palace complex','Zafar highland fortress','Early Sana\'a foundations','Himyarite inscription pillars'],badges:['Successor to Saba','Pre-Islamic highland']},
-  {id:'ziyadid',era:'islamic',name:'Ziyadid Dynasty',ar:"الدولة الزيادية",dates:'819–1018 CE',capital:"Zabid (Tihama coast)",desc:"The Ziyadids founded Zabid as Yemen's first major Islamic capital in 820 CE — establishing the city that would become a centre of Islamic scholarship for 800 years and a UNESCO World Heritage site in 1993. Their mosque network, market grid, and coral stone building tradition established the Tihama architectural character that Bonnenfant documented in his landmark 2004 study.",arch:['Al-Ash\'ar mosque (Zabid)','Coral block market','Islamic school complex','City grid'],badges:['Founded Zabid','Bonnenfant 2004']},
-  {id:'sulayhi',era:'islamic',name:'Sulayhid Dynasty',ar:"الدولة الصليحية",dates:'1047–1138 CE',capital:"Jiblah · Ibb Governorate",desc:"Yemen's most celebrated dynasty is remarkable for the reign of Queen Arwa al-Sulayhi (r. 1091–1138) — one of history's greatest architectural patrons and the only woman to have her name recited in Friday prayers. Her mosque and palace complex at Jiblah, her restoration of the Sana'a Great Mosque, and her network of Ismaili learning institutions represent the high point of Sulayhid patronage.",arch:["Queen Arwa's mosque (Jiblah)","Jiblah palace remains","Ismaili da'wa architecture","Sana'a Great Mosque restoration"],badges:['Queen Arwa (legendary)','Ismaili patronage']},
-  {id:'rasulid',era:'islamic',name:'Rasulid Dynasty',ar:"الدولة الرسولية",dates:'1229–1454 CE',capital:"Ta'izz · Zabid",desc:"The Rasulids are the uncontested architectural golden age of Yemen. Their court at Ta'izz produced the finest carved stucco in the Arabian Peninsula — Al-Muzaffar and Al-Ashrafiyya mosques rival the great monuments of Mamluk Cairo. Barbara Finster's chapter in Werner Daum's Yemen (1988) remains the primary German scholarship; the Rasulids also patronised advances in astronomy, medicine, and agriculture.",arch:["Al-Muzaffar mosque (Ta'izz)","Al-Ashrafiyya mosque","Rasulid madrasa","Ablaq striped stonework","Carved stucco mihrab"],badges:['Architectural golden age','UNESCO candidate sites']},
-  {id:'tahirid',era:'islamic',name:'Tahirid Dynasty',ar:"الدولة الطاهرية",dates:'1454–1526 CE',capital:"Rada' · Ta'izz",desc:"The Tahirids succeeded the Rasulids and maintained their architectural patronage — the Great Mosque of Rada' with its extraordinary carved stucco interior is the primary Tahirid monument and one of the finest examples of medieval Yemeni religious architecture. Their reign ended with the first Ottoman conquest.",arch:["Great Mosque of Rada'","Tahirid fort architecture","Stucco interior screen"],badges:['Post-Rasulid patronage']},
-  {id:'ottoman1',era:'islamic',name:'First Ottoman Period',ar:"العهد العثماني الأول",dates:'1538–1635 CE',capital:"Sana'a",desc:"The first Ottoman presence introduced minarets with distinctive pencil profiles, glazed tile decoration, and new garrison building types. Ottoman-style minarets at several Sana'a mosques remain as the primary architectural legacy. The Yemeni resistance — led by Imam al-Qasim — ultimately expelled the Ottomans in 1635 in one of history's few successful anti-Ottoman revolts.",arch:['Ottoman minaret profiles','Garrison architecture','Hammam (bathhouse)','Covered market improvement'],badges:['Ottoman imprint on minarets']},
-  {id:'qasimi',era:'islamic',name:'Qasimi Imamate (Zaidi)',ar:"الإمامة القاسمية",dates:'1597–1962 CE',capital:"Sana'a · Sa'dah",desc:"The longest Yemeni dynasty — lasting 365 years — and the one whose architectural patronage is most directly visible in the existing built fabric of highland Yemen. The Qasimi Imams refined the tower house typology, brought the zabur rammed-earth tradition to its greatest height in Sa'dah, and maintained Sana'a's urban character. The Imamate ended with the 1962 revolution.",arch:["Tower house refinement","Zabur peak at Sa'dah","Sana'a Old City expansion","Imam's palace typology"],badges:['Longest Yemeni dynasty','Zabur tradition peak']},
-  {id:'ottoman2',era:'islamic',name:'Second Ottoman Period',ar:"العهد العثماني الثاني",dates:'1849–1918 CE',capital:"Sana'a · Ta'izz · Hodeidah",desc:"The second Ottoman period left a more substantial architectural imprint than the first — government buildings (hukumat), military garrisons, telegraph stations, covered markets (bedestan), and the distinctive Ottoman-style Yemeni post office buildings that survive in several cities. The port of Hodeidah received major Ottoman investment in its commercial and administrative infrastructure.",arch:["Hukumat (government) buildings","Ottoman barracks","Bedestan covered market","Hodeidah port buildings","Telegraph station"],badges:['Administrative architecture','Hodeidah port expansion']},
-];
+const KINGDOMS = JSON.parse(document.getElementById("kingdom-data").textContent);
 
 /* Build cards */
 const grid = document.getElementById('kingdomsGrid');

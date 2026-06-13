@@ -1,0 +1,11 @@
+{
+  "name": "First Ottoman Period",
+  "name_ar": "العهد العثماني الأول",
+  "era": "islamic",
+  "dates": "1538–1635 CE",
+  "capital": "Sana'a",
+  "description": "The first Ottoman presence introduced minarets with distinctive pencil profiles, glazed tile decoration, and new garrison building types. Ottoman-style minarets at several Sana'a mosques remain as the primary architectural legacy. The Yemeni resistance — led by Imam al-Qasim — ultimately expelled the Ottomans in 1635 in one of history's few successful anti-Ottoman revolts.",
+  "architecture": ["Ottoman minaret profiles", "Garrison architecture", "Hammam (bathhouse)", "Covered market improvement"],
+  "badges": ["Ottoman imprint on minarets"],
+  "order": 11
+}

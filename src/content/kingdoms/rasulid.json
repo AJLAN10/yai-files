@@ -1,0 +1,11 @@
+{
+  "name": "Rasulid Dynasty",
+  "name_ar": "الدولة الرسولية",
+  "era": "islamic",
+  "dates": "1229–1454 CE",
+  "capital": "Ta'izz · Zabid",
+  "description": "The Rasulids are the uncontested architectural golden age of Yemen. Their court at Ta'izz produced the finest carved stucco in the Arabian Peninsula — Al-Muzaffar and Al-Ashrafiyya mosques rival the great monuments of Mamluk Cairo. Barbara Finster's chapter in Werner Daum's Yemen (1988) remains the primary German scholarship; the Rasulids also patronised advances in astronomy, medicine, and agriculture.",
+  "architecture": ["Al-Muzaffar mosque (Ta'izz)", "Al-Ashrafiyya mosque", "Rasulid madrasa", "Ablaq striped stonework", "Carved stucco mihrab"],
+  "badges": ["Architectural golden age", "UNESCO candidate sites"],
+  "order": 9
+}

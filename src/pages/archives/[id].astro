@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import HeritageLayout from '../../layouts/HeritageLayout.astro';
+
+export async function getStaticPaths() {
+  const kingdoms = await getCollection('kingdoms');
+  return kingdoms.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const k = entry.data;
+const eraLabel = k.special
+  ? '★ Foundational kingdom'
+  : k.era === 'pre' ? 'Pre-Islamic kingdom' : 'Islamic dynasty';
+---
+<HeritageLayout
+  title={`${k.name} — Kingdom Archives · YAI`}
+  description={k.description}
+  eyebrow={`Kingdom Archives · ${eraLabel}`}
+  accent="#A78BFA"
+  heading={k.name}
+  headingAr={k.name_ar}
+  meta={[
+    { label: 'Period', value: k.dates },
+    { label: 'Capital', value: k.capital },
+  ]}
+>
+  <p class="lede">{k.description}</p>
+
+  <h2 class="section-title">Architectural legacy</h2>
+  <ul class="elements">
+    {k.architecture.map((a) => <li class="element">{a}</li>)}
+  </ul>
+
+  {k.badges.length > 0 && (
+    <>
+      <h2 class="section-title">Research status</h2>
+      <ul class="badges">
+        {k.badges.map((b) => <li class="badge">{b}</li>)}
+      </ul>
+    </>
+  )}
+
+  <p class="cross-ref">
+    <a href="/archives">← All 13 kingdoms</a> · <a href="/map">View on map</a>
+  </p>
+
+  <style>
+    .lede { font-size: 1.12rem; line-height: 1.75; color: rgba(255,255,255,0.82); }
+    .section-title {
+      font-family: var(--f-display, 'Cormorant Garamond', serif);
+      font-weight: 500; font-size: 1.5rem; color: #fff; margin: 2.5rem 0 1rem;
+    }
+    .elements, .badges { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
+    .element {
+      font-size: 0.82rem; padding: 0.35rem 0.75rem; border-radius: 999px;
+      border: 1px solid rgba(167,139,250,0.35); color: rgba(255,255,255,0.78);
+    }
+    .badge {
+      font-size: 0.72rem; letter-spacing: 0.06em; padding: 0.3rem 0.7rem;
+      border-radius: 999px; background: rgba(167,139,250,0.14); color: #C4B5FD;
+    }
+    .cross-ref { margin-top: 2.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .cross-ref a { color: var(--accent); }
+  </style>
+</HeritageLayout>

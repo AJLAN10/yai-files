@@ -108,4 +108,28 @@ const climateResilience = defineCollection({
   }),
 });
 
-export const collections = { characters, ybcChapters, climateResilience };
+/* ── Kingdom Archives ───────────────────────────────────────────
+   The 13 historical kingdoms/dynasties. Structured JSON records
+   consumed by the archives index grid, timeline, and the
+   /archives/<id> detail pages. */
+const kingdoms = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/kingdoms' }),
+  schema: z.object({
+    name: z.string(),
+    name_ar: z.string(),
+    era: z.enum(['pre', 'islamic']),
+    dates: z.string(),
+    capital: z.string(),
+    description: z.string(),
+    /* Signature architectural works/elements. */
+    architecture: z.array(z.string()).min(1),
+    /* Research/status badges (UNESCO, excavations, gaps…). */
+    badges: z.array(z.string()),
+    /* Sheba gets special foundational-character treatment. */
+    special: z.boolean().default(false),
+    /* Chronological position for ordering. */
+    order: z.number().int(),
+  }),
+});
+
+export const collections = { characters, ybcChapters, climateResilience, kingdoms };

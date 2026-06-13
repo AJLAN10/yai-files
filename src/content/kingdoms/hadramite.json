@@ -1,0 +1,11 @@
+{
+  "name": "Ancient Kingdom of Hadramaut",
+  "name_ar": "مملكة حضرموت",
+  "era": "pre",
+  "dates": "c. 400 BCE – 3rd century CE",
+  "capital": "Shabwa (ancient Shabwa)",
+  "description": "The ancient Hadramite kingdom occupied the wadi system that bears its name, with its capital at Shabwa — the great frankincense emporium. CEFAS French excavations revealed a sophisticated palatial mudbrick architecture at Shabwa that directly prefigures the Shibam high-rise tradition 3,000 years later, demonstrating one of the most extraordinary civilisational continuities in the built world.",
+  "architecture": ["Shabwa palace complex", "Frankincense court", "Ashlar gateway", "Mudbrick tower", "Ancient cistern"],
+  "badges": ["CEFAS French excavation", "3,000-year continuity to Shibam"],
+  "order": 5
+}
