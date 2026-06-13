@@ -1,0 +1,35 @@
+---
+import HeritageLayout from '../layouts/HeritageLayout.astro';
+---
+<HeritageLayout
+  title="About — Yemen Architecture Initiative"
+  description="The Yemen Architecture Initiative documents Yemen's architectural heritage across 22 governorates and 13 historical kingdoms, and produces the Yemen Building Code for heritage structures."
+  eyebrow="About"
+  eyebrowAr="حول المبادرة"
+  accent="#C4A77D"
+  heading="Yemen Architecture Initiative"
+  headingAr="مبادرة العمارة اليمنية"
+>
+  <p class="lede en-only">
+    A global initiative documenting Yemen's architectural heritage across 22
+    governorates and 13 historical kingdoms — and producing the Yemen Building
+    Code (YBC) for the conservation and reconstruction of heritage structures.
+  </p>
+  <p class="lede ar-only ar-text">
+    مبادرة عالمية لتوثيق التراث المعماري اليمني عبر 22 محافظة و13 مملكة تاريخية —
+    وإنتاج كود البناء اليمني (YBC) لحفظ المنشآت التراثية وإعادة إعمارها.
+  </p>
+  <p class="lede ar-only ar-text">
+    تجمع المبادرة بين أرشيف الطوابع المعمارية، وأرشيف الممالك، وكود البناء،
+    وقطاع المرونة المناخية — بالعربية والإنجليزية، ومستندةً إلى عشرات المصادر
+    العلمية عبر خمس لغات.
+  </p>
+  <p class="cross-ref">
+    <a href="/map"><span class="en-only">Explore the map →</span><span class="ar-only ar-text">استكشف الخريطة ←</span></a>
+  </p>
+  <style>
+    .lede { font-size: 1.08rem; line-height: 1.8; color: rgba(255,255,255,0.78); margin-bottom: 1.25rem; max-width: 60ch; }
+    .cross-ref { margin-top: 2rem; }
+    .cross-ref a { color: var(--accent); }
+  </style>
+</HeritageLayout>

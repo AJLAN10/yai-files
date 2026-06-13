@@ -1,0 +1,39 @@
+---
+import HeritageLayout from '../layouts/HeritageLayout.astro';
+
+const partners = [
+  { name: 'UNESCO', note_en: 'World Heritage & conservation', note_ar: 'التراث العالمي والحفظ' },
+  { name: 'ALIPH', note_en: 'Post-conflict heritage protection', note_ar: 'حماية التراث بعد النزاع' },
+  { name: 'CEFAS', note_en: 'French archaeological research', note_ar: 'البحث الأثري الفرنسي' },
+  { name: 'Iconem', note_en: '3D documentation', note_ar: 'التوثيق ثلاثي الأبعاد' },
+  { name: 'MAIRY', note_en: 'Italian archaeological mission', note_ar: 'البعثة الأثرية الإيطالية' },
+  { name: 'DAI', note_en: 'German Archaeological Institute', note_ar: 'المعهد الأثري الألماني' },
+];
+---
+<HeritageLayout
+  title="Partners — Yemen Architecture Initiative"
+  description="Global partners and institutions collaborating with the Yemen Architecture Initiative on documentation, conservation, and the Yemen Building Code."
+  eyebrow="Partners"
+  eyebrowAr="الشركاء"
+  accent="#C4A77D"
+  heading="Partners & institutions"
+  headingAr="شركاء ومؤسسات"
+>
+  <p class="lede en-only">Institutions collaborating on documentation, conservation, and research.</p>
+  <p class="lede ar-only ar-text">مؤسسات تتعاون في التوثيق والحفظ والبحث.</p>
+  <ul class="partners">
+    {partners.map((p) => (
+      <li class="partner">
+        <span class="p-name">{p.name}</span>
+        <span class="p-note"><span class="en-only">{p.note_en}</span><span class="ar-only ar-text">{p.note_ar}</span></span>
+      </li>
+    ))}
+  </ul>
+  <style>
+    .lede { font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.72); margin-bottom: 1.5rem; }
+    .partners { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; padding: 0; }
+    .partner { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .p-name { font-family: var(--f-display, serif); font-size: 1.2rem; color: #fff; }
+    .p-note { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  </style>
+</HeritageLayout>
