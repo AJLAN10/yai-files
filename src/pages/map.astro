@@ -11,8 +11,10 @@ const order = [
   'aden', 'hajjah', 'taizz', 'marib', 'ibb', 'lahij', 'shabwah',
 ];
 import govMap from '../data/yemen-governorates.json';
+import { relatedYbc } from '../lib/related';
 
 const characters = await getCollection('characters');
+const ybcChapters = await getCollection('ybcChapters');
 /* Governorate regions joined with their character (type colours the
    region; char drives the click target). */
 const charByGov = new Map(characters.map((c) => [c.id, c.data]));
@@ -53,6 +55,10 @@ const charData = characters
     trans_ar: e.data.transitional_ar ?? e.data.transitional,
     cont: e.data.contemporary,
     cont_ar: e.data.contemporary_ar ?? e.data.contemporary,
+    ybc: relatedYbc(e.data, ybcChapters).map((ch) => ({
+      code: ch.data.code, id: ch.id,
+      title: ch.data.title, title_ar: ch.data.title_ar ?? ch.data.title,
+    })),
   }))
   .sort((a, b) => {
     const ia = order.indexOf(a.id), ib = order.indexOf(b.id);
@@ -174,6 +180,7 @@ const LBL = {
   traditional: AR?'تقليدي':'Traditional', transitional: AR?'انتقالي':'Transitional', contemporary: AR?'معاصر':'Contemporary',
   fullCard: AR?'بطاقة الطابع كاملة ←':'Full character card →',
   character: AR?'طابع':'Character',
+  governingCode: AR?'كود البناء الحاكم':'Governing building code',
 };
 const pickC = (c) => AR ? {
   name:c.name_ar, tag:c.tag_ar, gov:c.gov_ar, material:c.material_ar, period:c.period_ar,
@@ -252,6 +259,11 @@ function openChar(id) {
         <div class="dp-typo cont"><div class="dp-typo-label">${LBL.contemporary}</div><div class="dp-typo-desc">${d.cont}</div></div>
       </div>
     </div>
+    ${d.ybc && d.ybc.length ? `
+    <div class="dp-section">
+      <div class="dp-section-title">${LBL.governingCode}</div>
+      <div class="dp-ybc">${d.ybc.map(ch=>`<a class="dp-ybc-link" href="/code/${ch.id}"><span class="dp-ybc-code">${ch.code}</span><span>${AR?ch.title_ar:ch.title}</span></a>`).join('')}</div>
+    </div>` : ''}
     <div class="dp-actions">
       <button class="dp-btn-primary" onclick="window.location='/details/${c.id}'">${LBL.fullCard}</button>
       <button class="dp-btn-secondary" onclick="window.location='/code'">YBC</button>
@@ -476,6 +488,11 @@ button{border:none;cursor:pointer;font:inherit}
 .dp-typo.trad{border-color:rgba(196,167,125,0.15);background:rgba(196,167,125,0.04)}
 .dp-typo.trans{border-color:rgba(255,255,255,0.08)}
 .dp-typo.cont{border-color:rgba(3,105,161,0.2);background:rgba(3,105,161,0.04)}
+
+.dp-ybc{display:flex;flex-direction:column;gap:0.375rem}
+.dp-ybc-link{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:rgba(255,255,255,0.7);background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.18);border-radius:6px;padding:0.5rem 0.7rem;transition:border-color 0.15s,background 0.15s}
+.dp-ybc-link:hover{border-color:rgba(74,222,128,0.5);background:rgba(74,222,128,0.1);color:#fff}
+.dp-ybc-code{font-family:var(--f-mono,monospace);font-size:0.68rem;color:#4ADE80;background:rgba(74,222,128,0.12);padding:0.2rem 0.45rem;border-radius:4px;white-space:nowrap}
 
 .dp-actions{display:flex;gap:0.625rem;margin-top:1.5rem}
 .dp-btn-primary{flex:1;background:var(--sky);color:#fff;border-radius:4px;padding:0.625rem;font-size:0.8rem;font-weight:500;text-align:center;cursor:pointer;transition:opacity 0.15s;border:none;min-height:44px}

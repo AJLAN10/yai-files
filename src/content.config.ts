@@ -86,6 +86,10 @@ const ybcChapters = defineCollection({
        platform grows (flood, seismic, drought, thermal, conflict,
        coastal-erosion, governance, …). */
     related_resilience_tags: z.array(z.string()),
+    /* Tokens this chapter governs, matched against a character's
+       material_list / type / risk_level to auto-surface the chapter on
+       character cards. Keeps the cross-link logic in data, not code. */
+    governs: z.array(z.string()).default([]),
     content: z.string(),
     content_ar: z.string().optional(),
     specs: z.array(z.tuple([z.string(), z.string()])).min(1),
