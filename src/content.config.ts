@@ -76,18 +76,26 @@ const ybcChapters = defineCollection({
     code: z.string().regex(/^YBC-H\d{2}$/, 'Code must look like YBC-H05'),
     chapter_number: z.number().int().min(0),
     title: z.string(),
+    title_ar: z.string().optional(),
     subtitle: z.string(),
+    subtitle_ar: z.string().optional(),
     status: z.enum(['draft', 'peer-reviewed']),
     governorates: z.array(z.string()).min(1),
+    governorates_ar: z.array(z.string()).optional(),
     /* Free-form resilience tags — additive and searchable as the
        platform grows (flood, seismic, drought, thermal, conflict,
        coastal-erosion, governance, …). */
     related_resilience_tags: z.array(z.string()),
     content: z.string(),
+    content_ar: z.string().optional(),
     specs: z.array(z.tuple([z.string(), z.string()])).min(1),
+    specs_ar: z.array(z.tuple([z.string(), z.string()])).optional(),
     traditional: z.string(),
+    traditional_ar: z.string().optional(),
     transitional: z.string(),
+    transitional_ar: z.string().optional(),
     contemporary: z.string(),
+    contemporary_ar: z.string().optional(),
   }),
 });
 

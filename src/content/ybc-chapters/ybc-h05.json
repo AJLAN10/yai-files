@@ -4,18 +4,85 @@
   "title": "Seismic Standards",
   "subtitle": "Highland tower house seismic performance and retrofit",
   "status": "peer-reviewed",
-  "governorates": ["Sana'a Capital", "Sa'dah", "Hajjah", "Dhamar", "Ibb", "Ta'izz"],
-  "related_resilience_tags": ["seismic"],
+  "governorates": [
+    "Sana'a Capital",
+    "Sa'dah",
+    "Hajjah",
+    "Dhamar",
+    "Ibb",
+    "Ta'izz"
+  ],
+  "related_resilience_tags": [
+    "seismic"
+  ],
   "content": "Seismic performance requirements for Yemen's highland heritage structures — addressing the specific vulnerability of multi-storey mudbrick and fired brick tower houses to earthquake damage. Covers in-situ assessment, graded intervention levels, reversible retrofit techniques, and post-earthquake rapid assessment protocol.",
   "specs": [
-    ["Seismic zones", "Zone 1 (low): Hadramawt · Zone 2 (moderate): Sana'a · Zone 3 (high): Sa'dah, Hajjah"],
-    ["Assessment trigger", "Any structure >4 storeys or Grade A/B · mandatory seismic survey before restoration"],
-    ["Retrofit principle", "Reversible intervention only — no injection grouting of historic fabric without approval"],
-    ["Ring beam", "Timber ring beam at eave level for unreinforced masonry >3 storeys — traditional form"],
-    ["Emergency rating", "5-level NZSEE-adapted rapid assessment for post-earthquake triage"],
-    ["No-go zone", "Portland cement injection into historic rubble masonry walls — strictly prohibited"]
+    [
+      "Seismic zones",
+      "Zone 1 (low): Hadramawt · Zone 2 (moderate): Sana'a · Zone 3 (high): Sa'dah, Hajjah"
+    ],
+    [
+      "Assessment trigger",
+      "Any structure >4 storeys or Grade A/B · mandatory seismic survey before restoration"
+    ],
+    [
+      "Retrofit principle",
+      "Reversible intervention only — no injection grouting of historic fabric without approval"
+    ],
+    [
+      "Ring beam",
+      "Timber ring beam at eave level for unreinforced masonry >3 storeys — traditional form"
+    ],
+    [
+      "Emergency rating",
+      "5-level NZSEE-adapted rapid assessment for post-earthquake triage"
+    ],
+    [
+      "No-go zone",
+      "Portland cement injection into historic rubble masonry walls — strictly prohibited"
+    ]
   ],
   "traditional": "Traditional seismic mitigation — timber lacing courses in Sana'a brick walls every 3–4 courses (pre-modern aseismic system).",
   "transitional": "Graded seismic retrofit — external tie rods, timber ring beams, reversible connections only.",
-  "contemporary": "New-build seismic — reinforced concrete frame with traditional cladding; frame must not be visible from street level."
+  "contemporary": "New-build seismic — reinforced concrete frame with traditional cladding; frame must not be visible from street level.",
+  "title_ar": "المعايير الزلزالية",
+  "subtitle_ar": "الأداء الزلزالي وتدعيم البيت البرجي المرتفعي",
+  "governorates_ar": [
+    "أمانة العاصمة",
+    "صعدة",
+    "حجة",
+    "ذمار",
+    "إب",
+    "تعز"
+  ],
+  "content_ar": "متطلبات الأداء الزلزالي لمنشآت التراث المرتفعية في اليمن — تعالج الهشاشة المحدّدة للبيوت البرجية الطينية والطوبية متعددة الطوابق أمام أضرار الزلازل. تغطي التقييم الموقعي، ومستويات التدخّل المتدرّجة، وتقنيات التدعيم القابلة للعكس، وبروتوكول التقييم السريع بعد الزلزال.",
+  "specs_ar": [
+    [
+      "المناطق الزلزالية",
+      "المنطقة 1 (منخفضة): حضرموت · 2 (متوسطة): صنعاء · 3 (عالية): صعدة، حجة"
+    ],
+    [
+      "مُحفِّز التقييم",
+      "أي منشأة أكثر من 4 طوابق أو درجة أ/ب · مسح زلزالي إلزامي قبل الترميم"
+    ],
+    [
+      "مبدأ التدعيم",
+      "تدخّل قابل للعكس فقط — لا حقن للنسيج التاريخي دون موافقة"
+    ],
+    [
+      "جسر التطويق",
+      "جسر تطويق خشبي عند الإفريز للمباني غير المسلّحة فوق 3 طوابق — شكل تقليدي"
+    ],
+    [
+      "تصنيف الطوارئ",
+      "تقييم سريع من 5 مستويات مُكيّف عن NZSEE لفرز ما بعد الزلزال"
+    ],
+    [
+      "منطقة محظورة",
+      "حقن الإسمنت البورتلاندي في جدران الدبش التاريخية — محظور منعاً باتاً"
+    ]
+  ],
+  "traditional_ar": "تخفيف زلزالي تقليدي — مداميك ربط خشبية في جدران طوب صنعاء كل 3–4 مداميك (نظام مضاد للزلازل ما قبل حديث).",
+  "transitional_ar": "تدعيم زلزالي متدرّج — قضبان ربط خارجية، وجسور تطويق خشبية، ووصلات قابلة للعكس فقط.",
+  "contemporary_ar": "زلزالي للبناء الجديد — هيكل خرساني مسلّح بتكسية تقليدية؛ يجب ألا يكون الهيكل مرئياً من مستوى الشارع."
 }
