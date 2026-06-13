@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
 import { relatedYbc } from '../../lib/related';
+import photoCredits from '../../data/photo-credits.json';
 
 export async function getStaticPaths() {
   const characters = await getCollection('characters');
@@ -25,6 +26,7 @@ const registers = [
   { key: 'Contemporary', key_ar: 'معاصر', body: c.contemporary, body_ar: c.contemporary_ar },
 ];
 const riskAr: Record<string, string> = { low: 'منخفض', moderate: 'متوسط', high: 'عالٍ', severe: 'شديد' };
+const photo = (photoCredits as Record<string, { src: string; credit: string; license: string; source: string }>)[entry.id];
 ---
 <HeritageLayout
   title={`${c.name} — Architectural Character · YAI`}
@@ -34,6 +36,10 @@ const riskAr: Record<string, string> = { low: 'منخفض', moderate: 'متوس�
   accent="#FBBF24"
   heading={c.name}
   headingAr={c.name_ar}
+  image={photo?.src}
+  imageCredit={photo?.credit}
+  imageLicense={photo?.license}
+  imageSource={photo?.source}
   meta={[
     { label: 'No.', label_ar: 'رقم', value: c.num },
     { label: 'Governorate', label_ar: 'المحافظة', value: c.governorate_ar ?? c.governorate },

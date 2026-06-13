@@ -29,6 +29,11 @@ interface Props {
   headingAr?: string;
   /* Optional label/value chips rendered under the heading. */
   meta?: MetaItem[];
+  /* Optional full-bleed hero photo + its attribution. */
+  image?: string;
+  imageCredit?: string;
+  imageLicense?: string;
+  imageSource?: string;
 }
 
 const {
@@ -40,10 +45,26 @@ const {
   heading,
   headingAr,
   meta = [],
+  image,
+  imageCredit,
+  imageLicense,
+  imageSource,
 } = Astro.props;
 ---
 <BaseLayout title={title} description={description} theme="dark">
-  <div class="heritage" style={`--accent:${accent}`}>
+  <div class={`heritage${image ? ' has-hero' : ''}`} style={`--accent:${accent}`}>
+    {image && (
+      <div class="h-hero" aria-hidden="true">
+        <img class="h-hero-img" src={image} alt="" loading="eager" />
+        <div class="h-hero-veil"></div>
+        {imageCredit && (
+          <a class="h-hero-credit" href={imageSource} target="_blank" rel="noopener">
+            <span class="en-only">Photo: {imageCredit} · {imageLicense}</span>
+            <span class="ar-only ar-text">صورة: {imageCredit} · {imageLicense}</span>
+          </a>
+        )}
+      </div>
+    )}
     <nav class="h-nav" aria-label="Sector navigation">
       <a href="/" class="h-back" aria-label="Back to home">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -149,6 +170,16 @@ const {
       width: 7px; height: 7px; border-radius: 50%;
       background: #FBBF24;
     }
+    /* Full-bleed hero photo with a duotone veil; heading sits over it.
+       Full-bleed-inside-centered-container via the 100vw margin trick. */
+    .h-hero { position: relative; width: 100vw; margin-inline-start: calc(50% - 50vw); margin-top: calc(-1 * var(--nav-h, 64px)); height: clamp(360px, 56vh, 600px); overflow: hidden; }
+    .h-hero-img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92) contrast(1.02); }
+    .h-hero-veil { position: absolute; inset: 0; background:
+      linear-gradient(to bottom, rgba(15,23,42,0.40) 0%, rgba(15,23,42,0.15) 28%, rgba(15,23,42,0.85) 80%, var(--ink,#0F172A) 100%); }
+    .h-hero-credit { position: absolute; bottom: 0.6rem; inset-inline-end: 1rem; font-size: 0.62rem; color: rgba(255,255,255,0.6); background: rgba(15,23,42,0.5); padding: 0.2rem 0.55rem; border-radius: 4px; backdrop-filter: blur(4px); }
+    .h-hero-credit:hover { color: #fff; }
+    .heritage.has-hero .h-nav { background: transparent; border-bottom-color: transparent; position: relative; }
+    .heritage.has-hero .h-header { margin-top: calc(-30vh); position: relative; z-index: 1; padding-top: 0; }
     .h-header { padding: 3rem 0 2rem; }
     .h-eyebrow {
       font-size: 0.68rem;
