@@ -25,11 +25,26 @@ const centroid = (d: string) => {
   for (let i = 0; i + 1 < nums.length; i += 2) { sx += nums[i]; sy += nums[i + 1]; n++; }
   return n ? { cx: Math.round(sx / n), cy: Math.round(sy / n) } : { cx: 0, cy: 0 };
 };
-const regions = govMap.regions.map((r) => ({
-  ...r,
-  type: r.char ? charByGov.get(r.char)?.type ?? null : null,
-  ...centroid(r.d),
-}));
+/* Primary material category from the first listed material. */
+const matCat = (materials: string[] = []) => {
+  const m0 = (materials[0] || '').toLowerCase();
+  if (/mudbrick|libn/.test(m0)) return 'mudbrick';
+  if (/fired brick/.test(m0)) return 'fired-brick';
+  if (/coral/.test(m0)) return 'coral';
+  if (/rammed earth|zabur/.test(m0)) return 'rammed-earth';
+  if (/stone|limestone|ashlar|schist|basalt/.test(m0)) return 'stone';
+  return 'other';
+};
+const regions = govMap.regions.map((r) => {
+  const cd = r.char ? charByGov.get(r.char) : null;
+  return {
+    ...r,
+    type: cd?.type ?? null,
+    material: cd ? matCat(cd.material_list) : null,
+    risk: cd?.risk_level ?? null,
+    ...centroid(r.d),
+  };
+});
 const charData = characters
   .map((e) => ({
     id: e.id,
@@ -39,6 +54,8 @@ const charData = characters
     tag: e.data.tag,
     tag_ar: e.data.tag_ar ?? e.data.tag,
     type: e.data.type,
+    mat: matCat(e.data.material_list),
+    risk: e.data.risk_level,
     gov: e.data.governorate,
     gov_ar: e.data.governorate_ar ?? e.data.governorate,
     material: e.data.material_list.join(' · '),
@@ -94,13 +111,13 @@ const charData = characters
 
   <!-- SIDEBAR -->
   <aside class="sidebar" role="complementary" aria-label="Character list">
-    <div class="filter-bar" role="group" aria-label="Filter by type">
-      <button class="filter-btn active" data-f="all" aria-pressed="true">الكل</button>
-      <button class="filter-btn" data-f="highland" aria-pressed="false">مرتفعات</button>
-      <button class="filter-btn" data-f="desert" aria-pressed="false">صحراء</button>
-      <button class="filter-btn" data-f="coastal" aria-pressed="false">ساحل</button>
-      <button class="filter-btn" data-f="ancient" aria-pressed="false">قديم</button>
-      <button class="filter-btn" data-f="island" aria-pressed="false">جزيرة</button>
+    <div class="axis-switch" role="group" aria-label="عرض الخريطة حسب">
+      <button class="axis-btn active" data-axis="type" aria-pressed="true">المنطقة</button>
+      <button class="axis-btn" data-axis="material" aria-pressed="false">المادة</button>
+      <button class="axis-btn" data-axis="risk" aria-pressed="false">الخطر</button>
+    </div>
+    <div class="filter-bar" id="filterBar" role="group" aria-label="تصفية">
+      <!-- Populated by JS per axis -->
     </div>
     <div class="chars-list" id="charsList" role="list" aria-label="Architectural characters">
       <!-- Populated by JS -->
@@ -119,6 +136,8 @@ const charData = characters
           data-gov={r.slug}
           data-char={r.char ?? ''}
           data-type={r.type ?? 'none'}
+          data-material={r.material ?? 'none'}
+          data-risk={r.risk ?? 'none'}
           tabindex={r.char ? '0' : '-1'}
           role={r.char ? 'button' : 'presentation'}
           aria-label={r.en}
@@ -132,14 +151,8 @@ const charData = characters
       ))}
     </svg>
 
-    <!-- Map legend -->
-    <div class="map-legend" aria-label="Map legend" role="list">
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#4ADE80"></div>مرتفعات</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#FBBF24"></div>صحراء</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#60A5FA"></div>ساحل</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#F59E0B"></div>قديم</div>
-      <div class="ml-item" role="listitem"><div class="ml-dot" style="background:#A78BFA"></div>جزيرة</div>
-    </div>
+    <!-- Map legend (populated by JS per active axis) -->
+    <div class="map-legend" id="mapLegend" aria-label="Map legend" role="list"></div>
 
     <!-- Boundary data attribution (ODbL — required) -->
     <div class="map-credit">
@@ -195,6 +208,8 @@ CHARACTERS.forEach(c => {
   item.className = `char-item${c.id==='sheba'?' sheba-item':''}`;
   item.dataset.id = c.id;
   item.dataset.type = c.type;
+  item.dataset.material = c.mat;
+  item.dataset.risk = c.risk;
   item.setAttribute('role','listitem');
   item.setAttribute('tabindex','0');
   item.setAttribute('aria-label', d.name);
@@ -303,30 +318,88 @@ document.querySelectorAll('.gov-region').forEach(m => {
   m.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
 });
 
-/* ── Filter ── */
+/* ── Multi-axis explorer: view the map by Region / Material / Risk ── */
+const AXES = {
+  type: {
+    values: ['highland','desert','coastal','ancient','island'],
+    labels: AR ? {highland:'مرتفعات',desert:'صحراء',coastal:'ساحل',ancient:'قديم',island:'جزيرة'}
+               : {highland:'Highland',desert:'Desert',coastal:'Coastal',ancient:'Ancient',island:'Island'},
+    colors: {highland:'#4ADE80',desert:'#FBBF24',coastal:'#60A5FA',ancient:'#F59E0B',island:'#A78BFA'},
+  },
+  material: {
+    values: ['mudbrick','fired-brick','coral','rammed-earth','stone'],
+    labels: AR ? {'mudbrick':'طوب طيني','fired-brick':'طوب محروق','coral':'مرجان','rammed-earth':'طين مدكوك','stone':'حجر'}
+               : {'mudbrick':'Mudbrick','fired-brick':'Fired brick','coral':'Coral','rammed-earth':'Rammed earth','stone':'Stone'},
+    colors: {'mudbrick':'#C97B4A','fired-brick':'#E07856','coral':'#5BB6C9','rammed-earth':'#D4A24E','stone':'#9AA3B0'},
+  },
+  risk: {
+    values: ['low','moderate','high','severe'],
+    labels: AR ? {low:'منخفض',moderate:'متوسط',high:'عالٍ',severe:'شديد'}
+               : {low:'Low',moderate:'Moderate',high:'High',severe:'Severe'},
+    colors: {low:'#4ADE80',moderate:'#FBBF24',high:'#FB923C',severe:'#F87171'},
+  },
+};
+const ALL_LBL = AR ? 'الكل' : 'All';
+const hexA = (hex, a) => { const n=parseInt(hex.slice(1),16); return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`; };
+let activeAxis = 'type';
 let activeFilter = 'all';
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    activeFilter = btn.dataset.f;
-    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-    btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
-    filterChars();
-  });
-});
+const filterBar = document.getElementById('filterBar');
+const legendEl = document.getElementById('mapLegend');
 
-function filterChars() {
+function recolor() {
+  const c = AXES[activeAxis].colors;
+  document.querySelectorAll('.gov-region.has-char').forEach(m => {
+    const col = c[m.dataset[activeAxis]];
+    m.style.fill = col ? hexA(col, 0.34) : '';
+  });
+}
+function buildLegend() {
+  const a = AXES[activeAxis];
+  legendEl.innerHTML = a.values
+    .map(v => `<div class="ml-item" role="listitem"><div class="ml-dot" style="background:${a.colors[v]}"></div>${a.labels[v]}</div>`)
+    .join('');
+}
+function buildFilters() {
+  const a = AXES[activeAxis];
+  filterBar.innerHTML = '';
+  const mk = (val, lbl, on) => {
+    const b = document.createElement('button');
+    b.className = 'filter-btn' + (on ? ' active' : '');
+    b.dataset.f = val; b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.textContent = lbl;
+    b.addEventListener('click', () => {
+      activeFilter = val;
+      filterBar.querySelectorAll('.filter-btn').forEach(x => { x.classList.remove('active'); x.setAttribute('aria-pressed','false'); });
+      b.classList.add('active'); b.setAttribute('aria-pressed','true');
+      applyFilter();
+    });
+    filterBar.appendChild(b);
+  };
+  mk('all', ALL_LBL, true);
+  a.values.forEach(v => mk(v, a.labels[v], false));
+}
+function applyFilter() {
   let visible = 0;
   document.querySelectorAll('.char-item').forEach(item => {
-    const show = activeFilter==='all' || item.dataset.type===activeFilter;
+    const show = activeFilter==='all' || item.dataset[activeAxis]===activeFilter;
     item.classList.toggle('hidden', !show);
     if (show) visible++;
   });
   document.querySelectorAll('.gov-region.has-char').forEach(m => {
-    const dim = activeFilter!=='all' && m.dataset.type!==activeFilter;
+    const dim = activeFilter!=='all' && m.dataset[activeAxis]!==activeFilter;
     m.classList.toggle('dim', dim);
   });
-  document.getElementById('countLabel').textContent = `${visible} character${visible!==1?'s':''}`;
+  document.getElementById('countLabel').textContent = AR ? `${visible} طابعاً` : `${visible} characters`;
 }
+function setAxis(axis) {
+  activeAxis = axis; activeFilter = 'all';
+  document.querySelectorAll('.axis-btn').forEach(b => {
+    const on = b.dataset.axis === axis;
+    b.classList.toggle('active', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  buildFilters(); buildLegend(); recolor(); applyFilter();
+}
+document.querySelectorAll('.axis-btn').forEach(b => b.addEventListener('click', () => setAxis(b.dataset.axis)));
+setAxis('type');
 
 /* ── Search ── */
 document.getElementById('searchInput').addEventListener('input', function() {
@@ -383,7 +456,13 @@ button{border:none;cursor:pointer;font:inherit}
 
 /* ── SIDEBAR ── */
 .sidebar{background:#0B1120;border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;overflow:hidden}
-.filter-bar{padding:0.875rem 1rem;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;flex-wrap:wrap;gap:0.375rem}
+.axis-switch{display:flex;gap:0.25rem;padding:0.875rem 1rem 0;}
+.axis-btn{flex:1;font-size:0.72rem;font-weight:600;padding:0.45rem 0.5rem;border-radius:7px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.5);transition:all 0.18s;cursor:pointer}
+.axis-btn:hover{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.2)}
+.axis-btn.active{background:var(--sand);color:var(--ink);border-color:var(--sand)}
+.filter-bar{padding:0.75rem 1rem;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;flex-wrap:wrap;gap:0.375rem;min-height:2.5rem}
+.filter-btn.active{animation:chipIn 0.25s var(--ease-out,ease)}
+@keyframes chipIn{from{transform:scale(0.85);opacity:0.5}to{transform:scale(1);opacity:1}}
 .filter-btn{font-size:0.68rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:20px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:rgba(255,255,255,0.45);transition:all 0.15s;cursor:pointer;white-space:nowrap}
 .filter-btn:hover{border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.7)}
 .filter-btn.active{color:#fff;border-color:transparent}
@@ -425,23 +504,12 @@ button{border:none;cursor:pointer;font:inherit}
 
 .yemen-svg{width:96%;max-width:1000px;height:auto;position:relative;z-index:2;filter:drop-shadow(0 8px 40px rgba(0,0,0,0.4))}
 
-/* ── Governorate regions ── */
-.gov-region{fill:rgba(196,167,125,0.05);stroke:rgba(15,23,42,0.9);stroke-width:1;stroke-linejoin:round;transition:fill 0.18s,opacity 0.18s;vector-effect:non-scaling-stroke}
+/* ── Governorate regions (fill set by JS per active axis) ── */
+.gov-region{fill:rgba(196,167,125,0.05);stroke:rgba(15,23,42,0.9);stroke-width:1;stroke-linejoin:round;transition:fill 0.3s ease,opacity 0.3s ease,filter 0.15s ease;vector-effect:non-scaling-stroke}
 .gov-region.has-char{cursor:pointer}
-.gov-region.has-char:hover,.gov-region.has-char:focus-visible{outline:none}
-.gov-region.dim{opacity:0.2}
-/* type fills (only governorates that own a character card) */
-.gov-region[data-type="highland"]{fill:rgba(74,222,128,0.30)}
-.gov-region[data-type="desert"]{fill:rgba(251,191,36,0.30)}
-.gov-region[data-type="coastal"]{fill:rgba(96,165,250,0.30)}
-.gov-region[data-type="ancient"]{fill:rgba(245,158,11,0.32)}
-.gov-region[data-type="island"]{fill:rgba(167,139,250,0.32)}
-.gov-region[data-type="highland"]:hover,.gov-region[data-type="highland"].active{fill:rgba(74,222,128,0.6)}
-.gov-region[data-type="desert"]:hover,.gov-region[data-type="desert"].active{fill:rgba(251,191,36,0.6)}
-.gov-region[data-type="coastal"]:hover,.gov-region[data-type="coastal"].active{fill:rgba(96,165,250,0.6)}
-.gov-region[data-type="ancient"]:hover,.gov-region[data-type="ancient"].active{fill:rgba(245,158,11,0.65)}
-.gov-region[data-type="island"]:hover,.gov-region[data-type="island"].active{fill:rgba(167,139,250,0.65)}
-.gov-region.active{stroke:#fff;stroke-width:1.5}
+.gov-region.has-char:hover,.gov-region.has-char:focus-visible{outline:none;filter:brightness(1.35)}
+.gov-region.active{stroke:#fff;stroke-width:1.5;filter:brightness(1.4)}
+.gov-region.dim{opacity:0.16}
 
 .gov-label{font-family:'DM Sans',system-ui,sans-serif;font-size:13px;fill:rgba(255,255,255,0.92);text-anchor:middle;dominant-baseline:central;pointer-events:none;paint-order:stroke;stroke:rgba(15,23,42,0.8);stroke-width:3px;font-weight:600}
 .gov-label.ar-text{font-family:var(--f-ar-display,'Amiri',serif)}
