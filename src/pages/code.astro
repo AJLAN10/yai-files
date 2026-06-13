@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ybcIconInner } from '../lib/ybc-icons';
 
 /* Single source of truth: chapters now live in the `ybcChapters`
    collection. Shape into the flat record the client script expects,
@@ -11,6 +12,7 @@ const chapterData = chapters
   .map((e) => ({
     id: e.id,
     code: e.data.code,
+    icon: ybcIconInner(e.data.code),
     name: e.data.title,
     name_ar: e.data.title_ar ?? e.data.title,
     subtitle: e.data.subtitle,
@@ -160,6 +162,7 @@ CHAPTERS.forEach((ch,i) => {
   chEl.setAttribute('role','listitem');
   chEl.innerHTML = `
     <div class="chapter-header" tabindex="0" role="button" aria-expanded="false" aria-controls="ch-body-${i}">
+      <span class="ch-glyph" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ch.icon}</svg></span>
       <span class="ch-code">${ch.code}</span>
       <div class="ch-info">
         <span class="ch-name">${d.name}</span>
@@ -292,7 +295,10 @@ button{border:none;cursor:pointer;font:inherit}
 /* CHAPTERS */
 .chapters{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .chapter{background:var(--surface)}
-.chapter-header{padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:1rem;cursor:pointer;transition:background 0.12s}
+.chapter-header{padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto auto 1fr auto auto;align-items:center;gap:1rem;cursor:pointer;transition:background 0.12s}
+.ch-glyph{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;background:rgba(21,128,61,0.08);border:1px solid rgba(21,128,61,0.18);color:var(--green);flex-shrink:0}
+.chapter.expanded .ch-glyph{background:rgba(21,128,61,0.14)}
+@media(max-width:560px){.chapter-header{grid-template-columns:auto auto 1fr}.ch-glyph{display:none}}
 .chapter-header:hover{background:#F8FAFC}
 .chapter.expanded .chapter-header{background:#F8FAFC;border-bottom:1px solid var(--border)}
 .ch-code{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);background:var(--parchment);padding:0.25rem 0.625rem;border-radius:4px;white-space:nowrap}
@@ -341,7 +347,10 @@ button{border:none;cursor:pointer;font:inherit}
 .toc-code{font-family:var(--f-mono);font-size:0.65rem;color:var(--muted)}
 .toc-item.active .toc-code{color:rgba(21,128,61,0.6)}
 .chapter{background:var(--surface)}
-.chapter-header{padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:1rem;cursor:pointer;transition:background 0.12s}
+.chapter-header{padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto auto 1fr auto auto;align-items:center;gap:1rem;cursor:pointer;transition:background 0.12s}
+.ch-glyph{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;background:rgba(21,128,61,0.08);border:1px solid rgba(21,128,61,0.18);color:var(--green);flex-shrink:0}
+.chapter.expanded .ch-glyph{background:rgba(21,128,61,0.14)}
+@media(max-width:560px){.chapter-header{grid-template-columns:auto auto 1fr}.ch-glyph{display:none}}
 .chapter-header:hover{background:#F8FAFC}
 .chapter.expanded .chapter-header{background:#F8FAFC;border-bottom:1px solid var(--border)}
 .ch-code{font-family:var(--f-mono);font-size:0.72rem;color:var(--muted);background:var(--parchment);padding:0.25rem 0.625rem;border-radius:4px;white-space:nowrap}

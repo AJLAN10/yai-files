@@ -81,6 +81,21 @@ const photo = (photoCredits as Record<string, { src: string; credit: string; lic
     ))}
   </div>
 
+  {c.diagram && (
+    <>
+      <h2 class="section-title">
+        <span class="en-only">Construction logic</span>
+        <span class="ar-only ar-text">منطق البناء</span>
+      </h2>
+      <figure class="ch-diagram">
+        <img src={c.diagram} alt={c.diagram_caption ?? `${c.name} construction diagram`} loading="lazy" />
+        {c.diagram_caption && (
+          <figcaption><span class="en-only">{c.diagram_caption}</span><span class="ar-only ar-text">{c.diagram_caption_ar ?? c.diagram_caption}</span></figcaption>
+        )}
+      </figure>
+    </>
+  )}
+
   {related.length > 0 && (
     <>
       <h2 class="section-title">
@@ -115,6 +130,9 @@ const photo = (photoCredits as Record<string, { src: string; credit: string; lic
 
   <style>
     .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); }
+    .ch-diagram { margin: 0; }
+    .ch-diagram img { width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
+    .ch-diagram figcaption { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.5rem; text-align: center; }
     .ybc-hint { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin: -0.5rem 0 1rem; }
     .ybc-links { list-style: none; display: grid; gap: 0.5rem; padding: 0; }
     .ybc-link {

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
+import kingdomPhotos from '../../data/kingdom-photos.json';
 
 export async function getStaticPaths() {
   const kingdoms = await getCollection('kingdoms');
@@ -15,6 +16,7 @@ const k = entry.data;
 const eraLabel = k.special
   ? '★ Foundational kingdom'
   : k.era === 'pre' ? 'Pre-Islamic kingdom' : 'Islamic dynasty';
+const photo = (kingdomPhotos as Record<string, { src: string; credit: string; license: string; source: string }>)[entry.id];
 ---
 <HeritageLayout
   title={`${k.name} — Kingdom Archives · YAI`}
@@ -24,6 +26,10 @@ const eraLabel = k.special
   accent="#A78BFA"
   heading={k.name}
   headingAr={k.name_ar}
+  image={photo?.src}
+  imageCredit={photo?.credit}
+  imageLicense={photo?.license}
+  imageSource={photo?.source}
   meta={[
     { label: 'Period', label_ar: 'الفترة', value: k.dates_ar ?? k.dates },
     { label: 'Capital', label_ar: 'العاصمة', value: k.capital_ar ?? k.capital },

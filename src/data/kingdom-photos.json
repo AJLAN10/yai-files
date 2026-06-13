@@ -1,0 +1,68 @@
+{
+  "sheba": {
+    "src": "/photos/marib.jpg",
+    "credit": "Ljuba brank",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:08%20Marib%20(1)%20Tempelj%20sonca.jpg",
+    "reuse": true
+  },
+  "hadramite": {
+    "src": "/photos/hadramawt.jpg",
+    "credit": "Ala Askool",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Shibam%20Hadramaut.jpg",
+    "reuse": true
+  },
+  "himyar": {
+    "src": "/photos/sanaa-capital.jpg",
+    "credit": "Dan (Brussels)",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tower%20House%20in%20the%20Old%20City%20of%20Sana'a%20(2286819294).jpg",
+    "reuse": true
+  },
+  "ziyadid": {
+    "src": "/photos/k-ziyadid.jpg",
+    "credit": "Véronique Dauge",
+    "license": "CC BY-SA 3.0 IGO",
+    "source": "https://commons.wikimedia.org/wiki/File:Historic%20Town%20of%20Zabid-111620.jpg"
+  },
+  "sulayhi": {
+    "src": "/photos/k-sulayhi.jpg",
+    "credit": "Abassign",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Yemen%20-%20Ibb%20IMG%202929A1-1600.jpg"
+  },
+  "rasulid": {
+    "src": "/photos/taizz.jpg",
+    "credit": "Ljuba brank",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:27%20Taizz%20(8)%20Al-Ashrafiya.jpg",
+    "reuse": true
+  },
+  "tahirid": {
+    "src": "/photos/k-tahirid.jpg",
+    "credit": "LBM1948",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rada'a%201987%2002.jpg"
+  },
+  "ottoman1": {
+    "src": "/photos/sanaa-capital.jpg",
+    "credit": "Dan (Brussels)",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tower%20House%20in%20the%20Old%20City%20of%20Sana'a%20(2286819294).jpg",
+    "reuse": true
+  },
+  "qasimi": {
+    "src": "/photos/sadah.jpg",
+    "credit": "Raf24",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sa'ada.jpg",
+    "reuse": true
+  },
+  "ottoman2": {
+    "src": "/photos/k-ziyadid.jpg",
+    "credit": "Véronique Dauge",
+    "license": "CC BY-SA 3.0 IGO",
+    "source": "https://commons.wikimedia.org/wiki/File:Historic%20Town%20of%20Zabid-111620.jpg"
+  }
+}

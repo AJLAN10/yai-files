@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
+import YbcIcon from '../../components/YbcIcon.astro';
 
 export async function getStaticPaths() {
   const chapters = await getCollection('ybcChapters');
@@ -40,6 +41,7 @@ const registers = [
     { label: 'Applies to', label_ar: 'يُطبَّق في', value: `${ch.governorates.length} governorates` },
   ]}
 >
+  <div class="ch-glyph"><YbcIcon code={ch.code} size={44} /></div>
   <p class="h-subtitle">
     <span class="en-only">{ch.subtitle}</span>
     <span class="ar-only ar-text">{ch.subtitle_ar ?? ch.subtitle}</span>
@@ -91,6 +93,7 @@ const registers = [
   </p>
 
   <style>
+    .ch-glyph { display: inline-flex; padding: 0.6rem; border-radius: 10px; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25); color: #4ADE80; margin-bottom: 0.9rem; }
     .h-subtitle { font-size: 0.95rem; color: var(--accent); margin: 0 0 1rem; letter-spacing: 0.02em; }
     .lede { font-size: 1.12rem; line-height: 1.7; color: rgba(255,255,255,0.82); }
     .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 1.25rem 0 0; }

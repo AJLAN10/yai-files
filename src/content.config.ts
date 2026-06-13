@@ -54,6 +54,12 @@ const characters = defineCollection({
     tag_ar: z.string().optional(),
     description: z.string(),
     description_ar: z.string().optional(),
+    /* Data-ready slot: path to a technical construction drawing
+       (exploded view / cross-section). Renders automatically when
+       present; nothing shows when absent. Authored by a specialist. */
+    diagram: z.string().optional(),
+    diagram_caption: z.string().optional(),
+    diagram_caption_ar: z.string().optional(),
     elements: z.array(z.string()).min(1),
     elements_ar: z.array(z.string()).optional(),
     /* The three-register narrative every character shares. */
