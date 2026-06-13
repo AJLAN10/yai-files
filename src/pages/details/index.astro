@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import HeritageLayout from '../../layouts/HeritageLayout.astro';
 import SlidePanel from '../../components/SlidePanel.astro';
 import { relatedYbc } from '../../lib/related';
+import { materialTexturesFor } from '../../lib/textures';
 import photoCredits from '../../data/photo-credits.json';
 const sectorPhoto = (photoCredits as Record<string, any>)['sanaa-capital'];
 
@@ -37,6 +38,7 @@ const panelRecords = characters.map((entry) => {
       { title: 'Defining elements', title_ar: 'العناصر المميزة', type: 'tags', items: c.elements.map((m, i) => ({ en: m, ar: c.elements_ar?.[i] ?? m })) },
       { title: 'Architectural character', title_ar: 'الطابع المعماري', type: 'text', text: c.description, text_ar: c.description_ar },
       { title: 'Governing building code', title_ar: 'كود البناء الحاكم', type: 'ybc', items: relatedYbc(c, ybcChapters).map((ch) => ({ code: ch.data.code, id: ch.id, title: ch.data.title, title_ar: ch.data.title_ar ?? ch.data.title })) },
+      { title: 'Material textures', title_ar: 'ملمس المواد', type: 'gallery', items: materialTexturesFor(c.material_list) },
     ],
     cta: 'Full character card →', cta_ar: 'بطاقة الطابع كاملة ←',
   };

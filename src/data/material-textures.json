@@ -1,0 +1,58 @@
+{
+  "mudbrick": {
+    "thumb": "/photos/textures/mudbrick-thumb.jpg",
+    "full": "/photos/textures/mudbrick.jpg",
+    "label": "Sun-dried mudbrick (libn)",
+    "label_ar": "طوب لِبِن مجفّف بالشمس",
+    "credit": "Argon233 · CC BY-SA 3.0 · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Mesa_Grande_2011-03-19_3810.JPG"
+  },
+  "coral": {
+    "thumb": "/photos/textures/coral-thumb.jpg",
+    "full": "/photos/textures/coral.jpg",
+    "label": "Coral stone block",
+    "label_ar": "حجر مرجاني",
+    "credit": "Cumulus Clouds · CC BY 2.5 · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Coral_brick_St_Croix_USVI.jpg"
+  },
+  "fired-brick": {
+    "thumb": "/photos/textures/fired-brick-thumb.jpg",
+    "full": "/photos/textures/fired-brick.jpg",
+    "label": "Fired brick / tile",
+    "label_ar": "آجُر (طوب محروق)",
+    "credit": "Man vyi · Public domain · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Brick_wall_old.jpg"
+  },
+  "rammed-earth": {
+    "thumb": "/photos/textures/rammed-earth-thumb.jpg",
+    "full": "/photos/textures/rammed-earth.jpg",
+    "label": "Rammed earth (zabur)",
+    "label_ar": "طين مدكوك (زبور)",
+    "credit": "JYB Devot · CC BY-SA 4.0 · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:PiseP1010653mod.jpg"
+  },
+  "stone": {
+    "thumb": "/photos/textures/stone-thumb.jpg",
+    "full": "/photos/textures/stone.jpg",
+    "label": "Stone masonry",
+    "label_ar": "بناء حجري",
+    "credit": "Brookie · CC BY-SA 3.0 · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Dry_Stone_Wall_-_Blackmile_Lane,_Grendon,_Northamptonshire.jpg"
+  },
+  "timber": {
+    "thumb": "/photos/textures/timber-thumb.jpg",
+    "full": "/photos/textures/timber.jpg",
+    "label": "Carved timber (rawshan / mashrabiya)",
+    "label_ar": "خشب منحوت (روشن / مشربية)",
+    "credit": "Delort de Gléon, 1889 · CC BY-SA 2.5 · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:D%C3%A8tail_d%27une_moucharabieh_du_dix-septi%C3%A8me_si%C3%A8cle._(1889)_-_TIMEA.jpg"
+  },
+  "thatch": {
+    "thumb": "/photos/textures/thatch-thumb.jpg",
+    "full": "/photos/textures/thatch.jpg",
+    "label": "Thatch / reed",
+    "label_ar": "سعف وقصب",
+    "credit": "Georges Grondin · Public domain · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Straw_reed_mat_good_for_thatched_roof.jpg"
+  }
+}
