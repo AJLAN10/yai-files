@@ -186,7 +186,7 @@ import '../styles/global.css';
         <span class="w1 en-only">Yemen</span>
         <span class="w2 en-only">Architecture</span>
         <span class="w3 en-only">Initiative</span>
-        <span class="ar-only ar-text">مبادرة العمارة اليمنية</span>
+        <span class="ar-only ar-text ar-kashida">مبـــادرة العمـــارة اليمنيـــة</span>
       </h1>
       <p class="hero-tagline en-only">
         A global platform for Yemen's built heritage — 23 architectural characters, the Yemen Building Code, 13 kingdom archives, and educational resources in Arabic and English.
@@ -208,7 +208,7 @@ import '../styles/global.css';
       </div>
     </div>
     <div class="hero-ar" aria-hidden="true">
-      <div class="hero-ar-text">مبادرة<br>العمارة<br>اليمنية</div>
+      <div class="hero-ar-text ar-kashida">مبـــادرة<br>العمـــارة<br>اليمنيـــة</div>
     </div>
   </div>
 
@@ -723,20 +723,25 @@ import '../styles/global.css';
 /* ─── Language toggle (EN ↔ AR) ────────────────────────────── */
 const html = document.documentElement;
 const langBtn = document.getElementById('langToggle');
-let currentLang = 'en';
+/* Arabic is the primary language; English is the secondary toggle. */
+let currentLang = 'ar';
+
+function applyLang(lang) {
+  currentLang = lang;
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  html.classList.remove('lang-en','lang-ar'); html.classList.add(`lang-${lang}`);
+  localStorage.setItem('yai-lang', lang);
+}
 
 langBtn.addEventListener('click', () => {
-  currentLang = currentLang === 'en' ? 'ar' : 'en';
-  html.setAttribute('lang', currentLang);
-  html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-  html.classList.remove('lang-en','lang-ar'); html.classList.add(`lang-${currentLang}`);
-  localStorage.setItem('yai-lang', currentLang);
+  applyLang(currentLang === 'ar' ? 'en' : 'ar');
   if (typeof plausible !== 'undefined') plausible('Language Toggle', { props: { language: currentLang } });
 });
 
-/* Restore language preference */
+/* Restore preference — default stays Arabic */
 const savedLang = localStorage.getItem('yai-lang');
-if (savedLang && savedLang !== 'en') langBtn.click();
+if (savedLang === 'en') applyLang('en');
 
 /* ─── Mobile nav ───────────────────────────────────────────── */
 const menuBtn = document.getElementById('menuBtn');

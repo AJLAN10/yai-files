@@ -195,8 +195,9 @@ const {
     (function () {
       var html = document.documentElement;
       var btn = document.getElementById('langToggle');
+      /* Arabic is the default; only switch if English was chosen. */
       var saved = localStorage.getItem('yai-lang');
-      if (saved === 'ar') setLang('ar');
+      if (saved === 'en') setLang('en');
 
       function setLang(lang) {
         html.classList.remove('lang-en', 'lang-ar');

@@ -126,6 +126,35 @@ h1 { text-wrap: balance; }
 .lang-en .ar-only { display: none !important; }
 .lang-en .ar-text { display: none; }
 
+/* Kashida display style — Ewan-inspired stretched calligraphic headlines.
+   Pair with tatweel (ـ) characters in the markup for the line-stretch. */
+.ar-kashida {
+  font-family: var(--f-ar-display);
+  font-weight: 700;
+  letter-spacing: 0;
+  word-spacing: 0.08em;
+}
+
+/* Editorial line rule — thin hairline with a terracotta tick (Ewan motif) */
+.rule-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: var(--space-lg) 0;
+}
+.rule-line::before {
+  content: '';
+  width: 2.5rem; height: 2px;
+  background: var(--terra);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+.rule-line::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: var(--border);
+}
+
 /* Dark archival theme — heritage record pages (details/climate/sectors) */
 .theme-dark body {
   background: var(--ink);
@@ -637,7 +666,10 @@ body > * { position: relative; z-index: 1; }
   border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-base), box-shadow var(--t-base);
 }
+.sector-band:hover .sector-icon-wrap { transform: scale(1.06); box-shadow: var(--shadow-md); }
 .sector-band[data-s="students"]  .sector-icon-wrap { background: #DBEAFE; }
 .sector-band[data-s="code"]      .sector-icon-wrap { background: #DCFCE7; }
 .sector-band[data-s="details"]   .sector-icon-wrap { background: #FEF3C7; }

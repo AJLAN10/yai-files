@@ -9,7 +9,7 @@ interface Props {
 const { title, description, theme = 'light' } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class={`lang-en theme-${theme}`}>
+<html lang="ar" dir="rtl" class={`lang-ar theme-${theme}`}>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -50,12 +50,12 @@ const { title, description, theme = 'light' } = Astro.props;
 <slot />
 
 <script>
+/* Offline-first was dropped by project decision (2026-06). Clean up any
+   previously installed service worker + caches so stale pages stop
+   being served to returning visitors. Remove this after a few deploys. */
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
-      .then(reg => console.log('[YAI] SW registered:', reg.scope))
-      .catch(err => console.warn('[YAI] SW failed:', err));
-  });
+  navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+  if ('caches' in window) caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
 }
 </script>
 </body>
