@@ -115,7 +115,12 @@ const {
     </main>
 
     <footer class="h-footer">
-      Yemen Architecture Initiative · <a href="/">YAI.org</a>
+      <span class="en-only">Yemen Architecture Initiative · <a href="/">YAI.org</a></span>
+      <span class="ar-only ar-text">مبادرة العمارة اليمنية · <a href="/">YAI.org</a></span>
+      <small class="h-copyright">
+        <span class="en-only">© 2026 Yemen Architecture Initiative. All rights reserved. Cite as: YAI, yai.org. Third-party imagery under its credited CC licence.</span>
+        <span class="ar-only ar-text">© 2026 مبادرة العمارة اليمنية. جميع الحقوق محفوظة. الإسناد: المبادرة، yai.org. الصور من أطراف أخرى وفق رخص المشاع الإبداعي المنسوبة.</span>
+      </small>
     </footer>
   </div>
 
@@ -230,6 +235,7 @@ const {
       color: rgba(255, 255, 255, 0.3);
     }
     .h-footer a { color: var(--accent); }
+    .h-copyright { display: block; margin-top: 0.6rem; font-size: 0.68rem; line-height: 1.5; color: rgba(255, 255, 255, 0.22); max-width: 60ch; }
 
     /* RTL: mirror the nav and right-align text when Arabic is active. */
     :global(html.lang-ar) .heritage { direction: rtl; text-align: right; }

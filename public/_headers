@@ -1,0 +1,20 @@
+# YAI security + rights headers.
+# Netlify / Cloudflare Pages serve this file as real HTTP response headers.
+# frame-ancestors and X-Frame-Options CANNOT be set via <meta>, so the
+# anti-embedding / anti-hotlinking protection lives here.
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'self'; form-action 'self'
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), interest-cohort=()
+  X-Copyright: (c) 2026 Yemen Architecture Initiative (YAI). All rights reserved. Cite as: yai.org
+
+# Imagery: assert copyright on every photo/texture/icon response.
+/photos/*
+  X-Copyright: (c) 2026 Yemen Architecture Initiative (YAI). Third-party imagery retains its CC licence as credited on-site.
+  Cache-Control: public, max-age=2592000
+
+/icons/*
+  Cache-Control: public, max-age=2592000

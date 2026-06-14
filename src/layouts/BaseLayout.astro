@@ -19,6 +19,16 @@ const { title, description, theme = 'light' } = Astro.props;
 <meta name="description" content={description}>
 <meta name="author" content="Yemen Architecture Initiative">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<!-- Content Security Policy (in-document fallback; frame-ancestors is set
+     via real HTTP headers in public/_headers since <meta> ignores it).
+     'unsafe-inline' is required for the site's is:inline island scripts. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self'">
+
+<!-- Copyright / rights metadata (deterrence without disabling browser UX) -->
+<meta name="copyright" content="© 2026 Yemen Architecture Initiative (YAI). All rights reserved.">
+<meta name="rights" content="Content © 2026 Yemen Architecture Initiative. Cite as: Yemen Architecture Initiative (YAI), yai.org. Third-party imagery retains its original CC licence as credited.">
+<link rel="license" href="/privacy">
 <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: light)">
 <meta name="color-scheme" content="light">
@@ -48,6 +58,46 @@ const { title, description, theme = 'light' } = Astro.props;
 </head>
 <body>
 <slot />
+
+<!-- Subtle copyright notice on image right-click. Deliberately does NOT
+     call preventDefault: the native context menu (and 'Save image',
+     accessibility, citation) stays fully available — we only inform. -->
+<div id="yai-copyright-toast" role="status" aria-live="polite"></div>
+<style>
+  #yai-copyright-toast {
+    position: fixed; inset-block-end: 1.1rem; inset-inline: 0;
+    margin-inline: auto; width: max-content; max-width: 90vw;
+    padding: 0.6rem 1.05rem; border-radius: 9px;
+    background: rgba(15, 23, 42, 0.96); color: #fff;
+    font-size: 0.8rem; line-height: 1.4; text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    pointer-events: none; z-index: 200;
+  }
+  #yai-copyright-toast.show { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { #yai-copyright-toast { transition: opacity 0.22s ease; transform: none; } }
+</style>
+<script is:inline>
+(function () {
+  var ar = document.documentElement.classList.contains('lang-ar');
+  var toast = document.getElementById('yai-copyright-toast');
+  if (!toast) return;
+  var timer;
+  document.addEventListener('contextmenu', function (e) {
+    var img = e.target && e.target.closest ? e.target.closest('img') : null;
+    if (!img) return;
+    /* No preventDefault — keep the browser's menu; just surface a credit. */
+    toast.textContent = ar
+      ? '© 2026 مبادرة العمارة اليمنية — يُرجى الإسناد: yai.org'
+      : '© 2026 Yemen Architecture Initiative — please cite as: yai.org';
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(function () { toast.classList.remove('show'); }, 3400);
+  });
+})();
+</script>
 
 <script>
 /* Offline-first was dropped by project decision (2026-06). Clean up any
